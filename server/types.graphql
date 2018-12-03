@@ -18,11 +18,13 @@ type Interaction @model {
   timer: Boolean!
   soundSequences: [SoundSequence!]! @relation(name: "InteractionSoundSequences")
   episode: Episode! @relation(name:"EpisodeInteractions")
+  anwsers: Answer @relation(name: "AnswersInteractions")
 }
 
 type Answer @model {
   id: ID! @isUnique
   content: String!
+  interactionsSegment: [Interaction!]! @relation(name:"AnswersInteractions")
 }
 
 type SoundSequence @model {
