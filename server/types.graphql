@@ -1,0 +1,86 @@
+# The following types define the data model of the example service
+# based on which the GraphQL API is generated
+
+type Test @model {
+  id: ID! @isUnique    # read-only (managed by Graphcool)
+  createdAt: DateTime! # read-only (managed by Graphcool)
+  updatedAt: DateTime! # read-only (managed by Graphcool)
+  name: String!
+  description: String!
+}
+
+type Answer @model {
+  id: ID! @isUnique
+  content: String!
+  origin_interactionId: Int!
+  destination_interactionId: Int!
+}
+
+type Interaction @model {
+  id: ID! @isUnique
+  position: Int!
+  interaction_type: String!
+  timer: Boolean!
+  sound_sequence: [sound_sequenceId]
+  episodeId: Int!
+}
+
+type Sound_sequence @model {
+  id: ID! @isUnique
+  name: String!
+  begin_at: Int!
+  end_at: Int!
+  soundId: Int!
+}
+
+type Sound @model {
+  id: ID! @isUnique
+  name: String!
+  url: String!
+  episodeId: Int!
+}
+
+type Episode @model {
+  id: ID! @isUnique
+  title: String!
+  summary: Text!
+}
+
+type Testimony @model {
+  id: ID! @isUnique
+  episodeId: Int!
+  content: Text!
+  date: Date!
+  email: String!
+}
+
+type Block @model {
+  id: ID! @isUnique
+  title: String!
+  content: Text!
+  episodeId: Int!
+}
+
+type Image @model {
+  id: ID! @isUnique
+  name: String!
+  url: String!
+  blockId: Int!
+}
+
+type Video @model {
+  id: ID! @isUnique
+  name: String!
+  url: String!
+  blockId: Int!
+}
+
+# Uncomment the model below as well
+
+# type Post @model {
+#   id: ID! @isUnique
+#   title: String!
+#
+#   # Every relation also required a back-relation (to determine 1:1, 1:n or n:m)
+#   author: User! @relation(name: "UserPosts")
+# }
