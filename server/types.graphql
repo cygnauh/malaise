@@ -1,78 +1,76 @@
 # The following types define the data model of the example service
 # based on which the GraphQL API is generated
 
-type Test @model {
-  id: ID! @isUnique    # read-only (managed by Graphcool)
-  createdAt: DateTime! # read-only (managed by Graphcool)
-  updatedAt: DateTime! # read-only (managed by Graphcool)
-  name: String!
-  description: String!
-}
-
-type Answer @model {
+type Episode @model {
   id: ID! @isUnique
-  content: String!
-  origin_interactionId: Int!
-  destination_interactionId: Int!
+  title: String!
+  summary: String!
+  sounds: [Sound!]! @relation(name: "EpisodeSounds")
+  testimonies: [Testimony!]! @relation(name: "EpisodeTestimonies")
+  blocks: [Block!]! @relation(name: "EpisodeBlocks")
+  interactions: [Interaction!]! @relation(name: "EpisodeInteractions")
 }
 
 type Interaction @model {
   id: ID! @isUnique
   position: Int!
-  interaction_type: String!
+  interactionType: String!
   timer: Boolean!
-  sound_sequence: [sound_sequenceId]
-  episodeId: Int!
+  soundSequences: [SoundSequence!]! @relation(name: "InteractionSoundSequences")
+  episode: Episode! @relation(name:"EpisodeInteractions")
 }
 
-type Sound_sequence @model {
+type Answer @model {
+  id: ID! @isUnique
+  content: String!
+}
+
+type SoundSequence @model {
   id: ID! @isUnique
   name: String!
-  begin_at: Int!
-  end_at: Int!
-  soundId: Int!
+  beginAt: Int!
+  endAt: Int!
+  sound: Sound! @relation(name: "SoundSoundSequences")
+  interactions: Interaction! @relation(name: "InteractionSoundSequences")
 }
 
 type Sound @model {
   id: ID! @isUnique
   name: String!
   url: String!
-  episodeId: Int!
-}
-
-type Episode @model {
-  id: ID! @isUnique
-  title: String!
-  summary: Text!
+  episode: Episode! @relation(name: "EpisodeSounds")
+  soundsequences: SoundSequence! @relation(name: "SoundSoundSequences")
 }
 
 type Testimony @model {
   id: ID! @isUnique
-  episodeId: Int!
-  content: Text!
-  date: Date!
+  episode: Episode! @relation(name: "EpisodeTestimonies")
+  content: String!
+  date: DateTime!
   email: String!
 }
 
 type Block @model {
   id: ID! @isUnique
   title: String!
-  content: Text!
-  episodeId: Int!
+  content: String!
+  episode: Episode! @relation(name: "EpisodeBlocks")
+  images: [Image!]! @relation(name: "BlockImages")
+  videos: [Video!]! @relation(name: "BlockVideos")
 }
 
 type Image @model {
   id: ID! @isUnique
   name: String!
   url: String!
-  blockId: Int!
+  block: Block! @relation(name: "BlockImages")
 }
 
 type Video @model {
   id: ID! @isUnique
   name: String!
   url: String!
-  blockId: Int!
+  block: Block! @relation(name: "BlockVideos")
 }
 
 # Uncomment the model below as well
