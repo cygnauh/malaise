@@ -1,17 +1,28 @@
-import React, { Component } from 'react';
-//import styled, { keyframes } from 'styled-components'
 import './App.css';
+import React from 'react';
+import gql from 'graphql-tag';
+import { Query } from 'react-apollo';
 
-class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <h1>Malaise.</h1>
-        </header>
-      </div>
-    );
-  }
-}
+export const GET_FIRST_EPISODE = gql`
+    {
+        Episode(id: "cjp8r6rp2p9eg0183cgcd45qz") {
+            id
+            title
+        }
+    }
+`;
+
+export const App = () => (
+    <Query query={GET_FIRST_EPISODE}>
+        {({ loading, error, data }) => {
+            if (loading) return "Loading...";
+            if (error) return `Error! ${error.message}`;
+
+            return (
+                <h1>{data.Episode.title}</h1>
+            );
+        }}
+    </Query>
+);
 
 export default App;
