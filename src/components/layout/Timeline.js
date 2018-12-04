@@ -1,10 +1,11 @@
+import "./Timeline.css"
 import React from 'react';
 
 class Timeline extends React.Component {
     render() {
         return (
             <div className="Timeline">
-                <p>----- timeline -----</p>
+                <div className="Timeline__progress-bar"></div>
             </div>
         )
     }

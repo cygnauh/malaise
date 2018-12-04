@@ -1,0 +1,17 @@
+.Header {
+    height: 100px;
+    padding: 0 30px;
+    display: flex;
+    align-items: center;
+}
+.Header__logo {
+    font-size: 20px;
+}
+.Header__logo span {
+    font-size: 12px;
+    position: relative;
+}
+.Header__logo span:before {
+    content:'-';
+    margin-right: 5px;
+}
