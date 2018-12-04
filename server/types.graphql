@@ -1,55 +1,7 @@
-# The following types define the data model of the example service
-# based on which the GraphQL API is generated
-
-type Episode @model {
-  id: ID! @isUnique
-  title: String!
-  summary: String!
-  sounds: [Sound!]! @relation(name: "EpisodeSounds")
-  testimonies: [Testimony!]! @relation(name: "EpisodeTestimonies")
-  blocks: [Block!]! @relation(name: "EpisodeBlocks")
-  interactions: [Interaction!]! @relation(name: "EpisodeInteractions")
-}
-
-type Interaction @model {
-  id: ID! @isUnique
-  position: Int!
-  interactionType: String!
-  timer: Boolean!
-  soundSequences: [SoundSequence!]! @relation(name: "InteractionSoundSequences")
-  episode: Episode! @relation(name:"EpisodeInteractions")
-  anwsers: Answer @relation(name: "AnswersInteractions")
-}
-
 type Answer @model {
   id: ID! @isUnique
   content: String!
-  interactionsSegment: [Interaction!]! @relation(name:"AnswersInteractions")
-}
-
-type SoundSequence @model {
-  id: ID! @isUnique
-  name: String!
-  beginAt: Int!
-  endAt: Int!
-  sound: Sound! @relation(name: "SoundSoundSequences")
-  interactions: Interaction! @relation(name: "InteractionSoundSequences")
-}
-
-type Sound @model {
-  id: ID! @isUnique
-  name: String!
-  url: String!
-  episode: Episode! @relation(name: "EpisodeSounds")
-  soundsequences: SoundSequence! @relation(name: "SoundSoundSequences")
-}
-
-type Testimony @model {
-  id: ID! @isUnique
-  episode: Episode! @relation(name: "EpisodeTestimonies")
-  content: String!
-  date: DateTime!
-  email: String!
+  interactionsSegment: [Interaction!]! @relation(name: "AnswersInteractions")
 }
 
 type Block @model {
@@ -61,11 +13,56 @@ type Block @model {
   videos: [Video!]! @relation(name: "BlockVideos")
 }
 
+type Episode @model {
+  id: ID! @isUnique
+  title: String!
+  summary: String!
+  sounds: [Sound!]! @relation(name: "EpisodeSounds")
+  testimonies: [Testimony!]! @relation(name: "EpisodeTestimonies")
+  blocks: [Block!]! @relation(name: "EpisodeBlocks")
+  interactions: [Interaction!]! @relation(name: "EpisodeInteractions")
+}
+
 type Image @model {
   id: ID! @isUnique
   name: String!
   url: String!
   block: Block! @relation(name: "BlockImages")
+}
+
+type Interaction @model {
+  id: ID! @isUnique
+  position: Int!
+  interactionType: String!
+  timer: Boolean!
+  soundSequences: [SoundSequence!]! @relation(name: "InteractionSoundSequences")
+  episode: Episode! @relation(name: "EpisodeInteractions")
+  anwsers: Answer @relation(name: "AnswersInteractions")
+}
+
+type Sound @model {
+  id: ID! @isUnique
+  name: String!
+  url: String!
+  episode: Episode! @relation(name: "EpisodeSounds")
+  soundsequences: SoundSequence @relation(name: "SoundSoundSequences")
+}
+
+type SoundSequence @model {
+  id: ID! @isUnique
+  name: String!
+  beginAt: Int!
+  endAt: Int!
+  sound: Sound! @relation(name: "SoundSoundSequences")
+  interaction: Interaction! @relation(name: "InteractionSoundSequences")
+}
+
+type Testimony @model {
+  id: ID! @isUnique
+  episode: Episode! @relation(name: "EpisodeTestimonies")
+  content: String!
+  date: DateTime!
+  email: String!
 }
 
 type Video @model {
@@ -74,13 +71,3 @@ type Video @model {
   url: String!
   block: Block! @relation(name: "BlockVideos")
 }
-
-# Uncomment the model below as well
-
-# type Post @model {
-#   id: ID! @isUnique
-#   title: String!
-#
-#   # Every relation also required a back-relation (to determine 1:1, 1:n or n:m)
-#   author: User! @relation(name: "UserPosts")
-# }
