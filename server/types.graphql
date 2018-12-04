@@ -16,6 +16,7 @@ type Interaction @model {
   position: Int!
   interactionType: String!
   timer: Boolean!
+  content: String
   soundSequences: [SoundSequence!]! @relation(name: "InteractionSoundSequences")
   episode: Episode! @relation(name:"EpisodeInteractions")
   anwsers: Answer @relation(name: "AnswersInteractions")
@@ -41,7 +42,7 @@ type Sound @model {
   name: String!
   url: String!
   episode: Episode! @relation(name: "EpisodeSounds")
-  soundsequences: SoundSequence! @relation(name: "SoundSoundSequences")
+  soundSequences: SoundSequence! @relation(name: "SoundSoundSequences")
 }
 
 type Testimony @model {
