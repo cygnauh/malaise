@@ -10,32 +10,43 @@ class Started extends React.Component {
             inputValue: ''
         };
     }
-    updateInputValue(evt) {
+    updateInputValue = (evt) => {
         this.setState({
             inputValue: evt.target.value
         });
     }
-    onKeyPress(evt) {
+    setHostName = () => {
+        var inputs = document.querySelectorAll('.Form__input');
+        var charName, charRole = '';
+        inputs.forEach(function(input) {
+            charName = input.value;
+            charRole = input.getAttribute('data-role');
+            var char1 = new Character(charRole, charName);
+            window.sessionStorage.setItem('characters', JSON.stringify(char1.toJson()));
+        });
+    }
+
+    onKeyPress = (evt) => {
         if (evt.which === 13) {
             evt.preventDefault();
-            var inputs = document.querySelectorAll('.Form__input');
-            var charName, charRole = '';
-            inputs.forEach(function(input) {
-                charName = input.value;
-                charRole = input.getAttribute('data-role');
-                var char1 = new Character(charRole, charName);
-                window.sessionStorage.setItem('characters', JSON.stringify(char1.toJson()));
-                var obj = JSON.parse(sessionStorage.getItem('characters'));
-                console.log(obj.name);
-            });
+            this.setHostName();
         }
+    }
+    onSubmit = (evt) => {
+        evt.preventDefault();
+        this.setHostName();
     }
     render() {
         return (
             <form className="Form" onKeyPress={this.onKeyPress}>
-                <div className="Form__row">
-                    <label className="Form__label">Tu es à la porte de</label>
-                    <input className="Form__input" type="text" placeholder="son prénom" value={this.state.inputValue} data-role="host" onChange={evt => this.updateInputValue(evt)}></input>
+                <div className="Form__container">
+                    <div className="Form__row">
+                        <label className="Form__label">Ce soir tu es invité(e) chez ta pote qui fait une soirée posée.</label>
+                        <input className="Form__input" type="text" placeholder="son prénom" value={this.state.inputValue} data-role="host" onChange={evt => this.updateInputValue(evt)}></input>
+                    </div>
+                    <div className="Form__row">
+                        <button className="Form__submit" type="submit" onClick={this.onSubmit}>valider</button>
+                    </div>
                 </div>
             </form>
         );
