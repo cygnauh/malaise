@@ -17,10 +17,12 @@ const client = new ApolloBoost({
 
 ReactDOM.render(
     <ApolloProvider client={client}>
-        <Header />
-        <App />
-        <Timeline />
-        {/*<SoundTest source={'https://circegrand.fr/etude/gobelins/malaise/media/sounds/party-ambience-1-no-copyright-sound-effect.mp3'}/>*/}
+        <Header/>
+        {/*<App/>*/}
+        {/*<Timeline/>*/}
+        <SoundTest
+            source={'https://circegrand.fr/etude/gobelins/malaise/media/sounds/party-ambience-1-no-copyright-sound-effect.mp3'}
+        />
     </ApolloProvider>
     , document.getElementById('root'));
 
