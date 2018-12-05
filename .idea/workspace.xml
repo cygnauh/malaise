@@ -2,12 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="bfd7f8fd-d869-4acf-881e-705da4af18b0" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/components/interactions/interactions.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/objects/Character.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/data/.build/build.zip" afterPath="$PROJECT_DIR$/server/.build/build.zip" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/data/.graphcoolrc" afterPath="$PROJECT_DIR$/server/.graphcoolrc" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/data/graphcool.yml" afterPath="$PROJECT_DIR$/server/graphcool.yml" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/data/package-lock.json" afterPath="$PROJECT_DIR$/server/package-lock.json" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/data/package.json" afterPath="$PROJECT_DIR$/server/package.json" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/data/src/hello.graphql" afterPath="$PROJECT_DIR$/server/src/hello.graphql" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/data/src/hello.js" afterPath="$PROJECT_DIR$/server/src/hello.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/data/types.graphql" afterPath="$PROJECT_DIR$/server/types.graphql" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/index.html" afterPath="$PROJECT_DIR$/public/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/App.js" afterPath="$PROJECT_DIR$/src/App.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/interactions/started.js" afterPath="$PROJECT_DIR$/src/components/interactions/started.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/index.css" afterPath="$PROJECT_DIR$/src/index.css" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -24,12 +29,10 @@
       <file leaf-file-name="index.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/index.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="252">
-              <caret line="12" column="3" lean-forward="false" selection-start-line="12" selection-start-column="3" selection-end-line="12" selection-end-column="3" />
+            <state relative-caret-position="462">
+              <caret line="22" column="27" lean-forward="false" selection-start-line="22" selection-start-column="27" selection-end-line="22" selection-end-column="27" />
               <folding>
-                <marker date="1543949747064" expanded="true" signature="7:353" ph="..." />
-                <marker date="1543949747064" expanded="true" signature="386:459" ph="{&quot;uri&quot;: &quot;https://api.graph.cool/simple/v1/cjp2pniu98sw30122z5bavdwc&quot;...}" />
-                <marker date="1543949747064" expanded="true" signature="484:594" ph="&lt;ApolloProvider/&gt;" />
+                <element signature="e#0#26#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -38,35 +41,11 @@
       <file leaf-file-name="App.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/App.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="252">
-              <caret line="12" column="27" lean-forward="false" selection-start-line="12" selection-start-column="27" selection-end-line="12" selection-end-column="27" />
-              <folding>
-                <marker date="1543952028567" expanded="true" signature="7:118" ph="..." />
-                <marker date="1543952028567" expanded="true" signature="148:341" ph="{...}" />
-                <marker date="1543952028567" expanded="true" signature="167:224" ph="{...}" />
-                <marker date="1543952028567" expanded="true" signature="238:339" ph="{...}" />
-                <marker date="1543952028567" expanded="true" signature="269:323" ph="&lt;main/&gt;" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/public/index.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="315">
-              <caret line="15" column="30" lean-forward="false" selection-start-line="15" selection-start-column="30" selection-end-line="15" selection-end-column="30" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="index.css" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/index.css">
-          <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="399">
-              <caret line="19" column="31" lean-forward="false" selection-start-line="19" selection-start-column="31" selection-end-line="19" selection-end-column="31" />
-              <folding />
+              <caret line="19" column="0" lean-forward="true" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
+              <folding>
+                <element signature="e#0#19#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -74,8 +53,8 @@
       <file leaf-file-name="started.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/components/interactions/started.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="483">
-              <caret line="23" column="40" lean-forward="true" selection-start-line="23" selection-start-column="40" selection-end-line="23" selection-end-column="40" />
+            <state relative-caret-position="372">
+              <caret line="21" column="40" lean-forward="true" selection-start-line="21" selection-start-column="40" selection-end-line="21" selection-end-column="40" />
               <folding>
                 <element signature="e#0#28#0" expanded="true" />
               </folding>
@@ -83,11 +62,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="interactions.css" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/components/interactions/interactions.css">
+      <file leaf-file-name="Character.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/objects/Character.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="168">
-              <caret line="8" column="14" lean-forward="false" selection-start-line="8" selection-start-column="14" selection-end-line="8" selection-end-column="14" />
+            <state relative-caret-position="105">
+              <caret line="5" column="1" lean-forward="true" selection-start-line="5" selection-start-column="1" selection-end-line="5" selection-end-column="1" />
               <folding />
             </state>
           </provider>
@@ -96,10 +75,9 @@
       <file leaf-file-name="FirstEpisode.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/graphql/queries/FirstEpisode.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="395">
-              <caret line="21" column="22" lean-forward="false" selection-start-line="21" selection-start-column="22" selection-end-line="21" selection-end-column="22" />
+            <state relative-caret-position="189">
+              <caret line="11" column="5" lean-forward="true" selection-start-line="11" selection-start-column="5" selection-end-line="11" selection-end-column="5" />
               <folding>
-                <marker date="1543949657142" expanded="true" signature="7:109" ph="..." />
                 <marker date="1543949657142" expanded="true" signature="153:274" ph="{...}" />
                 <marker date="1543949657142" expanded="true" signature="163:170" ph="Episode...Episode" />
                 <marker date="1543949657142" expanded="true" signature="163:268" ph="Episode...{&#10;            id&#10;            title&#10;            summary&#10;        }" />
@@ -109,8 +87,6 @@
                 <marker date="1543949657142" expanded="true" signature="218:220" ph="id...id" />
                 <marker date="1543949657142" expanded="true" signature="233:238" ph="title...title" />
                 <marker date="1543949657142" expanded="true" signature="251:258" ph="summary...summary" />
-                <marker date="1543949657142" expanded="true" signature="319:607" ph="&lt;Query/&gt;" />
-                <marker date="1543949657142" expanded="true" signature="392:593" ph="{...}" />
               </folding>
             </state>
           </provider>
@@ -156,7 +132,6 @@
         <option value="$PROJECT_DIR$/src/queries/allEpisodes.js" />
         <option value="$PROJECT_DIR$/src/queries/FirstEpisode.js" />
         <option value="$PROJECT_DIR$/src/graphql/queries/FirstEpisode.js" />
-        <option value="$PROJECT_DIR$/src/index.js" />
         <option value="$PROJECT_DIR$/src/components/layout/Timeline.js" />
         <option value="$PROJECT_DIR$/src/components/layout/Timeline.css" />
         <option value="$PROJECT_DIR$/src/components/layout/Header.js" />
@@ -165,6 +140,8 @@
         <option value="$PROJECT_DIR$/public/index.html" />
         <option value="$PROJECT_DIR$/src/index.css" />
         <option value="$PROJECT_DIR$/src/components/interactions/interactions.css" />
+        <option value="$PROJECT_DIR$/src/index.js" />
+        <option value="$PROJECT_DIR$/src/objects/Character.js" />
         <option value="$PROJECT_DIR$/src/components/interactions/started.js" />
       </list>
     </option>
@@ -302,12 +279,12 @@
       <workItem from="1543313152167" duration="3344000" />
       <workItem from="1543500284042" duration="10636000" />
       <workItem from="1543850182741" duration="1333000" />
-      <workItem from="1543936883980" duration="8961000" />
+      <workItem from="1543936883980" duration="11759000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="42275000" />
+    <option name="totallyTimeSpent" value="45073000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1280" height="800" extended-state="0" />
@@ -317,6 +294,7 @@
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="GraphQL" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.13783404" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32911393" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="npm" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -329,7 +307,6 @@
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
     <layout-to-restore>
@@ -368,24 +345,10 @@
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/src/index.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="200">
-          <caret line="10" column="3" lean-forward="true" selection-start-line="10" selection-start-column="3" selection-end-line="10" selection-end-column="3" />
-          <folding>
-            <marker date="1543949747064" expanded="true" signature="7:353" ph="..." />
-            <marker date="1543949747064" expanded="true" signature="386:459" ph="{&quot;uri&quot;: &quot;https://api.graph.cool/simple/v1/cjp2pniu98sw30122z5bavdwc&quot;...}" />
-            <marker date="1543949747064" expanded="true" signature="484:594" ph="&lt;ApolloProvider/&gt;" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/index.js">
-      <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="252">
           <caret line="12" column="0" lean-forward="true" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
           <folding>
-            <marker date="1543949747064" expanded="true" signature="7:353" ph="..." />
-            <marker date="1543949747064" expanded="true" signature="386:459" ph="{&quot;uri&quot;: &quot;https://api.graph.cool/simple/v1/cjp2pniu98sw30122z5bavdwc&quot;...}" />
-            <marker date="1543949747064" expanded="true" signature="484:594" ph="&lt;ApolloProvider/&gt;" />
+            <element signature="e#0#26#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -418,11 +381,7 @@
         <state relative-caret-position="189">
           <caret line="9" column="27" lean-forward="true" selection-start-line="9" selection-start-column="27" selection-end-line="9" selection-end-column="27" />
           <folding>
-            <marker date="1543952028567" expanded="true" signature="7:118" ph="..." />
-            <marker date="1543952028567" expanded="true" signature="148:341" ph="{...}" />
-            <marker date="1543952028567" expanded="true" signature="167:224" ph="{...}" />
-            <marker date="1543952028567" expanded="true" signature="238:339" ph="{...}" />
-            <marker date="1543952028567" expanded="true" signature="269:323" ph="&lt;main/&gt;" />
+            <element signature="e#0#19#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -440,9 +399,7 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <marker date="1543949747064" expanded="true" signature="7:353" ph="..." />
-            <marker date="1543949747064" expanded="true" signature="386:459" ph="{&quot;uri&quot;: &quot;https://api.graph.cool/simple/v1/cjp2pniu98sw30122z5bavdwc&quot;...}" />
-            <marker date="1543949747064" expanded="true" signature="484:594" ph="&lt;ApolloProvider/&gt;" />
+            <element signature="e#0#26#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -452,11 +409,7 @@
         <state relative-caret-position="168">
           <caret line="9" column="29" lean-forward="false" selection-start-line="9" selection-start-column="29" selection-end-line="9" selection-end-column="29" />
           <folding>
-            <marker date="1543952028567" expanded="true" signature="7:118" ph="..." />
-            <marker date="1543952028567" expanded="true" signature="148:341" ph="{...}" />
-            <marker date="1543952028567" expanded="true" signature="167:224" ph="{...}" />
-            <marker date="1543952028567" expanded="true" signature="238:339" ph="{...}" />
-            <marker date="1543952028567" expanded="true" signature="269:323" ph="&lt;main/&gt;" />
+            <element signature="e#0#19#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -469,7 +422,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/data/src/hello.graphql">
+    <entry file="file://$PROJECT_DIR$/server/src/hello.graphql">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -492,28 +445,28 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/data/.graphcoolrc">
+    <entry file="file://$PROJECT_DIR$/server/.graphcoolrc">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/data/package.json">
+    <entry file="file://$PROJECT_DIR$/server/package.json">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/data/src/hello.js">
+    <entry file="file://$PROJECT_DIR$/server/src/hello.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="168">
           <caret line="8" column="5" lean-forward="false" selection-start-line="8" selection-start-column="5" selection-end-line="8" selection-end-column="5" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/data/src/hello.graphql">
+    <entry file="file://$PROJECT_DIR$/server/src/hello.graphql">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="147">
           <caret line="7" column="0" lean-forward="false" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
@@ -533,11 +486,7 @@
         <state relative-caret-position="-53">
           <caret line="3" column="0" lean-forward="false" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
           <folding>
-            <marker date="1543952028567" expanded="true" signature="7:118" ph="..." />
-            <marker date="1543952028567" expanded="true" signature="148:341" ph="{...}" />
-            <marker date="1543952028567" expanded="true" signature="167:224" ph="{...}" />
-            <marker date="1543952028567" expanded="true" signature="238:339" ph="{...}" />
-            <marker date="1543952028567" expanded="true" signature="269:323" ph="&lt;main/&gt;" />
+            <element signature="e#0#19#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -547,14 +496,12 @@
         <state relative-caret-position="254">
           <caret line="17" column="17" lean-forward="false" selection-start-line="17" selection-start-column="17" selection-end-line="17" selection-end-column="17" />
           <folding>
-            <marker date="1543949747064" expanded="true" signature="7:353" ph="..." />
-            <marker date="1543949747064" expanded="true" signature="386:459" ph="{&quot;uri&quot;: &quot;https://api.graph.cool/simple/v1/cjp2pniu98sw30122z5bavdwc&quot;...}" />
-            <marker date="1543949747064" expanded="true" signature="484:594" ph="&lt;ApolloProvider/&gt;" />
+            <element signature="e#0#26#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/data/types.graphql">
+    <entry file="file://$PROJECT_DIR$/server/types.graphql">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1806">
           <caret line="86" column="0" lean-forward="true" selection-start-line="86" selection-start-column="0" selection-end-line="86" selection-end-column="0" />
@@ -566,14 +513,12 @@
         <state relative-caret-position="190">
           <caret line="17" column="17" lean-forward="false" selection-start-line="17" selection-start-column="17" selection-end-line="17" selection-end-column="17" />
           <folding>
-            <marker date="1543949747064" expanded="true" signature="7:353" ph="..." />
-            <marker date="1543949747064" expanded="true" signature="386:459" ph="{&quot;uri&quot;: &quot;https://api.graph.cool/simple/v1/cjp2pniu98sw30122z5bavdwc&quot;...}" />
-            <marker date="1543949747064" expanded="true" signature="484:594" ph="&lt;ApolloProvider/&gt;" />
+            <element signature="e#0#26#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/data/src/hello.js">
+    <entry file="file://$PROJECT_DIR$/server/src/hello.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="152">
           <caret line="8" column="5" lean-forward="false" selection-start-line="8" selection-start-column="5" selection-end-line="8" selection-end-column="5" />
@@ -587,7 +532,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/data/src/hello.graphql">
+    <entry file="file://$PROJECT_DIR$/server/src/hello.graphql">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="133">
           <caret line="7" column="0" lean-forward="false" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
@@ -601,7 +546,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/data/types.graphql">
+    <entry file="file://$PROJECT_DIR$/server/types.graphql">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="494">
           <caret line="26" column="0" lean-forward="false" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
@@ -616,7 +561,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/data/src/hello.graphql">
+    <entry file="file://$PROJECT_DIR$/server/src/hello.graphql">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="147">
           <caret line="7" column="0" lean-forward="false" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
@@ -624,7 +569,7 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/components/package.json" />
-    <entry file="file://$PROJECT_DIR$/data/graphcool.yml">
+    <entry file="file://$PROJECT_DIR$/server/graphcool.yml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="315">
           <caret line="15" column="0" lean-forward="true" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
@@ -646,14 +591,14 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/data/types.graphql">
+    <entry file="file://$PROJECT_DIR$/server/types.graphql">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1512">
           <caret line="72" column="1" lean-forward="false" selection-start-line="72" selection-start-column="1" selection-end-line="72" selection-end-column="1" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/data/src/hello.js">
+    <entry file="file://$PROJECT_DIR$/server/src/hello.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="168">
           <caret line="8" column="5" lean-forward="false" selection-start-line="8" selection-start-column="5" selection-end-line="8" selection-end-column="5" />
@@ -704,18 +649,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="252">
-          <caret line="12" column="3" lean-forward="false" selection-start-line="12" selection-start-column="3" selection-end-line="12" selection-end-column="3" />
-          <folding>
-            <marker date="1543949747064" expanded="true" signature="7:353" ph="..." />
-            <marker date="1543949747064" expanded="true" signature="386:459" ph="{&quot;uri&quot;: &quot;https://api.graph.cool/simple/v1/cjp2pniu98sw30122z5bavdwc&quot;...}" />
-            <marker date="1543949747064" expanded="true" signature="484:594" ph="&lt;ApolloProvider/&gt;" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/App.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="313">
@@ -756,37 +689,20 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/graphql/queries/FirstEpisode.js">
+    <entry file="file://$PROJECT_DIR$/src/components/interactions/interactions.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="395">
-          <caret line="21" column="22" lean-forward="false" selection-start-line="21" selection-start-column="22" selection-end-line="21" selection-end-column="22" />
-          <folding>
-            <marker date="1543949657142" expanded="true" signature="7:109" ph="..." />
-            <marker date="1543949657142" expanded="true" signature="153:274" ph="{...}" />
-            <marker date="1543949657142" expanded="true" signature="163:170" ph="Episode...Episode" />
-            <marker date="1543949657142" expanded="true" signature="163:268" ph="Episode...{&#10;            id&#10;            title&#10;            summary&#10;        }" />
-            <marker date="1543949657142" expanded="true" signature="170:203" ph="(...)" />
-            <marker date="1543949657142" expanded="true" signature="171:173" ph="id...id" />
-            <marker date="1543949657142" expanded="true" signature="204:268" ph="{...}" />
-            <marker date="1543949657142" expanded="true" signature="218:220" ph="id...id" />
-            <marker date="1543949657142" expanded="true" signature="233:238" ph="title...title" />
-            <marker date="1543949657142" expanded="true" signature="251:258" ph="summary...summary" />
-            <marker date="1543949657142" expanded="true" signature="319:607" ph="&lt;Query/&gt;" />
-            <marker date="1543949657142" expanded="true" signature="392:593" ph="{...}" />
-          </folding>
+        <state relative-caret-position="168">
+          <caret line="8" column="14" lean-forward="false" selection-start-line="8" selection-start-column="14" selection-end-line="8" selection-end-column="14" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/App.js">
+    <entry file="file://$PROJECT_DIR$/src/index.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="252">
-          <caret line="12" column="27" lean-forward="false" selection-start-line="12" selection-start-column="27" selection-end-line="12" selection-end-column="27" />
+        <state relative-caret-position="462">
+          <caret line="22" column="27" lean-forward="false" selection-start-line="22" selection-start-column="27" selection-end-line="22" selection-end-column="27" />
           <folding>
-            <marker date="1543952028567" expanded="true" signature="7:118" ph="..." />
-            <marker date="1543952028567" expanded="true" signature="148:341" ph="{...}" />
-            <marker date="1543952028567" expanded="true" signature="167:224" ph="{...}" />
-            <marker date="1543952028567" expanded="true" signature="238:339" ph="{...}" />
-            <marker date="1543952028567" expanded="true" signature="269:323" ph="&lt;main/&gt;" />
+            <element signature="e#0#26#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -807,18 +723,46 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/interactions/interactions.css">
+    <entry file="file://$PROJECT_DIR$/src/graphql/queries/FirstEpisode.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="168">
-          <caret line="8" column="14" lean-forward="false" selection-start-line="8" selection-start-column="14" selection-end-line="8" selection-end-column="14" />
+        <state relative-caret-position="189">
+          <caret line="11" column="5" lean-forward="true" selection-start-line="11" selection-start-column="5" selection-end-line="11" selection-end-column="5" />
+          <folding>
+            <marker date="1543949657142" expanded="true" signature="153:274" ph="{...}" />
+            <marker date="1543949657142" expanded="true" signature="163:170" ph="Episode...Episode" />
+            <marker date="1543949657142" expanded="true" signature="163:268" ph="Episode...{&#10;            id&#10;            title&#10;            summary&#10;        }" />
+            <marker date="1543949657142" expanded="true" signature="170:203" ph="(...)" />
+            <marker date="1543949657142" expanded="true" signature="171:173" ph="id...id" />
+            <marker date="1543949657142" expanded="true" signature="204:268" ph="{...}" />
+            <marker date="1543949657142" expanded="true" signature="218:220" ph="id...id" />
+            <marker date="1543949657142" expanded="true" signature="233:238" ph="title...title" />
+            <marker date="1543949657142" expanded="true" signature="251:258" ph="summary...summary" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/App.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="399">
+          <caret line="19" column="0" lean-forward="true" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#19#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/objects/Character.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="5" column="1" lean-forward="true" selection-start-line="5" selection-start-column="1" selection-end-line="5" selection-end-column="1" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/components/interactions/started.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="483">
-          <caret line="23" column="40" lean-forward="true" selection-start-line="23" selection-start-column="40" selection-end-line="23" selection-end-column="40" />
+        <state relative-caret-position="372">
+          <caret line="21" column="40" lean-forward="true" selection-start-line="21" selection-start-column="40" selection-end-line="21" selection-end-column="40" />
           <folding>
             <element signature="e#0#28#0" expanded="true" />
           </folding>

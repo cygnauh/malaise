@@ -1,4 +1,5 @@
 import "./interactions.css";
+import {Character} from '../../objects/Character';
 import React from 'react';
 
 class Started extends React.Component {
@@ -18,13 +19,14 @@ class Started extends React.Component {
         if (evt.which === 13) {
             evt.preventDefault();
             var inputs = document.querySelectorAll('.Form__input');
-            var value, role = '';
+            var charName, charRole = '';
             inputs.forEach(function(input) {
-                value = input.value;
-                role = input.getAttribute('data-role');
-                window.sessionStorage.setItem(role, value);
+                charName = input.value;
+                charRole = input.getAttribute('server-role');
+                var char1 = new Character(charName, charRole);
+                /*window.sessionStorage.setItem('characters', JSON.parse(char1));
+                console.log(sessionStorage);*/
             });
-            console.log(sessionStorage)
         }
     }
     render() {
