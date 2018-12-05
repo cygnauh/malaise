@@ -1,17 +1,19 @@
-import React, { Component } from 'react';
-//import styled, { keyframes } from 'styled-components'
 import './App.css';
+import React, { Component } from 'react';
+import Started from "./components/interactions/started";
 
 class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <h1>Malaise.</h1>
-        </header>
-      </div>
-    );
-  }
+    constructor(){
+        super();
+        this.state = {render:''}
+    }
+    render() {
+        return (
+            <main>
+                <Started />
+            </main>
+        )
+    }
 }
 
 export default App;
