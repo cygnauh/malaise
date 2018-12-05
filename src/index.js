@@ -2,7 +2,10 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import App from "./App";
 import './index.css';
+import SoundTest from './components/Sound'
 import * as serviceWorker from './serviceWorker';
+
+//Apollo, handle Data
 import { ApolloProvider, Query } from 'react-apollo';
 import ApolloBoost from "apollo-boost";
 import Header from './components/layout/Header';
@@ -17,6 +20,7 @@ ReactDOM.render(
         <Header />
         <App />
         <Timeline />
+        {/*<SoundTest source={'https://circegrand.fr/etude/gobelins/malaise/media/sounds/party-ambience-1-no-copyright-sound-effect.mp3'}/>*/}
     </ApolloProvider>
     , document.getElementById('root'));
 

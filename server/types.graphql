@@ -1,17 +1,5 @@
-type Answer @model {
-  id: ID! @isUnique
-  content: String!
-  interactionsSegment: [Interaction!]! @relation(name: "AnswersInteractions")
-}
-
-type Block @model {
-  id: ID! @isUnique
-  title: String!
-  content: String!
-  episode: Episode! @relation(name: "EpisodeBlocks")
-  images: [Image!]! @relation(name: "BlockImages")
-  videos: [Video!]! @relation(name: "BlockVideos")
-}
+# The following types define the data model of the example service
+# based on which the GraphQL API is generated
 
 type Episode @model {
   id: ID! @isUnique
@@ -23,29 +11,21 @@ type Episode @model {
   interactions: [Interaction!]! @relation(name: "EpisodeInteractions")
 }
 
-type Image @model {
-  id: ID! @isUnique
-  name: String!
-  url: String!
-  block: Block! @relation(name: "BlockImages")
-}
-
 type Interaction @model {
   id: ID! @isUnique
   position: Int!
   interactionType: String!
   timer: Boolean!
+  content: String
   soundSequences: [SoundSequence!]! @relation(name: "InteractionSoundSequences")
-  episode: Episode! @relation(name: "EpisodeInteractions")
+  episode: Episode! @relation(name:"EpisodeInteractions")
   anwsers: Answer @relation(name: "AnswersInteractions")
 }
 
-type Sound @model {
+type Answer @model {
   id: ID! @isUnique
-  name: String!
-  url: String!
-  episode: Episode! @relation(name: "EpisodeSounds")
-  soundsequences: SoundSequence @relation(name: "SoundSoundSequences")
+  content: String!
+  interactionsSegment: [Interaction!]! @relation(name:"AnswersInteractions")
 }
 
 type SoundSequence @model {
@@ -54,7 +34,15 @@ type SoundSequence @model {
   beginAt: Int!
   endAt: Int!
   sound: Sound! @relation(name: "SoundSoundSequences")
-  interaction: Interaction! @relation(name: "InteractionSoundSequences")
+  interactions: Interaction! @relation(name: "InteractionSoundSequences")
+}
+
+type Sound @model {
+  id: ID! @isUnique
+  name: String!
+  url: String!
+  episode: Episode! @relation(name: "EpisodeSounds")
+  soundSequences: SoundSequence! @relation(name: "SoundSoundSequences")
 }
 
 type Testimony @model {
@@ -65,9 +53,35 @@ type Testimony @model {
   email: String!
 }
 
+type Block @model {
+  id: ID! @isUnique
+  title: String!
+  content: String!
+  episode: Episode! @relation(name: "EpisodeBlocks")
+  images: [Image!]! @relation(name: "BlockImages")
+  videos: [Video!]! @relation(name: "BlockVideos")
+}
+
+type Image @model {
+  id: ID! @isUnique
+  name: String!
+  url: String!
+  block: Block! @relation(name: "BlockImages")
+}
+
 type Video @model {
   id: ID! @isUnique
   name: String!
   url: String!
   block: Block! @relation(name: "BlockVideos")
 }
+
+# Uncomment the model below as well
+
+# type Post @model {
+#   id: ID! @isUnique
+#   title: String!
+#
+#   # Every relation also required a back-relation (to determine 1:1, 1:n or n:m)
+#   author: User! @relation(name: "UserPosts")
+# }

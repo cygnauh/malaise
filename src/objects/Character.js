@@ -3,4 +3,11 @@ export class Character {
         this.role = role;
         this.name = name;
     }
+
+    toJson() {
+        return {
+            role: this.role,
+            name: this.name
+        }
+    }
 }

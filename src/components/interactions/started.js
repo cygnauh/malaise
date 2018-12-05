@@ -22,10 +22,11 @@ class Started extends React.Component {
             var charName, charRole = '';
             inputs.forEach(function(input) {
                 charName = input.value;
-                charRole = input.getAttribute('server-role');
-                var char1 = new Character(charName, charRole);
-                /*window.sessionStorage.setItem('characters', JSON.parse(char1));
-                console.log(sessionStorage);*/
+                charRole = input.getAttribute('data-role');
+                var char1 = new Character(charRole, charName);
+                window.sessionStorage.setItem('characters', JSON.stringify(char1.toJson()));
+                var obj = JSON.parse(sessionStorage.getItem('characters'));
+                console.log(obj.name);
             });
         }
     }
