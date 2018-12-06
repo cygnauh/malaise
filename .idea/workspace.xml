@@ -2,10 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="bfd7f8fd-d869-4acf-881e-705da4af18b0" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/src/assets/animation/boum.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/animation/boum.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/animation/boum.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/interactions/Doorbell.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/interactions/Doorbell.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
@@ -71,8 +68,8 @@
       <file leaf-file-name="Doorbell.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/components/interactions/Doorbell.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="244">
-              <caret line="65" column="17" lean-forward="true" selection-start-line="65" selection-start-column="17" selection-end-line="65" selection-end-column="17" />
+            <state relative-caret-position="350">
+              <caret line="67" column="16" selection-start-line="67" selection-start-column="16" selection-end-line="67" selection-end-column="16" />
               <folding>
                 <element signature="e#0#28#0" expanded="true" />
                 <element signature="e#104#171#0" expanded="true" />
@@ -117,7 +114,7 @@
         <entry file="file://$PROJECT_DIR$/src/assets/animation/boum.json">
           <provider selected="true" editor-type-id="text-editor">
             <state>
-              <caret column="7294" selection-start-column="7294" selection-end-column="7294" />
+              <caret column="14548" selection-start-column="14548" selection-end-column="14548" />
             </state>
           </provider>
         </entry>
@@ -281,12 +278,12 @@
       <workItem from="1543500284042" duration="10636000" />
       <workItem from="1543850182741" duration="1333000" />
       <workItem from="1543936883980" duration="22779000" />
-      <workItem from="1544090523264" duration="7946000" />
+      <workItem from="1544090523264" duration="8376000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="64170000" />
+    <option name="totallyTimeSpent" value="64600000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
@@ -665,7 +662,7 @@
     <entry file="file://$PROJECT_DIR$/src/assets/animation/boum.json">
       <provider selected="true" editor-type-id="text-editor">
         <state>
-          <caret column="7294" selection-start-column="7294" selection-end-column="7294" />
+          <caret column="14548" selection-start-column="14548" selection-end-column="14548" />
         </state>
       </provider>
     </entry>
@@ -695,8 +692,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/components/interactions/Doorbell.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="244">
-          <caret line="65" column="17" lean-forward="true" selection-start-line="65" selection-start-column="17" selection-end-line="65" selection-end-column="17" />
+        <state relative-caret-position="350">
+          <caret line="67" column="16" selection-start-line="67" selection-start-column="16" selection-end-line="67" selection-end-column="16" />
           <folding>
             <element signature="e#0#28#0" expanded="true" />
             <element signature="e#104#171#0" expanded="true" />

@@ -2,7 +2,7 @@ import "./interactions.css";
 import React from 'react';
 // import ReactBodymovin from 'react-bodymovin'
 import Lottie from 'react-lottie';
-import animationData from '../../assets/animation/fusion'
+import animationData from '../../assets/animation/boum'
 import { Howl, Howler } from 'howler';
 
 class Doorbell extends React.Component {
@@ -65,10 +65,7 @@ class Doorbell extends React.Component {
             :
             <div>
                 <Lottie options={this.defaultOptions}
-                        height={400}
-                        width={400}
-                        isStopped={this.state.isStopped}
-                        isPaused={this.state.isPaused}/>
+                />
             </div>
             }
         </div>
