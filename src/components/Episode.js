@@ -28,7 +28,7 @@ class Episode extends Component {
     }
     render() {
         return (
-            <div>
+            <div className="Interaction">
                 {!this.state.name
                     ?
                     <Started nameEntered={this.handleName}/>

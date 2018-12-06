@@ -5,6 +5,7 @@ import ApolloBoost from "apollo-boost";
 
 import Header from './components/layout/Header';
 import Episode from './components/Episode'
+import Timeline from "./components/layout/Timeline";
 
 
 
@@ -18,16 +19,13 @@ class App extends Component {
     }
     render() {
         return (
-            <main>
-                <div>
-                    <ApolloProvider client={this.client}>
-
-                        <Header/>
-                        <Episode/>
-
-                    </ApolloProvider>
-                </div>
-            </main>
+            <div className="app">
+                <Header />
+                <ApolloProvider client={this.client}>
+                    <Episode/>
+                </ApolloProvider>
+                <Timeline />
+            </div>
         )
     }
 }
