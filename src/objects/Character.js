@@ -4,7 +4,7 @@ export class Character {
         this.name = name;
     }
 
-    toJson() {
+    toJson = () => {
         return {
             role: this.role,
             name: this.name

@@ -9,6 +9,7 @@
 }
 .Timeline__progress-bar {
     width: 90%;
-    height: 1px;
-    background: darkgray;
+    height: 2px;
+    background: #000000;
+    opacity: 0.2;
 }

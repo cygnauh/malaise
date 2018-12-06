@@ -1,0 +1,49 @@
+.Home {
+    width: 100%;
+    height: 100%;
+    background: #000000;
+    color: #FFFFFF;
+}
+.Home__container {
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    display: flex;
+    justify-content:center;
+    align-items: center;
+}
+.Home__title {
+    font-size: 72px;
+    margin-bottom: 20px;
+}
+.Home__description {
+    font-size: 18px;
+    max-width: 450px;
+    line-height: 25px;
+    font-weight: 300;
+    margin: 0 auto 50px auto;
+}
+.Home__start {
+    border: 1px solid #FFFFFF;
+    border-radius: 45px;
+    background: none;
+    color: #FFFFFF;
+    font-size: 16px;
+    padding: 10px 25px;
+    cursor: pointer;
+}
+.Home__sound {
+    position: absolute;
+    bottom: 0;
+    opacity: 0.5;
+}
+.Home__sound img {
+    margin-bottom: 20px;
+}
+.Home__sound p {
+    line-height: 20px;
+    font-weight: 300;
+    max-width: 400px;
+    margin: 0 auto 30px auto;
+    font-size: 14px;
+}
