@@ -27,6 +27,7 @@ class Started extends React.Component {
                 window.sessionStorage.setItem('characters', JSON.stringify(char1.toJson()));
                 var obj = JSON.parse(sessionStorage.getItem('characters'));
                 console.log(obj.name);
+                // that.props.nameEntered(obj.name);
             });
         }
     }
@@ -35,7 +36,7 @@ class Started extends React.Component {
             <form className="Form" onKeyPress={this.onKeyPress}>
                 <div className="Form__row">
                     <label className="Form__label">Tu es à la porte de</label>
-                    <input className="Form__input" type="text" placeholder="son prénom" value={this.state.inputValue} data-role="host" onChange={evt => this.updateInputValue(evt)}></input>
+                    <input className="Form__input" type="text" placeholder="son prénom" value={this.state.inputValue} data-role="host" onChange={evt => this.updateInputValue(evt)}/>
                 </div>
             </form>
         );

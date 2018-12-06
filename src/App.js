@@ -1,16 +1,12 @@
 import './App.css';
 import React, { Component } from 'react';
-import Started from "./components/interactions/started";
-import SoundTest from './components/Sound'
-import Header from './components/layout/Header';
-
 import { ApolloProvider, Query } from 'react-apollo';
 import ApolloBoost from "apollo-boost";
-import Timeline from './components/layout/Timeline';
+
+import Header from './components/layout/Header';
+import Episode from './components/Episode'
 
 
-
-// import Doorbell from "./components/interactions/doorbell";
 
 class App extends Component {
     constructor(){
@@ -25,11 +21,10 @@ class App extends Component {
             <main>
                 <div>
                     <ApolloProvider client={this.client}>
+
                         <Header/>
-                        <Started />
-                        <SoundTest
-                            source={'https://circegrand.fr/etude/gobelins/malaise/media/sounds/party-ambience-1-no-copyright-sound-effect.mp3'}
-                        />
+                        <Episode/>
+
                     </ApolloProvider>
                 </div>
             </main>

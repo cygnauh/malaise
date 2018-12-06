@@ -16,9 +16,10 @@ class Sound extends React.Component {
             src: [this.source],
             ext: ['mp3'],
             volume: this.volume,
-            autoplay: true,
-            html5: true
+            html5: true,
+            loop:true
         });
+
         this.stream.play()
     }
     updateVolume = (value) => {
@@ -27,7 +28,7 @@ class Sound extends React.Component {
     }
     render() {
         return (
-            <div className="Sound">
+            <div>
                 {/*Open*/}
             </div>
         );
