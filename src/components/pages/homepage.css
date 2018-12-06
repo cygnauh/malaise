@@ -12,6 +12,23 @@
     justify-content:center;
     align-items: center;
 }
+.Home__center {
+    width: 450px;
+}
+.Home__content {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+    width: 100%;
+    opacity: 1;
+}
+.Home__content:first-child {
+    z-index: 2;
+}
+.Home__content:last-child {
+    transition: opacity 3s ease;
+}
 .Home__title {
     font-size: 72px;
     margin-bottom: 20px;
@@ -22,6 +39,9 @@
     line-height: 25px;
     font-weight: 300;
     margin: 0 auto 50px auto;
+}
+.Home__description--small {
+    max-width: 350px;
 }
 .Home__start {
     border: 1px solid #FFFFFF;
@@ -35,10 +55,12 @@
 .Home__sound {
     position: absolute;
     bottom: 0;
-    opacity: 0.5;
+    opacity: 1;
+    transition: all 3s ease;
 }
 .Home__sound img {
     margin-bottom: 20px;
+    opacity: 0.5;
 }
 .Home__sound p {
     line-height: 20px;
@@ -46,4 +68,8 @@
     max-width: 400px;
     margin: 0 auto 30px auto;
     font-size: 14px;
+    opacity: 0.5;
+}
+.Hide__content {
+    opacity: 0;
 }
