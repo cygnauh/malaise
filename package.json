@@ -10,6 +10,7 @@
     "graphql": "^14.0.2",
     "graphql-tag": "^2.10.0",
     "howler": "^2.0.15",
+    "lottie-web": "^5.4.2",
     "ms": "^2.1.1",
     "npm": "^6.4.1",
     "react": "^16.6.3",
@@ -17,6 +18,7 @@
     "react-bodymovin": "^2.0.0",
     "react-dom": "^16.6.3",
     "react-howler": "^3.7.3",
+    "react-lottie": "^1.2.3",
     "react-router-dom": "^4.3.1",
     "react-scripts": "2.1.1",
     "styled-components": "^4.1.2"
