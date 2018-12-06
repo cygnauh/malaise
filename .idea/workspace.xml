@@ -2,23 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1020648f-b4b8-4cd3-91d9-c4aaf7d58635" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/assets/animation/boum.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/assets/animation/break.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/assets/animation/fusion.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/assets/lib/crashTest.js" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/components/interactions/doorbell.js" afterPath="" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/components/pages/homepage.js" afterPath="$PROJECT_DIR$/src/components/pages/Homepage.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/package-lock.json" afterPath="$PROJECT_DIR$/package-lock.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/package.json" afterPath="$PROJECT_DIR$/package.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/App.js" afterPath="$PROJECT_DIR$/src/App.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/interactions/Doorbell.js" afterPath="$PROJECT_DIR$/src/components/interactions/Doorbell.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/interactions/Started.js" afterPath="$PROJECT_DIR$/src/components/interactions/Started.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/interactions/interactions.css" afterPath="$PROJECT_DIR$/src/components/interactions/interactions.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/layout/Header.css" afterPath="$PROJECT_DIR$/src/components/layout/Header.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/pages/homepage.css" afterPath="$PROJECT_DIR$/src/components/pages/homepage.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/index.css" afterPath="$PROJECT_DIR$/src/index.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/index.js" afterPath="$PROJECT_DIR$/src/index.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/layout/Timeline.css" afterPath="$PROJECT_DIR$/src/components/layout/Timeline.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/layout/Timeline.js" afterPath="$PROJECT_DIR$/src/components/layout/Timeline.js" />
     </list>
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -81,7 +67,7 @@
       <file leaf-file-name="Episode.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/components/Episode.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="421">
+            <state relative-caret-position="777">
               <caret line="37" column="26" lean-forward="true" selection-start-line="37" selection-start-column="26" selection-end-line="37" selection-end-column="26" />
               <folding>
                 <element signature="e#0#41#0" expanded="true" />
@@ -90,11 +76,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Doorbell.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Doorbell.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/components/interactions/Doorbell.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="382">
-              <caret line="65" column="22" lean-forward="false" selection-start-line="65" selection-start-column="22" selection-end-line="65" selection-end-column="22" />
+            <state relative-caret-position="96">
+              <caret line="8" column="4" lean-forward="true" selection-start-line="8" selection-start-column="4" selection-end-line="9" selection-end-column="21" />
               <folding />
             </state>
           </provider>
@@ -103,8 +89,30 @@
       <file leaf-file-name="interactions.css" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/components/interactions/interactions.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="292">
-              <caret line="17" column="24" lean-forward="false" selection-start-line="17" selection-start-column="24" selection-end-line="17" selection-end-column="24" />
+            <state relative-caret-position="-1525">
+              <caret line="7" column="10" lean-forward="false" selection-start-line="7" selection-start-column="10" selection-end-line="7" selection-end-column="10" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Timeline.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/components/layout/Timeline.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="252">
+              <caret line="12" column="79" lean-forward="false" selection-start-line="12" selection-start-column="79" selection-end-line="12" selection-end-column="79" />
+              <folding>
+                <element signature="e#0#23#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Timeline.css" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/components/layout/Timeline.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="357">
+              <caret line="17" column="23" lean-forward="false" selection-start-line="17" selection-start-column="23" selection-end-line="17" selection-end-column="23" />
               <folding />
             </state>
           </provider>
@@ -138,7 +146,6 @@
         <option value="$PROJECT_DIR$/src/Sound.js" />
         <option value="$PROJECT_DIR$/public/index.html" />
         <option value="$PROJECT_DIR$/src/components/layout/Header.js" />
-        <option value="$PROJECT_DIR$/src/components/layout/Timeline.css" />
         <option value="$PROJECT_DIR$/src/objects/Character.js" />
         <option value="$PROJECT_DIR$/src/components/interactions/started.js" />
         <option value="$PROJECT_DIR$/src/components/interactions/doorbell.js" />
@@ -152,11 +159,13 @@
         <option value="$PROJECT_DIR$/src/components/interactions/Started.js" />
         <option value="$PROJECT_DIR$/src/App.js" />
         <option value="$PROJECT_DIR$/src/index.css" />
-        <option value="$PROJECT_DIR$/src/components/interactions/interactions.css" />
         <option value="$PROJECT_DIR$/src/components/layout/Header.css" />
         <option value="$PROJECT_DIR$/src/components/pages/Homepage.js" />
         <option value="$PROJECT_DIR$/src/components/pages/homepage.css" />
         <option value="$PROJECT_DIR$/src/components/interactions/Doorbell.js" />
+        <option value="$PROJECT_DIR$/src/components/interactions/interactions.css" />
+        <option value="$PROJECT_DIR$/src/components/layout/Timeline.js" />
+        <option value="$PROJECT_DIR$/src/components/layout/Timeline.css" />
       </list>
     </option>
   </component>
@@ -305,7 +314,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="62832000" />
+    <option name="totallyTimeSpent" value="65269000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1280" height="800" extended-state="0" />
@@ -568,13 +577,6 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/episodes.js" />
     <entry file="file://$PROJECT_DIR$/src/queries/episode.js" />
-    <entry file="file://$PROJECT_DIR$/src/components/layout/Timeline.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="147">
-          <caret line="7" column="32" lean-forward="false" selection-start-line="7" selection-start-column="32" selection-end-line="7" selection-end-column="54" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/server/types.graphql">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="567">
@@ -587,13 +589,6 @@
         <state relative-caret-position="126">
           <caret line="6" column="47" lean-forward="true" selection-start-line="6" selection-start-column="47" selection-end-line="6" selection-end-column="47" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/layout/Timeline.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="294">
-          <caret line="14" column="1" lean-forward="true" selection-start-line="14" selection-start-column="1" selection-end-line="14" selection-end-column="1" />
         </state>
       </provider>
     </entry>
@@ -687,14 +682,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/interactions/interactions.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="292">
-          <caret line="17" column="24" lean-forward="false" selection-start-line="17" selection-start-column="24" selection-end-line="17" selection-end-column="24" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/components/interactions/Started.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-130">
@@ -755,7 +742,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/components/Episode.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="421">
+        <state relative-caret-position="777">
           <caret line="37" column="26" lean-forward="true" selection-start-line="37" selection-start-column="26" selection-end-line="37" selection-end-column="26" />
           <folding>
             <element signature="e#0#41#0" expanded="true" />
@@ -765,8 +752,34 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/components/interactions/Doorbell.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="382">
-          <caret line="65" column="22" lean-forward="false" selection-start-line="65" selection-start-column="22" selection-end-line="65" selection-end-column="22" />
+        <state relative-caret-position="96">
+          <caret line="8" column="4" lean-forward="true" selection-start-line="8" selection-start-column="4" selection-end-line="9" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/interactions/interactions.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1525">
+          <caret line="7" column="10" lean-forward="false" selection-start-line="7" selection-start-column="10" selection-end-line="7" selection-end-column="10" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/layout/Timeline.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="252">
+          <caret line="12" column="79" lean-forward="false" selection-start-line="12" selection-start-column="79" selection-end-line="12" selection-end-column="79" />
+          <folding>
+            <element signature="e#0#23#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/layout/Timeline.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="357">
+          <caret line="17" column="23" lean-forward="false" selection-start-line="17" selection-start-column="23" selection-end-line="17" selection-end-column="23" />
           <folding />
         </state>
       </provider>
