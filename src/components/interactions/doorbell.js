@@ -2,12 +2,14 @@ import "./interactions.css";
 import React from 'react';
 import ReactBodymovin from 'react-bodymovin'
 import animation from '../../assets/animation/test'
+import { Howl, Howler } from 'howler';
 
 class Doorbell extends React.Component {
     constructor(props) {
         super(props);
+        this.JsonSessionStorage = JSON.parse(window.sessionStorage.getItem('characters'))
         this.state = {
-            hostName: window.sessionStorage.getItem('host')
+            hostName: this.JsonSessionStorage.name
         };
         this.bodymovinOptions = {
             loop: true,
@@ -15,25 +17,33 @@ class Doorbell extends React.Component {
             prerender: true,
             animationData: animation
         }
+        this.sourceDoorbellWeb = 'https://circegrand.fr/etude/gobelins/malaise/media/sounds/doorbell.mp3';
+            this.source = this.sourceDoorbellWeb;
+        this.stream = new Howl({
+            src: [this.source],
+            ext: ['mp3'],
+        html5: true
+    });
     }
-    getHostName(){
-        var label = document.querySelectorAll('.Doorbell__name');
-        console.log(label);
+    handleBellClick = (evt) => {
+        evt.preventDefault();
+        console.log('doorbell');
+        this.stream.play();
     }
     render() {
         return (
             <div>
-                {/*<div className="Interaction">*/}
-                    {/*<div className="Doorbell">*/}
-                        {/*<div className="Doorbell__object">*/}
-                            {/*<button className="Doorbell__button"/>*/}
-                            {/*<label className="Doorbell__name">{this.state.hostName}</label>*/}
-                        {/*</div>*/}
-                    {/*</div>*/}
-                {/*</div>*/}
-                <div>
-                    <ReactBodymovin options={this.bodymovinOptions} />
+                <div className="Interaction">
+                    <div className="Doorbell">
+                        <div className="Doorbell__object">
+                            <button className="Doorbell__button" onClick={this.handleBellClick}/>
+                            <label className="Doorbell__name">{this.state.hostName}</label>
+                        </div>
+                    </div>
                 </div>
+                {/*<div>*/}
+                    {/*<ReactBodymovin options={this.bodymovinOptions} />*/}
+                {/*</div>*/}
             </div>
         );
     }

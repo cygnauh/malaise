@@ -2,6 +2,7 @@ import "./interactions.css";
 import {Character} from '../../objects/Character';
 import React from 'react';
 
+
 class Started extends React.Component {
 
     constructor(props) {
@@ -9,6 +10,7 @@ class Started extends React.Component {
         this.state = {
             inputValue: ''
         };
+        //this.nameEntered = this.props.nameEntered;
     }
     updateInputValue = (evt) => {
         this.setState({
@@ -18,14 +20,15 @@ class Started extends React.Component {
     setHostName = () => {
         var inputs = document.querySelectorAll('.Form__input');
         var charName, charRole = '';
-        inputs.forEach(function(input) {
+        inputs.forEach((input) => {
             charName = input.value;
             charRole = input.getAttribute('data-role');
             var char1 = new Character(charRole, charName);
             window.sessionStorage.setItem('characters', JSON.stringify(char1.toJson()));
+            this.props.nameEntered(charName);
         });
         console.log(sessionStorage);
-        // this.props.nameEntered(obj.name); TODO Fix the issue
+         //TODO Fix the issue
     }
 
     onKeyPress = (evt) => {

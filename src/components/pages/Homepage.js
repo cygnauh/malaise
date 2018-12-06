@@ -6,6 +6,9 @@ class Homepage extends React.Component {
     constructor(props) {
         super(props);
     }
+    bidule = () => {
+        this.props.buttonPressed(true)
+    }
     render() {
         return (
             <div className="Home">
@@ -13,7 +16,7 @@ class Homepage extends React.Component {
                     <div className="Home__center">
                         <h1 className="Home__title">malaise.</h1>
                         <p className="Home__description">Une websérie immersive sonore qui vous plonge au coeur d'histoires et d'anecdotes du quotidien.</p>
-                        <button className="Home__start">démarrer l'expérience</button>
+                        <button className="Home__start" onClick={this.bidule}>démarrer l'expérience</button>
                     </div>
                     <div className="Home__sound">
                         <img src={require('../../assets/icons/headphones.svg')} />
