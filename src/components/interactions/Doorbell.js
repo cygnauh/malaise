@@ -8,7 +8,7 @@ import { Howl, Howler } from 'howler';
 class Doorbell extends React.Component {
     constructor(props) {
         super(props);
-        this.JsonSessionStorage = JSON.parse(window.sessionStorage.getItem('characters'))
+        this.JsonSessionStorage = JSON.parse(window.sessionStorage.getItem('characters'));
         this.state = {
             hostName: this.JsonSessionStorage.name,
             openDoor:false,
@@ -28,8 +28,7 @@ class Doorbell extends React.Component {
             src: [this.source],
             ext: ['mp3'],
         html5: true
-    });
-        console.log(animationData)
+        });
     }
     handleBellClick = (evt) => {
         evt.preventDefault();
@@ -48,6 +47,8 @@ class Doorbell extends React.Component {
         this.setState({
             blockBell : true
         })
+
+        this.props.bellPressed(true)
 
 
     }
