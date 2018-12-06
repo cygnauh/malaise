@@ -35,12 +35,6 @@ class Episode extends Component {
                     :
                     <Doorbell/>
                 }
-                {/*{this.state.name*/}
-                    {/*?*/}
-                   {/**/}
-                    {/*:*/}
-                    {/*null*/}
-                {/*}*/}
                 <SoundTest
                     source={'https://circegrand.fr/etude/gobelins/malaise/media/sounds/party-ambience-1-no-copyright-sound-effect.mp3'}
                 />

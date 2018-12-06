@@ -27,7 +27,7 @@ class Started extends React.Component {
                 window.sessionStorage.setItem('characters', JSON.stringify(char1.toJson()));
                 var obj = JSON.parse(sessionStorage.getItem('characters'));
                 console.log(obj.name);
-                // that.props.nameEntered(obj.name);
+                // this.props.nameEntered(obj.name); TODO Fix the issue
             });
         }
     }
