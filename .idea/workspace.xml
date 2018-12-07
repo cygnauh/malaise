@@ -2,8 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1020648f-b4b8-4cd3-91d9-c4aaf7d58635" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/interactions/interactions.css" afterPath="$PROJECT_DIR$/src/components/interactions/interactions.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/layout/Timeline.css" afterPath="$PROJECT_DIR$/src/components/layout/Timeline.css" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/layout/Timeline.js" afterPath="$PROJECT_DIR$/src/components/layout/Timeline.js" />
     </list>
     <option name="TRACKING_ENABLED" value="true" />
@@ -64,7 +62,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Episode.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Episode.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/components/Episode.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="777">
@@ -79,7 +77,7 @@
       <file leaf-file-name="Doorbell.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/components/interactions/Doorbell.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="96">
+            <state relative-caret-position="-304">
               <caret line="8" column="4" lean-forward="true" selection-start-line="8" selection-start-column="4" selection-end-line="9" selection-end-column="21" />
               <folding />
             </state>
@@ -100,7 +98,7 @@
         <entry file="file://$PROJECT_DIR$/src/components/layout/Timeline.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="252">
-              <caret line="12" column="79" lean-forward="false" selection-start-line="12" selection-start-column="79" selection-end-line="12" selection-end-column="79" />
+              <caret line="12" column="68" lean-forward="false" selection-start-line="12" selection-start-column="68" selection-end-line="12" selection-end-column="68" />
               <folding>
                 <element signature="e#0#23#0" expanded="true" />
               </folding>
@@ -108,7 +106,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Timeline.css" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Timeline.css" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/components/layout/Timeline.css">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="357">
@@ -164,8 +162,8 @@
         <option value="$PROJECT_DIR$/src/components/pages/homepage.css" />
         <option value="$PROJECT_DIR$/src/components/interactions/Doorbell.js" />
         <option value="$PROJECT_DIR$/src/components/interactions/interactions.css" />
-        <option value="$PROJECT_DIR$/src/components/layout/Timeline.js" />
         <option value="$PROJECT_DIR$/src/components/layout/Timeline.css" />
+        <option value="$PROJECT_DIR$/src/components/layout/Timeline.js" />
       </list>
     </option>
   </component>
@@ -314,7 +312,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="65269000" />
+    <option name="totallyTimeSpent" value="65653000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1280" height="800" extended-state="0" />
@@ -740,24 +738,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/Episode.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="777">
-          <caret line="37" column="26" lean-forward="true" selection-start-line="37" selection-start-column="26" selection-end-line="37" selection-end-column="26" />
-          <folding>
-            <element signature="e#0#41#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/interactions/Doorbell.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="96">
-          <caret line="8" column="4" lean-forward="true" selection-start-line="8" selection-start-column="4" selection-end-line="9" selection-end-column="21" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/components/interactions/interactions.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-1525">
@@ -766,21 +746,39 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/layout/Timeline.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="357">
+          <caret line="17" column="23" lean-forward="false" selection-start-line="17" selection-start-column="23" selection-end-line="17" selection-end-column="23" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/interactions/Doorbell.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-304">
+          <caret line="8" column="4" lean-forward="true" selection-start-line="8" selection-start-column="4" selection-end-line="9" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/components/layout/Timeline.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="252">
-          <caret line="12" column="79" lean-forward="false" selection-start-line="12" selection-start-column="79" selection-end-line="12" selection-end-column="79" />
+          <caret line="12" column="68" lean-forward="false" selection-start-line="12" selection-start-column="68" selection-end-line="12" selection-end-column="68" />
           <folding>
             <element signature="e#0#23#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/layout/Timeline.css">
+    <entry file="file://$PROJECT_DIR$/src/components/Episode.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="17" column="23" lean-forward="false" selection-start-line="17" selection-start-column="23" selection-end-line="17" selection-end-column="23" />
-          <folding />
+        <state relative-caret-position="777">
+          <caret line="37" column="26" lean-forward="true" selection-start-line="37" selection-start-column="26" selection-end-line="37" selection-end-column="26" />
+          <folding>
+            <element signature="e#0#41#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
