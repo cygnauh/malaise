@@ -54,7 +54,7 @@ class Doorbell extends React.Component {
     }
     render() {
         return (
-        <div className="Interaction">
+        <div className="WithAnimation">
             {!this.state.openDoor
             ?
             <div className="Doorbell">
@@ -62,9 +62,13 @@ class Doorbell extends React.Component {
                     <button className="Doorbell__button" onClick={this.handleBellClick}/>
                     <label className="Doorbell__name">{this.state.hostName}</label>
                 </div>
+                <div className="Interaction__instruction">
+                    <p>Clique sur la sonnette pour rentrer</p>
+                </div>
             </div>
+
             :
-            <div>
+            <div className="Animation">
                 <Lottie options={this.defaultOptions}
                 />
             </div>

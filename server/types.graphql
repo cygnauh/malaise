@@ -9,6 +9,8 @@ type Episode @model {
   testimonies: [Testimony!]! @relation(name: "EpisodeTestimonies")
   blocks: [Block!]! @relation(name: "EpisodeBlocks")
   interactions: [Interaction!]! @relation(name: "EpisodeInteractions")
+  location: String!
+  entourage: String!
 }
 
 type Interaction @model {

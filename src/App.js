@@ -35,7 +35,7 @@ class App extends Component {
                     ?
                     <Homepage buttonPressed={this.handleClick}/>
                     :
-                    <div>
+                    <div className="app-container">
                         <Header />
                         <ApolloProvider client={this.client}>
                             <Episode/>
