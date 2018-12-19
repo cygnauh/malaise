@@ -12,6 +12,18 @@ export const GET_FIRST_EPISODE = gql`
     }
 `;
 
+export const getEpisodes = gql`
+    {
+        Episode {
+            id
+            title
+            location
+            entourage
+            summary
+        }
+    }
+`;
+
 export const FirstEpisode = () => (
     <Query query={GET_FIRST_EPISODE}>
         {({ loading, error, data }) => {
