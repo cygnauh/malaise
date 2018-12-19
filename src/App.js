@@ -7,45 +7,61 @@ import Header from './components/layout/Header';
 import Episode from './components/Episode'
 import Timeline from "./components/layout/Timeline";
 import Homepage from "./components/pages/Homepage"
+import ExchangeRates from "./components/Exchange"
+import EpisodeSelection from "./components/EpisodeSelection"
+import gql from "graphql-tag";
+
+const client = new ApolloBoost({
+    uri: "https://api.graph.cool/simple/v1/cjp2pniu98sw30122z5bavdwc"
+});
 
 
+const App = () => (
+    <ApolloProvider client={client}>
+        <div>
+            <h2>My first Apollo app 🚀</h2>
+        </div>
+        <EpisodeSelection/>
+    </ApolloProvider>
+);
 
-class App extends Component {
-    constructor(){
-        super();
-        this.state = {
-            render:'',
-            home:true
-        }
-        this.client = new ApolloBoost({
-            uri: "https://api.graph.cool/simple/v1/cjp2pniu98sw30122z5bavdwc"
-        });
-    }
-    handleClick = () => {
-        console.log('clicked')
-        this.setState({
-            home:false
-        })
-    }
-    render() {
-        return (
-            <div className="app">
 
-                {this.state.home
-                    ?
-                    <Homepage buttonPressed={this.handleClick}/>
-                    :
-                    <div className="app-container">
-                        <Header />
-                        <ApolloProvider client={this.client}>
-                            <Episode/>
-                        </ApolloProvider>
-                        <Timeline />
-                    </div>
-                }
-            </div>
-        )
-    }
-}
+// class App extends Component {
+//     constructor(){
+//         super();
+//         this.state = {
+//             render:'',
+//             home:true
+//         }
+//
+//     }
+//     handleClick = () => {
+//         console.log('clicked')
+//         this.setState({
+//             home:false
+//         })
+//     }
+//     render() {
+//         return (
+//             <div className="app">
+//
+//                 {this.state.home
+//                     ?
+//                     <Homepage buttonPressed={this.handleClick}/>
+//                     :
+//                     <div className="app-container">
+//                         <Header />
+//                         <ApolloProvider client={client}>
+//                             <Episode/>
+//                             {/*<Test/>*/}
+//                         </ApolloProvider>
+//                         <Timeline />
+//                     </div>
+//                 //{/*}*/
+//                     }
+//             </div>
+//         )
+//     }
+// }
 
 export default App;

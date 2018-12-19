@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Started from "./interactions/Started";
-import SoundTest from './Sound'
+import Sound from './Sound'
 import Header from './layout/Header';
 
 import { ApolloProvider, Query } from 'react-apollo';
@@ -38,7 +38,7 @@ class Episode extends Component {
                 this.setState({
                     doorOpen:true
                 });
-            }, 2000)
+            }, 1200)
 
         }
     }
@@ -52,14 +52,14 @@ class Episode extends Component {
                     :
                     <Doorbell bellPressed={this.handleBackgroundSound}/>
                 }
-                <SoundTest
+                <Sound
                     source={'https://circegrand.fr/etude/gobelins/malaise/media/sounds/party-ambience-1-no-copyright-sound-effect.mp3'}
                     soundVolume={this.state.volume}
                     loop={true}
                 />
                 {this.state.doorOpen
                     ?
-                    <SoundTest
+                    <Sound
                         source={'https://circegrand.fr/etude/gobelins/malaise/media/sounds/open_door.mp3'}
                         loop={false}
                         soundVolume={1}

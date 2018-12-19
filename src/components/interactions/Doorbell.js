@@ -4,6 +4,7 @@ import React from 'react';
 import Lottie from 'react-lottie';
 import animationData from '../../assets/animation/boum'
 import { Howl, Howler } from 'howler';
+// import Sound from '../Sound'
 
 class Doorbell extends React.Component {
     constructor(props) {
@@ -23,11 +24,10 @@ class Doorbell extends React.Component {
             }
         };
         this.sourceDoorbellWeb = 'https://circegrand.fr/etude/gobelins/malaise/media/sounds/doorbell.mp3';
-            this.source = this.sourceDoorbellWeb;
         this.stream = new Howl({
-            src: [this.source],
+            src: [this.sourceDoorbellWeb],
             ext: ['mp3'],
-        html5: true
+            html5: true
         });
     }
     handleBellClick = (evt) => {

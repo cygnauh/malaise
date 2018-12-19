@@ -10,8 +10,8 @@ class Timeline extends React.Component {
         return (
             <div className="Timeline">
                 <div className="Timeline__progress-bar">
-                    <div className="Timeline__progress-bar--default" style="30%"></div>
-                    <div className="Timeline__progress-bar--progression"></div>
+                    <div className="Timeline__progress-bar--default"/>
+                    <div className="Timeline__progress-bar--progression"/>
                 </div>
             </div>
         )
