@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import '../assets/styles/episodeForm.css';
 
 // this component help to display the form to the user
 
@@ -22,27 +23,26 @@ class EpisodeForm extends Component {
             entourage:[],
             entourageSelected:null
         };
-        console.log(this.state.data)
-        // this.createOption('location')
     }
     createOption(value) {
-        let options = [] // return in the render
+        let options = []; // return in the render
         for(let i=0; i<this.state.data.length; i++){
-            this.state.locations.push(this.state.data[i][value])
-            // options.push(<option key={i}>{`Column ${i + 1}`}</option>)
-            // console.log(this.state.data[i]+'.'+value)
+            this.state.locations.push(this.state.data[i][value]);
             options.push(
-                <div key={i.toString()} onClick={this.onClickOption}>
+                <div key={i.toString()}
+                     className={this.state.locationSelected === this.state.data[i][value] ? 'selected': null}
+                     onClick={()=> this.onClickOption(this.state.data[i][value])}>
                     {this.state.data[i][value]}
                     </div>)
         }
-        console.log(this.state.locations)
         return options
 
     }
-    onClickOption() {
-        console.log("hello")
-        // this.state.locationSelected = value
+    onClickOption(value) {
+        this.setState({
+            locationSelected: value
+        });
+        console.log(this.state.locationSelected)
     }
 
     render() {

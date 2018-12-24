@@ -1,4 +1,4 @@
-import "./interactions.css";
+import "../../assets/styles/interactions.css";
 import React from 'react';
 // import ReactBodymovin from 'react-bodymovin'
 import Lottie from 'react-lottie';
