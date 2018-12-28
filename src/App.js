@@ -1,15 +1,16 @@
 import './App.css';
-import React, { Component } from 'react';
-import { ApolloProvider, Query } from 'react-apollo';
+import React from 'react';
+// import React, { Component } from 'react';
+import { ApolloProvider } from 'react-apollo';
 import ApolloBoost from "apollo-boost";
 
-import Header from './components/layout/Header';
-import Episode from './components/Episode'
-import Timeline from "./components/layout/Timeline";
-import Homepage from "./components/pages/Homepage"
-import ExchangeRates from "./components/Exchange"
+// import Header from './components/layout/Header';
+// import Episode from './components/Episode'
+// import Timeline from "./components/layout/Timeline";
+// import Homepage from "./components/pages/Homepage"
+// import ExchangeRates from "./components/Exchange"
 import EpisodeSelection from "./components/EpisodeSelection"
-import gql from "graphql-tag";
+// import gql from "graphql-tag";
 
 const client = new ApolloBoost({
     uri: "https://api.graph.cool/simple/v1/cjp2pniu98sw30122z5bavdwc"
@@ -19,7 +20,7 @@ const client = new ApolloBoost({
 const App = () => (
     <ApolloProvider client={client}>
         <div>
-            <h2>My first Apollo app 🚀</h2>
+            <h2>Malaise</h2>
         </div>
         <EpisodeSelection/>
     </ApolloProvider>
