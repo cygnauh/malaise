@@ -27,8 +27,6 @@ class Started extends React.Component {
             window.sessionStorage.setItem('characters', JSON.stringify(char1.toJson()));
             this.props.nameEntered(charName);
         });
-        console.log(sessionStorage);
-         //TODO Fix the issue
     }
 
     onKeyPress = (evt) => {

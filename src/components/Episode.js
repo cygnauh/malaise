@@ -14,18 +14,35 @@ import Doorbell from "./interactions/Doorbell";
 class Episode extends Component {
     constructor(){
         super();
-        this.state = {render:''}
+        this.state = {
+            render:'',
+            volume:null
+        };
         this.client = new ApolloBoost({
             uri: "https://api.graph.cool/simple/v1/cjp2pniu98sw30122z5bavdwc"
         });
     }
     handleName = (value) => {
-        console.log(value);
         this.setState({
             name:value
         });
-        console.log(this.state.value, 'this.state.value')
     }
+    handleBackgroundSound = (value) =>{
+        if(value){
+            setTimeout(()=>{
+                this.setState({
+                    volume: 0.9,
+                });
+            }, 2500)
+            setTimeout(()=>{
+                this.setState({
+                    doorOpen:true
+                });
+            }, 2000)
+
+        }
+    }
+
     render() {
         return (
             <div className="Interaction">
@@ -33,11 +50,23 @@ class Episode extends Component {
                     ?
                     <Started nameEntered={this.handleName}/>
                     :
-                    <Doorbell/>
+                    <Doorbell bellPressed={this.handleBackgroundSound}/>
                 }
                 <SoundTest
                     source={'https://circegrand.fr/etude/gobelins/malaise/media/sounds/party-ambience-1-no-copyright-sound-effect.mp3'}
+                    soundVolume={this.state.volume}
+                    loop={true}
                 />
+                {this.state.doorOpen
+                    ?
+                    <SoundTest
+                        source={'https://circegrand.fr/etude/gobelins/malaise/media/sounds/open_door.mp3'}
+                        loop={false}
+                        soundVolume={1}
+                    />
+                    :
+                    null
+                }
             </div>
         )
     }
