@@ -6,6 +6,8 @@ export const getEpisodes = gql`
     {
         allEpisodes{
             id,
+            title,
+            summary
             location,
             entourage
         }

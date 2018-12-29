@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Query } from "react-apollo";
 import { getEpisodes } from '../graphql/queries'
 import EpisodeForm from "./EpisodeForm";
+import Catalogue from "./Catalogue";
 
 // episode selection either select thank to the form, or thank to the catalog
 
@@ -31,6 +32,7 @@ class EpisodeSelection extends Component {
                     return (
                         <div>
                             <EpisodeForm episodes={data.allEpisodes}/>
+                            <Catalogue episodes={data.allEpisodes}/>
                             {/*<button onClick={() => refetch()}>Refetch!</button>*/}
                         </div>
                     );

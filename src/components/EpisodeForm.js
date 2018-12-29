@@ -9,6 +9,7 @@ import '../assets/styles/episodeForm.css';
 // 4) on question entered, filter the props data object to display next question
 // 5) handle questions in a JSON maybe.
 // 6) add to the store the episode option chosen
+// 7) display the selected
 
 //<p>
     //{this.state.data[0].entourage}
@@ -20,42 +21,75 @@ class EpisodeForm extends Component {
         this.state = {
             render:'',
             data:this.props.episodes,
+            entourage:[],
+            location:[],
             locationSelected:null,
             entourageSelected:null
         };
     }
+    componentDidMount(){
+        this.formatLocations()
+    }
     createOption(value) {
         let options = []; // return in the render
-        for(let i=0; i<this.state.data.length; i++){
+        // locations display all locations from data base
+        for(let i=0; i<this.state[value].length; i++){
             options.push(
                 <div key={i.toString()}
-                     className={this.state[value+'Selected'] === this.state.data[i][value] ? 'selected': null}
-                     onClick={()=> this.onClickOption(this.state.data[i][value], value)}>
-                    {this.state.data[i][value]}
+                     className={this.state[value+'Selected'] === this.state[value][i] ? 'selected': null}
+                     onClick={()=> this.onClickOption(this.state[value][i], value)}>
+                    {this.state[value][i]}
                     </div>)
         }
+        // entourages, display according to
         return options
-
     }
     onClickOption(value, option) {
-        console.log(option)
         if(option === 'location') {
             this.setState({
                 locationSelected: value
             });
+            this.selectEntourage(value)
 
         } else {
             this.setState({
                 entourageSelected: value
             });
         }
-        setTimeout(()=>{
-            console.log(value)
-        }, 0)
+        // setTimeout(()=>{
+            // console.log(value)
+        // }, 0)
+    }
 
-
-
-
+    formatLocations(){ //remove the doublon location
+        let array = [];
+        for(let i=0; i<this.state.data.length; i++){
+            if(array.indexOf(this.state.data[i].location)===-1){
+                array.push(this.state.data[i].location)
+            }
+        }
+        this.setState({
+            location: array
+        });
+        // setTimeout(()=>{
+        //     console.log(this.state.location)
+        // }, 0)
+    }
+    selectEntourage(location){
+        let array = []
+        for(let i=0; i<this.state.data.length; i++){
+            if(this.state.data[i].location === location){
+                console.log(this.state.data[i].entourage)
+                array.push(this.state.data[i].entourage)
+            }
+        }
+        this.setState({
+            entourage: array
+        });
+        //
+        // setTimeout(()=>{
+        //     console.log(this.state.entourage)
+        // }, 0)
     }
 
     render() {
@@ -67,18 +101,25 @@ class EpisodeForm extends Component {
 // THIS IS AN UGGLY TEST
                     <div>
                         <div>
-                            <span>Comment ca va ?</span>
-                            <input type="range" min="0" max="4" step={"1"} value={this.state.value} onChange={this.handleChange} />
-                        </div>
+                            <h2>Comment ca va ?</h2>
+                            <div>
+                                <span>fatigué(e)</span>
+                                <input type="range" min="0" max="4" step={"1"} value={this.state.value} onChange={this.handleChange} />
+                                <span>super</span>
+                            </div>
+                            <button>Valider</button>
+                         </div>
                         <br/>
                         <div>
-                            <span>Où tu veux aller ?</span>
+                            <h2>Où tu veux aller ?</h2>
                             {this.createOption('location')}
+                            <button>Valider</button>
                         </div>
                         <br/>
                         <div>
-                            <span> Avec qui ?</span>
+                            <h2> Avec qui ?</h2>
                             {this.createOption('entourage')}
+                            <button>Valider</button>
                         </div>
                     </div>
 
