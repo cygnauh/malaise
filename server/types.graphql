@@ -8,9 +8,18 @@ type Episode @model {
   sounds: [Sound!]! @relation(name: "EpisodeSounds")
   testimonies: [Testimony!]! @relation(name: "EpisodeTestimonies")
   blocks: [Block!]! @relation(name: "EpisodeBlocks")
+  personalizations: [Personalization!]! @relation(name: "EpisodePersonalizations")
   interactions: [Interaction!]! @relation(name: "EpisodeInteractions")
   location: String!
   entourage: String!
+}
+
+type Personalization @model {
+  id: ID! @isUnique
+  name: String!
+  question: String!
+  answerLabel: String!
+  episode: Episode! @relation(name:"EpisodePersonalizations")
 }
 
 type Interaction @model {
