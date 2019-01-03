@@ -2,6 +2,7 @@ import './App.css';
 import React from 'react';
 // import React, { Component } from 'react';
 import { ApolloProvider } from 'react-apollo';
+import UserProvider from "./store/UserProvider";
 import ApolloBoost from "apollo-boost";
 
 // import Header from './components/layout/Header';
@@ -19,10 +20,12 @@ const client = new ApolloBoost({
 
 const App = () => (
     <ApolloProvider client={client}>
-        <div>
-            <h2>Malaise</h2>
-        </div>
-        <EpisodeSelection/>
+        <UserProvider>
+            <div>
+                <h2>Malaise</h2>
+            </div>
+            <EpisodeSelection/>
+        </UserProvider>
     </ApolloProvider>
 );
 
