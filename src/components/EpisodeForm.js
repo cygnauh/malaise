@@ -87,10 +87,6 @@ class EpisodeForm extends Component {
         this.setState({
             entourage: array
         });
-
-        // setTimeout(()=>{
-        //     console.log(this.state.entourage)
-        // }, 0)
     };
     getEpisode = () => {
         let episode = null;

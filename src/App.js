@@ -3,6 +3,7 @@ import React from 'react';
 // import React, { Component } from 'react';
 import { ApolloProvider } from 'react-apollo';
 import UserProvider from "./store/UserProvider";
+// import { getEpisode } from 'graphql/queries'
 import ApolloBoost from "apollo-boost";
 
 // import Header from './components/layout/Header';
@@ -11,20 +12,30 @@ import ApolloBoost from "apollo-boost";
 // import Homepage from "./components/pages/Homepage"
 // import ExchangeRates from "./components/Exchange"
 import EpisodeSelection from "./components/EpisodeSelection"
+import Personalization from "./components/Personalization"
 // import gql from "graphql-tag";
 
 const client = new ApolloBoost({
     uri: "https://api.graph.cool/simple/v1/cjp2pniu98sw30122z5bavdwc"
 });
 
+// client.query({
+//     query: getEpisode,
+//     variables: {
+//         id: "cjqbi7txpwd180167t0flrl7g"
+//     }
+// })
+
 
 const App = () => (
+
     <ApolloProvider client={client}>
         <UserProvider>
             <div>
                 <h2>Malaise</h2>
             </div>
-            <EpisodeSelection/>
+            {/*<EpisodeSelection/>*/}
+            <Personalization/>
         </UserProvider>
     </ApolloProvider>
 );
