@@ -63,9 +63,6 @@ class EpisodeForm extends Component {
                 entourageSelected: value
             });
         }
-        // setTimeout(()=>{
-            // console.log(value)
-        // }, 0)
     };
     formatLocations = () => { //remove the doublon location
         let array = [];
@@ -77,9 +74,6 @@ class EpisodeForm extends Component {
         this.setState({
             location: array
         });
-        // setTimeout(()=>{
-        //     console.log(this.state.location)
-        // }, 0)
     };
     selectEntourage = (location) => {
         let array = [];
@@ -108,7 +102,7 @@ class EpisodeForm extends Component {
         this.setState({
             episodeId: episode
         });
-        console.log(episode)
+        console.log(episode);
         return episode
     };
     render() {
@@ -123,10 +117,11 @@ class EpisodeForm extends Component {
                             return (
                                 <ReactFullpage.Wrapper>
                                     <div className="episodeForm__step section" data-step="1">
-                                        <h2>Comment vas-tu ?</h2>
+                                        <h2>Comment tu te sens ?</h2>
                                         <div>
                                             <span>Fatigué(e)</span>
-                                            <input type="range" min="0" max="4" step={"1"} value={this.state.value} onChange={this.handleChange} />
+                                            <input type="range" min="0" max="4" step={"1"}
+                                                   value={this.state.value} onChange={this.handleChange} />
                                             <span>Super bien</span>
                                         </div>
                                         <button className="btn btn__next-step">Suivant</button>
@@ -137,20 +132,18 @@ class EpisodeForm extends Component {
                                         <button className="btn btn__next-step">Suivant</button>
                                     </div>
                                     <div className="episodeForm__step section" data-step="3">
-                                        <h2> Avec qui ?</h2>
-                                        <div>{this.createOption('entourage')}</div>
-                                        <button className="btn btn__form-validation" onClick={()=>this.validateLastQuestion({id:'test'})}>Valider</button>
-                                    </div>
-                                    <div className="episodeForm__step section">
                                         <UserContext.Consumer>
                                             {({episode, setEpisode}) => (
                                                 <div>
                                                     <div>
                                                         <h2> Avec qui ?</h2>
                                                         {this.createOption('entourage')}
-                                                        <button onClick={()=>setEpisode(this.validateLastQuestion())}>Valider</button>
+                                                        <button
+                                                            className="btn btn__form-validation"
+                                                            onClick={()=>setEpisode(this.validateLastQuestion({id:'test'}))}>
+                                                            Valider
+                                                        </button>
                                                     </div>
-                                                    <h1>this episode title is {episode.id}!</h1>
                                                 </div>
                                             )}
                                         </UserContext.Consumer>

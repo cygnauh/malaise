@@ -25,7 +25,7 @@ const App = () => (
         <UserProvider>
             <Header />
             <Main />
-            /*<Personalization/>*/
+            {/*<Personalization/>*/}
         </UserProvider>
     </ApolloProvider>
 );

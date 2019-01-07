@@ -27,7 +27,8 @@ export const getEpisode = gql`
                 personalizations{
                     name,
                     question,
-                    answerLabel
+                    answerLabel,
+                    default
                 }
             }
         }

@@ -16,9 +16,11 @@ type Episode @model {
 
 type Personalization @model {
   id: ID! @isUnique
+  type: String!
   name: String!
   question: String!
   answerLabel: String!
+  default:String!
   episode: Episode! @relation(name:"EpisodePersonalizations")
 }
 
