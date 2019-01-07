@@ -1,4 +1,4 @@
-import "./homepage.css";
+import "../../assets/styles/homepage.css";
 import React from 'react';
 
 class Homepage extends React.Component {
@@ -19,11 +19,6 @@ class Homepage extends React.Component {
                 nextPage:true
             });
         }, 6000);
-        setTimeout(() =>{
-            this.props.buttonPressed(true)
-        }, 9000);
-
-
     }
     render() {
         return (
@@ -36,7 +31,7 @@ class Homepage extends React.Component {
                             <button className="Home__start" onClick={this.next}>démarrer l'expérience</button>
                         </div>
                         <div className={(!this.state.next || this.state.nextPage ) ? 'Home__content Hide__content' : 'Home__content'}>
-                            <p className="Home__description Home__description--small">Malaise vous invite à vivre une expérience immersive à travers différents épisodes interactif.</p>
+                            <p className="Home__description Home__description--small">Malaise vous invite à vivre une expérience immersive à travers différents épisodes interactifs.</p>
                             <p className="Home__description Home__description--small">Laissez vous guider et suivez les indications en bas de l'écran tout au long de l'expérience.</p>
                         </div>
                     </div>

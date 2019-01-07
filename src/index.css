@@ -17,6 +17,3 @@ input:focus, textarea:focus, button:focus, button:active {
 #root, .app, .app-container {
     height: 100%;
 }
-main {
-    height: calc(100% - 130px);
-}

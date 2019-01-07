@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import { Query } from 'react-apollo';
 import gql from 'graphql-tag';
 
@@ -7,6 +7,18 @@ export const GET_FIRST_EPISODE = gql`
         Episode(id: "cjp8r6rp2p9eg0183cgcd45qz") {
             id
             title
+            summary
+        }
+    }
+`;
+
+export const getEpisodes = gql`
+    {
+        Episode {
+            id
+            title
+            location
+            entourage
             summary
         }
     }
