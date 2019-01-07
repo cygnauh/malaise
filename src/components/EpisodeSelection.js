@@ -31,8 +31,6 @@ class EpisodeSelection extends Component {
                     return (
                         <div>
                             <EpisodeForm episodes={data.allEpisodes}/>
-                            {/*<Catalogue episodes={data.allEpisodes}/>*/}
-                            {/*<button onClick={() => refetch()}>Refetch!</button>*/}
                         </div>
                     );
                 }}

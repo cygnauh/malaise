@@ -1,24 +1,29 @@
 import "../../assets/styles/homepage.css";
-import React from 'react';
+import React, { Component } from 'react';
 
-class Homepage extends React.Component {
+class Homepage extends Component {
 
-    constructor(props) {
-        super(props);
+    constructor() {
+        super();
         this.state = {
             next:false,
             nextPage: false
         }
     }
+
     next = () => {
         this.setState ({
             next:true
         });
+
         setTimeout(() =>{
             this.setState ({
                 nextPage:true
             });
         }, 6000);
+        setTimeout(() =>{
+            this.props.onButtonPressed(true)
+        }, 9000);
     }
     render() {
         return (

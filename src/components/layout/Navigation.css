@@ -1,0 +1,12 @@
+.Navigation {
+    width: 80%;
+}
+.Navigation__items {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.Navigation__item {
+    flex: 1;
+    text-align: center;
+}

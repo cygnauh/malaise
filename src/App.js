@@ -1,6 +1,5 @@
 import './App.css';
 import React from 'react';
-// import React, { Component } from 'react';
 import { ApolloProvider } from 'react-apollo';
 import ApolloBoost from "apollo-boost";
 import Header from './components/layout/Header';

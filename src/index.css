@@ -17,3 +17,13 @@ input:focus, textarea:focus, button:focus, button:active {
 #root, .app, .app-container {
     height: 100%;
 }
+.wrapper-container {
+    height: 100%;
+}
+ul, li {
+    list-style: none;
+}
+a {
+    text-decoration: none;
+    color: black;
+}

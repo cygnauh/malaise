@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { Component } from 'react';
 
-class Dictionnary extends React.Component {
+class Dictionnary extends Component {
 
     constructor(props) {
         super(props);

@@ -1,16 +1,16 @@
 import './Main.css';
-import React from 'react';
+import React, { Component } from 'react';
 import { Switch, Route } from 'react-router-dom'
 import Catalogue from "../pages/Catalogue";
 import Dictionnary from "../pages/Dictionnary";
-import Homepage from "../pages/Homepage";
+import StartProcess from "../StartProcess";
 
-class Main extends React.Component {
+class Main extends Component {
     render() {
         return (
             <main className="Main">
                 <Switch>
-                    <Route exact path="/" component={Homepage} />
+                    <Route exact path="/" component={StartProcess} />
                     <Route path="/catalogue" component={Catalogue} />
                     <Route path="/dictionnary" component={Dictionnary} />
                 </Switch>
