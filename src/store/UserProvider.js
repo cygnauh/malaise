@@ -32,7 +32,10 @@ class UserProvider extends Component {
             setTimeout(()=>{console.log(this.state.episode)}, 0)
 
         }, // nouvelle propriété de mutation
-        setPersonalization: personalizations => this.setState({ personalizations: personalizations })
+        setPersonalization: personalizations => {
+            this.setState({ personalizations: personalizations });
+            // setTimeout(()=>{console.log(this.state.personalizations, 'hello')}, 0)
+        }
     };
 
     render() {
