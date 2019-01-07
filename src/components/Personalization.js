@@ -18,7 +18,7 @@ class Personalization extends Component {
             render:'',
             episode:'cjqbi7txpwd180167t0flrl7g',
             questionIndex:0,
-            answer:[],
+            values:[],
             personalizations:[],
             pQuestions:[],
             date:[],
@@ -26,8 +26,8 @@ class Personalization extends Component {
             register:false
 
         };
-        this.handleChange = this.handleChange.bind(this);
-        this.handleSubmit = this.handleSubmit.bind(this);
+        // this.handleChange = this.handleChange.bind(this);
+        // this.handleSubmit = this.handleSubmit.bind(this);
     }
     // handleChange = (event) => {
     //     this.setState({answer: event.target.answer});
@@ -37,118 +37,88 @@ class Personalization extends Component {
     componentWillMount(){
         console.log(this.context)
     }
-    handleChange(event) {
-        this.setState({answer: event.target.value})
-        console.log(this.state.answer);
-    }
-
-    handleSubmit(event){
-        alert('A name was submitted: ' + this.state.value);
-        event.preventDefault();
-    }
-    personalizationQuestion(data){
-
+    handleChange = (i, params, event) => {
+        this.setState({
+            values: { ...this.state.values, [i]: event.target.value}
+        });
+        let pers = [];
+            pers.push(this.state.personalizations);
+            // let objName = params[i].name;
+            // pers[objName] = this.state.value;
+            pers[params[i].name] = this.state.values[i];
+            this.setState({
+                register:true,
+                personalizations:pers
+            });
+            console.log(this.state.personalizations,"k");
+            this.context.setPersonalization(pers);
+            console.log(this.context.personalizations,"k");
+            setTimeout(()=>{console.log(this.context.personalizations)},300)
+    };
+    personalizationQuestion = (data) => {
         //reveice data, show first question, register anwser, show next question
         let questions=[];
-        // let answers=[];
-        let index = this.state.questionIndex;
-        let perso = data.Episode.personalizations;
-
-        for(let i=0; i<perso.length; i++){
+        let paramsP = data.Episode.personalizations;
+        for(let i=0; i<paramsP.length; i++){
             questions.push(
                 <div key={i.toString()}>
                     <h2>
-                        {perso[i].question}
+                        {paramsP[i].question}
                     </h2>
                     <input type="text"
-                           value={this.state.answer}
-                           placeholder={perso[this.state.questionIndex].answerLabel}
-                           onChange={this.handleChange}
-                           onKeyPress={(e) => this.validateAnswer(i, perso, e)}
+                           value={this.state.values[i] ? this.state.values[i] : ""}
+                           placeholder={paramsP[this.state.questionIndex].answerLabel}
+                           onChange={(e)=>this.handleChange(i,paramsP, e)}
+                           onKeyPress={(e) => this.validateAnswer(i, paramsP, this.state.values[i], e)}
                     />
                 </div>)
         }
-        // this.setState({
-        //     pQuestions:data.Episode.personalizations
-        // })
-        //show first question
-        // questions.push(
-        //     <div key={index.toString()}>
-        //         <h2>
-        //             {perso[index].question}
-        //         </h2>
-        //         <input type="text"
-        //                value={this.state.answer}
-        //                placeholder={data.Episode.personalizations[this.state.questionIndex].answerLabel}
-        //                onChange={this.handleChange}
-        //                onKeyPress={(e) => this.validateAnswer(data.Episode.personalizations, e)}
-        //         />
-        //     </div>);
-
-        // console.log(data)
         return questions
-    }
-    navigationDot(currentPosition, dotNumbers){
-        let dots=[];
-        for(let i=0; i<dotNumbers; i++){
-            dots.push(
-                <div key={i.toString()}
-                     className={i <= currentPosition ? 'navigation-dot dot-fill': 'navigation-dot'}
-                />
-            )
-        }
-        return dots
-    }
-    validateAnswer = (i, params, event) => {
-        let pers = []
-
-        if(event.key === 'Enter'){
-            console.log('enter press here! ')
-            pers.push(this.state.personalizations);
-            let objName = params[i].name;
-            pers[objName]=this.state.answer;
-            this.setState({
-                register:true,
-                pers:pers
-            });
-            this.context.setPersonalization(pers);
-            setTimeout(()=>{console.log(this.context.personalizations)}
-            ,0)
-
-        }
-    }
+    };
+    // navigationDot(currentPosition, dotNumbers){
+    //     let dots=[];
+    //     for(let i=0; i<dotNumbers; i++){
+    //         dots.push(
+    //             <div key={i.toString()}
+    //                  className={i <= currentPosition ? 'navigation-dot dot-fill': 'navigation-dot'}
+    //             />
+    //         )
+    //     }
+    //     return dots
+    // }
+    validateAnswer = (i, params, answer, event) => {
+        // if(event.key === 'Enter'){
+        //     console.log('enter press here! ');
+        // }
+        // ----------- TODO go next question animation
+    };
     render () {
         return(
             <div>
-                {/*<UserContext.Consumer>*/}
-                    {/*{({personalizations}) => (*/}
-                        {/*<div>*/}
-                            {/*<h1>this episode title is {personalizations[0]}!</h1>*/}
-                        {/*</div>*/}
-                    {/*)}*/}
-                {/*</UserContext.Consumer>*/}
+                <UserContext.Consumer>
+                    {({personalizations}) => (
+                        <div>
+                            <h1>test {personalizations.hote}!</h1>
+                        </div>
+                    )}
+                </UserContext.Consumer>
                 <Query query={getEpisode} variables={{ id : this.state.episode }}>
                     {({ loading, error, data }) => {
                         if (loading) return (<div>loader</div>);
                         if (error) return `Error!: ${error}`;
-
-
                         return (
                             <div>{data.Episode.summary}
                                 <div className="questionP">{this.personalizationQuestion(data)}</div>
 
-                                <div className="nav-dot">{this.navigationDot(this.state.questionIndex,3)}</div>
+                                {/*<div className="nav-dot">{this.navigationDot(this.state.questionIndex,3)}</div>*/}
                             </div>
                         );
                     }}
                 </Query>
-
-
             </div>
         )
     }
 }
 Personalization.contextType = UserContext;
-
 export default Personalization;
 
