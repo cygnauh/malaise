@@ -104,7 +104,7 @@ class EpisodeForm extends Component {
 
                     <ReactFullpage
                         pluginWrapper={pluginWrapper}
-                        render={() => {
+                        render={(fullpageApi) => {
                             return (
                                 <ReactFullpage.Wrapper>
                                     <div className="episodeForm__step section" data-step="1">
