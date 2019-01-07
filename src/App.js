@@ -1,6 +1,8 @@
 import './App.css';
 import React from 'react';
 import { ApolloProvider } from 'react-apollo';
+import UserProvider from "./store/UserProvider";
+// import { getEpisode } from 'graphql/queries'
 import ApolloBoost from "apollo-boost";
 import Header from './components/layout/Header';
 import Main from './components/layout/Main';
@@ -10,6 +12,7 @@ import Main from './components/layout/Main';
 // import Homepage from "./components/pages/Homepage"
 // import ExchangeRates from "./components/Exchange"
 import EpisodeSelection from "./components/EpisodeSelection"
+import Personalization from "./components/Personalization"
 // import gql from "graphql-tag";
 
 const client = new ApolloBoost({
@@ -19,8 +22,11 @@ const client = new ApolloBoost({
 
 const App = () => (
     <ApolloProvider client={client}>
-        <Header />
-        <Main />
+        <UserProvider>
+            <Header />
+            <Main />
+            /*<Personalization/>*/
+        </UserProvider>
     </ApolloProvider>
 );
 

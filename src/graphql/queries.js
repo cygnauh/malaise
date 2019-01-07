@@ -14,4 +14,25 @@ export const getEpisodes = gql`
     }
 `;
 
-export default {getEpisodes};
+export const getEpisode = gql`
+    
+        query Episode($id: ID!) {
+            Episode(id: $id)
+            {
+                id,
+                title,
+                summary,
+                location,
+                entourage,
+                personalizations{
+                    name,
+                    question,
+                    answerLabel
+                }
+            }
+        }
+
+    
+`;
+
+export default {getEpisodes, getEpisode};
