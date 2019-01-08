@@ -25,7 +25,7 @@ export const UserContext = createContext({
  */
 class UserProvider extends Component {
     state = {
-        episode: {id:"Putain de Code"}, // une valeur de départ
+        episode: '', // une valeur de départ
         personalizations:[],
         setEpisode: episodeSelected => {
             this.setState({ episode: episodeSelected });

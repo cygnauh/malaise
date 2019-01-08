@@ -2,7 +2,8 @@ import React, { Component, Fragment } from 'react';
 import { Query } from "react-apollo";
 import { getEpisodes } from '../graphql/queries'
 import EpisodeForm from "./EpisodeForm";
-//import { withUser,UserContext } from "../store/UserProvider";
+import { withUser,UserContext } from "../store/UserProvider";
+import Personalization from "./Personalization";
 
 // episode selection either select thank to the form, or thank to the catalog
 
@@ -15,9 +16,15 @@ class EpisodeSelection extends Component {
     constructor() {
         super();
         this.state = {
-           render:''
+            render:'',
+            episode:''
         };
     }
+    componentWillMount(){
+        console.log(this.context);
+        console.log("hello")
+    }
+
     render () {
         return(
             <Query
@@ -31,7 +38,16 @@ class EpisodeSelection extends Component {
 
                     return (
                         <div>
+                            {!this.context.episode?
                             <EpisodeForm episodes={data.allEpisodes}/>
+                                :
+                                <div>
+                                    <h2>the episode selected is {this.context.episode.title}</h2>
+                                    <button>OK</button>
+                                    <p>or choose another in the <button>Catalog</button></p>
+                                </div>
+                            }
+
                         </div>
                     );
                 }}
@@ -39,6 +55,6 @@ class EpisodeSelection extends Component {
         )
     }
 }
-
+EpisodeSelection.contextType = UserContext;
 export default EpisodeSelection;
 

@@ -19,7 +19,7 @@ class Personalization extends Component {
             episode:'cjqbi7txpwd180167t0flrl7g',
             questionIndex:0,
             values:[],
-            personalizations:[],
+            // personalizations:[],
             pQuestions:[],
             date:[],
             value: '',
@@ -38,22 +38,15 @@ class Personalization extends Component {
         console.log(this.context)
     }
     handleChange = (i, params, event) => {
+        let pers = [];
         this.setState({
             values: { ...this.state.values, [i]: event.target.value}
-        });
-        let pers = [];
-            pers.push(this.state.personalizations);
-            // let objName = params[i].name;
-            // pers[objName] = this.state.value;
+        },()=>{
+            // pers.push(this.state.personalizations);
             pers[params[i].name] = this.state.values[i];
-            this.setState({
-                register:true,
-                personalizations:pers
-            });
-            console.log(this.state.personalizations,"k");
             this.context.setPersonalization(pers);
-            console.log(this.context.personalizations,"k");
-            setTimeout(()=>{console.log(this.context.personalizations)},300)
+        });
+        setTimeout(()=>{console.log(this.context.personalizations)},0)
     };
     personalizationQuestion = (data) => {
         //reveice data, show first question, register anwser, show next question
@@ -67,7 +60,7 @@ class Personalization extends Component {
                     </h2>
                     <input type="text"
                            value={this.state.values[i] ? this.state.values[i] : ""}
-                           placeholder={paramsP[this.state.questionIndex].answerLabel}
+                           placeholder={paramsP[i].answerLabel}
                            onChange={(e)=>this.handleChange(i,paramsP, e)}
                            onKeyPress={(e) => this.validateAnswer(i, paramsP, this.state.values[i], e)}
                     />
@@ -92,6 +85,16 @@ class Personalization extends Component {
         // }
         // ----------- TODO go next question animation
     };
+    fillWithDefaultNames = (data) => {
+        let pers = [];
+        // pers.push(this.state.personalizations);
+        console.log(data.Episode.personalizations);
+        for(let i=0;i<data.Episode.personalizations.length;i++){
+            pers[data.Episode.personalizations[i].name] = data.Episode.personalizations[i].default;
+        }
+        this.context.setPersonalization(pers);
+        setTimeout(()=>{console.log(this.context.personalizations)},0)
+    };
     render () {
         return(
             <div>
@@ -109,6 +112,7 @@ class Personalization extends Component {
                         return (
                             <div>{data.Episode.summary}
                                 <div className="questionP">{this.personalizationQuestion(data)}</div>
+                                <button onClick={()=>this.fillWithDefaultNames(data)}>passer</button>
 
                                 {/*<div className="nav-dot">{this.navigationDot(this.state.questionIndex,3)}</div>*/}
                             </div>
