@@ -2,6 +2,7 @@ import './App.css';
 import React from 'react';
 import { ApolloProvider } from 'react-apollo';
 import UserProvider from "./store/UserProvider";
+import SoundProvider from "./store/SoundProvider";
 // import { getEpisode } from 'graphql/queries'
 import ApolloBoost from "apollo-boost";
 import Header from './components/layout/Header';
@@ -23,9 +24,11 @@ const client = new ApolloBoost({
 const App = () => (
     <ApolloProvider client={client}>
         <UserProvider>
-            <Header />
-            <Main />
-            {/*<Personalization/>*/}
+            <SoundProvider>
+                <Header />
+                <Main />
+                {/*<Personalization/>*/}
+            </SoundProvider>
         </UserProvider>
     </ApolloProvider>
 );

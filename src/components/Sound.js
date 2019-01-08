@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Howl, Howler } from 'howler';
 
+//this is going to handle the project sounds
 
 class Sound extends React.Component {
 
@@ -26,13 +27,16 @@ class Sound extends React.Component {
         this.stream.play()
     }
     updateVolume = (value) => {
-        this.stream.volume(value)
+        this.stream.volume(value);
         console.log(this.volume)
-    }
+    };
 
+    test = () =>{
+        console.log("the test")
+    };
 
     componentWillReceiveProps(nextProps){
-        console.log("éddddty", nextProps)
+        console.log("éddddty", nextProps);
         // this.setState({soundVolume: nextProps.soundVolume});
         this.updateVolume(nextProps.soundVolume);
     }

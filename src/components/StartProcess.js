@@ -17,7 +17,7 @@ class StartProcess extends Component {
         this.setState({
             home:false
         })
-    }
+    };
 
     render () {
         console.log(this.state);

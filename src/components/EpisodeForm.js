@@ -1,10 +1,15 @@
 import React, { Component } from 'react';
 import { UserContext } from "../store/UserProvider";
-import '../assets/styles/episodeForm.css';
+import { SoundContext } from "../store/SoundProvider";
+import { getPlaceSounds } from '../graphql/queries'
+import { Query } from "react-apollo";
 import ReactFullpage from '@fullpage/react-fullpage';
+import Personalization from "./Personalization";
+
+//style
+import '../assets/styles/episodeForm.css';
 
 // this component help to display the form to the user
-
 // 1) waiting for props Data ( getEpisodes : allEpisodes )
 // 2) if no props : loader
 // 3) if props : display question
@@ -13,14 +18,9 @@ import ReactFullpage from '@fullpage/react-fullpage';
 // 6) add to the store the episode option chosen
 // 7) display the selected
 
-//<p>
-    //{this.state.data[0].entourage}
-//</p>
-
 const pluginWrapper = () => {
     require('fullpage.js/vendors/scrolloverflow');
 };
-
 class EpisodeForm extends Component {
     constructor(props){
         super(props);
@@ -37,6 +37,9 @@ class EpisodeForm extends Component {
     componentDidMount(){
         this.formatLocations()
     }
+    // componentWillMount(){
+    //     console.log(this.state.data);
+    // }
     createOption = (value) => {
         let options = []; // return in the render
         // locations display all locations from data base
@@ -53,39 +56,31 @@ class EpisodeForm extends Component {
     };
     onClickOption = (value, option) => {
         if(option === 'location') {
-            this.setState({
-                locationSelected: value
-            });
+            this.setState({locationSelected: value});
             this.selectEntourage(value)
-
         } else {
-            this.setState({
-                entourageSelected: value
-            });
+            this.setState({entourageSelected: value});
         }
     };
     formatLocations = () => { //remove the doublon location
         let array = [];
-        for(let i=0; i<this.state.data.length; i++){
-            if(array.indexOf(this.state.data[i].location)===-1){
-                array.push(this.state.data[i].location)
+        if(this.state.data){
+            for(let i=0; i<this.state.data.length; i++){
+                if(array.indexOf(this.state.data[i].location)===-1){
+                    array.push(this.state.data[i].location)
+                }
             }
+            this.setState({location: array});
         }
-        this.setState({
-            location: array
-        });
     };
     selectEntourage = (location) => {
         let array = [];
         for(let i=0; i<this.state.data.length; i++){
             if(this.state.data[i].location === location){
-                console.log(this.state.data[i].entourage);
                 array.push(this.state.data[i].entourage)
             }
         }
-        this.setState({
-            entourage: array
-        });
+        this.setState({entourage: array});
     };
     getEpisode = () => {
         let episode = null;
@@ -99,18 +94,30 @@ class EpisodeForm extends Component {
     };
     validateLastQuestion = () => {
         let episode = this.getEpisode();
-        this.setState({
-            episodeId: episode
-        });
-        console.log(episode);
+        this.setState({episodeId: episode});
         return episode
     };
+    nextQuestion = () => {
+        this.context.setLocationSounds()
+    };
+    // getLocationsSounds = () => {
+    //     return(
+    //         <Query query={getPlaceSounds}
+    //     notifyOnNetworkStatusChange>
+    //     {({ loading, error, data, refetch, networkStatus }) => {
+    //         if (networkStatus === 4) return "Refetching!";
+    //         if (loading) return null;
+    //         if (error) return `Error!: ${error}`;
+    //         this.context.loadSound(data);
+    //     }}
+    // </Query>
+    //     )
+    // };
     render() {
         return (
             <div className="episodeForm">
                 {!this.state.data? <p>data is loading, please make a loader</p> : null}
                 {this.state.data?
-
                     <ReactFullpage
                         pluginWrapper={pluginWrapper}
                         render={(fullpageApi) => {
@@ -129,7 +136,7 @@ class EpisodeForm extends Component {
                                     <div className="episodeForm__step section" data-step="2">
                                         <h2>Où veux-tu aller ?</h2>
                                         <div>{this.createOption('location')}</div>
-                                        <button className="btn btn__next-step">Suivant</button>
+                                        <button className="btn btn__next-step" onClick={this.nextQuestion}>Suivant</button>
                                     </div>
                                     <div className="episodeForm__step section" data-step="3">
                                         <UserContext.Consumer>
@@ -158,4 +165,5 @@ class EpisodeForm extends Component {
     }
 }
 
+EpisodeForm.contextType = SoundContext;
 export default EpisodeForm;
