@@ -14,26 +14,33 @@ export const getEpisodes = gql`
     }
 `;
 
-export const getEpisode = gql`
-    
-        query Episode($id: ID!) {
-            Episode(id: $id)
-            {
-                id,
-                title,
-                summary,
-                location,
-                entourage,
-                personalizations{
-                    name,
-                    question,
-                    answerLabel,
-                    default
-                }
+export const getEpisode = gql`    
+    query Episode($id: ID!) {
+        Episode(id: $id)
+        {
+            id,
+            title,
+            summary,
+            location,
+            entourage,
+            personalizations{
+                name,
+                question,
+                answerLabel,
+                default
             }
         }
-
-    
+    }
 `;
 
-export default {getEpisodes, getEpisode};
+export const getPlaceSounds = gql`
+    {
+        allSounds(filter: {
+            name: "location"
+        }){
+            url
+        }
+    }
+`;
+
+export default {getEpisodes, getEpisode, getPlaceSounds};
