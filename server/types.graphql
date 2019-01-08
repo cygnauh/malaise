@@ -53,8 +53,9 @@ type SoundSequence @model {
 type Sound @model {
   id: ID! @isUnique
   name: String!
+  type: String!
   url: String!
-  episode: Episode! @relation(name: "EpisodeSounds")
+  episode: Episode @relation(name: "EpisodeSounds")
   soundSequences: SoundSequence! @relation(name: "SoundSoundSequences")
 }
 
