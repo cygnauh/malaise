@@ -10,7 +10,7 @@ type Episode @model {
   blocks: [Block!]! @relation(name: "EpisodeBlocks")
   personalizations: [Personalization!]! @relation(name: "EpisodePersonalizations")
   interactions: [Interaction!]! @relation(name: "EpisodeInteractions")
-  location: String!
+  place: String!
   entourage: String!
 }
 
@@ -54,7 +54,7 @@ type Sound @model {
   id: ID! @isUnique
   name: String!
   url: String!
-  episode: Episode! @relation(name: "EpisodeSounds")
+  episode: Episode @relation(name: "EpisodeSounds")
   soundSequences: SoundSequence! @relation(name: "SoundSoundSequences")
 }
 
