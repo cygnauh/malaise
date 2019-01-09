@@ -17,7 +17,7 @@ class EpisodeForm extends Component {
     }
     displayEpisodes() {
         let episodes = []; // return in the render
-        // locations display all locations from data base
+        // places display all places from data base
         for(let i=0; i<this.state.data.length; i++){
             episodes.push(
                 <div key={i.toString()}

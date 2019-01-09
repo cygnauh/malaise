@@ -29,8 +29,8 @@ class EpisodeForm extends Component {
             episodes:this.props.episodes.allEpisodes,
             sounds:this.props.episodes.allSounds,
             entourage:[],
-            locations:[],
-            locationSelected:null,
+            places:[],
+            placeSelected:null,
             entourageSelected:null,
             placesSounds:[],
             episodeId:null
@@ -38,21 +38,21 @@ class EpisodeForm extends Component {
         // console.log(this.state.episodes)
     }
     componentDidMount(){
-        this.formatLocations()
+        this.formatPlaces()
     }
     // componentWillMount(){
     //     console.log(this.state.episodes);
     // }
-    formatLocations = () => { //remove the doublon location & extract places sounds
+    formatPlaces = () => { //remove the doublon place & extract places sounds
         let array = [];
         let placeSounds = [];
         if(this.state.episodes){
             for(let i=0; i<this.state.episodes.length; i++){
-                if(array.indexOf(this.state.episodes[i].location)===-1){
-                    array.push(this.state.episodes[i].location)
+                if(array.indexOf(this.state.episodes[i].place)===-1){
+                    array.push(this.state.episodes[i].place)
                 }
             }
-            this.setState({location: array});
+            this.setState({place: array});
         }
         if(this.state.sounds){
             for(let i=0; i<this.state.sounds.length; i++){
@@ -68,7 +68,7 @@ class EpisodeForm extends Component {
     };
     createOption = (value) => {
         let options = []; // return in the render
-        // locations display all locations from data base
+        // places display all places from data base
         if(this.state[value]){
             for(let i=0; i<this.state[value].length; i++){
                 options.push(
@@ -87,7 +87,7 @@ class EpisodeForm extends Component {
     onClickOption = (value, option) => {
         let placeSound = [];
         console.log(this.state.placesSounds);
-        if(option === 'location' && this.state.placesSounds) {
+        if(option === 'place' && this.state.placesSounds) {
             console.log(this.state.placesSounds.length);
             for(let i=0; i<this.state.placesSounds.length; i++){
                 if(this.state.placesSounds[i].name === value){
@@ -95,7 +95,7 @@ class EpisodeForm extends Component {
                     console.log(this.state.placesSounds[i].name)
                 }
             }
-            this.setState({locationSelected: value},()=>{
+            this.setState({placeSelected: value},()=>{
                 //send to SoundProvider the sound
                 // console.log(this.state.placesSounds)
                 this.context.registerPlaceSound(placeSound);
@@ -109,7 +109,7 @@ class EpisodeForm extends Component {
     showEntourageRelated = () => {
         let array = [];
         for(let i=0; i<this.state.episodes.length; i++){
-            if(this.state.episodes[i].location === this.state.locationSelected){
+            if(this.state.episodes[i].place === this.state.placeSelected){
                 array.push(this.state.episodes[i].entourage)
             }
         }
@@ -118,7 +118,7 @@ class EpisodeForm extends Component {
     getEpisode = () => {
         let episode = null;
         for(let i=0; i<this.state.episodes.length; i++){
-            if(this.state.locationSelected === this.state.episodes[i].location
+            if(this.state.placeSelected === this.state.episodes[i].place
                 && this.state.entourageSelected === this.state.episodes[i].entourage){
                 episode = this.state.episodes[i]
             }
@@ -131,7 +131,7 @@ class EpisodeForm extends Component {
         return episode
     };
 
-    playLocationSoundSelected = () => {
+    playplaceSoundSelected = () => {
        // this.context.loadSound(data);
 
     };
@@ -157,7 +157,7 @@ class EpisodeForm extends Component {
                                      </div>
                                     <div className="episodeForm__step section" data-step="2">
                                         <h2>Où veux-tu aller ?</h2>
-                                        <div>{this.createOption('location')}</div>
+                                        <div>{this.createOption('place')}</div>
                                         <button className="btn btn__next-step">Suivant</button>
                                     </div>
                                     <div className="episodeForm__step section" data-step="3">

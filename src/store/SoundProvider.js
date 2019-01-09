@@ -3,38 +3,38 @@ import React, { createContext, Component } from "react"; // on importe createCon
 import { Howl, Howler } from 'howler';
 //state and functions declarations
 export const SoundContext = createContext({
-    locationSounds: [],
+    placeSounds: [],
     episodeSounds:null,
-    setLocationSounds: () => {},
+    setPlaceSounds: () => {},
     loadSound:() => {}
 });
 class SoundProvider extends Component {
     state = {
-        locationSounds: [], // all locations sound
-        locationSelected:[], // location selected by the user
+        placeSounds: [], // all places sound
+        placeSelected:[], // place selected by the user
         episodeSounds:null, // episode soundtrack where extract will be extracted
-        locationSoundtrack:null,
+        placeSoundtrack:null,
         episodeSoundtrack:null, // episode soundtrack obj
-        setLocationSounds: sounds => {
-            this.setState({ locationSounds: sounds });
-            setTimeout(()=>{console.log(this.state.locationSounds)}, 0)
+        setPlaceSounds: sounds => {
+            this.setState({ placeSounds: sounds });
+            setTimeout(()=>{console.log(this.state.placeSounds)}, 0)
         },
-        registerPlaceSound: (location) =>{ // load location selected
+        registerPlaceSound: (place) =>{ // load place selected
             let stream;
             stream = new Howl({
-                src: [location.url],
+                src: [place.url],
                 ext: ['mp3'],
                 html5: true
             });
-            console.log(this.state.locationSoundtrack);
-            if(this.state.locationSoundtrack){
-                this.state.locationSoundtrack.pause();
+            console.log(this.state.placeSoundtrack);
+            if(this.state.placeSoundtrack){
+                this.state.placeSoundtrack.pause();
             }
             this.setState({
-                    locationSoundtrack:stream
+                    placeSoundtrack:stream
                 }, ()=>{
-                    console.log(this.state.locationSoundtrack);
-                    this.state.locationSoundtrack.play();
+                    console.log(this.state.placeSoundtrack);
+                    this.state.placeSoundtrack.play();
                 }
             );
         }

@@ -2,18 +2,30 @@ import gql from "graphql-tag";
 // import FirstEpisode from "./queries-folder/FirstEpisode";
 
 
-export const getEpisodesAndLocationSounds = gql`
+export const getEpisodesAndPlaceSounds = gql`
     {
         allEpisodes{
             id,
             title,
             summary
-            location,
+            place,
             entourage
         },
         allSounds{
             name
             url
+        }
+    }
+`;
+
+export const getEpisodes = gql`
+    {
+        allEpisodes{
+            id,
+            title,
+            summary
+            place,
+            entourage
         }
     }
 `;
@@ -25,7 +37,7 @@ export const getEpisode = gql`
             id,
             title,
             summary,
-            location,
+            place,
             entourage,
             personalizations{
                 name,
@@ -38,4 +50,4 @@ export const getEpisode = gql`
 `;
 
 
-export default {getEpisodesAndLocationSounds, getEpisode};
+export default {getEpisodesAndPlaceSounds, getEpisode};

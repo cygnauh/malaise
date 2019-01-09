@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import { Query } from "react-apollo";
-import { getEpisodesAndLocationSounds } from '../graphql/queries'
+import { getEpisodesAndPlaceSounds } from '../graphql/queries'
 import EpisodeForm from "./EpisodeForm";
 import { UserContext } from "../store/UserProvider";
 import Personalization from "./Personalization";
@@ -28,7 +28,7 @@ class EpisodeSelection extends Component {
     render () {
         return(
             <Query
-                query={getEpisodesAndLocationSounds}
+                query={getEpisodesAndPlaceSounds}
                 notifyOnNetworkStatusChange
             >
                 {({ loading, error, data, refetch, networkStatus }) => {
