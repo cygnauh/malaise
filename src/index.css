@@ -1,3 +1,6 @@
+* {
+    box-sizing: border-box;
+}
 body, html {
     margin: 0;
     padding: 0;
@@ -15,7 +18,7 @@ input:focus, textarea:focus, button:focus, button:active {
     outline: none;
 }
 #root, .app, .app-container {
-    height: 100%;
+    height: calc(100% - 50px);
 }
 .wrapper-container {
     height: 100%;
