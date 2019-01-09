@@ -1,3 +1,178 @@
+.wrapper {
+    display: table;
+    margin: 0 auto;
+    margin-top: 200px;
+}
+
+@keyframes bottomright {
+    0% {
+        width: 0;
+        height: 0;
+        padding-top: 0;
+        visibility: visible;
+    }
+    25% {
+        width: 300px;
+        height: 0;
+        padding-top: 0;
+        visibility: visible;
+    }
+    50% {
+        height: 70px;
+        width: 300px;
+        visibility: visible;
+    }
+    75% {
+        visibility: visible;
+    }
+    100% {
+        visibility: visible;
+    }
+}
+
+@keyframes revbottomright {
+    0% {
+        width: 300px;
+        height: 70px;
+        visibility: visible;
+    }
+    25% {
+        width: 300px;
+        height: 70px;
+        visibility: visible;
+    }
+    50% {
+        width: 300px;
+        height: 70px;
+        visibility: visible;
+    }
+    75% {
+        width: 300px;
+        height: 0;
+        padding-top: 0;
+        visibility: visible;
+    }
+    100% {
+        width: 0;
+        height: 0;
+        padding-top: 0;
+        visibility: hidden;
+    }
+}
+
+@keyframes topleft {
+    0% {
+        width: 0;
+        height: 0;
+        padding-bottom: 0;
+        visibility: hidden;
+    }
+    25% {
+        width: 0;
+        height: 0;
+        padding-bottom: 0;
+        visibility: hidden;
+    }
+    50% {
+        width: 0;
+        height: 0;
+        padding-bottom: 0;
+        visibility: hidden;
+    }
+    75% {
+        width: 300px;
+        height: 0;
+        padding-bottom: 0;
+        visibility: visible;
+    }
+    100% {
+        width: 300px;
+        height: 70px;
+        opacity: 1;
+        visibility: visible;
+    }
+}
+
+@keyframes revtopleft {
+    0% {
+        width: 300px;
+        height: 70px;
+        opacity: 1;
+        visibility: visible;
+    }
+    25% {
+        width: 300px;
+        height: 0;
+        padding-bottom: 0;
+        visibility: visible;
+    }
+    50% {
+        width: 0;
+        height: 0;
+        padding-bottom: 0;
+        visibility: hidden;
+    }
+    75% {
+        width: 0;
+        height: 0;
+        padding-bottom: 0;
+        visibility: hidden;
+    }
+    100% {
+        width: 0;
+        height: 0;
+        padding-bottom: 0;
+        visibility: hidden;
+    }
+}
+.bell__input-border {
+    position: relative;
+    width: 300px;
+    height: 70px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.bell__input-border:hover {
+    color: #333;
+    transition: color 0.75s ease-in-out;
+}
+
+.bell__input-border:after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 300px;
+    height: 70px;
+    border-bottom: 2px solid #333;
+    border-right: 2px solid #333;
+    visibility: hidden;
+}
+
+.bell__input-border:before {
+    content: "";
+    position: absolute;
+    top: -2px;
+    right: 0;
+    width: 300px;
+    height: 70px;
+    border-top: 2px solid #333;
+    border-left: 2px solid #333;
+    visibility: hidden;
+}
+
+.animate-bell .bell__input-border:before {
+    animation: topleft 0.5s ease-in-out forwards;
+}
+
+.animate-bell .bell__input-border:after {
+    animation: bottomright 0.5s ease-in-out forwards;
+}
+.animate-bell .bell__input-border {
+    margin-left: 20px;
+}
+
 .Dictionnary {
     height: 100%;
 }
@@ -12,27 +187,33 @@
     position: relative;
     width: 400px;
     text-align: center;
+    transition: all 0.5s ease;
 }
 .bell label {
     font-weight: bold;
     font-size: 25px;
     text-align: center;
+    transition: opacity 0.8s ease;
 }
 .bell__box {
-    border: 1px solid black;
+    border: 2px solid black;
     display: flex;
     justify-content: center;
     align-items: center;
     margin-top: 40px;
+    width: 400px;
+    height: 75px;
+    transition: all 0.5s ease;
 }
 .bell__input {
     width: 70%;
     height: 50px;
     font-size: 30px;
     border: none;
-    padding: 10px 0;
+    padding: 10px 0 10px 0;
     text-align: center;
     font-weight: bold;
+    transition: all 0.5s ease;
 }
 .bell__input::placeholder {
     font-weight: bold;
@@ -41,7 +222,11 @@
     opacity: 0.3;
 }
 .btn__input {
-    width: 30%;
+    width: 70px;
+    height: 70px;
+    margin: 0 20px;
+    padding: 0;
+    border-radius: 50%;
     border: none;
     background: none;
     font-weight: bold;
@@ -49,4 +234,26 @@
     text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
     color: white;
     letter-spacing: 2px;
+}
+.btn__input span {
+    transition: opacity 0.8s ease;
+}
+.animate-bell label {
+    opacity: 0;
+}
+.animate-bell .bell__input {
+    height: 50px;
+    font-size: 40px;
+    padding: 0 0 10px 0;
+    flex: 1;
+}
+.animate-bell .btn__input span {
+    opacity: 0;
+}
+.animate-bell.bell {
+    width: 460px;
+}
+.animate-bell .bell__box {
+    width: 460px;
+    height: 120px;
 }
