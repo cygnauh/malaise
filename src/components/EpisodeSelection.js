@@ -1,8 +1,8 @@
 import React, { Component, Fragment } from 'react';
 import { Query } from "react-apollo";
-import { getEpisodes } from '../graphql/queries'
+import { getEpisodesAndLocationSounds } from '../graphql/queries'
 import EpisodeForm from "./EpisodeForm";
-import { withUser,UserContext } from "../store/UserProvider";
+import { UserContext } from "../store/UserProvider";
 import Personalization from "./Personalization";
 
 // episode selection either select thank to the form, or thank to the catalog
@@ -28,7 +28,7 @@ class EpisodeSelection extends Component {
     render () {
         return(
             <Query
-                query={getEpisodes}
+                query={getEpisodesAndLocationSounds}
                 notifyOnNetworkStatusChange
             >
                 {({ loading, error, data, refetch, networkStatus }) => {
@@ -39,7 +39,7 @@ class EpisodeSelection extends Component {
                     return (
                         <div>
                             {!this.context.episode?
-                            <EpisodeForm episodes={data.allEpisodes}/>
+                            <EpisodeForm episodes={data}/>
                                 :
                                 <div>
                                     <h2>the episode selected is {this.context.episode.title}</h2>

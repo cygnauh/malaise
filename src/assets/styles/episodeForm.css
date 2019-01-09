@@ -1,3 +1,6 @@
+.episode__form__option{
+    cursor: pointer;
+}
 .selected {
     font-weight: bold;
 }

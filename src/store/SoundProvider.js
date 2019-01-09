@@ -13,23 +13,30 @@ class SoundProvider extends Component {
         locationSounds: [], // all locations sound
         locationSelected:[], // location selected by the user
         episodeSounds:null, // episode soundtrack where extract will be extracted
-        locationSoundtrack:{},
-        episodeSoundtrack:{}, // episode soundtrack obj
+        locationSoundtrack:null,
+        episodeSoundtrack:null, // episode soundtrack obj
         setLocationSounds: sounds => {
             this.setState({ locationSounds: sounds });
             setTimeout(()=>{console.log(this.state.locationSounds)}, 0)
         },
-        loadSound: (location) =>{ // load location selected
-            this.setState({
-                locationSoundtrack:new Howl({
-                    src: [location.url],
-                    ext: ['mp3'],
-                    volume: 0.2,
-                    html5: true,
-                    loop:this.loop
-                })
+        registerPlaceSound: (location) =>{ // load location selected
+            let stream;
+            stream = new Howl({
+                src: [location.url],
+                ext: ['mp3'],
+                html5: true
             });
-            // this.state.locationSoundtrack.play();
+            console.log(this.state.locationSoundtrack);
+            if(this.state.locationSoundtrack){
+                this.state.locationSoundtrack.pause();
+            }
+            this.setState({
+                    locationSoundtrack:stream
+                }, ()=>{
+                    console.log(this.state.locationSoundtrack);
+                    this.state.locationSoundtrack.play();
+                }
+            );
         }
     };
 

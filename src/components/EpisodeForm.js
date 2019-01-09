@@ -26,68 +26,101 @@ class EpisodeForm extends Component {
         super(props);
         this.state = {
             render:'',
-            data:this.props.episodes,
+            episodes:this.props.episodes.allEpisodes,
+            sounds:this.props.episodes.allSounds,
             entourage:[],
-            location:[],
+            locations:[],
             locationSelected:null,
             entourageSelected:null,
+            placesSounds:[],
             episodeId:null
         };
+        // console.log(this.state.episodes)
     }
     componentDidMount(){
         this.formatLocations()
     }
     // componentWillMount(){
-    //     console.log(this.state.data);
+    //     console.log(this.state.episodes);
     // }
-    createOption = (value) => {
-        let options = []; // return in the render
-        // locations display all locations from data base
-        for(let i=0; i<this.state[value].length; i++){
-            options.push(
-                <div key={i.toString()}
-                     className={this.state[value+'Selected'] === this.state[value][i] ? 'selected': null}
-                     onClick={() => this.onClickOption(this.state[value][i], value)}>
-                    {this.state[value][i]}
-                    </div>)
-        }
-        // entourages, display according to
-        return options
-    };
-    onClickOption = (value, option) => {
-        if(option === 'location') {
-            this.setState({locationSelected: value});
-            this.selectEntourage(value)
-        } else {
-            this.setState({entourageSelected: value});
-        }
-    };
-    formatLocations = () => { //remove the doublon location
+    formatLocations = () => { //remove the doublon location & extract places sounds
         let array = [];
-        if(this.state.data){
-            for(let i=0; i<this.state.data.length; i++){
-                if(array.indexOf(this.state.data[i].location)===-1){
-                    array.push(this.state.data[i].location)
+        let placeSounds = [];
+        if(this.state.episodes){
+            for(let i=0; i<this.state.episodes.length; i++){
+                if(array.indexOf(this.state.episodes[i].location)===-1){
+                    array.push(this.state.episodes[i].location)
                 }
             }
             this.setState({location: array});
         }
+        if(this.state.sounds){
+            for(let i=0; i<this.state.sounds.length; i++){
+                if(this.state.sounds[i].name!==null){
+                    placeSounds.push(this.state.sounds[i])
+                }
+            }
+            this.setState({placesSounds: placeSounds}, ()=>{
+                // console.log(this.state.placesSounds)
+            });
+
+        }
     };
-    selectEntourage = (location) => {
+    createOption = (value) => {
+        let options = []; // return in the render
+        // locations display all locations from data base
+        if(this.state[value]){
+            for(let i=0; i<this.state[value].length; i++){
+                options.push(
+                    <div key={i.toString()}
+                         className={this.state[value+'Selected'] === this.state[value][i] ? 'episode__form__option selected': 'episode__form__option'}
+                         onClick={() => this.onClickOption(this.state[value][i], value)}>
+                        {this.state[value][i]}
+                    </div>
+                )
+            }
+        }
+        // entourages, display according to
+        return options
+    };
+
+    onClickOption = (value, option) => {
+        let placeSound = [];
+        console.log(this.state.placesSounds);
+        if(option === 'location' && this.state.placesSounds) {
+            console.log(this.state.placesSounds.length);
+            for(let i=0; i<this.state.placesSounds.length; i++){
+                if(this.state.placesSounds[i].name === value){
+                    placeSound=this.state.placesSounds[i];
+                    console.log(this.state.placesSounds[i].name)
+                }
+            }
+            this.setState({locationSelected: value},()=>{
+                //send to SoundProvider the sound
+                // console.log(this.state.placesSounds)
+                this.context.registerPlaceSound(placeSound);
+                this.showEntourageRelated()
+            });
+        } else {
+            this.setState({entourageSelected: value});
+        }
+    };
+
+    showEntourageRelated = () => {
         let array = [];
-        for(let i=0; i<this.state.data.length; i++){
-            if(this.state.data[i].location === location){
-                array.push(this.state.data[i].entourage)
+        for(let i=0; i<this.state.episodes.length; i++){
+            if(this.state.episodes[i].location === this.state.locationSelected){
+                array.push(this.state.episodes[i].entourage)
             }
         }
         this.setState({entourage: array});
     };
     getEpisode = () => {
         let episode = null;
-        for(let i=0; i<this.state.data.length; i++){
-            if(this.state.locationSelected === this.state.data[i].location
-                && this.state.entourageSelected === this.state.data[i].entourage){
-                episode = this.state.data[i]
+        for(let i=0; i<this.state.episodes.length; i++){
+            if(this.state.locationSelected === this.state.episodes[i].location
+                && this.state.entourageSelected === this.state.episodes[i].entourage){
+                episode = this.state.episodes[i]
             }
         }
         return episode
@@ -97,27 +130,16 @@ class EpisodeForm extends Component {
         this.setState({episodeId: episode});
         return episode
     };
-    nextQuestion = () => {
-        this.context.setLocationSounds()
+
+    playLocationSoundSelected = () => {
+       // this.context.loadSound(data);
+
     };
-    // getLocationsSounds = () => {
-    //     return(
-    //         <Query query={getPlaceSounds}
-    //     notifyOnNetworkStatusChange>
-    //     {({ loading, error, data, refetch, networkStatus }) => {
-    //         if (networkStatus === 4) return "Refetching!";
-    //         if (loading) return null;
-    //         if (error) return `Error!: ${error}`;
-    //         this.context.loadSound(data);
-    //     }}
-    // </Query>
-    //     )
-    // };
     render() {
         return (
             <div className="episodeForm">
-                {!this.state.data? <p>data is loading, please make a loader</p> : null}
-                {this.state.data?
+                {!this.state.episodes? <p>data is loading, please make a loader</p> : null}
+                {this.state.episodes?
                     <ReactFullpage
                         pluginWrapper={pluginWrapper}
                         render={(fullpageApi) => {
@@ -136,7 +158,7 @@ class EpisodeForm extends Component {
                                     <div className="episodeForm__step section" data-step="2">
                                         <h2>Où veux-tu aller ?</h2>
                                         <div>{this.createOption('location')}</div>
-                                        <button className="btn btn__next-step" onClick={this.nextQuestion}>Suivant</button>
+                                        <button className="btn btn__next-step">Suivant</button>
                                     </div>
                                     <div className="episodeForm__step section" data-step="3">
                                         <UserContext.Consumer>
