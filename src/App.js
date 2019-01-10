@@ -1,12 +1,12 @@
-import './App.css';
+import './assets/styles/App.scss';
 import React from 'react';
 import { ApolloProvider } from 'react-apollo';
 import UserProvider from "./store/UserProvider";
 import SoundProvider from "./store/SoundProvider";
 // import { getEpisode } from 'graphql/queries'
 import ApolloBoost from "apollo-boost";
-import Header from './components/layout/Header';
-import Main from './components/layout/Main';
+import Header from './components/layout/Header/Header';
+import Main from './components/layout/Main/Main';
 
 // import Episode from './components/Episode'
 // import Timeline from "./components/layout/Timeline";

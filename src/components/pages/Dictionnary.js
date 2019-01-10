@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import '../../assets/styles/dictionnary.css';
+import './dictionnary.scss';
 
 class Dictionnary extends Component {
 
@@ -15,13 +15,10 @@ class Dictionnary extends Component {
     }
 
     handleClick(e) {
-        console.log('Btn clicked');
-        console.log(this);
         this.setState({
             activeBell:true
         });
         if(e.target.classList.contains(this.btnBell)) {
-            console.log('test');
             e.preventDefault();
             this.setState({
                 clickedBell:true,
