@@ -6,6 +6,7 @@ import { getEpisodes } from '../../graphql/queries';
 import Catalogue from "../pages/Catalogue";
 import Dictionnary from "../pages/Dictionnary";
 import StartProcess from "../StartProcess";
+import Hours from "../interactions/Hours";
 
 const firstChild = props => {
     const childrenArray = React.Children.toArray(props.children);
@@ -31,6 +32,7 @@ class Main extends Component {
                                 <Route exact path="/" component={StartProcess} />
                                 <Route path="/catalogue" render={(props) => <Catalogue {...props} episodes={data.allEpisodes} />} />
                                 <Route path="/dictionnary" component={Dictionnary} />
+                                <Route path="/hours" component={Hours} />
                             </Switch>
                         </main>
                     );

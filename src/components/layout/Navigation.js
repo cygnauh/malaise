@@ -10,6 +10,7 @@ class Navigation extends React.Component {
                         <li className="Navigation__item"><Link to='/'>Accueil</Link></li>
                         <li className="Navigation__item"><Link to='/catalogue'>Catalogue des épisodes</Link></li>
                         <li className="Navigation__item"><Link to='/dictionnary'>Dictionnaire</Link></li>
+                        <li className="Navigation__item"><Link to='/hours'>Hours</Link></li>
                     </ul>
                 </div>
         )
