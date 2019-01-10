@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Query } from "react-apollo";
 import { getEpisode } from '../graphql/queries'
 import { UserContext } from "../store/UserProvider";
-import '../assets/styles/personalization.css';
+import './personalization.scss';
 
 // 1) Fetch personalizations questions from data base : can use <Query> or <ApolloConsumer>
 // 2) Display the questions

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import '../../assets/styles/catalogue.css';
+import './catalogue.scss';
 
 // this component help to display all episodes
 

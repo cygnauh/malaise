@@ -1,12 +1,12 @@
-import './Main.css';
+import './style.scss';
 import React, { Component } from 'react';
 import { Switch, Route } from 'react-router-dom';
 import { Query } from "react-apollo";
-import { getEpisodes } from '../../graphql/queries';
-import Catalogue from "../pages/Catalogue";
-import Dictionnary from "../pages/Dictionnary";
-import StartProcess from "../StartProcess";
-import Hours from "../interactions/Hours";
+import { getEpisodes } from '../../../graphql/queries';
+import Catalogue from "../../pages/Catalogue";
+import Dictionnary from "../../pages/Dictionnary";
+import StartProcess from "../../StartProcess";
+import Hours from "../../interactions/Hours";
 
 const firstChild = props => {
     const childrenArray = React.Children.toArray(props.children);

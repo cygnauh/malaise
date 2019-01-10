@@ -1,4 +1,4 @@
-import "../../assets/styles/homepage.css";
+import "./homepage.scss";
 import React, { Component } from 'react';
 
 class Homepage extends Component {

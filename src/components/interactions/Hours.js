@@ -1,4 +1,4 @@
-import './Hours.css';
+import './Hours.scss';
 import React, { Component } from 'react';
 
 class Hours extends React.Component {
@@ -10,7 +10,11 @@ class Hours extends React.Component {
             month: currentDateTime.getMonth(),
             date: currentDateTime.getDate(),
             hours : currentDateTime.getHours(),
-            minutes : currentDateTime.getMinutes()
+            minutes : currentDateTime.getMinutes(),
+            hoursTen : '0',
+            hoursUnit : '0',
+            minutesTen : '0',
+            minutesUnit : '0'
         }
         this.getHoursTen = this.getHoursTen.bind(this);
     }
@@ -23,6 +27,11 @@ class Hours extends React.Component {
 
     componentWillUnmount() {
         clearInterval(this.intervalID);
+    }
+
+    handleClick(e) {
+        console.log('clicked to change hours');
+        console.log(e.target);
     }
 
     tick() {
@@ -43,28 +52,21 @@ class Hours extends React.Component {
     getHoursTen(hours) {
         var hoursSplit = hours.toString().split('');
         var hoursTen = hoursSplit[0];
-        console.log('heures - dizaine: ', hoursTen);
         return hoursTen;
     }
-
     getHoursUnit(hours) {
         var hoursSplit = hours.toString().split('');
         var hoursUnit = hoursSplit[1];
-        console.log('heures - unité: ', hoursUnit);
         return hoursUnit;
     }
-
     getMinutesTen(minutes) {
         var minutesSplit = minutes.toString().split('');
         var minutesTen = minutesSplit[0];
-        console.log('minutes - dizaine: ', minutesTen);
         return minutesTen;
     }
-
     getMinutesUnit(minutes) {
         var minutesSplit = minutes.toString().split('');
         var minutesUnit = minutesSplit[1];
-        console.log('minutes - unité: ', minutesUnit);
         return minutesUnit;
     }
 
@@ -81,6 +83,7 @@ class Hours extends React.Component {
                         <p><span>{this.state.hoursTen}</span><span>{this.state.hoursUnit}</span></p>h<p><span>{this.state.minutesTen}</span><span>{this.state.minutesUnit}</span></p>
                     </div>
                 </div>
+                <button onClick={this.handleClick} data-clock="2030">To 20h30</button>
             </div>
         );
     }

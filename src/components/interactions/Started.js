@@ -1,4 +1,4 @@
-import "../../assets/styles/interactions.css";
+import "./interactions.css";
 import {Character} from '../../objects/Character';
 import React from 'react';
 

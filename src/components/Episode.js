@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Started from "./interactions/Started";
 import Sound from './Sound'
-import Header from './layout/Header';
+import Header from './layout/Header/Header';
 
 import { ApolloProvider, Query } from 'react-apollo';
 import ApolloBoost from "apollo-boost";

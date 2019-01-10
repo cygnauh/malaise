@@ -5,9 +5,7 @@ import { getPlaceSounds } from '../graphql/queries'
 import { Query } from "react-apollo";
 import ReactFullpage from '@fullpage/react-fullpage';
 import Personalization from "./Personalization";
-
-//style
-import '../assets/styles/episodeForm.css';
+import './episodeForm.scss';
 
 // this component help to display the form to the user
 // 1) waiting for props Data ( getEpisodes : allEpisodes )
