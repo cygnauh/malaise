@@ -8,6 +8,7 @@ class StartProcess extends Component {
         super();
         this.state = {
             render:'',
+            // home:false
             home:true
         }
 

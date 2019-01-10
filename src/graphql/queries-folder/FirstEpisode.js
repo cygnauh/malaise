@@ -17,7 +17,7 @@ export const getEpisodes = gql`
         Episode {
             id
             title
-            location
+            place
             entourage
             summary
         }
