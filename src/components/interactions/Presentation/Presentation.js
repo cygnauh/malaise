@@ -1,12 +1,8 @@
 import React, { Component } from 'react';
 import styled from 'styled-components'
-import '../assets/styles/presentation.css';
+import './presentation.scss';
 // characters introduction to users
 
-const Button = styled.button`
-  /* Adapt the colors based on primary prop */
-  background: ${props => props.primary ? "palevioletred" : "white"};
-`;
 class Presentation extends Component {
     constructor() {
         super();
@@ -16,7 +12,8 @@ class Presentation extends Component {
             greetingNb:4,
             positions:null,
             color:'blue',
-            intervalExtremeties:[]
+            intervalExtremeties:[],
+            hote:"Alice" // to be update with the user data
         };
     }
     componentDidMount(){
@@ -92,15 +89,29 @@ class Presentation extends Component {
         for(let i=0;i<this.state.guestsNb;i++){
             let topPos = this.state.positions[i].top;
             let leftPos = this.state.positions[i].left;
-            guest.push(
-                <Button
+            if(i===0){
+                let firstLetter = this.state.hote.charAt(0);
+                guest.push(
+                    <div
+                        key={i.toString()}
+                        className="Presentation_person hote"
+                        style={{
+                            top:topPos,
+                            left:leftPos
+                        }}>
+                        <span>{firstLetter}</span>
+                    </div>)
+            }else{
+                guest.push(
+                    <div
                         key={i.toString()}
                         className="Presentation_person"
-                        style={{ color: this.state.color,
+                        style={{
                             top:topPos,
                             left:leftPos
                         }}
-                />)
+                    />)
+            }
         }
         return guest
     }

@@ -6,12 +6,24 @@
     position:relative;
 }
 .Presentation_person{
+    background: white;
     position: absolute;
     width: 20px;
     height: 20px;
     border-radius: 50%;
     border: none;
     /*animation: wave 1.3s linear infinite;*/
+    &.hote{
+        background-color: transparent;
+        span{
+            color: transparent;
+            font-weight: bold;
+            background: none;
+            font-size: 50px;
+            -webkit-text-stroke-color: white;
+            -webkit-text-stroke: 1px white;
+        }
+    }
 }
 
 @keyframes wave {
