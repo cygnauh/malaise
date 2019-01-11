@@ -1,0 +1,257 @@
+/*@font-face {
+  font-family: 'Happy Times';
+  src: url('../fonts/happy-times/happy-times.woff2') format('woff2'),
+  url('../fonts/happy-times/happy-times.woff') format('woff'),
+  url('../fonts/happy-times/happy-times.ttf')  format('truetype');
+}*/
+/*@font-face {
+  font-family: 'Happy Times';
+  src: url('../fonts/happy-times/happy-times.woff2') format('woff2'),
+  url('../fonts/happy-times/happy-times.woff') format('woff'),
+  url('../fonts/happy-times/happy-times.ttf')  format('truetype');
+}*/
+* {
+  box-sizing: border-box; }
+
+body, html {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  font-family: "Archivo", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: #0A1C2D;
+  color: #ffffff; }
+
+h1, h2, h3, h4, h5, h6, ul, ol, li, a, p {
+  margin: 0;
+  padding: 0; }
+
+input:focus, textarea:focus, button:focus, button:active {
+  outline: none; }
+
+#root, .wrapper-container {
+  width: 100%;
+  height: 100%; }
+
+/*@font-face {
+  font-family: 'Happy Times';
+  src: url('../fonts/happy-times/happy-times.woff2') format('woff2'),
+  url('../fonts/happy-times/happy-times.woff') format('woff'),
+  url('../fonts/happy-times/happy-times.ttf')  format('truetype');
+}*/
+@-webkit-keyframes rotation {
+  from {
+    -webkit-transform: rotate(0deg); }
+  to {
+    -webkit-transform: rotate(-360deg); } }
+.Home {
+  width: 100%;
+  height: 100%;
+  color: #ffffff; }
+
+.Home__container {
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center; }
+
+.Home__center {
+  width: 450px; }
+
+.Home__content {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  opacity: 1; }
+
+.Home__content:first-child {
+  z-index: 2; }
+
+.Home__content:last-child {
+  transition: opacity 3s ease; }
+
+.Home__logo {
+  width: 400px;
+  margin-bottom: 80px; }
+
+.Home__description {
+  font-size: 18px;
+  max-width: 450px;
+  line-height: 25px;
+  margin: 0 auto 80px auto;
+  font-family: "Times New Roman"; }
+
+.Home__description--small {
+  max-width: 350px; }
+
+.Home__start {
+  border: 1px solid #ffffff;
+  background: none;
+  color: #ffffff;
+  font-size: 12px;
+  padding: 15px 30px;
+  cursor: pointer;
+  text-transform: uppercase;
+  letter-spacing: 2px; }
+  .Home__start:hover {
+    background: #ffffff;
+    color: #0A1C2D; }
+
+.Home__sound {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  position: relative;
+  width: 120px;
+  height: 120px;
+  margin: 0 auto 50px auto; }
+  .Home__sound img {
+    width: 45px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    margin-top: -5px; }
+  .Home__sound-rotation {
+    -webkit-animation: rotation 12s infinite linear; }
+  .Home__sound-letters {
+    position: relative;
+    width: 60px;
+    height: 60px;
+    font-size: 10px;
+    margin-left: -10px; }
+    .Home__sound-letters .char1 {
+      transform: rotate(6deg); }
+    .Home__sound-letters .char2 {
+      transform: rotate(12deg); }
+    .Home__sound-letters .char3 {
+      transform: rotate(18deg); }
+    .Home__sound-letters .char4 {
+      transform: rotate(24deg); }
+    .Home__sound-letters .char5 {
+      transform: rotate(30deg); }
+    .Home__sound-letters .char6 {
+      transform: rotate(36deg); }
+    .Home__sound-letters .char7 {
+      transform: rotate(42deg); }
+    .Home__sound-letters .char8 {
+      transform: rotate(48deg); }
+    .Home__sound-letters .char9 {
+      transform: rotate(54deg); }
+    .Home__sound-letters .char10 {
+      transform: rotate(60deg); }
+    .Home__sound-letters .char11 {
+      transform: rotate(66deg); }
+    .Home__sound-letters .char12 {
+      transform: rotate(72deg); }
+    .Home__sound-letters .char13 {
+      transform: rotate(78deg); }
+    .Home__sound-letters .char14 {
+      transform: rotate(84deg); }
+    .Home__sound-letters .char15 {
+      transform: rotate(90deg); }
+    .Home__sound-letters .char16 {
+      transform: rotate(96deg); }
+    .Home__sound-letters .char17 {
+      transform: rotate(102deg); }
+    .Home__sound-letters .char18 {
+      transform: rotate(108deg); }
+    .Home__sound-letters .char19 {
+      transform: rotate(114deg); }
+    .Home__sound-letters .char20 {
+      transform: rotate(120deg); }
+    .Home__sound-letters .char21 {
+      transform: rotate(126deg); }
+    .Home__sound-letters .char22 {
+      transform: rotate(132deg); }
+    .Home__sound-letters .char23 {
+      transform: rotate(138deg); }
+    .Home__sound-letters .char24 {
+      transform: rotate(144deg); }
+    .Home__sound-letters .char25 {
+      transform: rotate(150deg); }
+    .Home__sound-letters .char26 {
+      transform: rotate(156deg); }
+    .Home__sound-letters .char27 {
+      transform: rotate(162deg); }
+    .Home__sound-letters .char28 {
+      transform: rotate(168deg); }
+    .Home__sound-letters .char29 {
+      transform: rotate(174deg); }
+    .Home__sound-letters .char30 {
+      transform: rotate(180deg); }
+    .Home__sound-letters .char31 {
+      transform: rotate(186deg); }
+    .Home__sound-letters .char32 {
+      transform: rotate(192deg); }
+    .Home__sound-letters .char33 {
+      transform: rotate(198deg); }
+    .Home__sound-letters .char34 {
+      transform: rotate(204deg); }
+    .Home__sound-letters .char35 {
+      transform: rotate(210deg); }
+    .Home__sound-letters .char36 {
+      transform: rotate(216deg); }
+    .Home__sound-letters .char37 {
+      transform: rotate(222deg); }
+    .Home__sound-letters .char38 {
+      transform: rotate(228deg); }
+    .Home__sound-letters .char39 {
+      transform: rotate(234deg); }
+    .Home__sound-letters .char40 {
+      transform: rotate(240deg); }
+    .Home__sound-letters .char41 {
+      transform: rotate(246deg); }
+    .Home__sound-letters .char42 {
+      transform: rotate(252deg); }
+    .Home__sound-letters .char43 {
+      transform: rotate(258deg); }
+    .Home__sound-letters .char44 {
+      transform: rotate(264deg); }
+    .Home__sound-letters .char45 {
+      transform: rotate(270deg); }
+    .Home__sound-letters .char46 {
+      transform: rotate(276deg); }
+    .Home__sound-letters .char47 {
+      transform: rotate(282deg); }
+    .Home__sound-letters .char48 {
+      transform: rotate(288deg); }
+    .Home__sound-letters .char49 {
+      transform: rotate(294deg); }
+    .Home__sound-letters .char50 {
+      transform: rotate(300deg); }
+    .Home__sound-letters .char51 {
+      transform: rotate(306deg); }
+    .Home__sound-letters .char52 {
+      transform: rotate(312deg); }
+    .Home__sound-letters .char53 {
+      transform: rotate(318deg); }
+    .Home__sound-letters .char54 {
+      transform: rotate(324deg); }
+    .Home__sound-letters .char55 {
+      transform: rotate(330deg); }
+    .Home__sound-letters .char56 {
+      transform: rotate(336deg); }
+    .Home__sound-letters .char57 {
+      transform: rotate(342deg); }
+    .Home__sound-letters .char58 {
+      transform: rotate(348deg); }
+    .Home__sound-letters .char59 {
+      transform: rotate(354deg); }
+    .Home__sound-letters .char60 {
+      transform: rotate(360deg); }
+    .Home__sound-letters div {
+      position: absolute;
+      transform-origin: bottom center;
+      bottom: 0;
+      left: 50%;
+      width: 10px;
+      height: 60px; }
+
+/*# sourceMappingURL=style.css.map */

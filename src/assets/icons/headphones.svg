@@ -1,4 +1,19 @@
-<?xml version="1.0"?>
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0px" y="0px" viewBox="0 0 467.2 467.2" style="enable-background:new 0 0 467.2 467.2;" xml:space="preserve" width="40px" height="40px"><g><g>
-	<path d="M467.2,235.7c0-62.4-24.3-121.1-68.4-165.2S296,2.1,233.6,2.1S112.5,26.4,68.4,70.5S0,173.3,0,235.7v110.6   c0,62.5,50.9,113.4,113.4,113.4c7.5,0,13.5-6,13.5-13.5V246.5c0-7.5-6-13.5-13.5-13.5c-34.6,0-65.6,15.5-86.4,40v-37.3   c0-113.9,92.7-206.6,206.6-206.6s206.6,92.7,206.6,206.6c0,0.9,0.1,1.8,0.3,2.7c-0.2,0.9-0.3,1.8-0.3,2.7v37.3   c-20.8-24.5-51.8-40-86.4-40c-7.5,0-13.5,6-13.5,13.5v199.7c0,7.5,6,13.5,13.5,13.5c62.5,0,113.4-50.9,113.4-113.4V241.1   c0-0.9-0.1-1.8-0.3-2.7C467.1,237.5,467.2,236.6,467.2,235.7z M99.8,261v170.6c-41.2-6.5-72.9-42.3-72.9-85.3   C27,303.3,58.6,267.5,99.8,261z M367.4,437V266.4c41.2,6.5,72.9,42.3,72.9,85.3C440.2,394.8,408.6,430.5,367.4,437z" data-original="#000000" class="active-path" data-old_color="#000000" fill="#FFFFFF"/>
-</g></g> </svg>
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="50px" height="45px" viewBox="0 0 50 45" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: sketchtool 52.6 (67491) - http://www.bohemiancoding.com/sketch -->
+    <title>B37C7CA6-89A6-469D-A8AB-925786FA80D0@1x</title>
+    <desc>Created with sketchtool.</desc>
+    <g id="UI" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="00a_home" transform="translate(-750.000000, -500.000000)" fill-rule="nonzero" stroke="#FFFFFF">
+            <g id="son_zone" transform="translate(700.000000, 450.000000)">
+                <g id="media/icon_casque_clair" transform="translate(50.000000, 50.000000)">
+                    <g>
+                        <path d="M3.5,25.5 L3.5,44.5 L5,44.5 C7.48528137,44.5 9.5,42.4852814 9.5,40 L9.5,30 C9.5,27.5147186 7.48528137,25.5 5,25.5 L3.5,25.5 Z" id="Rectangle"></path>
+                        <path d="M46.5,44.5 L46.5,25.5 L45,25.5 C42.5147186,25.5 40.5,27.5147186 40.5,30 L40.5,40 C40.5,42.4852814 42.5147186,44.5 45,44.5 L46.5,44.5 Z" id="Rectangle"></path>
+                        <path d="M49.5,39.5 C49.5,32.174503 49.5,32.0216095 49.5,25 C49.5,11.468828 38.5503461,0.5 25.0437014,0.5 C11.5370566,0.5 0.587402721,11.468828 0.587168144,25.0153141 C0.474006933,28.7082487 0.471001582,33.5369363 0.578286937,39.5 L49.5,39.5 Z" id="Oval"></path>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
