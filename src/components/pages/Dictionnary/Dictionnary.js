@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './dictionnary.scss';
+import './style.scss';
 
 class Dictionnary extends Component {
 

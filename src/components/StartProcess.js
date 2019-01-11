@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Homepage from "./pages/Homepage";
+import Homepage from "./pages/Homepage/Homepage";
 import EpisodeSelection from "./EpisodeSelection";
 
 class StartProcess extends Component {
