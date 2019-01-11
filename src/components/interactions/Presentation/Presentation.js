@@ -40,7 +40,7 @@ class Presentation extends Component {
         this.setState({
             intervalExtremeties:extremeties
         },()=>{
-            console.log(this.state.intervalExtremeties);
+            // console.log(this.state.intervalExtremeties);
             this.calculatePositions()
         })
 
@@ -58,7 +58,7 @@ class Presentation extends Component {
             let minX = this.state.intervalExtremeties[random].minX;
             let maxX = this.state.intervalExtremeties[random].maxX;
 
-            console.log(minY, maxY, minX, maxX);
+            // console.log(minY, maxY, minX, maxX);
             // if(random){
                 let positionTop = Math.floor(Math.random() * maxY) + minY;
                 let positionLeft = Math.floor(Math.random() * maxX) + minX;
@@ -68,7 +68,7 @@ class Presentation extends Component {
                 if(positionLeft>window.innerHeight-80){
                     positionLeft = positionLeft/2
                 }
-                console.log(positionTop, positionLeft);
+                // console.log(positionTop, positionLeft);
                 pos.push({top:positionTop+'px', left:positionLeft+'px'})
             // }
         }
@@ -83,33 +83,44 @@ class Presentation extends Component {
         let style={color:colored};
         return style
     };
+    test=()=>{
+        console.log("success")
+    }
 
     displayGuest(){
         let guest=[];
         for(let i=0;i<this.state.guestsNb;i++){
             let topPos = this.state.positions[i].top;
             let leftPos = this.state.positions[i].left;
-            if(i===0){
+            if(i===this.state.guestsNb-1){
                 let firstLetter = this.state.hote.charAt(0);
                 guest.push(
-                    <div
-                        key={i.toString()}
+                    <div key={i.toString()}
                         className="Presentation_person hote"
                         style={{
                             top:topPos,
-                            left:leftPos
-                        }}>
+                            left:leftPos}}>
                         <span>{firstLetter}</span>
                     </div>)
+            }else if(i<this.state.greetingNb){
+                guest.push(
+                    <div key={i.toString()}
+                         className="Presentation_person"
+                         style={{
+                             background:'white',
+                             top:topPos,
+                             left:leftPos}}
+                         onClick={this.test}
+                    />)
             }else{
                 guest.push(
-                    <div
-                        key={i.toString()}
+                    <div key={i.toString()}
                         className="Presentation_person"
                         style={{
+                            background:'rgba(255,255,255, 0.2)',
                             top:topPos,
-                            left:leftPos
-                        }}
+                            left:leftPos}}
+                        onClick={this.state.greetingNb>i?this.test:null}
                     />)
             }
         }
