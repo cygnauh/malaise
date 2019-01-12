@@ -1,5 +1,5 @@
 .Presentation{
-    background: black;
+    background: rgba(0,0,0,0.1);
     width: 100vw;
     height: 100vh;
     color: white;
@@ -12,6 +12,7 @@
     height: 20px;
     border-radius: 50%;
     border: none;
+    transition: all 1s ease-in-out;
     /*animation: wave 1.3s linear infinite;*/
     &.hote{
         background-color: transparent;
@@ -20,11 +21,114 @@
             font-weight: bold;
             background: none;
             font-size: 50px;
-            -webkit-text-stroke-color: white;
-            -webkit-text-stroke: 1px white;
+            text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;
+        }
+    }
+    &.hide{
+        opacity: 0;
+        //display: none; // or opacity 0
+    }
+}
+
+.questionInput__container{
+    position: absolute;
+}
+//.input__container:before {
+    //animation: topleft 1s ease-in-out infinite;
+//}
+.animate-input{
+    &:before{
+        content: '';
+        position: absolute;
+        //z-index: 3;
+        width: 300px;
+        height: 70px;
+        top: -2px;
+        right: 0;
+        border-top: 2px solid #333;
+        border-left: 2px solid #333;
+        visibility: hidden;
+        animation: topleft 1s ease-in-out forwards;
+    }
+    &:after{
+        content: '';
+        position: absolute;
+        //z-index: 3;
+        bottom: 0;
+        left: 0;
+        width: 300px;
+        height: 70px;
+        border-bottom: 2px solid #333;
+        border-right: 2px solid #333;
+        visibility: hidden;
+        animation: bottomright 1s ease-in-out forwards;
+    }
+}
+.input__container {
+    //border: 2px solid white;
+    margin: 30px;
+    position: relative;
+    width: 300px;
+    height: 70px;
+    .input-border {
+        position: relative;
+        width: 200px;
+        height: 70px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        float: left;
+        input {
+            color: white;
+            background-color: transparent;
+            width: 70%;
+            height: 50px;
+            font-size: 30px;
+            border: none;
+            padding: 10px 0 10px 0;
+            text-align: center;
+            font-weight: bold;
+            transition: all 0.5s ease;
+        }
+        input::placeholder {
+            color: rgba(255,255,255,0.5);
+            font-weight: bold;
+            font-size: 30px;
+            text-align: center;
+            opacity: 0.3;
+            transition: opacity 0.8s ease;
         }
     }
 }
+
+
+.border-white{
+    span{
+        text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;
+        color: white;
+        transition: color 0.4s ease-in-out;
+    }
+}
+
+.empty{
+    //transition: all 0.3s ease-in-out;
+    span{
+        color: black;
+    }
+}
+
+
+
+//@keyframes bottomright {
+//    0% {
+//        transform: scaleX(0);
+//    }
+//    100% {
+//        transform: scaleX(1);
+//    }
+//}
+
+
 
 @keyframes wave {
     0%, 60%, 100% {
