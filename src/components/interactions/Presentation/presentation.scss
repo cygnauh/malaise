@@ -28,6 +28,9 @@
         opacity: 0;
         //display: none; // or opacity 0
     }
+    &:hover{
+        transform: scale(1.5);
+      }
 }
 
 .questionInput__container{

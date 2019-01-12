@@ -16,7 +16,9 @@ class Presentation extends Component {
             color:'blue',
             intervalExtremeties:[],
             hote:"Alice", // to be update with the user data
+            canClickOnDot:true,
             dotClicked:[],
+            dotPositions:[],
             currentInput:'',
             displayInput:false,
             inputNotEmpty:false,
@@ -117,32 +119,35 @@ class Presentation extends Component {
     onDotClicked=(i, posTop, posLeft, e)=>{
         let dots = this.state.dotClicked;
         dots.push(i);
-        this.setState({
-            dotClicked: dots
-        }, ()=>{
-            console.log(this.state.dotClicked)
-        })
+        let pos = [{
+            top:posTop,
+            left:posLeft
+        }];
         // console.log(posTop, posLeft);
-        this.setState({displayInput:true}, console.log("ok"));
-        setTimeout(()=>{
-            this.displayPersonalizationInput(posTop, posLeft)
-        }, 1)
+        if(this.state.canClickOnDot){
+            this.setState({
+                dotClicked: dots,
+                dotPositions:pos,
+                displayInput:true,
+                canClickOnDot:false
+            }, console.log(this.state.dotPositions));
+        }
     };
-    displayPersonalizationInput=(posTop, posLeft)=>{
+    displayPersonalizationInput=()=>{
         // get the questions,
         // get a random number in the questions empty --> check in the store if personalization already set
         // first : display one question
         let form = this.state.personalizationsQuestions[2];
         let questionInput = [];
-        console.log(posTop, posLeft)
-        setTimeout(()=>{
-            if(posTop&&posLeft){
+        console.log(this.state.dotPositions)
+            if(this.state.dotPositions[0].top&&this.state.dotPositions[0].left){
                 questionInput.push(
                     <div key={1}
                          className='questionInput__container'
                          style={{
-                             top:posTop,
-                             left:posLeft}}>
+                             top:this.state.dotPositions[0].top,
+                             left:this.state.dotPositions[0].left}}
+                    >
                         <h2>
                             {form.question}
                         </h2>
@@ -155,19 +160,17 @@ class Presentation extends Component {
                                 />
                             </div>
                             <button className={this.state.inputNotEmpty ? 'btn btn__input border-white': 'btn btn__input border-white empty'}
-                                    onClick={(e)=>this.validateInput(posTop, posLeft, e)}>
+                                    onClick={(e)=>this.validateInput(e)}>
                                 <span>OK</span>
                             </button>
                         </div>
                         {/*hello*/}
                     </div>);
-                return questionInput
+
+
+
             }
-        }, 100)
-
-        // console.log(questionInput);
-
-
+        return questionInput
     };
     handleChange = (event) => {
         this.setState({
@@ -187,10 +190,12 @@ class Presentation extends Component {
         });
 
     };
-    validateInput = (posTop, posLeft, event) => {
+    validateInput = ( event) => {
+        console.log("okko")
         this.setState({
             displayInput : false,
-            inputNotEmpty:false
+            inputNotEmpty:false,
+            canClickOnDot:true
         })
     };
 
@@ -198,11 +203,13 @@ class Presentation extends Component {
         return(
             <div className="Presentation">
                 {this.state.positions ? this.displayGuest() : null}
-                <div>{
-                this.state.displayInput ?
-                    this.displayPersonalizationInput()
+                <div>
+                    {
+                this.state.displayInput && this.state.dotPositions ?
+                    this.displayPersonalizationInput(this.state.dotPositions)
                     : null
-            }</div>
+                }
+            </div>
             </div>
         )
     }
