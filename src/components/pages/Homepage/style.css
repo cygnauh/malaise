@@ -53,10 +53,35 @@ input:focus, textarea:focus, button:focus, button:active {
     -webkit-transform: rotate(0deg); }
   to {
     -webkit-transform: rotate(-360deg); } }
+@-webkit-keyframes horizontallyScroll {
+  0%, 100% {
+    margin-left: 0; }
+  99.99% {
+    margin-left: -100%; } }
 .Home {
   width: 100%;
   height: 100%;
   color: #ffffff; }
+  .Home__alert {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 50px;
+    border-bottom: 1px solid #ffffff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow-x: hidden;
+    white-space: nowrap; }
+    .Home__alert-text {
+      animation: linear horizontallyScroll 5s infinite;
+      margin-left: -100%; }
+      .Home__alert-text:after {
+        content: attr(data-text);
+        position: absolute;
+        white-space: nowrap;
+        padding-left: 10px; }
 
 .Home__container {
   width: 100%;

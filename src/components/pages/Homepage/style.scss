@@ -9,10 +9,48 @@
   }
 }
 
+@-webkit-keyframes horizontallyScroll {
+  0%, 100% {
+    margin-left:0;
+  }
+  99.99% {
+    margin-left:-100%;
+  }
+}
+
 .Home {
     width: 100%;
     height: 100%;
     color: $color__white;
+
+  &__alert {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 50px;
+    border-bottom: 1px solid $color__white;
+    display: flex;
+    justify-content:center;
+    align-items:center;
+    overflow-x: hidden;
+    white-space: nowrap;
+
+    &-text {
+      animation: linear horizontallyScroll 5s infinite ;
+      margin-left:-100%;
+
+      &:after {
+        content:attr(data-text);
+        position:absolute;
+        white-space:nowrap;
+        padding-left:10px;
+      }
+
+    }
+
+  }
+
 }
 .Home__container {
     width: 100%;

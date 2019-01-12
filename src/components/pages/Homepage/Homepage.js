@@ -32,6 +32,9 @@ class Homepage extends Component {
             <div className="Home">
                 <Navigation/>
                 <div className="Home__container">
+                    <div className="Home__alert">
+                        <p className="Home__alert-text" data-text="nouvel épisode ! nouvel épisode ! nouvel épisode ! nouvel épisode ! nouvel épisode ! nouvel épisode ! nouvel épisode ! nouvel épisode ! "> nouvel épisode ! nouvel épisode ! nouvel épisode ! nouvel épisode ! nouvel épisode ! nouvel épisode ! nouvel épisode !</p>
+                    </div>
                     <div className="Home__center">
                         <div className="Home__content">
                             <img className="Home__logo" src={require('../../../assets/icons/logo__white.png')} />
