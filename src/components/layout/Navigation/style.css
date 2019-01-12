@@ -142,14 +142,18 @@ input:focus, textarea:focus, button:focus, button:active {
     .Navigation__action-cta {
       font-size: 25px;
       transition: transform 0.8s ease; }
-  .Navigation__socials {
+  .Navigation__footer {
+    width: 100%;
+    height: calc(100% - 590px);
     display: flex;
-    justify-content: center;
-    align-items: center; }
+    align-items: center;
+    justify-content: flex-end; }
+  .Navigation__socials {
+    display: flex; }
     .Navigation__socials-item {
       margin: 0 25px; }
       .Navigation__socials-item img {
-        width: 50px; }
+        height: 30px; }
 
 @media screen and (max-width: 1050px) {
   .Navigation__item {

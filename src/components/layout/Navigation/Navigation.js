@@ -85,9 +85,9 @@ class Navigation extends React.Component {
                         </ul>
                         <div className="Navigation__footer">
                             <ul className="Navigation__socials">
-                                <li className="Navigation__socials-item"><Link to="#"><img src={require('../../../assets/icons/facebook.svg')} /></Link></li>
-                                <li className="Navigation__socials-item"><Link to="#"><img src={require('../../../assets/icons/instagram.svg')} /></Link></li>
-                                <li className="Navigation__socials-item"><Link to="#"><img src={require('../../../assets/icons/twitter.svg')} /></Link></li>
+                                <li className="Navigation__socials-item"><Link to="#"><img src={require('../../../assets/icons/facebook__white.svg')} /></Link></li>
+                                <li className="Navigation__socials-item"><Link to="#"><img src={require('../../../assets/icons/instagram__white.svg')} /></Link></li>
+                                <li className="Navigation__socials-item"><Link to="#"><img src={require('../../../assets/icons/twitter__white.svg')} /></Link></li>
                             </ul>
                         </div>
                     </div>
