@@ -28,6 +28,13 @@ h1, h2, h3, h4, h5, h6, ul, ol, li, a, p {
   margin: 0;
   padding: 0; }
 
+ul, ol, li {
+  list-style: none; }
+
+a {
+  text-decoration: none;
+  color: #ffffff; }
+
 input:focus, textarea:focus, button:focus, button:active {
   outline: none; }
 
@@ -98,7 +105,8 @@ input:focus, textarea:focus, button:focus, button:active {
   padding: 15px 30px;
   cursor: pointer;
   text-transform: uppercase;
-  letter-spacing: 2px; }
+  letter-spacing: 2px;
+  transition: all 0.5s ease; }
   .Home__start:hover {
     background: #ffffff;
     color: #0A1C2D; }

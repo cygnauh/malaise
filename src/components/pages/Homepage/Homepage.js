@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import "./style.scss";
+import Navigation from "../../layout/Navigation/Navigation";
 
 class Homepage extends Component {
 
@@ -25,9 +26,11 @@ class Homepage extends Component {
             this.props.onButtonPressed(true)
         }, 9000);
     }
+
     render() {
         return (
             <div className="Home">
+                <Navigation/>
                 <div className="Home__container">
                     <div className="Home__center">
                         <div className="Home__content">
