@@ -13,18 +13,6 @@ class Homepage extends Component {
     }
 
     next = () => {
-        this.setState ({
-            next:true
-        });
-
-        setTimeout(() =>{
-            this.setState ({
-                nextPage:true
-            });
-        }, 6000);
-        setTimeout(() =>{
-            this.props.onButtonPressed(true)
-        }, 9000);
     }
 
     render() {
