@@ -1,5 +1,5 @@
 .Presentation{
-    background: black;
+    background: rgba(0,0,0,1);
     width: 100vw;
     height: 100vh;
     color: white;
@@ -12,17 +12,121 @@
     height: 20px;
     border-radius: 50%;
     border: none;
+    transition: all 1s ease-in-out;
     /*animation: wave 1.3s linear infinite;*/
-    &.hote{
+    &.greeted__guests{
         background-color: transparent;
         span{
+            text-transform: uppercase;
             color: black;
             font-weight: bold;
             background: none;
             font-size: 50px;
-            -webkit-text-stroke-color: white;
-            -webkit-text-stroke: 1px white;
+            text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;
         }
+    }
+    &.hide{
+        opacity: 0;
+        //display: none; // or opacity 0
+    }
+    &.clickable:not(.hote):hover{
+        cursor: pointer;
+        transform: scale(1.5);
+      }
+}
+
+.questionInput__container{
+    position: absolute;
+    transform: translateY(-80%);
+}
+
+.input__container {
+    position: relative;
+    width: 300px;
+    height: 70px;
+    &:before{
+        content: '';
+        position: absolute;
+        width: 300px;
+        height: 70px;
+        top: -2px;
+        right: 0;
+        border-top: 2px solid #333;
+        border-left: 2px solid #333;
+        visibility: hidden;
+    }
+    &:after{
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 300px;
+        height: 70px;
+        border-bottom: 2px solid #333;
+        border-right: 2px solid #333;
+        visibility: hidden;
+    }
+    .input__box{
+        position: absolute;
+        z-index: 2;
+    }
+    .input-border {
+        position: relative;
+        width: 200px;
+        height: 70px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        float: left;
+        input {
+            color: white;
+            background-color: transparent;
+            width: 70%;
+            height: 50px;
+            font-size: 30px;
+            border: none;
+            padding: 10px 0 10px 0;
+            text-align: center;
+            font-weight: bold;
+            transition: all 0.5s ease;
+        }
+        input::placeholder {
+            color: rgba(255,255,255,0.5);
+            font-weight: bold;
+            font-size: 30px;
+            text-align: center;
+            opacity: 0.3;
+            transition: opacity 0.8s ease;
+        }
+    }
+    &.animate-input{
+        &:before{
+            animation: topleft 1s ease-in-out forwards;
+        }
+        &:after{
+            animation: bottomright 1s ease-in-out forwards;
+        }
+    }
+}
+
+.border-white{
+    span{
+        text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;
+        color: white;
+        transition: color 0.4s ease-in-out;
+        cursor: pointer;
+        &:hover{
+            cursor: pointer;
+        }
+    }
+
+}
+
+.empty{
+    //transition: all 0.3s ease-in-out;
+    span{
+        cursor: default;
+        color: black;
     }
 }
 

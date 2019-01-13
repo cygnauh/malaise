@@ -10,14 +10,27 @@ class Presentation extends Component {
             render:'',
             guestsNb:15,
             greetingNb:4,
-            positions:null,
-            color:'blue',
+            positions:null, // dots positions
+            color:'blue', // test, should be remove later
             intervalExtremeties:[],
-            hote:"Alice" // to be update with the user data
+            hote:"Alice", // to be update with the user data
+            canClickOnDot:true,
+            dotClicked:[],
+            dotPositions:[], // selected dot positions
+            currentInput:'',
+            displayInput:false,
+            inputNotEmpty:false,
+            personalizationsQuestions:[
+                {question:"question koko",answerLabel:"aaaa"},
+                {question:"question koko 2",answerLabel:"aaaa 2"},
+                {question:"question koko 3",answerLabel:"aaaa 3"},
+                {question:"question koko 4",answerLabel:"aaaa 4"}
+            ], // this.props.personalization data
+            greetedGuests:[]
         };
     }
     componentDidMount(){
-        this.calculateIntervalPositions(120,200, 2, 2)
+        this.calculateIntervalPositions(100,200, 2, 2)
     }
     calculateIntervalPositions=(margeW, margeH, dispersionX, dispersionY)=>{
         let height = window.innerHeight;
@@ -26,8 +39,6 @@ class Presentation extends Component {
         let extremeties = []; // top, left extremities
         for(let i=0;i<dispersionX;i++){
             for(let j=0;j<dispersionY;j++){
-                console.log(Math.floor(margeW + (((width-(2*margeW)) / dispersionX) * i)));
-                console.log(Math.floor(margeW + (((width-(2*margeW)) / dispersionX) * (i+1))));
                 extremeties.push({
                         minX:Math.floor(margeW + (((width-(2*margeW)) / dispersionX) * i)),
                         maxX:Math.floor(margeW + (((width-(2*margeW)) / dispersionX) * (i+1))),
@@ -40,53 +51,32 @@ class Presentation extends Component {
         this.setState({
             intervalExtremeties:extremeties
         },()=>{
-            // console.log(this.state.intervalExtremeties);
             this.calculatePositions()
         })
-
     };
-
     calculatePositions(){
         let pos = [];
         for(let i=0;i<this.state.guestsNb;i++){
-            // let random = 1; // interval extremities
             let random = Math.floor((Math.random() * this.state.intervalExtremeties.length)); // interval extremities
-
-            // console.log(random);
             let minY = this.state.intervalExtremeties[random].minY;
             let maxY = this.state.intervalExtremeties[random].maxY;
             let minX = this.state.intervalExtremeties[random].minX;
             let maxX = this.state.intervalExtremeties[random].maxX;
-
-            // console.log(minY, maxY, minX, maxX);
-            // if(random){
-                let positionTop = Math.floor(Math.random() * maxY) + minY;
-                let positionLeft = Math.floor(Math.random() * maxX) + minX;
-                if(positionTop>window.innerHeight-80){
-                    positionTop = positionTop/2
-                }
-                if(positionLeft>window.innerHeight-80){
-                    positionLeft = positionLeft/2
-                }
-                // console.log(positionTop, positionLeft);
-                pos.push({top:positionTop+'px', left:positionLeft+'px'})
-            // }
+            let positionTop = Math.floor(Math.random() * (maxY-minY+1)) + minY;
+            let positionLeft = Math.floor(Math.random() * (maxX-minX+1)) + minX;
+            if(positionTop>window.innerHeight-80){
+                positionTop = positionTop/2
+            }
+            if(positionLeft>window.innerHeight-80){
+                positionLeft = positionLeft/1.2
+            }
+            // pos.push({top:positionTop+'px', left:positionLeft+'px'})
+            pos.push({top:positionTop, left:positionLeft})
         }
         this.setState({
             positions:pos
         })
     }
-
-
-    divStyle = () => {
-        let colored = 'red';
-        let style={color:colored};
-        return style
-    };
-    test=()=>{
-        console.log("success")
-    }
-
     displayGuest(){
         let guest=[];
         for(let i=0;i<this.state.guestsNb;i++){
@@ -96,44 +86,160 @@ class Presentation extends Component {
                 let firstLetter = this.state.hote.charAt(0);
                 guest.push(
                     <div key={i.toString()}
-                        className="Presentation_person hote"
-                        style={{
-                            top:topPos,
-                            left:leftPos}}>
+                         className="Presentation_person greeted__guests"
+                         style={{
+                             top:topPos+'px',
+                             left:leftPos+'px'}}>
                         <span>{firstLetter}</span>
                     </div>)
             }else if(i<this.state.greetingNb){
                 guest.push(
                     <div key={i.toString()}
-                         className="Presentation_person"
+                         className={this.state.dotClicked.indexOf(i) === -1 ? "Presentation_person clickable" : "Presentation_person clickable hide"}
                          style={{
                              background:'white',
-                             top:topPos,
-                             left:leftPos}}
-                         onClick={this.test}
+                             top:topPos+'px',
+                             left:leftPos+'px'}}
+                         onClick={(e)=>this.onDotClicked(i, topPos, leftPos, e)} // send the refs
                     />)
             }else{
                 guest.push(
                     <div key={i.toString()}
-                        className="Presentation_person"
-                        style={{
-                            background:'rgba(255,255,255, 0.2)',
-                            top:topPos,
-                            left:leftPos}}
-                        onClick={this.state.greetingNb>i?this.test:null}
+                         className="Presentation_person"
+                         style={{
+                             background:'rgba(255,255,255, 0.2)',
+                             top:topPos+'px',
+                             left:leftPos+'px'}}
+                         onClick={this.state.greetingNb>i?this.test:null}
                     />)
             }
         }
         return guest
+    };
+    onDotClicked=(i, posTop, posLeft, e)=>{
+        let dots = this.state.dotClicked;
+        dots.push(i);
+        let pos = [{
+            top:posTop,
+            left:posLeft
+        }];
+        if(this.state.canClickOnDot){
+            this.setState({
+                dotClicked: dots,
+                dotPositions:pos,
+                displayInput:true,
+                canClickOnDot:false
+            }, console.log(this.state.dotPositions));
+        }
+    };
+    displayPersonalizationInput=()=>{
+        // TODO get the questions,
+        // TODO get a random number in the questions empty --> check in the store if personalization already set
+        let form = this.state.personalizationsQuestions[2];
+        let questionInput = [];
+            if(this.state.dotPositions){
+                if(this.state.dotPositions[0].top&&this.state.dotPositions[0].left){
+                    questionInput.push(
+                        <div key={1}
+                             className='questionInput__container'
+                             style={{top:this.state.dotPositions[0].top+'px', left:this.state.dotPositions[0].left+'px'}}>
+                            <h3>{form.question}</h3>
+                            <div className={this.state.displayInput ? 'input__container animate-input': 'input__container'}>
+                                <div className="input__box">
+                                    <div className="input-border">
+                                        <input type="text"
+                                               value={this.state.currentInput}
+                                               placeholder={form.answerLabel}
+                                               onChange={this.handleChange}
+                                        />
+                                    </div>
+                                    <button className={this.state.inputNotEmpty ? 'btn btn__input border-white': 'btn btn__input border-white empty'}
+                                            onClick={this.state.currentInput ? (e)=>this.validateInput(e):null}>
+                                        <span>OK</span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>);
+                    }
+                }
+        return questionInput
+    };
+    handleChange = (event) => {
+        this.setState({
+            currentInput: event.target.value
+        },()=>{
+            console.log(this.state.currentInput.length>0)
+            if(this.state.currentInput.length>0){
+                this.setState({
+                    inputNotEmpty:true
+                })
+            }else{
+                this.setState({
+                    inputNotEmpty:false
+                })
+            }
+
+        });
+
+    };
+    validateInput = ( event) => {
+        // TODO display first letter
+        let newGreetedGuest = this.state.greetedGuests;
+        // if(this.currentInput !== ''){
+            newGreetedGuest.push({
+                name:this.state.currentInput,
+                top:this.state.dotPositions[0].top-20+'px',
+                left:this.state.dotPositions[0].left+20
+            });
+
+            this.setState({
+                displayInput : false,
+                inputNotEmpty:false,
+                canClickOnDot:true,
+                currentInput:'',
+                greetedGuests:newGreetedGuest
+            }, console.log(this.state.greetedGuests))
+        // }
+    };
+
+    displayGreetingGuests = () => {
+        let guests = [];
+        if(this.state.greetedGuests && this.state.greetedGuests.length>0){
+            for(let i = 0; i<this.state.greetedGuests.length;i++){
+                let firstLetter = this.state.greetedGuests[i].name.charAt(0);
+                let key = "h";
+                guests.push(<div>
+                    <div key={key}
+                         className="Presentation_person greeted__guests"
+                         style={{
+                             top:this.state.greetedGuests[i].top,
+                             left:this.state.greetedGuests[i].left,}}>
+                        <span>{firstLetter}</span>
+                    </div>
+                </div>)
+            }
+        }
+        return guests
     }
 
     render () {
         return(
             <div className="Presentation">
                 {this.state.positions ? this.displayGuest() : null}
+                <div>
+                    {
+                        this.state.displayInput && this.state.dotPositions ?
+                            this.displayPersonalizationInput(this.state.dotPositions) : null
+                    }
+                </div>
+                <div className="guest">
+                    {
+                        this.state.greetedGuests ?
+                            this.displayGreetingGuests() : null
+                    }
+                </div>
             </div>
         )
     }
 }
 export default Presentation;
-

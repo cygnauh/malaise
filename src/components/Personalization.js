@@ -16,7 +16,7 @@ class Personalization extends Component {
         super(props);
         this.state = {
             render:'',
-            episode:'cjqbi7txpwd180167t0flrl7g',
+            episode:'cjqpdox0gyhpb0183ywm4qts0',
             questionIndex:0,
             values:[],
             // personalizations:[],
@@ -51,34 +51,26 @@ class Personalization extends Component {
     personalizationQuestion = (data) => {
         //reveice data, show first question, register anwser, show next question
         let questions=[];
-        let paramsP = data.Episode.personalizations;
-        for(let i=0; i<paramsP.length; i++){
-            questions.push(
-                <div key={i.toString()}>
-                    <h2>
-                        {paramsP[i].question}
-                    </h2>
-                    <input type="text"
-                           value={this.state.values[i] ? this.state.values[i] : ""}
-                           placeholder={paramsP[i].answerLabel}
-                           onChange={(e)=>this.handleChange(i,paramsP, e)}
-                           onKeyPress={(e) => this.validateAnswer(i, paramsP, this.state.values[i], e)}
-                    />
-                </div>)
+        let paramsP=null;
+        if(data.Episode&&data.Episode.personalizations){
+            paramsP = data.Episode.personalizations;
+            for(let i=0; i<paramsP.length; i++){
+                questions.push(
+                    <div key={i.toString()}>
+                        <h2>
+                            {paramsP[i].question}
+                        </h2>
+                        <input type="text"
+                               value={this.state.values[i] ? this.state.values[i] : ""}
+                               placeholder={paramsP[i].answerLabel}
+                               onChange={(e)=>this.handleChange(i,paramsP, e)}
+                               onKeyPress={(e) => this.validateAnswer(i, paramsP, this.state.values[i], e)}
+                        />
+                    </div>)
+            }
         }
         return questions
     };
-    // navigationDot(currentPosition, dotNumbers){
-    //     let dots=[];
-    //     for(let i=0; i<dotNumbers; i++){
-    //         dots.push(
-    //             <div key={i.toString()}
-    //                  className={i <= currentPosition ? 'navigation-dot dot-fill': 'navigation-dot'}
-    //             />
-    //         )
-    //     }
-    //     return dots
-    // }
     validateAnswer = (i, params, answer, event) => {
         // if(event.key === 'Enter'){
         //     console.log('enter press here! ');
@@ -105,20 +97,25 @@ class Personalization extends Component {
                         </div>
                     )}
                 </UserContext.Consumer>
-                <Query query={getEpisode} variables={{ id : this.state.episode }}>
-                    {({ loading, error, data }) => {
-                        if (loading) return (<div>loader</div>);
-                        if (error) return `Error!: ${error}`;
-                        return (
-                            <div>{data.Episode.summary}
-                                <div className="questionP">{this.personalizationQuestion(data)}</div>
-                                <button onClick={()=>this.fillWithDefaultNames(data)}>passer</button>
+                {
+                    this.state.episode?
+                        (<Query query={getEpisode} variables={{ id : this.state.episode }}>
+                        {({ loading, error, data }) => {
+                            if (loading) return (<div>loader</div>);
+                            if (error) return `Error!: ${error}`;
+                            return (
+                                <div>
+                                    {data.Episode&&data.Episode.summary?data.Episode.summary:null}
+                                    <div className="questionP">{this.personalizationQuestion(data)}</div>
+                                    <button onClick={()=>this.fillWithDefaultNames(data)}>passer</button>
 
-                                {/*<div className="nav-dot">{this.navigationDot(this.state.questionIndex,3)}</div>*/}
-                            </div>
-                        );
-                    }}
-                </Query>
+                                    {/*<div className="nav-dot">{this.navigationDot(this.state.questionIndex,3)}</div>*/}
+                                </div>
+                            );
+                        }}
+                        </Query>):null
+                }
+
             </div>
         )
     }
