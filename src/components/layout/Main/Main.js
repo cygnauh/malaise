@@ -8,6 +8,7 @@ import Dictionnary from "../../pages/Dictionnary";
 import StartProcess from "../../StartProcess";
 import Hours from "../../interactions/Hours";
 import Presentation from "../../interactions/Presentation/Presentation";
+import Personalization from "../../Personalization";
 
 const firstChild = props => {
     const childrenArray = React.Children.toArray(props.children);
@@ -34,7 +35,8 @@ class Main extends Component {
                                 <Route path="/catalogue" render={(props) => <Catalogue {...props} episodes={data.allEpisodes} />} />
                                 <Route path="/dictionnary" component={Dictionnary} />
                                 <Route path="/hours" component={Hours} />
-                                <Route path="/presentation" component={Presentation} />
+                                <Route path="/presentation" component={Personalization} />
+                                {/*<Route path="/presentation" component={Presentation} />*/}
                             </Switch>
                         </main>
                     );
