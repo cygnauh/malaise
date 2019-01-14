@@ -1,0 +1,34 @@
+@import '../variables/index.scss';
+
+* {
+  box-sizing: border-box;
+}
+body, html {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  font-family: $font__archivo;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: $color__bg;
+  color: $color__white;
+}
+h1, h2, h3, h4, h5, h6, ul, ol, li, a, p {
+  margin:0;
+  padding:0;
+}
+ul, ol, li {
+  list-style: none;
+}
+a {
+  text-decoration: none;
+  color: $color__white;
+}
+input:focus, textarea:focus, button:focus, button:active {
+  outline: none;
+}
+#root, .wrapper-container {
+  width: 100%;
+  height: 100%;
+}

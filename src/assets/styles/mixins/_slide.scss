@@ -1,0 +1,4 @@
+@mixin slide($totalWidth, $widthToRemove){
+  $widthToSlide: calc(#{$widthToRemove} - #{$totalWidth});
+  transform: translateX(#{$widthToSlide});
+}

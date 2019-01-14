@@ -1,13 +1,13 @@
+import React, { Component } from 'react';
 import './style.scss';
-import React from 'react';
-import Navigation from "../Navigation/Navigation";
 
-class Header extends React.Component {
+class Header extends Component {
     render() {
         return (
             <header className="Header">
-                <h1 className="Header__logo">malaise.</h1>
-                <Navigation />
+                <div className="Header__logo">
+                    <img className="Header__icon" src={require('../../../assets/icons/logo__white.png')} />
+                </div>
             </header>
         )
     }

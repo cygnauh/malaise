@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { SoundContext } from "../../store/SoundProvider";
-import './dictionnary.scss';
+import './style.scss';
+import { SoundContext } from "../../../store/SoundProvider";
 
 class Dictionnary extends Component {
 

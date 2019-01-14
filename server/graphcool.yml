@@ -1,6 +1,6 @@
 # Welcome to Graphcool!
 #
-# This file is the main config file for your Graphcool Service.
+# This file is the main variables file for your Graphcool Service.
 # It's very minimal at this point and uses default values.
 # We've included a hello world function here.
 # Just run `graphcool deploy` to have the first running Graphcool Service.

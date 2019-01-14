@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import styled from 'styled-components'
-import './presentation.scss';
+import './style.scss';
+// characters introduction to users
 
 class Presentation extends Component {
     constructor() {
