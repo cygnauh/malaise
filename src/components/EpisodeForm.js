@@ -69,7 +69,8 @@ class EpisodeForm extends Component {
             for(let i=0; i<this.state[value].length; i++){
                 options.push(
                     <div key={i.toString()}
-                         className={this.state[value+'Selected'] === this.state[value][i] ? 'episode__form__option selected': 'episode__form__option'}
+                         className={this.state[value+'Selected'] === this.state[value][i] ?
+                             'episode__form__option selected': 'episode__form__option'}
                          onClick={() => this.onClickOption(this.state[value][i], value)}>
                         {this.state[value][i]}
                     </div>
@@ -92,19 +93,19 @@ class EpisodeForm extends Component {
             this.setState({placeSelected: value},()=>{
                 //send to SoundProvider the sound
                 this.context.registerPlaceSound(placeSound);
-                console.log("placeSound");
-                console.log(placeSound);
                 this.showEntourageRelated()
             });
         } else {
-            this.setState({entourageSelected: value});
+            this.setState({entourageSelected: value}, ()=>console.log(value, "value"));
         }
     };
     showEntourageRelated = () => {
         let array = [];
         for(let i=0; i<this.state.episodes.length; i++){
             if(this.state.episodes[i].place === this.state.placeSelected){
-                array.push(this.state.episodes[i].entourage)
+                if(array.indexOf(this.state.episodes[i].entourage)===-1){ // TODO remove doublon
+                    array.push(this.state.episodes[i].entourage)
+                }
             }
         }
         this.setState({entourage: array});
