@@ -62,25 +62,18 @@
     transform: translate(-50%,-50%);
     width: 100%;
     opacity: 1;
-
-    &:first-child {
-      z-index: 2;
-    }
-
-    &:last-child {
-      transition: opacity 3s ease;
-    }
-
+    z-index: 2;
+    transition: opacity 1s 0s;
   }
 
   &__logo {
-    width: 400px;
-    margin-bottom: 80px;
+    width: 350px;
+    margin-bottom: 50px;
   }
 
   &__description {
     font-size: 18px;
-    max-width: 450px;
+    max-width: 400px;
     line-height: 25px;
     margin: 0 auto 80px auto;
     font-family: "Times New Roman";
@@ -108,8 +101,33 @@
 
   }
 
-  &__sound {
+  &__instructions {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    z-index: 2;
+    opacity: 1;
+    transition: opacity 2s 1.1s;
+    transform: translate(-50%, -50%);
 
+    .instructions {
+
+      &__content {
+
+      }
+
+      &__text {
+        text-align: center;
+      }
+
+    }
+
+  }
+
+  &__hide {
+    opacity: 0;
+    z-index: 1;
+    transition: opacity 1s 0s;
   }
 
 }

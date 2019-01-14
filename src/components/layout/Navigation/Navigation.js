@@ -26,7 +26,7 @@ class Navigation extends React.Component {
 
     render() {
         return (
-            <div className={this.state.nav ? "Navigation Navigation--open" : "Navigation"}>
+            <nav className={this.state.nav ? "Navigation Navigation--open" : "Navigation"}>
                 <div className="Navigation__container">
                     <div className="Navigation__main">
                         <div className="Navigation__header">
@@ -95,7 +95,7 @@ class Navigation extends React.Component {
                         <div className="Navigation__action-cta">+</div>
                     </div>
                 </div>
-            </div>
+            </nav>
         )
     }
 }

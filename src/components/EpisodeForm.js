@@ -2,9 +2,6 @@ import React, { Component } from 'react';
 import { UserContext } from "../store/UserProvider";
 import { SoundContext } from "../store/SoundProvider";
 import { getPlaceSounds } from '../graphql/queries'
-import { Query } from "react-apollo";
-import ReactFullpage from '@fullpage/react-fullpage';
-import Personalization from "./Personalization";
 import './episodeForm.scss';
 
 // this component help to display the form to the user
@@ -16,9 +13,6 @@ import './episodeForm.scss';
 // 6) add to the store the episode option chosen
 // 7) display the selected
 
-const pluginWrapper = () => {
-    require('fullpage.js/vendors/scrolloverflow');
-};
 class EpisodeForm extends Component {
     constructor(props){
         super(props);
@@ -33,14 +27,11 @@ class EpisodeForm extends Component {
             placesSounds:[],
             episodeId:null
         };
-        // console.log(this.state.episodes)
     }
     componentDidMount(){
         this.formatPlaces()
     }
-    // componentWillMount(){
-    //     console.log(this.state.episodes);
-    // }
+
     formatPlaces = () => { //remove the doublon place & extract places sounds
         let array = [];
         let placeSounds = [];
@@ -138,47 +129,40 @@ class EpisodeForm extends Component {
             <div className="episodeForm">
                 {!this.state.episodes? <p>data is loading, please make a loader</p> : null}
                 {this.state.episodes?
-                    <ReactFullpage
-                        pluginWrapper={pluginWrapper}
-                        render={(fullpageApi) => {
-                            return (
-                                <ReactFullpage.Wrapper>
-                                    <div className="episodeForm__step section" data-step="1">
-                                        <h2>Comment tu te sens ?</h2>
+                    <div className="episodeForm__container">
+                        <div className="episodeForm__step section" data-step="1">
+                            <h2>Comment tu te sens ?</h2>
+                            <div>
+                                <span>Fatigué(e)</span>
+                                <input type="range" min="0" max="4" step={"1"}
+                                       value={this.state.value} onChange={this.handleChange} />
+                                <span>Super bien</span>
+                            </div>
+                            <button className="btn btn__next-step">Suivant</button>
+                        </div>
+                        <div className="episodeForm__step section" data-step="2">
+                            <h2>Où veux-tu aller ?</h2>
+                            <div>{this.createOption('place')}</div>
+                            <button className="btn btn__next-step">Suivant</button>
+                        </div>
+                        <div className="episodeForm__step section" data-step="3">
+                            <UserContext.Consumer>
+                                {({episode, setEpisode}) => (
+                                    <div>
                                         <div>
-                                            <span>Fatigué(e)</span>
-                                            <input type="range" min="0" max="4" step={"1"}
-                                                   value={this.state.value} onChange={this.handleChange} />
-                                            <span>Super bien</span>
+                                            <h2> Avec qui ?</h2>
+                                            {this.createOption('entourage')}
+                                            <button
+                                                className="btn btn__form-validation"
+                                                onClick={()=>setEpisode(this.validateLastQuestion({id:'test'}))}>
+                                                Valider
+                                            </button>
                                         </div>
-                                        <button className="btn btn__next-step">Suivant</button>
-                                     </div>
-                                    <div className="episodeForm__step section" data-step="2">
-                                        <h2>Où veux-tu aller ?</h2>
-                                        <div>{this.createOption('place')}</div>
-                                        <button className="btn btn__next-step">Suivant</button>
                                     </div>
-                                    <div className="episodeForm__step section" data-step="3">
-                                        <UserContext.Consumer>
-                                            {({episode, setEpisode}) => (
-                                                <div>
-                                                    <div>
-                                                        <h2> Avec qui ?</h2>
-                                                        {this.createOption('entourage')}
-                                                        <button
-                                                            className="btn btn__form-validation"
-                                                            onClick={()=>setEpisode(this.validateLastQuestion({id:'test'}))}>
-                                                            Valider
-                                                        </button>
-                                                    </div>
-                                                </div>
-                                            )}
-                                        </UserContext.Consumer>
-                                    </div>
-                                </ReactFullpage.Wrapper>
-                            );
-                        }}
-                    />
+                                )}
+                            </UserContext.Consumer>
+                        </div>
+                    </div>
                     : null}
             </div>
         )

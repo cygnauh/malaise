@@ -16,7 +16,7 @@ const App = () => (
     <ApolloProvider client={client}>
         <UserProvider>
             <SoundProvider>
-                {/*<Navigation />*/}
+                <Navigation />
                 <Main />
             </SoundProvider>
         </UserProvider>

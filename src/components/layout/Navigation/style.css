@@ -144,7 +144,7 @@ input:focus, textarea:focus, button:focus, button:active {
       transition: transform 0.8s ease; }
   .Navigation__footer {
     width: 100%;
-    height: calc(100% - 550px);
+    height: calc(100% - 560px);
     display: flex;
     align-items: center;
     justify-content: flex-end; }

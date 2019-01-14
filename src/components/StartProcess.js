@@ -4,27 +4,25 @@ import EpisodeSelection from "./EpisodeSelection";
 
 class StartProcess extends Component {
 
-    constructor(){
-        super();
+    constructor(props){
+        super(props);
         this.state = {
-            render:'',
-            // home:false
             home:true
         }
-
     }
-    handleClick = () => {
+
+    handleClickNext = () => {
         console.log('clicked');
         this.setState({
             home:false
         })
-    };
+    }
 
     render () {
         console.log(this.state);
         return (
             <div className="Start-process wrapper-container">
-                {this.state.home ? <Homepage onButtonPressed={this.handleClick} /> : <EpisodeSelection /> }
+                {this.state.home ? <Homepage onButtonPressed={this.handleClickNext} /> : <EpisodeSelection /> }
             </div>
         )
     }
