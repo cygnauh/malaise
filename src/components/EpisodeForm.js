@@ -1,12 +1,3 @@
-// this component help to display the form to the user
-// 1) waiting for props Data ( getEpisodes : allEpisodes )
-// 2) if no props : loader
-// 3) if props : display question
-// 4) on question entered, filter the props data object to display next question
-// 5) handle questions in a JSON maybe.
-// 6) add to the store the episode option chosen
-// 7) display the selected
-
 import React, { Component } from 'react';
 import { UserContext } from "../store/UserProvider";
 import { SoundContext } from "../store/SoundProvider";
@@ -15,6 +6,15 @@ import { Query } from "react-apollo";
 import ReactFullpage from '@fullpage/react-fullpage';
 import Personalization from "./Personalization";
 import './episodeForm.scss';
+
+// this component help to display the form to the user
+// 1) waiting for props Data ( getEpisodes : allEpisodes )
+// 2) if no props : loader
+// 3) if props : display question
+// 4) on question entered, filter the props data object to display next question
+// 5) handle questions in a JSON maybe.
+// 6) add to the store the episode option chosen
+// 7) display the selected
 
 const pluginWrapper = () => {
     require('fullpage.js/vendors/scrolloverflow');

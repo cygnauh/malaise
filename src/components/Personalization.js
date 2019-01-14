@@ -17,7 +17,7 @@ class Personalization extends Component {
         super(props);
         this.state = {
             render:'',
-            episode:'cjqw7p336zhuo0167rsekzvnq',
+            episode:'cjqwfe1kj1j2x0122tixfvb5i',
             questionIndex:0,
             values:[],
             // personalizations:[],
@@ -36,7 +36,7 @@ class Personalization extends Component {
     // }
 
     componentWillMount(){
-        console.log(this.context);
+        // console.log(this.context);
     }
     handleChange = (i, params, event) => {
         let pers = [];
@@ -47,14 +47,16 @@ class Personalization extends Component {
             pers[params[i].name] = this.state.values[i];
             this.context.setPersonalization(pers);
         });
-        setTimeout(()=>{console.log(this.context.personalizations)},0)
+        setTimeout(()=>{
+            // console.log(this.context.personalizations)
+        },0)
     };
     personalizationQuestion = (data) => {
         //reveice data, show first question, register anwser, show next question
         let questions=[];
         let paramsP=null;
         if(data.Episode&&data.Episode.personalizations){
-            console.log(data.Episode.personalizations)
+            // console.log(data.Episode.personalizations)
             paramsP = data.Episode.personalizations;
             // for(let i=0; i<paramsP.length; i++){
             //     questions.push(
@@ -89,6 +91,20 @@ class Personalization extends Component {
     //     this.context.setPersonalization(pers);
     //     setTimeout(()=>{console.log(this.context.personalizations)},0)
     // };
+    presentationQuestions = (data) => {
+        let questions = [];
+        if(data){
+            // console.log('data');
+            // console.log(data.Episode.personalizations);
+            for(let i = 0; i<data.Episode.personalizations.length;i++){
+                if(data.Episode.personalizations[i].name!=="hote"){
+                    questions.push(data.Episode.personalizations[i])
+                }
+            }
+        }
+        // console.log(questions);
+        return questions
+    };
     render () {
         return(
             <div>
@@ -105,11 +121,13 @@ class Personalization extends Component {
                         {({ loading, error, data }) => {
                             if (loading) return (<div>loader</div>);
                             if (error) return `Error!: ${error}`;
+                            // this.presentationQuestions(data)
                             return (
                                 <div>
                                     {/*{data.Episode&&data.Episode.summary?data.Episode.summary:null}*/}
                                     <div className="questionP">{this.personalizationQuestion(data)}
-                                        <Presentation questions={data} />
+                                        <Presentation questions={this.presentationQuestions(data)} />
+                                        {/*<Presentation questions={"hello"} />*/}
                                     </div>
 
                                     {/*<button onClick={()=>this.fillWithDefaultNames(data)}>passer</button>*/}
