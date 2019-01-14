@@ -40,7 +40,7 @@ class EpisodeForm extends Component {
     // componentWillMount(){
     //     console.log(this.state.episodes);
     // }
-    formatPlaces = () => { //remove the doublon place & extract places sounds TODO remove cl
+    formatPlaces = () => { //remove the place duplication & extract places sounds
         let array = [];
         let placeSounds = [];
         if(this.state.episodes){
@@ -103,7 +103,7 @@ class EpisodeForm extends Component {
         let array = [];
         for(let i=0; i<this.state.episodes.length; i++){
             if(this.state.episodes[i].place === this.state.placeSelected){
-                if(array.indexOf(this.state.episodes[i].entourage)===-1){ // TODO remove doublon
+                if(array.indexOf(this.state.episodes[i].entourage)===-1){ // TODO remove dupplication
                     array.push(this.state.episodes[i].entourage)
                 }
             }
