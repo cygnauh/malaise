@@ -92,7 +92,8 @@ class Presentation extends Component {
                              left:leftPos+'px'}}>
                         <span>{firstLetter}</span>
                     </div>)
-            }else if(i<this.state.greetingNb){
+            // }else if(i<this.state.greetingNb){
+            }else if(i<this.state.personalizationsQuestions.length){
                 guest.push(
                     <div key={i.toString()}
                          className={this.state.dotClicked.indexOf(i) === -1 ? "Presentation_person clickable" : "Presentation_person clickable hide"}
@@ -110,7 +111,7 @@ class Presentation extends Component {
                              background:'rgba(255,255,255, 0.2)',
                              top:topPos+'px',
                              left:leftPos+'px'}}
-                         onClick={this.state.greetingNb>i?this.test:null}
+                         onClick={this.state.personalizationsQuestions.length>i?this.test:null}
                     />)
             }
         }
@@ -150,8 +151,8 @@ class Presentation extends Component {
                                         <input type="text"
                                                value={this.state.currentInput}
                                                placeholder={form.answerLabel}
-                                               onChange={this.handleChange}
-                                        />
+                                               onKeyPress={this.handleKeyPress}
+                                               onChange={this.handleChange}/>
                                     </div>
                                     <button className={this.state.inputNotEmpty ? 'btn btn__input border-white': 'btn btn__input border-white empty'}
                                             onClick={this.state.currentInput ? (e)=>this.validateInput(e):null}>
@@ -164,11 +165,16 @@ class Presentation extends Component {
                 }
         return questionInput
     };
-    handleChange = (event) => {
+    handleKeyPress = (event) => {
+        if(event.key === 'Enter'){
+            console.log("entered");
+            this.validateInput(event)
+        }
+    }
+    handleChange = (event) => { // TODO should check on the input value : letter only
         this.setState({
             currentInput: event.target.value
         },()=>{
-            console.log(this.state.currentInput.length>0)
             if(this.state.currentInput.length>0){
                 this.setState({
                     inputNotEmpty:true
@@ -178,17 +184,15 @@ class Presentation extends Component {
                     inputNotEmpty:false
                 })
             }
-
         });
-
     };
-    validateInput = ( event) => {
+    validateInput = (event) => {
         // TODO display first letter
         let newGreetedGuest = this.state.greetedGuests;
         // if(this.currentInput !== ''){
             newGreetedGuest.push({
                 name:this.state.currentInput,
-                top:this.state.dotPositions[0].top-20+'px',
+                top:this.state.dotPositions[0].top-35+'px',
                 left:this.state.dotPositions[0].left+20
             });
 
@@ -207,16 +211,15 @@ class Presentation extends Component {
         if(this.state.greetedGuests && this.state.greetedGuests.length>0){
             for(let i = 0; i<this.state.greetedGuests.length;i++){
                 let firstLetter = this.state.greetedGuests[i].name.charAt(0);
-                let key = "h";
-                guests.push(<div>
-                    <div key={key}
+                // let key = i+"h";
+                guests.push(
+                    <div key={i.toString()}
                          className="Presentation_person greeted__guests"
                          style={{
                              top:this.state.greetedGuests[i].top,
                              left:this.state.greetedGuests[i].left,}}>
                         <span>{firstLetter}</span>
-                    </div>
-                </div>)
+                    </div>)
             }
         }
         return guests

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Query } from "react-apollo";
 import { getEpisode } from '../graphql/queries'
 import { UserContext } from "../store/UserProvider";
+import Presentation from "./interactions/Presentation/Presentation";
 import './personalization.scss';
 
 // 1) Fetch personalizations questions from data base : can use <Query> or <ApolloConsumer>
@@ -35,7 +36,7 @@ class Personalization extends Component {
     // }
 
     componentWillMount(){
-        console.log(this.context)
+        console.log(this.context);
     }
     handleChange = (i, params, event) => {
         let pers = [];
@@ -53,23 +54,24 @@ class Personalization extends Component {
         let questions=[];
         let paramsP=null;
         if(data.Episode&&data.Episode.personalizations){
+            console.log(data.Episode.personalizations)
             paramsP = data.Episode.personalizations;
-            for(let i=0; i<paramsP.length; i++){
-                questions.push(
-                    <div key={i.toString()}>
-                        <h2>
-                            {paramsP[i].question}
-                        </h2>
-                        <input type="text"
-                               value={this.state.values[i] ? this.state.values[i] : ""}
-                               placeholder={paramsP[i].answerLabel}
-                               onChange={(e)=>this.handleChange(i,paramsP, e)}
-                               onKeyPress={(e) => this.validateAnswer(i, paramsP, this.state.values[i], e)}
-                        />
-                    </div>)
-            }
+            // for(let i=0; i<paramsP.length; i++){
+            //     questions.push(
+            //         <div key={i.toString()}>
+            //             <h2>
+            //                 {paramsP[i].question}
+            //             </h2>
+            //             <input type="text"
+            //                    value={this.state.values[i] ? this.state.values[i] : ""}
+            //                    placeholder={paramsP[i].answerLabel}
+            //                    onChange={(e)=>this.handleChange(i,paramsP, e)}
+            //                    onKeyPress={(e) => this.validateAnswer(i, paramsP, this.state.values[i], e)}
+            //             />
+            //         </div>)
+            // }
         }
-        return questions
+        // return questions
     };
     validateAnswer = (i, params, answer, event) => {
         // if(event.key === 'Enter'){
@@ -90,13 +92,13 @@ class Personalization extends Component {
     render () {
         return(
             <div>
-                <UserContext.Consumer>
-                    {({personalizations}) => (
-                        <div>
-                            <h1>test {personalizations.hote}!</h1>
-                        </div>
-                    )}
-                </UserContext.Consumer>
+                {/*<UserContext.Consumer>*/}
+                    {/*{({personalizations}) => (*/}
+                        {/*<div>*/}
+                            {/*<h1>test {personalizations.hote}!</h1>*/}
+                        {/*</div>*/}
+                    {/*)}*/}
+                {/*</UserContext.Consumer>*/}
                 {
                     this.state.episode?
                         (<Query query={getEpisode} variables={{ id : this.state.episode }}>
@@ -105,8 +107,11 @@ class Personalization extends Component {
                             if (error) return `Error!: ${error}`;
                             return (
                                 <div>
-                                    {data.Episode&&data.Episode.summary?data.Episode.summary:null}
-                                    <div className="questionP">{this.personalizationQuestion(data)}</div>
+                                    {/*{data.Episode&&data.Episode.summary?data.Episode.summary:null}*/}
+                                    <div className="questionP">{this.personalizationQuestion(data)}
+                                        <Presentation questions={data} />
+                                    </div>
+
                                     <button onClick={()=>this.fillWithDefaultNames(data)}>passer</button>
 
                                     {/*<div className="nav-dot">{this.navigationDot(this.state.questionIndex,3)}</div>*/}

@@ -6,7 +6,8 @@ export const SoundContext = createContext({
     placeSounds: [],
     episodeSounds:null,
     setPlaceSounds: () => {},
-    loadSound:() => {}
+    loadSound:() => {},
+    playDoorBell:() => {}
 });
 class SoundProvider extends Component {
     state = {
@@ -37,6 +38,16 @@ class SoundProvider extends Component {
                     this.state.placeSoundtrack.play();
                 }
             );
+        },
+        playDoorBell:() => {
+            let url = 'https://circegrand.fr/etude/gobelins/malaise/media/sounds/doorbell.mp3';
+            let stream;
+            stream = new Howl({
+                src: [url],
+                ext: ['mp3'],
+                html5: true
+            });
+            stream.play()
         }
     };
 

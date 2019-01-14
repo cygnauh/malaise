@@ -1,14 +1,5 @@
 @import '../../../assets/styles/index.scss';
 
-@-webkit-keyframes rotation {
-  from {
-    -webkit-transform: rotate(0deg);
-  }
-  to {
-    -webkit-transform: rotate(-360deg);
-  }
-}
-
 @-webkit-keyframes horizontallyScroll {
   0%, 100% {
     margin-left:0;
@@ -118,45 +109,6 @@
   }
 
   &__sound {
-    display: flex;
-    justify-content: center;
-    align-content: center;
-    position: relative;
-    width: 120px;
-    height: 120px;
-    margin: 0 auto 50px auto;
-
-    img {
-      width: 45px;
-      position: absolute;
-      top:50%;
-      left:50%;
-      transform: translate(-50%, -50%);
-      margin-top: -5px;
-    }
-
-    &-rotation {
-      -webkit-animation: rotation 12s infinite linear;
-    }
-
-    &-letters {
-      @include rotated-text();
-      position: relative;
-      width: 60px;
-      height: 60px;
-      font-size: 10px;
-      margin-left: -10px;
-
-      div {
-        position: absolute;
-        transform-origin: bottom center;
-        bottom: 0;
-        left: 50%;
-        width: 10px;
-        height: 60px;
-      }
-
-    }
 
   }
 

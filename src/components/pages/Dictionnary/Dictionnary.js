@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './style.scss';
+import { SoundContext } from "../../../store/SoundProvider";
 
 class Dictionnary extends Component {
 
@@ -29,6 +30,8 @@ class Dictionnary extends Component {
                 });
             }.bind(this), 200);
         }
+
+        this.context.playDoorBell(); // TODO handle, only on the second click
     }
 
     render() {
@@ -58,5 +61,5 @@ class Dictionnary extends Component {
     }
 
 }
-
+Dictionnary.contextType = SoundContext;
 export default Dictionnary;

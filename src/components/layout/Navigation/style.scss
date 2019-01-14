@@ -25,7 +25,7 @@
     align-items:center;
     height: 60px;
     padding: 0 50px;
-    margin-bottom: 50px;
+    margin-bottom: 20px;
 
     &-logo {
       display: flex;
@@ -165,7 +165,7 @@
 
   &__footer {
     width: 100%;
-    height: calc(100% - 590px);
+    height: calc(100% - 550px);
     display: flex;
     align-items: center;
     justify-content: flex-end;
@@ -178,7 +178,7 @@
       margin: 0 25px;
 
       img {
-        height: 30px;
+        height: 20px;
       }
 
     }

@@ -67,7 +67,7 @@ input:focus, textarea:focus, button:focus, button:active {
     align-items: center;
     height: 60px;
     padding: 0 50px;
-    margin-bottom: 50px; }
+    margin-bottom: 20px; }
     .Navigation__header-logo {
       display: flex;
       align-items: center; }
@@ -144,7 +144,7 @@ input:focus, textarea:focus, button:focus, button:active {
       transition: transform 0.8s ease; }
   .Navigation__footer {
     width: 100%;
-    height: calc(100% - 590px);
+    height: calc(100% - 550px);
     display: flex;
     align-items: center;
     justify-content: flex-end; }
@@ -153,7 +153,7 @@ input:focus, textarea:focus, button:focus, button:active {
     .Navigation__socials-item {
       margin: 0 25px; }
       .Navigation__socials-item img {
-        height: 30px; }
+        height: 20px; }
 
 @media screen and (max-width: 1050px) {
   .Navigation__item {
