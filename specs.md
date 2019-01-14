@@ -1,5 +1,7 @@
 # Malaise - Spécifications techniques
+
 <br>
+
 ## I - Contexte
 
 ### Une expérience sonore interactive.
