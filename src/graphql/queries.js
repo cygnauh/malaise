@@ -12,8 +12,9 @@ export const getEpisodesAndPlaceSounds = gql`
             entourage
         },
         allSounds{
-            name
-            url
+            name,
+            url,
+            type
         }
     }
 `;
@@ -42,8 +43,17 @@ export const getEpisode = gql`
             personalizations{
                 name,
                 question,
-                answerLabel,
-                default
+                answerLabel
+                type
+            },
+            sounds{
+                name,
+                url,
+                type,
+                soundsequences{
+                    beginAt,
+                    endAt
+                }
             }
         }
     }

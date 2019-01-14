@@ -17,7 +17,7 @@ class Personalization extends Component {
         super(props);
         this.state = {
             render:'',
-            episode:'cjqpdox0gyhpb0183ywm4qts0',
+            episode:'cjqw7p336zhuo0167rsekzvnq',
             questionIndex:0,
             values:[],
             // personalizations:[],
@@ -79,16 +79,16 @@ class Personalization extends Component {
         // }
         // ----------- TODO go next question animation
     };
-    fillWithDefaultNames = (data) => {
-        let pers = [];
-        // pers.push(this.state.personalizations);
-        console.log(data.Episode.personalizations);
-        for(let i=0;i<data.Episode.personalizations.length;i++){
-            pers[data.Episode.personalizations[i].name] = data.Episode.personalizations[i].default;
-        }
-        this.context.setPersonalization(pers);
-        setTimeout(()=>{console.log(this.context.personalizations)},0)
-    };
+    // fillWithDefaultNames = (data) => {
+    //     let pers = [];
+    //     // pers.push(this.state.personalizations);
+    //     console.log(data.Episode.personalizations);
+    //     for(let i=0;i<data.Episode.personalizations.length;i++){
+    //         pers[data.Episode.personalizations[i].name] = data.Episode.personalizations[i].default;
+    //     }
+    //     this.context.setPersonalization(pers);
+    //     setTimeout(()=>{console.log(this.context.personalizations)},0)
+    // };
     render () {
         return(
             <div>
@@ -112,7 +112,7 @@ class Personalization extends Component {
                                         <Presentation questions={data} />
                                     </div>
 
-                                    <button onClick={()=>this.fillWithDefaultNames(data)}>passer</button>
+                                    {/*<button onClick={()=>this.fillWithDefaultNames(data)}>passer</button>*/}
 
                                     {/*<div className="nav-dot">{this.navigationDot(this.state.questionIndex,3)}</div>*/}
                                 </div>
@@ -127,4 +127,3 @@ class Personalization extends Component {
 }
 Personalization.contextType = UserContext;
 export default Personalization;
-
