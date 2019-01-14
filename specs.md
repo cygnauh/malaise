@@ -83,7 +83,7 @@ Pour la gestion des données et l’échange entre le serveur et l’application
 <br>
 
 ### Scope fonctionnel
-[![](https://drive.google.com/open?id=1W5rDi2DqeiqhszyGS3KRpWGiscJNfIVB)](https://drive.google.com/open?id=1W5rDi2DqeiqhszyGS3KRpWGiscJNfIVB)
+https://drive.google.com/open?id=1W5rDi2DqeiqhszyGS3KRpWGiscJNfIVB
 
 ### Schéma UML de la base de données
-[![](https://drive.google.com/open?id=1-kHnvQSh4qk32BPyNiMoQxtsxsnNOzoP)](https://drive.google.com/open?id=1-kHnvQSh4qk32BPyNiMoQxtsxsnNOzoP)
+https://drive.google.com/open?id=1-kHnvQSh4qk32BPyNiMoQxtsxsnNOzoP
