@@ -1,5 +1,5 @@
 # Malaise - Spécifications techniques
-
+<br>
 ## I - Contexte
 
 ### Une expérience sonore interactive.
@@ -13,7 +13,7 @@ On choisit d’utiliser React JS comme framework JS pour notre projet. Une techn
 ### HOWLER
 Afin de pouvoir gérer les pistes audio, nous allons utiliser la librairie Howler.js, principalement les features “Sprites Audio” et “Spatial Audio”. C’est une solution qui nous permettra d’utiliser simplement une seule bande son (appelé “Sprite audio”) que l’on pourra segmenter à notre guise, sans avoir différents assets audio qui risqueraient de ralentir le chargement et la performance de l’expérience.
 
-#### LOTTIE / WEBGL / CSS
+### LOTTIE / WEBGL / CSS
 Dans le but de gérer les animations de typographies, nous avons plusieurs moyens de génération ci-dessous, nous en choisirons un selon les contraintes graphiques :
 - Lottie,
 - Webgl pour créer de A à Z une animation complexe,
