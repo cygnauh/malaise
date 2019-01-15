@@ -4,8 +4,22 @@
 
   &__container {
 
+    position: relative;
+    width: 450px;
+    height: 80px;
+    margin: 0 auto;
+
     span {
-      margin: 0 2px;
+
+      text-align: center;
+
+      img {
+        margin: 0 30px;
+        &.AnimLogo__specialLetter {
+          margin-top: -20px;
+        }
+      }
+
     }
   }
 

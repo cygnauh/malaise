@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import $ from 'jquery';
 import "./style.scss";
 
 class AnimLogo extends Component {
@@ -10,12 +11,6 @@ class AnimLogo extends Component {
         }
 
         this.animWrapper = React.createRef();
-        console.log(this.animWrapper);
-
-
-
-        /*this.$el = this.logoWrapper;
-        this.$chars = this.initChars();
 
         this.mouseX = 0;
         this.mouseY = 0;
@@ -23,16 +18,25 @@ class AnimLogo extends Component {
         this.homeY = 0;
         this.forceX = 0;
         this.forceY = 0;
-        this.magnet = 200;
+        this.magnet = 1000;
 
         this.isUpdating = false;
         this.isEnabled = true;
 
         this.bind();
-        this.start();*/
+        this.start();
     }
 
-    /*updateFps = () => {
+    componentDidMount() {
+        this.$el = this.animWrapper.current;
+        this.$chars = this.initChars();
+    }
+
+    componentWillUnmount() {
+
+    }
+
+    updateFps = () => {
         if (!this.lastFrameTime) {
             this.lastFrameTime = Date.now();
             this.fps = 0;
@@ -65,24 +69,28 @@ class AnimLogo extends Component {
     initChars = () => {
 
         var self = this;
-        var $chars = this.$el.find('span');
+        var $chars = this.$el.querySelectorAll('span');
+        $chars =  Array.from($chars);
 
-        console.log('chars', $chars);
-
-        $chars.each(function(i, el) {
-            self.initChar($(el));
+        $chars.forEach(function(el) {
+            self.initChar(el);
         });
 
         return $chars;
+
     }
 
     initChar = ($el) => {
-        var pos = $el.position();
-        $el[0].dataset.homeX = parseInt(pos.left, 10);
-        $el[0].dataset.homeY = parseInt(pos.top, 10);
+        console.log($el.offsetLeft);
+        $el.dataset.homeX = parseInt($el.offsetLeft, 10);
+        $el.dataset.homeY = parseInt($el.offsetTop, 10);
+
+        console.log($el.dataset.homeX);
+        console.log($el.dataset.homeY);
 
         setTimeout(function() {
-            $el.css('position', 'absolute');
+            $el.style.position = "absolute";
+            console.log($el.style.position);
         }, 10);
     }
 
@@ -96,8 +104,8 @@ class AnimLogo extends Component {
 
         if (this.isEnabled && !isSlow) {
             this.isUpdating = true;
-            var $els = this.$chars.get();
-            this.writeCharUpdates($els, this.getCharUpdates($els))
+            var $els = this.$chars;
+            this.writeCharUpdates($els, this.getCharUpdates($els));
             this.isUpdating = false;
         }
 
@@ -142,17 +150,17 @@ class AnimLogo extends Component {
             $el.style.top = updates[i].top + 'px';
             $el.style.transform = updates[i].rotate;
         });
-    }*/
+    }
 
     render() {
         return (
             <div className="AnimLogo">
                 <div className="AnimLogo__container" ref={this.animWrapper}>
-                    <span><img src={require('../../../assets/icons/logo/logo_m.svg')}/></span>
+                    <span><img  src={require('../../../assets/icons/logo/logo_m.svg')}/></span>
                     <span><img src={require('../../../assets/icons/logo/logo_a.svg')}/></span>
-                    <span><img src={require('../../../assets/icons/logo/logo_l.svg')}/></span>
+                    <span><img className="AnimLogo__specialLetter" src={require('../../../assets/icons/logo/logo_l.svg')}/></span>
                     <span><img src={require('../../../assets/icons/logo/logo_a.svg')}/></span>
-                    <span><img src={require('../../../assets/icons/logo/logo_i.svg')}/></span>
+                    <span><img className="AnimLogo__specialLetter" src={require('../../../assets/icons/logo/logo_i.svg')}/></span>
                     <span><img src={require('../../../assets/icons/logo/logo_s.svg')}/></span>
                     <span><img src={require('../../../assets/icons/logo/logo_e.svg')}/></span>
                 </div>

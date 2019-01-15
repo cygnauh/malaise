@@ -146,11 +146,22 @@ input:focus, textarea:focus, button:focus, button:active {
     transition: opacity 2s 1.1s;
     transform: translate(-50%, -50%); }
     .Home__instructions .instructions {
+      width: 100%;
+      height: 100%;
       text-align: left; }
+      .Home__instructions .instructions__content {
+        position: relative;
+        width: 500px;
+        min-height: 150px; }
       .Home__instructions .instructions__text {
+        position: absolute;
         font-family: "Archivo Black", sans-serif;
         font-size: 25px;
-        line-height: 35px; }
+        line-height: 35px;
+        opacity: 0;
+        transition: opacity 1s ease; }
+        .Home__instructions .instructions__text--show {
+          opacity: 1; }
       .Home__instructions .instructions__next {
         border: 1px solid #ffffff;
         background: none;

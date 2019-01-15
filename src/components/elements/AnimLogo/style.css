@@ -48,7 +48,16 @@ input:focus, textarea:focus, button:focus, button:active {
   url('../fonts/happy-times/happy-times.woff') format('woff'),
   url('../fonts/happy-times/happy-times.ttf')  format('truetype');
 }*/
-.AnimLogo__container span {
-  margin: 0 2px; }
+.AnimLogo__container {
+  position: relative;
+  width: 450px;
+  height: 80px;
+  margin: 0 auto; }
+  .AnimLogo__container span {
+    text-align: center; }
+    .AnimLogo__container span img {
+      margin: 0 30px; }
+      .AnimLogo__container span img.AnimLogo__specialLetter {
+        margin-top: -20px; }
 
 /*# sourceMappingURL=style.css.map */

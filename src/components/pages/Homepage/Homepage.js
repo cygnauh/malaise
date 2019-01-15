@@ -29,6 +29,10 @@ class Homepage extends Component {
         });
     }
 
+    handleClickNext = (e) => {
+        console.log('handle click next');
+    }
+
     render() {
         return (
             <div className="Home">
@@ -59,12 +63,12 @@ class Homepage extends Component {
                                     </div>
                                 </div>
                                 <div className="instructions__content">
-                                    <div className="instructions__text" data-step="1">Malaise vous invite à vivre une expérience immersive à travers différents épisodes interactifs.</div>
-                                    {/*<div className="instructions__text" data-step="2">Au fil de l'expérience, vous rencontrerez des termes spécifiques à l'épisode qui se glisseront dans une boîte à mots.</div>
+                                    <div className="instructions__text instructions__text--show" data-step="1">Malaise vous invite à vivre une expérience immersive à travers différents épisodes interactifs.</div>
+                                    <div className="instructions__text" data-step="2">Au fil de l'expérience, vous rencontrerez des termes spécifiques à l'épisode qui se glisseront dans une boîte à mots.</div>
                                     <div className="instructions__text" data-step="3">Laissez vous guider et suivez les indications en bas de l'écran, tout au long de l'expérience.</div>
-                                    <div className="instructions__text" data-step="4"><SoundAlert /></div>*/}
+                                    <div className="instructions__text" data-step="4"><SoundAlert /></div>
                                 </div>
-                                <div className="instructions__icon">arrow</div>
+                                <button className="instructions__icon" onClick={this.handleClickNext}>arrow</button>
                                 <button className="instructions__next" onClick={this.props.onButtonPressed}>continuer</button>
                             </div>
                         </div>
