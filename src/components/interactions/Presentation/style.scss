@@ -16,13 +16,20 @@
     /*animation: wave 1.3s linear infinite;*/
     &.greeted__guests{
         background-color: transparent;
-        span{
-            text-transform: uppercase;
+        .firstName{
+            transition: all 2s ease-in-out;
+            //text-transform: uppercase;
             color: black;
             font-weight: bold;
             background: none;
             font-size: 50px;
             text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;
+            .nameLetter{
+                &.removeOpacity{
+                    opacity: 0;
+                    transition: all 2s ease-in-out;
+                }
+            }
         }
     }
     &.hide{
@@ -84,25 +91,25 @@
         justify-content: left;
         align-items: center;
         float: left;
-        input {
+        .nameInput {
             width: 100%;
             height: 50px;
             padding: 10px 0 10px 10px;
             background-color: transparent;
             color: white;
             font-size: 50px;
-            //text-transform: uppercase;
+            text-transform: capitalize;
             text-align: left;
             font-weight: bold;
             border: none;
             transition: all 0.5s ease;
         }
         input::first-letter{
-            text-transform: capitalize;
             color: red;
         }
-        input::placeholder {
+        .nameInput::placeholder {
             color: rgba(255,255,255,1);
+            text-transform: lowercase;
             //font-weight: bold;
             //font-size: 30px;
             text-align: left;

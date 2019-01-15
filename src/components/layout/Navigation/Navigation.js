@@ -31,10 +31,10 @@ class Navigation extends React.Component {
                     <div className="Navigation__main">
                         <div className="Navigation__header">
                             <Link to="/" className="Navigation__header-logo">
-                                <img className="Navigation__header-logo--icon" src={require('../../../assets/icons/logo__white.png')} />
+                                <img className="Navigation__header-logo--icon" src={require('../../../assets/icons/logo__white.png')} alt=""/>
                             </Link>
                             <Link to="/dictionnary" className="Navigation__header-box">
-                                <img className="Navigation__header-box--icon" src={require('../../../assets/icons/box.svg')} />
+                                <img className="Navigation__header-box--icon" src={require('../../../assets/icons/box.svg')} alt=""/>
                             </Link>
                         </div>
                         <ul className="Navigation__items">
@@ -46,7 +46,7 @@ class Navigation extends React.Component {
                                             accueil
                                         </div>
                                     </div>
-                                    <img className="item__icon" src={require('../../../assets/icons/smiley.svg')} />
+                                    <img className="item__icon" src={require('../../../assets/icons/smiley.svg')} alt=""/>
                                 </Link>
                             </li>
                             <li className="Navigation__item">
@@ -57,7 +57,7 @@ class Navigation extends React.Component {
                                             épisodes
                                         </div>
                                     </div>
-                                    <img className="item__icon" src={require('../../../assets/icons/smiley.svg')} />
+                                    <img className="item__icon" src={require('../../../assets/icons/smiley.svg')} alt=""/>
                                 </Link>
                             </li>
                             <li className="Navigation__item">
@@ -68,7 +68,7 @@ class Navigation extends React.Component {
                                             témoignages
                                         </div>
                                     </div>
-                                    <img className="item__icon" src={require('../../../assets/icons/smiley.svg')} />
+                                    <img className="item__icon" src={require('../../../assets/icons/smiley.svg')} alt=""/>
                                 </Link>
                             </li>
                             <li className="Navigation__item">
@@ -79,7 +79,7 @@ class Navigation extends React.Component {
                                             à propos
                                         </div>
                                     </div>
-                                    <img className="item__icon" src={require('../../../assets/icons/smiley.svg')} />
+                                    <img className="item__icon" src={require('../../../assets/icons/smiley.svg')} alt=""/>
                                 </Link>
                             </li>
                         </ul>

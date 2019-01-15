@@ -74,7 +74,7 @@ class SoundAlert extends Component {
                         <div className="char60"></div>
                     </div>
                 </div>
-                <img className="SoundAlert__icon" src={require('../../../assets/icons/headphones.png')} />
+                <img className="SoundAlert__icon" src={require('../../../assets/icons/headphones.png')} alt=""/>
             </div>
         )
     }

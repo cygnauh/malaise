@@ -7,7 +7,6 @@ import Catalogue from "../../pages/Catalogue/Catalogue";
 import Dictionnary from "../../pages/Dictionnary/Dictionnary";
 import StartProcess from "../../StartProcess";
 import Hours from "../../interactions/Hours";
-import Presentation from "../../interactions/Presentation/Presentation";
 import Personalization from "../../Personalization";
 
 const firstChild = props => {
@@ -36,7 +35,6 @@ class Main extends Component {
                                 <Route path="/dictionnary" component={Dictionnary} />
                                 <Route path="/hours" component={Hours} />
                                 <Route path="/presentation" component={Personalization} />
-                                {/*<Route path="/presentation" component={Presentation} />*/}
                             </Switch>
                         </main>
                     );

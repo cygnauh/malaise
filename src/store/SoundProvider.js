@@ -1,6 +1,6 @@
 // store/SoundProvider.js
 import React, { createContext, Component } from "react"; // on importe createContext qui servira à la création d'un ou plusieurs contextes
-import { Howl, Howler } from 'howler';
+import { Howl } from 'howler';
 import { UserContext } from "./UserProvider";
 //state and functions declarations
 export const SoundContext = createContext({
