@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import "./style.scss";
+import $ from 'jquery';
 import SoundAlert from "../../elements/SoundAlert/SoundAlert";
 import AnimLogo from "../../elements/AnimLogo/AnimLogo";
 import Lottie from 'react-lottie';
@@ -21,6 +22,9 @@ class Homepage extends Component {
                 preserveAspectRatio: 'xMidYMid slice'
             }
         };
+        this.state = {
+            currentPage : '1'
+        }
     }
 
     handleClickStart = (e) => {
@@ -29,8 +33,27 @@ class Homepage extends Component {
         });
     }
 
-    handleClickNext = (e) => {
-        console.log('handle click next');
+    handleClickNext = () => {
+        var $currentInstruction = $('.instructions__content').find('.instructions__text--current');
+        var $nextInstruction = $currentInstruction.next();
+
+        $currentInstruction.toggleClass('instructions__text--current');
+        $nextInstruction.toggleClass('instructions__text--current');
+
+        var nextPage = $nextInstruction.data('step');
+
+        setTimeout(() => {
+            this.setState({
+                currentPage : nextPage
+            });
+        }, 1000)
+
+
+        if($currentInstruction.is(':last-child')) {
+            $('.instructions__process').toggleClass('instructions__hide');
+            $('.instructions__end').toggleClass('instructions__hide');
+        }
+
     }
 
     render() {
@@ -56,20 +79,26 @@ class Homepage extends Component {
                         </div>
                         <div className={this.state.instructions ? "Home__instructions" : "Home__instructions  Home__hide"}>
                             <div className="instructions">
-                                <div className="instructions__pagination">
-                                    <div className="pagination">
-                                        <div className="pagination__currentPage">1</div>
-                                        <div className="pagination__pagesLength">3</div>
+                                <div className="instructions__container">
+                                    <div className="instructions__process">
+                                        <div className="instructions__pagination">
+                                            <div className="pagination">
+                                                <div className="pagination__currentPage">{this.state.currentPage }</div>
+                                                <div className="pagination__pagesLength">3</div>
+                                            </div>
+                                        </div>
+                                        <div className="instructions__content" ref={this.instructions}>
+                                            <div className="instructions__text instructions__text--current" data-step="1">Malaise vous invite à vivre une expérience immersive à travers différents épisodes interactifs.</div>
+                                            <div className="instructions__text" data-step="2">Au fil de l'expérience, vous rencontrerez des termes spécifiques à l'épisode qui se glisseront dans une boîte à mots.</div>
+                                            <div className="instructions__text" data-step="3">Laissez vous guider et suivez les indications en bas de l'écran, tout au long de l'expérience.</div>
+                                        </div>
+                                        <button className="instructions__arrow" onClick={this.handleClickNext}><img  src={require('../../../assets/icons/arrows/arrow_down.svg')}/></button>
+                                    </div>
+                                    <div className="instructions__end instructions__hide">
+                                        <SoundAlert />
+                                        <button className="instructions__next" onClick={this.props.onButtonPressed}>continuer</button>
                                     </div>
                                 </div>
-                                <div className="instructions__content">
-                                    <div className="instructions__text instructions__text--show" data-step="1">Malaise vous invite à vivre une expérience immersive à travers différents épisodes interactifs.</div>
-                                    <div className="instructions__text" data-step="2">Au fil de l'expérience, vous rencontrerez des termes spécifiques à l'épisode qui se glisseront dans une boîte à mots.</div>
-                                    <div className="instructions__text" data-step="3">Laissez vous guider et suivez les indications en bas de l'écran, tout au long de l'expérience.</div>
-                                    <div className="instructions__text" data-step="4"><SoundAlert /></div>
-                                </div>
-                                <button className="instructions__icon" onClick={this.handleClickNext}>arrow</button>
-                                <button className="instructions__next" onClick={this.props.onButtonPressed}>continuer</button>
                             </div>
                         </div>
                     </div>

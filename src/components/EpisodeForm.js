@@ -1,10 +1,7 @@
 import React, { Component } from 'react';
 import { UserContext } from "../store/UserProvider";
 import { SoundContext } from "../store/SoundProvider";
-import { getPlaceSounds } from '../graphql/queries'
-import { Query } from "react-apollo";
-import ReactFullpage from '@fullpage/react-fullpage';
-import Personalization from "./Personalization";
+// import { getPlaceSounds } from '../graphql/queries';
 import './episodeForm.scss';
 
 // this component help to display the form to the user
@@ -16,9 +13,6 @@ import './episodeForm.scss';
 // 6) add to the store the episode option chosen
 // 7) display the selected
 
-const pluginWrapper = () => {
-    require('fullpage.js/vendors/scrolloverflow');
-};
 class EpisodeForm extends Component {
     constructor(props){
         super(props);
