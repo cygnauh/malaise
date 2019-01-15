@@ -17,7 +17,7 @@ class Personalization extends Component {
         super(props);
         this.state = {
             render:'',
-            episode:'cjqpdox0gyhpb0183ywm4qts0',
+            episode:'cjqwfe1kj1j2x0122tixfvb5i',
             questionIndex:0,
             values:[],
             // personalizations:[],
@@ -36,7 +36,7 @@ class Personalization extends Component {
     // }
 
     componentWillMount(){
-        console.log(this.context);
+        // console.log(this.context);
     }
     handleChange = (i, params, event) => {
         let pers = [];
@@ -47,14 +47,16 @@ class Personalization extends Component {
             pers[params[i].name] = this.state.values[i];
             this.context.setPersonalization(pers);
         });
-        setTimeout(()=>{console.log(this.context.personalizations)},0)
+        setTimeout(()=>{
+            // console.log(this.context.personalizations)
+        },0)
     };
     personalizationQuestion = (data) => {
         //reveice data, show first question, register anwser, show next question
         let questions=[];
         let paramsP=null;
         if(data.Episode&&data.Episode.personalizations){
-            console.log(data.Episode.personalizations)
+            // console.log(data.Episode.personalizations)
             paramsP = data.Episode.personalizations;
             // for(let i=0; i<paramsP.length; i++){
             //     questions.push(
@@ -79,15 +81,29 @@ class Personalization extends Component {
         // }
         // ----------- TODO go next question animation
     };
-    fillWithDefaultNames = (data) => {
-        let pers = [];
-        // pers.push(this.state.personalizations);
-        console.log(data.Episode.personalizations);
-        for(let i=0;i<data.Episode.personalizations.length;i++){
-            pers[data.Episode.personalizations[i].name] = data.Episode.personalizations[i].default;
+    // fillWithDefaultNames = (data) => {
+    //     let pers = [];
+    //     // pers.push(this.state.personalizations);
+    //     console.log(data.Episode.personalizations);
+    //     for(let i=0;i<data.Episode.personalizations.length;i++){
+    //         pers[data.Episode.personalizations[i].name] = data.Episode.personalizations[i].default;
+    //     }
+    //     this.context.setPersonalization(pers);
+    //     setTimeout(()=>{console.log(this.context.personalizations)},0)
+    // };
+    presentationQuestions = (data) => {
+        let questions = [];
+        if(data){
+            // console.log('data');
+            // console.log(data.Episode.personalizations);
+            for(let i = 0; i<data.Episode.personalizations.length;i++){
+                if(data.Episode.personalizations[i].name!=="hote"){
+                    questions.push(data.Episode.personalizations[i])
+                }
+            }
         }
-        this.context.setPersonalization(pers);
-        setTimeout(()=>{console.log(this.context.personalizations)},0)
+        // console.log(questions);
+        return questions
     };
     render () {
         return(
@@ -105,14 +121,16 @@ class Personalization extends Component {
                         {({ loading, error, data }) => {
                             if (loading) return (<div>loader</div>);
                             if (error) return `Error!: ${error}`;
+                            // this.presentationQuestions(data)
                             return (
                                 <div>
                                     {/*{data.Episode&&data.Episode.summary?data.Episode.summary:null}*/}
                                     <div className="questionP">{this.personalizationQuestion(data)}
-                                        <Presentation questions={data} />
+                                        <Presentation questions={this.presentationQuestions(data)} />
+                                        {/*<Presentation questions={"hello"} />*/}
                                     </div>
 
-                                    <button onClick={()=>this.fillWithDefaultNames(data)}>passer</button>
+                                    {/*<button onClick={()=>this.fillWithDefaultNames(data)}>passer</button>*/}
 
                                     {/*<div className="nav-dot">{this.navigationDot(this.state.questionIndex,3)}</div>*/}
                                 </div>
@@ -127,4 +145,3 @@ class Personalization extends Component {
 }
 Personalization.contextType = UserContext;
 export default Personalization;
-

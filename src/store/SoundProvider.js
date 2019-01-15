@@ -1,6 +1,7 @@
 // store/SoundProvider.js
 import React, { createContext, Component } from "react"; // on importe createContext qui servira à la création d'un ou plusieurs contextes
 import { Howl, Howler } from 'howler';
+import { UserContext } from "./UserProvider";
 //state and functions declarations
 export const SoundContext = createContext({
     placeSounds: [],
@@ -59,9 +60,8 @@ class SoundProvider extends Component {
         );
     }
 }
-
+SoundProvider.contextType = UserContext;
 export default SoundProvider;
-
 /**
  * A la suite de notre classe `UserProvider`, on créé notre HOC
  * qui se chargera d'injecter les propriétés de notre contexte

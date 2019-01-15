@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 import { UserContext } from "../store/UserProvider";
 import { SoundContext } from "../store/SoundProvider";
 import { getPlaceSounds } from '../graphql/queries'
+import { Query } from "react-apollo";
+import ReactFullpage from '@fullpage/react-fullpage';
+import Personalization from "./Personalization";
 import './episodeForm.scss';
 
 // this component help to display the form to the user
@@ -13,6 +16,9 @@ import './episodeForm.scss';
 // 6) add to the store the episode option chosen
 // 7) display the selected
 
+const pluginWrapper = () => {
+    require('fullpage.js/vendors/scrolloverflow');
+};
 class EpisodeForm extends Component {
     constructor(props){
         super(props);
@@ -31,8 +37,10 @@ class EpisodeForm extends Component {
     componentDidMount(){
         this.formatPlaces()
     }
-
-    formatPlaces = () => { //remove the doublon place & extract places sounds
+    // componentWillMount(){
+    //     console.log(this.state.episodes);
+    // }
+    formatPlaces = () => { //remove the place duplication & extract places sounds
         let array = [];
         let placeSounds = [];
         if(this.state.episodes){
@@ -45,14 +53,13 @@ class EpisodeForm extends Component {
         }
         if(this.state.sounds){
             for(let i=0; i<this.state.sounds.length; i++){
-                if(this.state.sounds[i].name!==null){
+                if(this.state.sounds[i].type === "place"){
                     placeSounds.push(this.state.sounds[i])
                 }
             }
             this.setState({placesSounds: placeSounds}, ()=>{
-                // console.log(this.state.placesSounds)
+                console.log(this.state.placesSounds)
             });
-
         }
     };
     createOption = (value) => {
@@ -62,7 +69,8 @@ class EpisodeForm extends Component {
             for(let i=0; i<this.state[value].length; i++){
                 options.push(
                     <div key={i.toString()}
-                         className={this.state[value+'Selected'] === this.state[value][i] ? 'episode__form__option selected': 'episode__form__option'}
+                         className={this.state[value+'Selected'] === this.state[value][i] ?
+                             'episode__form__option selected': 'episode__form__option'}
                          onClick={() => this.onClickOption(this.state[value][i], value)}>
                         {this.state[value][i]}
                     </div>
@@ -75,18 +83,14 @@ class EpisodeForm extends Component {
 
     onClickOption = (value, option) => {
         let placeSound = [];
-        console.log(this.state.placesSounds);
         if(option === 'place' && this.state.placesSounds) {
-            console.log(this.state.placesSounds.length);
             for(let i=0; i<this.state.placesSounds.length; i++){
                 if(this.state.placesSounds[i].name === value){
                     placeSound=this.state.placesSounds[i];
-                    console.log(this.state.placesSounds[i].name)
                 }
             }
             this.setState({placeSelected: value},()=>{
                 //send to SoundProvider the sound
-                // console.log(this.state.placesSounds)
                 this.context.registerPlaceSound(placeSound);
                 this.showEntourageRelated()
             });
@@ -94,12 +98,13 @@ class EpisodeForm extends Component {
             this.setState({entourageSelected: value});
         }
     };
-
     showEntourageRelated = () => {
         let array = [];
         for(let i=0; i<this.state.episodes.length; i++){
             if(this.state.episodes[i].place === this.state.placeSelected){
-                array.push(this.state.episodes[i].entourage)
+                if(array.indexOf(this.state.episodes[i].entourage)===-1){ // TODO remove dupplication
+                    array.push(this.state.episodes[i].entourage)
+                }
             }
         }
         this.setState({entourage: array});
