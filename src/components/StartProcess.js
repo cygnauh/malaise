@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Homepage from "./pages/Homepage/Homepage";
+import Header from "./layout/Header/Header";
 import EpisodeSelection from "./EpisodeSelection";
 
 class StartProcess extends Component {
@@ -21,8 +22,8 @@ class StartProcess extends Component {
     render () {
         console.log(this.state);
         return (
-            <div className="Start-process wrapper-container">
-                {this.state.home ? <Homepage onButtonPressed={this.handleClickNext} /> : <EpisodeSelection /> }
+            <div className="Start-process">
+                {this.state.home ? <div className="wrapper-container"><Homepage onButtonPressed={this.handleClickNext} /></div> : <div className="wrapper-container"><Header /> <EpisodeSelection /></div> }
             </div>
         )
     }

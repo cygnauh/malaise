@@ -38,7 +38,7 @@ a {
 input:focus, textarea:focus, button:focus, button:active {
   outline: none; }
 
-#root, .wrapper-container {
+#root, .wrapper-container, .Start-process {
   width: 100%;
   height: 100%; }
 
@@ -57,6 +57,25 @@ input:focus, textarea:focus, button:focus, button:active {
   width: 100%;
   height: 100%;
   color: #ffffff; }
+  .Home__background-animation {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 0;
+    overflow: hidden;
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    opacity: 0.6; }
+    .Home__background-animation > div {
+      display: flex;
+      justify-content: left;
+      align-items: center; }
+    .Home__background-animation svg {
+      width: 120% !important;
+      height: 120% !important; }
   .Home__alert {
     position: absolute;
     top: 0;
@@ -96,7 +115,6 @@ input:focus, textarea:focus, button:focus, button:active {
     z-index: 2;
     transition: opacity 1s 0s; }
   .Home__logo {
-    width: 350px;
     margin-bottom: 50px; }
   .Home__description {
     font-size: 18px;
@@ -127,8 +145,44 @@ input:focus, textarea:focus, button:focus, button:active {
     opacity: 1;
     transition: opacity 2s 1.1s;
     transform: translate(-50%, -50%); }
-    .Home__instructions .instructions__text {
-      text-align: center; }
+    .Home__instructions .instructions {
+      text-align: left; }
+      .Home__instructions .instructions__text {
+        font-family: "Archivo Black", sans-serif;
+        font-size: 25px;
+        line-height: 35px; }
+      .Home__instructions .instructions__next {
+        border: 1px solid #ffffff;
+        background: none;
+        color: #ffffff;
+        font-size: 12px;
+        padding: 15px 30px;
+        cursor: pointer;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        transition: all 0.5s ease; }
+        .Home__instructions .instructions__next:hover {
+          background: #ffffff;
+          color: #0A1C2D; }
+    .Home__instructions .pagination {
+      display: flex;
+      margin-bottom: 50px; }
+      .Home__instructions .pagination__currentPage, .Home__instructions .pagination__pagesLength {
+        font-size: 30px;
+        text-shadow: -1px 0 #ffffff, 0 1px #ffffff, 1px 0 #ffffff, 0 -1px #ffffff;
+        color: #0A1C2D;
+        font-family: "Archivo Black", sans-serif;
+        position: relative; }
+      .Home__instructions .pagination__pagesLength {
+        margin-left: 50px; }
+        .Home__instructions .pagination__pagesLength:before {
+          content: "";
+          width: 30px;
+          height: 1px;
+          background-color: #ffffff;
+          position: absolute;
+          left: -40px;
+          bottom: 5px; }
   .Home__hide {
     opacity: 0;
     z-index: 1;

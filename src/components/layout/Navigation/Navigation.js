@@ -65,7 +65,7 @@ class Navigation extends React.Component {
                                     <div className="item__content">
                                         <div className="item__name">
                                             <span>03</span>
-                                            témoignages
+                                            anecdotes
                                         </div>
                                     </div>
                                     <img className="item__icon" src={require('../../../assets/icons/smiley.svg')} />
