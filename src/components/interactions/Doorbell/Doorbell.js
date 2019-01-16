@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
 import Lottie from 'react-lottie';
+import boumboum from '../../../assets/animation/boumboum'
 import './style.scss';
 import { SoundContext } from "../../../store/SoundProvider";
+
+// doorbell, boum
 
 class Doorbell extends Component {
 
@@ -10,7 +13,16 @@ class Doorbell extends Component {
         this.state = {
             render:'',
             activeBell: false,
-            clickedBell: false
+            clickedBell: false,
+            displayAnim:false
+        };
+        this.defaultOptions = {
+            loop: true,
+            autoplay: true,
+            animationData: boumboum,
+            rendererSettings: {
+                preserveAspectRatio: 'xMidYMid slice'
+            }
         };
         this.btnBell = 'btn__bell';
         this.handleClick = this.handleClick.bind(this);
@@ -33,6 +45,14 @@ class Doorbell extends Component {
         }
         if(this.state.activeBell){
             this.context.playDoorBell(); // TODO handle, only on the second click
+            // play the boom
+            setTimeout(()=>{
+                this.setState({displayAnim:true})
+            }, 500)
+            setTimeout(()=>{
+                this.props.onDoorbellPressed()
+            }, 5000)
+
         }
     }
 
@@ -40,6 +60,7 @@ class Doorbell extends Component {
         return (
             <div className="Dictionnary">
                 Doorbell
+                {!this.state.displayAnim ?
                 <div className="test">
                     <div className={this.state.activeBell ? 'bell animate-bell': 'bell'}>
                         <label>ce soir tu es invité(e) chez ta pote qui fait une soirée posée</label>
@@ -56,7 +77,7 @@ class Doorbell extends Component {
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> : <Lottie options={this.defaultOptions}/> }
 
             </div>
         )
