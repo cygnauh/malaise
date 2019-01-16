@@ -3,7 +3,6 @@ import { Query } from "react-apollo";
 import { getEpisodesAndPlaceSounds } from '../graphql/queries'
 import EpisodeForm from "./EpisodeForm";
 import { UserContext } from "../store/UserProvider";
-// import Personalization from "./Personalization";
 
 // episode selection either select thank to the form, or thank to the catalog
 
@@ -11,7 +10,6 @@ import { UserContext } from "../store/UserProvider";
 // 2) Send Data to the <EpisodeForm/>
 // 3) Send Data to the <Catalag/>, to display every episode
 
-// TODO: formulaire et catalogue, avant ou à la fin du formulaire
 class EpisodeSelection extends Component {
     constructor() {
         super();

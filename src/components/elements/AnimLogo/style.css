@@ -48,19 +48,16 @@ input:focus, textarea:focus, button:focus, button:active {
   url('../fonts/happy-times/happy-times.woff') format('woff'),
   url('../fonts/happy-times/happy-times.ttf')  format('truetype');
 }*/
-.Header {
-  width: 100%;
-  height: 45px;
-  z-index: 10;
-  border-bottom: 1px solid #ffffff; }
-  .Header__logo {
-    width: 150px;
-    height: 45px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-right: 1px solid #ffffff; }
-  .Header__icon {
-    height: 15px; }
+.AnimLogo__container {
+  position: relative;
+  width: 450px;
+  height: 80px;
+  margin: 0 auto; }
+  .AnimLogo__container span {
+    text-align: center; }
+    .AnimLogo__container span img {
+      margin: 0 30px; }
+      .AnimLogo__container span img.AnimLogo__specialLetter {
+        margin-top: -20px; }
 
 /*# sourceMappingURL=style.css.map */

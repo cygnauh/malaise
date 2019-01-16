@@ -14,6 +14,32 @@
     height: 100%;
     color: $color__white;
 
+  &__background-animation {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 0;
+    overflow: hidden;
+    display: flex;
+    justify-content:left;
+    align-items:center;
+    opacity: 0.6;
+
+    & > div {
+      display: flex;
+      justify-content:left;
+      align-items:center;
+    }
+
+    svg {
+      width: 120%!important;
+      height: 120%!important;
+    }
+
+  }
+
   &__alert {
     position: absolute;
     top: 0;
@@ -67,7 +93,6 @@
   }
 
   &__logo {
-    width: 350px;
     margin-bottom: 50px;
   }
 
@@ -112,12 +137,118 @@
 
     .instructions {
 
-      &__content {
+      width: 100%;
+      height: 100%;
 
+      text-align: left;
+
+      &__container {
+        position: relative;
+        width: 100%;
+        height: 100%;
+      }
+
+      &__hide {
+        opacity: 0!important;
+        z-index: 1!important;
+        transition: opacity 1s 0s!important;
+      }
+
+      &__end {
+        opacity: 1;
+        z-index: 2;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        transition: opacity 1s 1s;
+        text-align: center;
+      }
+
+      &__content {
+        position: relative;
+        text-align: left;
+        width: 500px;
+        min-height: 180px;
+      }
+
+      &__process {
+        text-align: center;
+        position: relative;
+        z-index: 2;
       }
 
       &__text {
-        text-align: center;
+        position: absolute;
+        font-family: $font__archivo--black;
+        font-size: 25px;
+        line-height: 35px;
+        opacity: 0;
+        transform: translateY(-20px);
+        transition: opacity 1s 0s, transform 1s ease;
+
+        &--current {
+          opacity: 1;
+          transform: translateY(0);
+          transition: opacity 1s 1s;
+        }
+
+      }
+
+      &__next {
+        border: 1px solid $color__white;
+        background: none;
+        color: $color__white;
+        font-size: 12px;
+        padding: 15px 30px;
+        cursor: pointer;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        transition: all 0.5s ease;
+        margin-top: 100px;
+
+        &:hover {
+          background:$color__white;
+          color: $color__bg;
+        }
+      }
+
+      &__arrow {
+        background: none;
+        border: none;
+        position: absolute;
+        bottom: -100px;
+      }
+
+    }
+
+    .pagination {
+
+      display: flex;
+      margin-bottom: 50px;
+
+      &__currentPage, &__pagesLength {
+        font-size: 30px;
+        text-shadow: -1px 0 $color__white, 0 1px $color__white, 1px 0 $color__white, 0 -1px $color__white;
+        color: $color__bg;
+        font-family: $font__archivo--black;
+        position: relative;
+      }
+
+      &__pagesLength {
+
+        margin-left: 50px;
+
+        &:before {
+          content: "";
+          width: 30px;
+          height: 1px;
+          background-color: $color__white;
+          position: absolute;
+          left: -40px;
+          bottom: 5px;
+        }
+
       }
 
     }

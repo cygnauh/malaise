@@ -1,0 +1,26 @@
+@import '../../../assets/styles/index.scss';
+
+.AnimLogo {
+
+  &__container {
+
+    position: relative;
+    width: 450px;
+    height: 80px;
+    margin: 0 auto;
+
+    span {
+
+      text-align: center;
+
+      img {
+        margin: 0 30px;
+        &.AnimLogo__specialLetter {
+          margin-top: -20px;
+        }
+      }
+
+    }
+  }
+
+}

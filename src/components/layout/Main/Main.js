@@ -9,10 +9,10 @@ import StartProcess from "../../StartProcess";
 import Hours from "../../interactions/Hours";
 import Personalization from "../../Personalization";
 
-const firstChild = props => {
+/*const firstChild = props => {
     const childrenArray = React.Children.toArray(props.children);
     return childrenArray[0] || null;
-};
+};*/
 
 class Main extends Component {
     render() {
