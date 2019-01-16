@@ -21,6 +21,9 @@ class Presentation extends Component {
             inputNotEmpty:false,
             personalizationsQuestions:this.props.questions,
             greetedGuests:[],
+            // greetedGuests:[{name:this.state.hote,
+            // top:this.state.dotPositions[0].top-18,
+            // left:this.state.dotPositions[0].left+10}],
             randomLetters:[],
             guestLetters:[]
         };
@@ -31,7 +34,7 @@ class Presentation extends Component {
         setTimeout(()=>{
             console.log('this.myRef.current');
             console.log(this.refs.hote)
-        }, 0)
+        }, 0);
     }
     calculateIntervalPositions=(margeW, margeH, dispersionX, dispersionY)=>{
         let height = window.innerHeight;
@@ -98,10 +101,25 @@ class Presentation extends Component {
         }
         this.setState({
             positions:pos
-        })
+        }, () => {console.log(this.state.positions);this.hostPositions()}
+        );
     }
     test = () => {
-        console.log(this.refs.hote)
+
+    }
+    hostPositions = () => {
+        let host = this.state.greetedGuests;
+        console.log(this.state.positions);
+        host.push({
+            name:this.state.hote,
+            top:this.state.positions[this.state.positions.length-1].top,
+            left:this.state.positions[this.state.positions.length-1].left,
+            randomLetters:[]
+        });
+        this.setState({
+            greetedGuests:host
+        });
+        this.lettersDisappearingOrder(this.state.hote.split(''));
     }
     displayGuest = () => {
         let guest=[];
@@ -109,16 +127,17 @@ class Presentation extends Component {
             let topPos = this.state.positions[i].top;
             let leftPos = this.state.positions[i].left;
             if(i===this.state.guestsNb-1){
-                let firstLetter = this.state.hote.charAt(0);
-                guest.push( ////////// guest TODO animation, letter disappearing
-                    <div key={i.toString()}
-                         ref="hote"
-                         className="Presentation_person greeted__guests"
-                         style={{
-                             top:topPos+'px',
-                             left:leftPos+'px'}}>
-                        <span onClick={this.test}>{firstLetter}</span>
-                    </div>)
+                // let firstLetter = this.state.hote.charAt(0);
+                console.log("hello")
+                // guest.push( ////////// guest TODO animation, letter disappearing
+                //     <div key={i.toString()}
+                //          ref="hote"
+                //          className="Presentation_person greeted__guests"
+                //          style={{
+                //              top:topPos+'px',
+                //              left:leftPos+'px'}}>
+                //         <span onClick={this.test}>{firstLetter}</span>
+                //     </div>)
             }else if(i<this.state.personalizationsQuestions.length){
                 let colorDot = '';
                 if(this.state.displayInput){
@@ -259,7 +278,7 @@ class Presentation extends Component {
         }else{
             this.setState({currentQuestion: "reserve"});
         }
-        this.lettersDisappearingOrder(newGreetedGuest[newGreetedGuest.length-1].name.split(''), this.state.greetedGuests.length);
+        this.lettersDisappearingOrder(newGreetedGuest[newGreetedGuest.length-1].name.split(''));
         // this.displayGreetingGuests(newGreetedGuest)
         // if (pote), formatForm, then copain
         // TODO find a way to handle the animation, and order
