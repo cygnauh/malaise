@@ -206,6 +206,11 @@
         letter-spacing: 2px;
         transition: all 0.5s ease;
         margin-top: 100px;
+        cursor: pointer;
+
+        img {
+          cursor: pointer;
+        }
 
         &:hover {
           background:$color__white;

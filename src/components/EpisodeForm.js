@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { UserContext } from "../store/UserProvider";
 import { SoundContext } from "../store/SoundProvider";
-// import { getPlaceSounds } from '../graphql/queries';
+import $ from 'jquery';
 import './episodeForm.scss';
 
 // this component help to display the form to the user
@@ -25,15 +25,14 @@ class EpisodeForm extends Component {
             placeSelected:null,
             entourageSelected:null,
             placesSounds:[],
-            episodeId:null
+            episodeId:null,
+            currentPage: '1'
         };
     }
     componentDidMount(){
         this.formatPlaces()
     }
-    // componentWillMount(){
-    //     console.log(this.state.episodes);
-    // }
+
     formatPlaces = () => { //remove the place duplication & extract places sounds
         let array = [];
         let placeSounds = [];
@@ -62,12 +61,12 @@ class EpisodeForm extends Component {
         if(this.state[value]){
             for(let i=0; i<this.state[value].length; i++){
                 options.push(
-                    <div key={i.toString()}
-                         className={this.state[value+'Selected'] === this.state[value][i] ?
-                             'episode__form__option selected': 'episode__form__option'}
-                         onClick={() => this.onClickOption(this.state[value][i], value)}>
-                        {this.state[value][i]}
-                    </div>
+                    <li className="form__select-item">
+                        <div key={i.toString()}
+                             className={this.state[value+'Selected'] === this.state[value][i] ?
+                                 'selected': null}
+                             onClick={() => this.onClickOption(this.state[value][i], value)}>{this.state[value][i]}</div>
+                    </li>
                 )
             }
         }
@@ -118,53 +117,102 @@ class EpisodeForm extends Component {
         this.setState({episodeId: episode});
         return episode
     };
+    handleClickNext = () => {
+        console.log('handle click next');
+        this.toggleStep();
+    }
 
-    playplaceSoundSelected = () => {
-       // this.context.loadSound(data);
+    handleKeyPress = (e) => {
+        if (e.key === 'Enter') {
+            console.log('do validate');
+            this.toggleStep();
+        }
+        if(e.key === '39') {
+            console.log('arrow right');
+            this.toggleStep();
+        }
+    }
 
-    };
+    toggleStep = () => {
+        var $currentFormStep = $('.episodeForm__content').find('.episodeForm__form--current');
+        var $nextFormStep = $currentFormStep.next();
+
+        $currentFormStep.toggleClass('episodeForm__form--current');
+        $nextFormStep.toggleClass('episodeForm__form--current');
+
+        var nextPage = $nextFormStep.data('step');
+
+        setTimeout(() => {
+            this.setState({
+                currentPage : nextPage
+            });
+        }, 1000);
+
+        if($nextFormStep.is(':last-child') || $currentFormStep.is(':first-child')) {
+            $('.episodeForm__action').toggleClass('episodeForm__hide');
+        }
+    }
+
     render() {
         return (
             <div className="episodeForm">
                 {!this.state.episodes? <p>Data is loading, please make a loader</p> : null}
                 {this.state.episodes?
                     <div className="episodeForm__container">
-                        <div className="episodeForm__form form" data-step="1">
-                            <label className="form__label">Comment <br /> tu t'appelles ?</label>
-                            <div className="form__container">
-                                <input className="form__input" type="text" placeholder="ton pseudo"></input>
-                                <button className="form__btn">OK</button>
+                        <div className="episodeForm__pagination">
+                            <div className="pagination">
+                                <div className="pagination__currentPage">{this.state.currentPage }</div>
+                                <div className="pagination__pagesLength">4</div>
                             </div>
                         </div>
-                        <div className="episodeForm__form form" data-step="2">
-                            <label className="form__label">Salut 'pseudo' ! <br /> Tu te sens plutôt...</label>
-                            <div className="form__container">
-                                <span>fatigué(e)</span>
-                                <input className="form__input" type="range" min="0" max="4" step={"1"}
-                                       value={this.state.value} onChange={this.handleChange} />
-                                <span>en pleine forme</span>
+                        <div className="episodeForm__content">
+                            <div className="episodeForm__form episodeForm__form--current form" data-step="1">
+                                <div className="form__label">Comment <br /> tu t'appelles ?</div>
+                                <div className="form__container form__margin">
+                                    <div className="form__column">
+                                        <input className="form__input form__input--empty" type="text" placeholder="ton pseudo" maxLength="10" required onKeyPress={this.handleKeyPress}></input>
+                                        <button className="form__btn form__next" onClick={this.handleClickNext}>ok</button>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                        <div className="episodeForm__form form" data-step="3">
-                            <label className="form__label">Tu veux faire quoi ?</label>
-                            <div className="form__container">{this.createOption('place')}</div>
-                        </div>
-                        <div className="episodeForm__form form" data-step="4">
-                            <UserContext.Consumer>
-                                {({episode, setEpisode}) => (
-                                    <div>
+                            <div className="episodeForm__form form" data-step="2">
+                                <div className="form__label">Salut 'pseudo' ! <br /> Tu te sens plutôt...</div>
+                                <div className="form__container form__margin">
+                                    <div className="form__range">
+                                        <span>fatigué(e)</span>
+                                        <input type="range" min="0" max="4" step={"1"} value={this.state.value} onChange={this.handleChange} />
+                                        <span>en pleine forme</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="episodeForm__form form" data-step="3">
+                                <div className="form__label">Tu veux faire quoi ?</div>
+                                <div className="form__container">
+                                    <ul className="form__select">
+                                        {this.createOption('place')}
+                                    </ul>
+                                </div>
+                            </div>
+                            <div className="episodeForm__form form" data-step="4">
+                                <UserContext.Consumer>
+                                    {({episode, setEpisode}) => (
                                         <div>
-                                            <label className="form__label">Avec qui veux-tu <br />y aller ?</label>
+                                            <div className="form__label">Avec qui veux-tu <br />y aller ?</div>
                                             <div className="form__container">{this.createOption('entourage')}</div>
                                             <button
-                                                className="form__btn"
+                                                className="form__validation"
                                                 onClick={()=>setEpisode(this.validateLastQuestion({id:'test'}))}>
                                                 Valider
                                             </button>
                                         </div>
-                                    </div>
-                                )}
-                            </UserContext.Consumer>
+                                    )}
+                                </UserContext.Consumer>
+                            </div>
+                        </div>
+                        <div className="episodeForm__action episodeForm__hide">
+                            <button className="episodeForm__next" onClick={this.handleClickNext}>
+                                <img alt="Prochaine étape" src={require('../assets/icons/arrows/arrow_right.svg')} />
+                            </button>
                         </div>
                     </div>
                     : null}
