@@ -48,11 +48,12 @@ input:focus, textarea:focus, button:focus, button:active {
   url('../fonts/happy-times/happy-times.woff') format('woff'),
   url('../fonts/happy-times/happy-times.ttf')  format('truetype');
 }*/
-.AnimLogo__container {
-  position: relative;
+.AnimLogo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 450px;
-  height: 80px;
-  margin: 0 auto; }
+  height: 80px; }
   .AnimLogo__container span {
     text-align: center; }
     .AnimLogo__container span img {

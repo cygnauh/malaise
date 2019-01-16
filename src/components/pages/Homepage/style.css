@@ -115,7 +115,10 @@ input:focus, textarea:focus, button:focus, button:active {
     z-index: 2;
     transition: opacity 1s 0s; }
   .Home__logo {
-    margin-bottom: 50px; }
+    margin-bottom: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center; }
   .Home__description {
     font-size: 18px;
     max-width: 400px;

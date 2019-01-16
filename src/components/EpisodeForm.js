@@ -26,7 +26,8 @@ class EpisodeForm extends Component {
             entourageSelected:null,
             placesSounds:[],
             episodeId:null,
-            currentPage: '1'
+            currentPage: '1',
+            userName: ''
         };
     }
     componentDidMount(){
@@ -61,9 +62,8 @@ class EpisodeForm extends Component {
         if(this.state[value]){
             for(let i=0; i<this.state[value].length; i++){
                 options.push(
-                    <li className="form__select-item">
-                        <div key={i.toString()}
-                             className={this.state[value+'Selected'] === this.state[value][i] ?
+                    <li className="form__select-item" key={i.toString()}>
+                        <div className={this.state[value+'Selected'] === this.state[value][i] ?
                                  'selected': null}
                              onClick={() => this.onClickOption(this.state[value][i], value)}>{this.state[value][i]}</div>
                     </li>
@@ -118,19 +118,22 @@ class EpisodeForm extends Component {
         return episode
     };
     handleClickNext = () => {
-        console.log('handle click next');
         this.toggleStep();
     }
 
     handleKeyPress = (e) => {
         if (e.key === 'Enter') {
-            console.log('do validate');
             this.toggleStep();
         }
         if(e.key === '39') {
-            console.log('arrow right');
             this.toggleStep();
         }
+    }
+
+    handleOnChange = (e) => {
+        this.setState({
+            userName: e.target.value
+        });
     }
 
     toggleStep = () => {
@@ -169,14 +172,25 @@ class EpisodeForm extends Component {
                             <div className="episodeForm__form episodeForm__form--current form" data-step="1">
                                 <div className="form__label">Comment <br /> tu t'appelles ?</div>
                                 <div className="form__container form__margin">
-                                    <div className="form__column">
-                                        <input className="form__input form__input--empty" type="text" placeholder="ton pseudo" maxLength="10" required onKeyPress={this.handleKeyPress}></input>
-                                        <button className="form__btn form__next" onClick={this.handleClickNext}>ok</button>
-                                    </div>
+                                    <UserContext.Consumer>
+                                        {({userName, setUserName}) => (
+                                            <div className="form__column">
+                                                <input className="form__input form__input--empty"
+                                                       type="text"
+                                                       placeholder="ton pseudo"
+                                                       maxLength="10"
+                                                       required
+                                                       onKeyPress={this.handleKeyPress}
+                                                       onChange={this.handleOnChange}></input>
+                                                <button className="form__btn form__next" onClick={() => { setUserName(this.state.userName); this.handleClickNext()}}>ok</button>
+                                            </div>
+                                        )}
+                                    </UserContext.Consumer>
+
                                 </div>
                             </div>
                             <div className="episodeForm__form form" data-step="2">
-                                <div className="form__label">Salut 'pseudo' ! <br /> Tu te sens plutôt...</div>
+                                <div className="form__label">Salut {this.state.userName} ! <br /> Tu te sens plutôt...</div>
                                 <div className="form__container form__margin">
                                     <div className="form__range">
                                         <span>fatigué(e)</span>
