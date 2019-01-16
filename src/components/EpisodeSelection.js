@@ -1,9 +1,9 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import { Query } from "react-apollo";
 import { getEpisodesAndPlaceSounds } from '../graphql/queries'
 import EpisodeForm from "./EpisodeForm";
 import { UserContext } from "../store/UserProvider";
-import Personalization from "./Personalization";
+// import Personalization from "./Personalization";
 
 // episode selection either select thank to the form, or thank to the catalog
 

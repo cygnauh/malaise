@@ -55,7 +55,7 @@ class Personalization extends Component {
         //reveice data, show first question, register anwser, show next question
         let questions=[];
         let paramsP=null;
-        if(data.Episode&&data.Episode.personalizations){
+        if(data.Episode && data.Episode.personalizations){
             // console.log(data.Episode.personalizations)
             paramsP = data.Episode.personalizations;
             // for(let i=0; i<paramsP.length; i++){

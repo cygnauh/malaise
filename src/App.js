@@ -7,6 +7,7 @@ import ApolloBoost from "apollo-boost";
 import Navigation from './components/layout/Navigation/Navigation';
 import Main from './components/layout/Main/Main';
 
+
 const client = new ApolloBoost({
     uri: "https://api.graph.cool/simple/v1/cjp2pniu98sw30122z5bavdwc"
 });
