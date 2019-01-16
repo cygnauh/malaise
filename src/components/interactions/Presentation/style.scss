@@ -119,12 +119,18 @@
     position: absolute;
     z-index: 4;
     transform: translateY(-80%);
+    .questionInput__label{
+        font-size: 16px;
+        padding-bottom: 10px;
+        display: flex;
+    }
 }
 
 .input__container {
     position: relative;
     width: 400px;
     height: 50px;
+
     //background-color: black;
     &:before{
         content: '';

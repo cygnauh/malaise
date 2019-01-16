@@ -122,7 +122,7 @@ class Presentation extends Component {
             }else if(i<this.state.personalizationsQuestions.length){
                 let colorDot = '';
                 if(this.state.displayInput){
-                    colorDot ='rgba(255,255,255,0.5)'
+                    colorDot ='rgba(255,255,255,0.3)'
                 }else{
                     colorDot ='white'
                 }
@@ -166,7 +166,6 @@ class Presentation extends Component {
                 canClickOnDot:false
             });
         }
-        console.log(this.state.greetedGuests)
     };
 
     // TODO format form
@@ -195,7 +194,7 @@ class Presentation extends Component {
                         <div key={1}
                              className='questionInput__container'
                              style={{top:this.state.dotPositions[0].top+'px', left:this.state.dotPositions[0].left+'px'}}>
-                            <h3>{form.question}</h3>
+                            <span className='questionInput__label'>{form.question}</span>
                             <div className={this.state.displayInput ? 'input__container animate-input': 'input__container'}>
                                 <div className="input__box">
                                     <div className="input-border">
@@ -238,9 +237,8 @@ class Presentation extends Component {
         // if(this.currentInput !== ''){
             newGreetedGuest.push({
                 name:this.state.currentInput,
-                top:this.state.dotPositions[0].top-35,
-                left:this.state.dotPositions[0].left+20,
-                displayed:false,
+                top:this.state.dotPositions[0].top-18,
+                left:this.state.dotPositions[0].left+10,
                 randomLetters:[]
             });
             this.setState({
@@ -261,57 +259,31 @@ class Presentation extends Component {
         }else{
             this.setState({currentQuestion: "reserve"});
         }
-        // console.log(newGreetedGuest[0].name);
-        // console.log(newGreetedGuest.length, 'len');
         this.lettersDisappearingOrder(newGreetedGuest[newGreetedGuest.length-1].name.split(''), this.state.greetedGuests.length);
         // this.displayGreetingGuests(newGreetedGuest)
         // if (pote), formatForm, then copain
         // TODO find a way to handle the animation, and order
     };
-    lettersDisappearingOrder = (letters, l) => {
-        // console.log(letters)
+    lettersDisappearingOrder = (letters) => {
         let letterPosition = [];
             setTimeout(()=>{
-                let random = Math.floor(Math.random() * (letters.length)) + 1;
-                // while(letterPosition.indexOf(random) !== -1) { // make sure to have a different random
-                //     random = Math.floor(Math.random() * (letters.length)) + 1;
-                // }
-                console.log('random')
-                console.log(random)
-                // if(letterPosition.length!==letters.length && random!=null){
-                //     letterPosition.push(random);
-                //     // this.lettersDisappearingOrder(letters)
-                // } else{
-                    console.log(letterPosition)
                     for(let i = 0; i<this.state.greetedGuests.length; i++){
                         let guests = this.state.greetedGuests;
                         if(this.state.greetedGuests[i].name === letters.join('')){
                             guests[i].displayed = true;
-                            guests[i].randomLetters = letterPosition
-                            for(let j = 1; j<letters.length;j++){
-                                letterPosition.push(j)
-                                console.log('j')
-                                console.log(j)
-                                console.log(letterPosition)
-                            }
                         }
                         this.setState({
                             greetedGuests : guests
                         });
-                        console.log('[0]');
-                        console.log(this.state.greetedGuests[i].randomLetters[0])
                     }
-
-                // }
                 this.setState({randomLetters:letterPosition})
             }, 200);
-        setTimeout(()=>{letterPosition = []
+        setTimeout(()=>{
+            letterPosition = [];
             this.setState({randomLetters:letterPosition})
         }, 250)
-
-    }
+    };
     displayGreetingGuests = () => {
-        // console.log(this.state.greetedGuests)
         let guests = [];
         if(this.state.greetedGuests && this.state.greetedGuests.length>0){
             for(let i = 0; i<this.state.greetedGuests.length;i++){
@@ -362,7 +334,6 @@ class Presentation extends Component {
                 <div className="guest">
                     {
                         this.state.greetedGuests ?
-                            // this.state.guestLetters : null
                             this.displayGreetingGuests() : null
                     }
                 </div>
