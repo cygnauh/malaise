@@ -3,6 +3,10 @@
 # global
 /ressources
 
+# css + css map files
+/src/*.css
+/src/*.css.map
+
 # dependencies
 /node_modules
 /.pnp

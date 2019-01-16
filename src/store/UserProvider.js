@@ -10,7 +10,8 @@ import React, { createContext, Component } from "react"; // on importe createCon
  * d'autres composants par la suite via le `Consumer`
  */
 export const UserContext = createContext({
-    episode: "",
+    userName: '',
+    episode: '',
     personalizations:[],
     setEpisode: () => {},
     setPersonalization: () => {}
@@ -25,6 +26,7 @@ export const UserContext = createContext({
  */
 class UserProvider extends Component {
     state = {
+        userName: '',
         episode: '', // une valeur de départ
         personalizations:[],
         setEpisode: episodeSelected => {
@@ -35,6 +37,9 @@ class UserProvider extends Component {
         setPersonalization: personalizations => {
             this.setState({ personalizations: personalizations });
             // setTimeout(()=>{console.log(this.state.personalizations, 'hello')}, 0)
+        },
+        setUserName: userName => {
+            this.setState({ userName: userName });
         }
     };
 

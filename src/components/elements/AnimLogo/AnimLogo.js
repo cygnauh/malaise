@@ -32,10 +32,6 @@ class AnimLogo extends Component {
         this.$chars = this.initChars();
     }
 
-    componentWillUnmount() {
-
-    }
-
     updateFps = () => {
         if (!this.lastFrameTime) {
             this.lastFrameTime = Date.now();
@@ -85,12 +81,8 @@ class AnimLogo extends Component {
         $el.dataset.homeX = parseInt($el.offsetLeft, 10);
         $el.dataset.homeY = parseInt($el.offsetTop, 10);
 
-        console.log($el.dataset.homeX);
-        console.log($el.dataset.homeY);
-
         setTimeout(function() {
             $el.style.position = "absolute";
-            console.log($el.style.position);
         }, 10);
     }
 
@@ -121,7 +113,7 @@ class AnimLogo extends Component {
             var x0 = $el.offsetLeft;
             var y0 = $el.offsetTop;
             var x1 = this.mouseX;
-            var y1 = this.mouseY;
+            var y1 = this.mouseY - 100;
 
             var distanceX = x1 - x0;
             var distanceY = y1 - y0;

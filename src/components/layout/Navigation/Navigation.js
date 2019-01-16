@@ -31,10 +31,10 @@ class Navigation extends React.Component {
                     <div className="Navigation__main">
                         <div className="Navigation__header">
                             <Link to="/" className="Navigation__header-logo">
-                                <img className="Navigation__header-logo--icon" alt="" src={require('../../../assets/icons/logo__white.png')} />
+                                <img className="Navigation__header-logo--icon" alt="Retour à l'accueil" src={require('../../../assets/icons/logo__white.png')} />
                             </Link>
                             <Link to="/dictionnary" className="Navigation__header-box">
-                                <img className="Navigation__header-box--icon" alt="" src={require('../../../assets/icons/box.svg')} />
+                                <img className="Navigation__header-box--icon" alt="Aller à la boîte à mots" src={require('../../../assets/icons/box.svg')} />
                             </Link>
                         </div>
                         <ul className="Navigation__items">
@@ -46,7 +46,6 @@ class Navigation extends React.Component {
                                             accueil
                                         </div>
                                     </div>
-                                    <img className="item__icon" alt="" src={require('../../../assets/icons/smiley.svg')} />
                                 </Link>
                             </li>
                             <li className="Navigation__item">
@@ -57,7 +56,6 @@ class Navigation extends React.Component {
                                             épisodes
                                         </div>
                                     </div>
-                                    <img className="item__icon" alt="" src={require('../../../assets/icons/smiley.svg')} />
                                 </Link>
                             </li>
                             <li className="Navigation__item">
@@ -68,7 +66,6 @@ class Navigation extends React.Component {
                                             anecdotes
                                         </div>
                                     </div>
-                                    <img className="item__icon" alt="" src={require('../../../assets/icons/smiley.svg')} />
                                 </Link>
                             </li>
                             <li className="Navigation__item">
@@ -79,15 +76,14 @@ class Navigation extends React.Component {
                                             à propos
                                         </div>
                                     </div>
-                                    <img className="item__icon" alt="" src={require('../../../assets/icons/smiley.svg')} />
                                 </Link>
                             </li>
                         </ul>
                         <div className="Navigation__footer">
                             <ul className="Navigation__socials">
-                                <li className="Navigation__socials-item"><Link to="#"><img alt="" src={require('../../../assets/icons/facebook__white.svg')} /></Link></li>
-                                <li className="Navigation__socials-item"><Link to="#"><img alt="" src={require('../../../assets/icons/instagram__white.svg')} /></Link></li>
-                                <li className="Navigation__socials-item"><Link to="#"><img alt="" src={require('../../../assets/icons/twitter__white.svg')} /></Link></li>
+                                <li className="Navigation__socials-item"><Link to="#"><img alt="Logo facebook" src={require('../../../assets/icons/facebook__white.svg')} /></Link></li>
+                                <li className="Navigation__socials-item"><Link to="#"><img alt="Logo instagram" src={require('../../../assets/icons/instagram__white.svg')} /></Link></li>
+                                <li className="Navigation__socials-item"><Link to="#"><img alt="Logo twitter" src={require('../../../assets/icons/twitter__white.svg')} /></Link></li>
                             </ul>
                         </div>
                     </div>

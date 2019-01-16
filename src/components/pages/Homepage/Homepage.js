@@ -34,6 +34,19 @@ class Homepage extends Component {
     }
 
     handleClickNext = () => {
+        this.toggleInstruction();
+    }
+
+    handleKeyDown = (e) => {
+        if (e.key === 'Enter') {
+            this.toggleInstruction();
+        }
+        if(e.keyCode === 40) {
+            this.toggleInstruction();
+        }
+    }
+
+    toggleInstruction = () => {
         var $currentInstruction = $('.instructions__content').find('.instructions__text--current');
         var $nextInstruction = $currentInstruction.next();
 
@@ -53,12 +66,11 @@ class Homepage extends Component {
             $('.instructions__process').toggleClass('instructions__hide');
             $('.instructions__end').toggleClass('instructions__hide');
         }
-
     }
 
     render() {
         return (
-            <div className="Home">
+            <div className="Home" onKeyDown={this.handleKeyDown}>
                 <div className={this.state.instructions ? "Home__background-animation Home__hide" : "Home__background-animation"} >
                     <Lottie options={this.defaultOptions} />
                 </div>
@@ -92,7 +104,7 @@ class Homepage extends Component {
                                             <div className="instructions__text" data-step="2">Au fil de l'expérience, vous rencontrerez des termes spécifiques à l'épisode qui se glisseront dans une boîte à mots.</div>
                                             <div className="instructions__text" data-step="3">Laissez vous guider et suivez les indications en bas de l'écran, tout au long de l'expérience.</div>
                                         </div>
-                                        <button className="instructions__arrow" onClick={this.handleClickNext}><img  src={require('../../../assets/icons/arrows/arrow_down.svg')}/></button>
+                                        <button className="instructions__arrow" onClick={this.handleClickNext}><img alt="Instruction suivante" src={require('../../../assets/icons/arrows/arrow_down.svg')}/></button>
                                     </div>
                                     <div className="instructions__end instructions__hide">
                                         <SoundAlert />

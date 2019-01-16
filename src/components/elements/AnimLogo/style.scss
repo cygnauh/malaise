@@ -2,12 +2,13 @@
 
 .AnimLogo {
 
-  &__container {
+  display: flex;
+  justify-content:center;
+  align-items:center;
+  width: 450px;
+  height: 80px;
 
-    position: relative;
-    width: 450px;
-    height: 80px;
-    margin: 0 auto;
+  &__container {
 
     span {
 
@@ -15,9 +16,11 @@
 
       img {
         margin: 0 30px;
+
         &.AnimLogo__specialLetter {
           margin-top: -20px;
         }
+
       }
 
     }

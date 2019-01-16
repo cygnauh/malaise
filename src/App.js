@@ -7,6 +7,7 @@ import ApolloBoost from "apollo-boost";
 import Navigation from './components/layout/Navigation/Navigation';
 import Main from './components/layout/Main/Main';
 import Header from './components/layout/Header/Header';
+import './assets/styles/App.scss';
 
 
 const client = new ApolloBoost({
