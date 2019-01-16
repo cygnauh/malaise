@@ -11,8 +11,8 @@ import { UserContext } from "../store/UserProvider";
 // 3) Send Data to the <Catalag/>, to display every episode
 
 class EpisodeSelection extends Component {
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
         this.state = {
             render:'',
             episode:''
@@ -41,7 +41,7 @@ class EpisodeSelection extends Component {
                                 :
                                 <div>
                                     <h2>the episode selected is {this.context.episode.title}</h2>
-                                    <button><a href="/experience">OK</a></button>
+                                    <button onClick={this.props.onButtonPressed}>OK</button>
                                     <p>or choose another in the <button>Catalog</button></p>
                                 </div>
                             }

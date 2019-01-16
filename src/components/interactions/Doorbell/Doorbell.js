@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Lottie from 'react-lottie';
 import './style.scss';
 import { SoundContext } from "../../../store/SoundProvider";
 
@@ -30,8 +31,9 @@ class Doorbell extends Component {
                 });
             }.bind(this), 200);
         }
-
-        this.context.playDoorBell(); // TODO handle, only on the second click
+        if(this.state.activeBell){
+            this.context.playDoorBell(); // TODO handle, only on the second click
+        }
     }
 
     render() {

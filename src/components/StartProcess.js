@@ -2,20 +2,25 @@ import React, { Component } from 'react';
 import Homepage from "./pages/Homepage/Homepage";
 import Header from "./layout/Header/Header";
 import EpisodeSelection from "./EpisodeSelection";
+import Episode from "./Episode"
 
 class StartProcess extends Component {
 
     constructor(props){
         super(props);
         this.state = {
-            home:true
+            home:true,
+            selection:false,
+            episode:false,
+            index:0
         }
     }
 
     handleClickNext = () => {
         console.log('clicked');
+        let index = this.state.index +1 ;
         this.setState({
-            home:false
+            index : index,
         })
     }
 
@@ -23,8 +28,14 @@ class StartProcess extends Component {
         console.log(this.state);
         return (
             <div className="Start-process">
-                {this.state.home ? <div className="wrapper-container"><Homepage onButtonPressed={this.handleClickNext} /></div> : <div className="wrapper-container"><Header /> <EpisodeSelection /></div> }
+                <div className="wrapper-container">
+                    {this.state.index !== 0 ? <Header /> : null}
+                    {this.state.index === 0 ? <Homepage onButtonPressed={this.handleClickNext} /> : null}
+                    {this.state.index === 1? <EpisodeSelection onButtonPressed={this.handleClickNext}/> : null}
+                    {this.state.index === 2 ? <Episode onButtonPressed={this.handleClickNext}/> : null}
+                </div>
             </div>
+
         )
     }
 
