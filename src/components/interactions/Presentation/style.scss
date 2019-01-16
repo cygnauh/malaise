@@ -1,3 +1,63 @@
+// temporary
+@keyframes bottomrightTest {
+    0% {
+        width: 0;
+        height: 0;
+        padding-top: 0;
+        visibility: visible;
+    }
+    25% {
+        width: 400px;
+        height: 0;
+        padding-top: 0;
+        visibility: visible;
+    }
+    50% {
+        height: 50px;
+        width: 400px;
+        visibility: visible;
+    }
+    75% {
+        visibility: visible;
+
+    }
+    100% {
+        visibility: visible;
+    }
+}
+@keyframes topleftTest {
+    0% {
+        width: 0;
+        height: 0;
+        padding-bottom: 0;
+        visibility: hidden;
+    }
+    25% {
+        width: 0;
+        height: 0;
+        padding-bottom: 0;
+        visibility: hidden;
+    }
+    50% {
+        width: 0;
+        height: 0;
+        padding-bottom: 0;
+        visibility: hidden;
+    }
+    75% {
+        width: 400px;
+        height: 0;
+        padding-bottom: 0;
+        visibility: visible;
+    }
+    100% {
+        width: 400px;
+        height: 50px;
+        opacity: 1;
+        visibility: visible;
+    }
+}
+
 .Presentation{
     background: rgba(0,0,0,1);
     width: 100vw;
@@ -16,13 +76,30 @@
     /*animation: wave 1.3s linear infinite;*/
     &.greeted__guests{
         background-color: transparent;
-        span{
-            text-transform: uppercase;
-            color: black;
+        .firstName{
+            transition: all 2s ease-in-out;
+            //text-transform: uppercase;
+            color: white;
             font-weight: bold;
             background: none;
-            font-size: 50px;
-            text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;
+            font-size: 16px;
+
+            .nameLetter{
+                &.removeOpacity{
+                    opacity: 0;
+                    transition: all 1s ease-in-out;
+                }
+            }
+            .firstLetter{
+                text-transform: uppercase;
+                &.displayed{
+                    transition-delay: 1s;
+                    font-size: 50px;
+                    transition: all 1s ease-in-out;
+                    color: black;
+                    text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;
+                }
+            }
         }
     }
     &.hide{
@@ -42,18 +119,24 @@
     position: absolute;
     z-index: 4;
     transform: translateY(-80%);
+    .questionInput__label{
+        font-size: 16px;
+        padding-bottom: 10px;
+        display: flex;
+    }
 }
 
 .input__container {
     position: relative;
-    width: 300px;
-    height: 70px;
+    width: 400px;
+    height: 50px;
+
     //background-color: black;
     &:before{
         content: '';
         position: absolute;
-        width: 300px;
-        height: 70px;
+        width: 400px;
+        height: 50px;
         top: -2px;
         right: 0;
         border-top: 2px solid #fff;
@@ -66,8 +149,8 @@
         position: absolute;
         bottom: 0;
         left: 0;
-        width: 300px;
-        height: 70px;
+        width: 400px;
+        height: 50px;
         border-bottom: 2px solid #fff;
         border-right: 2px solid #fff;
         visibility: hidden;
@@ -78,44 +161,44 @@
     }
     .input-border {
         position: relative;
-        width: 200px;
-        height: 70px;
+        width: 400px;
+        height: 50px;
         display: flex;
         justify-content: left;
         align-items: center;
         float: left;
-        input {
+        .nameInput {
             width: 100%;
             height: 50px;
             padding: 10px 0 10px 10px;
             background-color: transparent;
             color: white;
-            font-size: 50px;
-            //text-transform: uppercase;
+            font-size: 16px;
+            text-transform: capitalize;
             text-align: left;
             font-weight: bold;
             border: none;
             transition: all 0.5s ease;
         }
         input::first-letter{
-            text-transform: capitalize;
             color: red;
         }
-        input::placeholder {
-            color: rgba(255,255,255,1);
+        .nameInput::placeholder {
+            color: rgba(255,255,255,0.8);
+            text-transform: lowercase;
             //font-weight: bold;
             //font-size: 30px;
             text-align: left;
-            opacity: 0.3;
+            //opacity: 0.3;
             transition: opacity 0.8s ease;
         }
     }
     &.animate-input{
         &:before{
-            animation: topleft 1s ease-in-out forwards;
+            animation: topleftTest 1s ease-in-out forwards;
         }
         &:after{
-            animation: bottomright 1s ease-in-out forwards;
+            animation: bottomrightTest 1s ease-in-out forwards;
         }
     }
 }

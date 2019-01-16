@@ -41,7 +41,7 @@ class EpisodeSelection extends Component {
                                 :
                                 <div>
                                     <h2>the episode selected is {this.context.episode.title}</h2>
-                                    <button>OK</button>
+                                    <button><a href="/experience">OK</a></button>
                                     <p>or choose another in the <button>Catalog</button></p>
                                 </div>
                             }
