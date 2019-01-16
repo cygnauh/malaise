@@ -126,33 +126,38 @@ class EpisodeForm extends Component {
     render() {
         return (
             <div className="episodeForm">
-                {!this.state.episodes? <p>data is loading, please make a loader</p> : null}
+                {!this.state.episodes? <p>Data is loading, please make a loader</p> : null}
                 {this.state.episodes?
                     <div className="episodeForm__container">
-                        <div className="episodeForm__step section" data-step="1">
-                            <h2>Comment tu te sens ?</h2>
-                            <div>
-                                <span>Fatigué(e)</span>
-                                <input type="range" min="0" max="4" step={"1"}
-                                       value={this.state.value} onChange={this.handleChange} />
-                                <span>Super bien</span>
+                        <div className="episodeForm__form form" data-step="1">
+                            <label className="form__label">Comment <br /> tu t'appelles ?</label>
+                            <div className="form__container">
+                                <input className="form__input" type="text" placeholder="ton pseudo"></input>
+                                <button className="form__btn">OK</button>
                             </div>
-                            <button className="btn btn__next-step">Suivant</button>
                         </div>
-                        <div className="episodeForm__step section" data-step="2">
-                            <h2>Où veux-tu aller ?</h2>
-                            <div>{this.createOption('place')}</div>
-                            <button className="btn btn__next-step">Suivant</button>
+                        <div className="episodeForm__form form" data-step="2">
+                            <label className="form__label">Salut 'pseudo' ! <br /> Tu te sens plutôt...</label>
+                            <div className="form__container">
+                                <span>fatigué(e)</span>
+                                <input className="form__input" type="range" min="0" max="4" step={"1"}
+                                       value={this.state.value} onChange={this.handleChange} />
+                                <span>en pleine forme</span>
+                            </div>
                         </div>
-                        <div className="episodeForm__step section" data-step="3">
+                        <div className="episodeForm__form form" data-step="3">
+                            <label className="form__label">Tu veux faire quoi ?</label>
+                            <div className="form__container">{this.createOption('place')}</div>
+                        </div>
+                        <div className="episodeForm__form form" data-step="4">
                             <UserContext.Consumer>
                                 {({episode, setEpisode}) => (
                                     <div>
                                         <div>
-                                            <h2> Avec qui ?</h2>
-                                            {this.createOption('entourage')}
+                                            <label className="form__label">Avec qui veux-tu <br />y aller ?</label>
+                                            <div className="form__container">{this.createOption('entourage')}</div>
                                             <button
-                                                className="btn btn__form-validation"
+                                                className="form__btn"
                                                 onClick={()=>setEpisode(this.validateLastQuestion({id:'test'}))}>
                                                 Valider
                                             </button>

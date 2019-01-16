@@ -1,6 +1,59 @@
+@import '../assets/styles/index.scss';
+
 .episode__form__option{
     cursor: pointer;
 }
 .selected {
     font-weight: bold;
+}
+.episodeForm {
+
+  &__container {
+
+  }
+
+  &__form {
+
+    .form {
+
+      &__label {
+        font-family: $font__archivo--black;
+        font-size: 50px;
+        line-height: 55px;
+      }
+      &__container {
+        width: 500px;
+        position: relative;
+      }
+      &__input {
+        border: 1px solid $color__white;
+        background: none;
+        height: 50px;
+        width: 100%;
+        font-size: 20px;
+        padding: 10px 25px;
+        &::placeholder {
+          font-size: 20px;
+          color: $color__white;
+          opacity: 0.5;
+        }
+      }
+      &__btn {
+        height: 50px;
+        background: none;
+        border: none;
+        text-transform: uppercase;
+        color: $color__bg;
+        text-shadow: -1px 0 $color__white, 0 1px $color__white, 1px 0 $color__white, 0 -1px $color__white;
+        font-size: 30px;
+        font-family: $font__archivo--black;
+        position: absolute;
+        top: 0;
+        right: 25px;
+      }
+
+    }
+
+  }
+
 }
