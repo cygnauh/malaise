@@ -122,6 +122,7 @@ class EpisodeForm extends Component {
     }
 
     handleKeyPress = (e) => {
+        console.log(e);
         if (e.key === 'Enter') {
             this.toggleStep();
         }
@@ -180,7 +181,7 @@ class EpisodeForm extends Component {
                                                        placeholder="ton pseudo"
                                                        maxLength="10"
                                                        required
-                                                       onKeyPress={this.handleKeyPress}
+                                                       onKeyPress={(e) => { setUserName(this.state.userName); this.handleKeyPress(e)}}
                                                        onChange={this.handleOnChange}></input>
                                                 <button className="form__btn form__next" onClick={() => { setUserName(this.state.userName); this.handleClickNext()}}>ok</button>
                                             </div>
