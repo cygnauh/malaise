@@ -49,8 +49,6 @@ class Doorbell extends React.Component {
         })
 
         this.props.bellPressed(true)
-
-
     }
     render() {
         return (

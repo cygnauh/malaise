@@ -1,0 +1,15 @@
+.hours__container {
+  opacity: 1;
+  overflow: hidden;
+  transition: all 0.5s ease-in-out; }
+  .hours__container.hide {
+    opacity: 0;
+    height: 0; }
+
+.doorbell__container {
+  opacity: 1;
+  transition: all 0.5s ease-in-out; }
+  .doorbell__container.hide {
+    opacity: 0; }
+
+/*# sourceMappingURL=episode.css.map */
