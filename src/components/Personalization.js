@@ -82,9 +82,9 @@ class Personalization extends Component {
                                         <Doorbell onDoorbellPressed={this.goToPresentation}/>
                                     </div>
 
-                                    <div className={this.state.componentIndex === 2?'questionP presentation__container':'questionP presentation__container hide'}>
+                                    {this.state.componentIndex === 2 ? <div className={this.state.componentIndex === 2?'questionP presentation__container':'questionP presentation__container hide'}>
                                         <Presentation questions={this.presentationQuestions(data)} onPresentationEnd={this.props.nextComponent}/>
-                                    </div>
+                                    </div> : null}
 
                                     {/*<div className="questionP">{this.personalizationQuestion(data)}*/}
                                         {/*<Presentation questions={this.presentationQuestions(data)} />*/}
