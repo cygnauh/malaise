@@ -37,7 +37,7 @@ class SoundProvider extends Component {
                 src: [place.url],
                 ext: ['mp3'],
                 html5: true,
-                volume:0.4
+                volume:0.2
             });
             console.log(this.state.placeSoundtrack);
             if(this.state.placeSoundtrack){
@@ -70,7 +70,7 @@ class SoundProvider extends Component {
             });
             streamDoorbell.play();
             setTimeout(()=>{streamOpendoor.play();}, 1500);
-            setTimeout(()=>{this.state.placeSoundtrack.volume(1)}, 1800)
+            setTimeout(()=>{this.state.placeSoundtrack.volume(0.7)}, 1800)
         },
         playInstructions:(step) => {
             console.log(step);
@@ -88,7 +88,8 @@ class SoundProvider extends Component {
             stream = new Howl({
                 src: [this.state.url[0][value]],
                 ext: ['mp3'],
-                html5: true
+                html5: true,
+                volume:1
             });
             stream.play()
         },
