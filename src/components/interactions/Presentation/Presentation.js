@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PresentationInput from './PresentationInput'
 import './style.scss';
+import {SoundContext} from "../../../store/SoundProvider";
 // characters introduction to users
 
 class Presentation extends Component {
