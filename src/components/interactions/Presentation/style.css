@@ -113,7 +113,7 @@ input:focus, textarea:focus, button:focus, button:active {
     font-family: "Archivo Black", sans-serif;
     position: absolute;
     top: 0;
-    right: 5px;
+    right: 20px;
     cursor: pointer;
     -webkit-transition: color 0.5s ease;
     transition: color 0.5s ease;
@@ -202,7 +202,7 @@ input:focus, textarea:focus, button:focus, button:active {
     .input__container .input-border .nameInput {
       width: 100%;
       height: 50px;
-      padding: 10px 0 10px 10px;
+      padding: 10px 0 10px 20px;
       background-color: transparent;
       color: white;
       font-size: 16px;
