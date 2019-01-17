@@ -48,9 +48,12 @@ a {
 input:focus, textarea:focus, button:focus, button:active {
   outline: none; }
 
-#root, .wrapper-container, .Start-process {
+#root, .wrapper-container {
   width: 100%;
   height: 100%; }
+
+.Start-process {
+  height: calc(100% - 45px); }
 
 /*@font-face {
   font-family: 'Happy Times';
