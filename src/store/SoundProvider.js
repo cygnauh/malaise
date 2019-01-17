@@ -36,7 +36,8 @@ class SoundProvider extends Component {
             stream = new Howl({
                 src: [place.url],
                 ext: ['mp3'],
-                html5: true
+                html5: true,
+                volume:0.4
             });
             console.log(this.state.placeSoundtrack);
             if(this.state.placeSoundtrack){
@@ -51,14 +52,25 @@ class SoundProvider extends Component {
             );
         },
         playDoorBell:() => {
-            let url = 'https://circegrand.fr/etude/gobelins/malaise/media/sounds/doorbell.mp3';
-            let stream;
-            stream = new Howl({
-                src: [url],
+            let doorbell = 'https://circegrand.fr/etude/gobelins/malaise/media/sounds/doorbell.mp3';
+            let opendoor = 'https://circegrand.fr/etude/gobelins/malaise/media/sounds/open_door.mp3';
+            let streamDoorbell;
+            let streamOpendoor;
+            streamDoorbell = new Howl({
+                src: [doorbell],
                 ext: ['mp3'],
-                html5: true
+                html5: true,
+                volume:0.5
             });
-            stream.play()
+            streamOpendoor = new Howl({
+                src: [opendoor],
+                ext: ['mp3'],
+                html5: true,
+                volume:0.5
+            });
+            streamDoorbell.play();
+            setTimeout(()=>{streamOpendoor.play();}, 1500);
+            setTimeout(()=>{this.state.placeSoundtrack.volume(1)}, 1800)
         },
         playInstructions:(step) => {
             console.log(step);
