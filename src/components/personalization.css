@@ -11,7 +11,12 @@
   height: 100%; }
   .Personalization__container, .Personalization__doorbell {
     width: 100%;
-    height: 100%; }
+    height: 100%;
+  }
+
+.Personalization__doorbell .hide{
+
+}
 
 .dot-fill {
   background: black; }
