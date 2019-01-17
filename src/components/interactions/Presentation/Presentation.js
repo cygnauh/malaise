@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PresentationInput from './PresentationInput'
 import './style.scss';
+import {SoundContext} from "../../../store/SoundProvider";
 // characters introduction to users
 
 class Presentation extends Component {
@@ -24,8 +25,8 @@ class Presentation extends Component {
             greetedGuests:[],
             randomLetters:[],
             guestLetters:[],
+
         };
-        this.myRef = React.createRef();
     }
     componentDidMount(){
         setTimeout(() => {
@@ -166,7 +167,7 @@ class Presentation extends Component {
                              background:colorDot,
                              top:topPos+'px',
                              left:leftPos+'px'}}
-                         onClick={!this.state.displayInput ? (e)=>this.onDotClicked(i, topPos, leftPos,this.dotRefs, e):null} // send the refs
+                         onClick={!this.state.displayInput ? (ref, e)=>this.onDotClicked(i, topPos, leftPos, ref, e):null} // send the refs
                     />)
             }else{
                 guest.push(
@@ -184,9 +185,9 @@ class Presentation extends Component {
     };
 
     onDotClicked=(i, posTop, posLeft, refs, e)=>{
-        console.log('red', refs)
         let dots = this.state.dotClicked;
         dots.push(i);
+        console.log(dots)
         let pos = [{
             top:posTop,
             left:posLeft
@@ -265,18 +266,32 @@ class Presentation extends Component {
         // }
         if (this.state.currentQuestion === "pote"){
             this.setState({currentQuestion: "copain"});
+            let bf = null;
+            if(this.state.dotClicked[0] < 4){
+                bf = this.dotRefs[this.state.dotClicked[0]+1];
+
+            }else{
+                bf = this.dotRefs[this.state.dotClicked[0]-1];
+            }
             setTimeout(()=>{
-                // this.refs[this.state.currentQuestion].click()
-            },4000)
+                bf.click()
+            },3000);
+            setTimeout(()=>this.context.playGreeting("pote"), 1000)
+
         }else if (this.state.currentQuestion === "copain"){
             this.setState({currentQuestion: "reloue"});
+            setTimeout(()=>this.context.playGreeting("copain"), 1000)
         }else{
-            this.setState({currentQuestion: "reserve"});
+            if(this.state.currentQuestion === "reloue"){
+                this.setState({currentQuestion: "reserve"});
+                setTimeout(()=>this.context.playGreeting("reloue"), 1000)
+            }else{
+                setTimeout(()=>this.context.playGreeting("reserve"), 1000)
+            }
         }
         this.lettersDisappearingOrder(newGreetedGuest[newGreetedGuest.length-1].name.split(''));
-        // this.displayGreetingGuests(newGreetedGuest)
-        // if (pote), formatForm, then copain
-        // TODO find a way to handle the animation, and order
+
+
     };
     lettersDisappearingOrder = (letters) => {
         let letterPosition = [];
@@ -291,7 +306,7 @@ class Presentation extends Component {
                         });
                     }
                 this.setState({randomLetters:letterPosition})
-            }, 200);
+            }, 2000);
         setTimeout(()=>{
             letterPosition = [];
             this.setState({randomLetters:letterPosition})
@@ -347,4 +362,5 @@ class Presentation extends Component {
         )
     }
 }
+Presentation.contextType = SoundContext;
 export default Presentation;

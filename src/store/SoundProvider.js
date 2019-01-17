@@ -9,7 +9,9 @@ export const SoundContext = createContext({
     setPlaceSounds: () => {},
     loadSound:() => {},
     playDoorBell:() => {},
-    playInstructions:() => {}
+    playInstructions:() => {},
+    playGreeting:() => {}
+
 });
 class SoundProvider extends Component {
     state = {
@@ -18,7 +20,14 @@ class SoundProvider extends Component {
         episodeSounds:null, // episode soundtrack where extract will be extracted
         placeSoundtrack:null,
         episodeSoundtrack:null, // episode soundtrack obj
-        setPlaceSounds: sounds => {
+        url : [{
+            'pote': 'https://circegrand.fr/etude/gobelins/malaise/media/sounds/salut-pote.mp3',
+            'copain': 'https://circegrand.fr/etude/gobelins/malaise/media/sounds/salut-copain.mp3',
+            'reloue': 'https://circegrand.fr/etude/gobelins/malaise/media/sounds/salut-reloue.mp3',
+            'reserve': 'https://circegrand.fr/etude/gobelins/malaise/media/sounds/salut-reserve.mp3',
+        }],
+
+    setPlaceSounds: sounds => {
             this.setState({ placeSounds: sounds });
             setTimeout(()=>{console.log(this.state.placeSounds)}, 0)
         },
@@ -61,7 +70,16 @@ class SoundProvider extends Component {
                 html5: true
             });
             stream.play()
-        }
+        },
+        playGreeting:(value) => {
+            let stream;
+            stream = new Howl({
+                src: [this.state.url[0][value]],
+                ext: ['mp3'],
+                html5: true
+            });
+            stream.play()
+        },
     };
 
     render() {
