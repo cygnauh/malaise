@@ -6,7 +6,7 @@ import { getEpisodes } from '../../../graphql/queries';
 import Catalogue from "../../pages/Catalogue/Catalogue";
 import Dictionnary from "../../pages/Dictionnary/Dictionnary";
 import StartProcess from "../../StartProcess";
-import Hours from "../../interactions/Hours";
+import Hours from "../../interactions/Hours/Hours";
 import Personalization from "../../Personalization";
 import Episode from "../../Episode";
 

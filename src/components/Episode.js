@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Hours from './interactions/Hours'
+import Hours from './interactions/Hours/Hours'
 // import Doorbell from './interactions/Doorbell/Doorbell'
 import Personalization from './Personalization'
 import Presentation from './interactions/Presentation/Presentation'
@@ -29,9 +29,8 @@ class Episode extends Component {
     render() {
         return (
             <div className="Episode">
-                {/*hello this is the episode page*/}
                 {/*{!this.state.nextComponent?*/}
-                <div className={this.state.componentIndex !== 0?'hours__container hide':'hours__container'}>
+                <div className={this.state.componentIndex !== 0?'Episode__hours hide':'Episode__hours'}>
                     <Hours />
                 </div>
 
@@ -40,9 +39,8 @@ class Episode extends Component {
                     {/*<Doorbell onDoorbellPressed={this.goToPresentation}/>*/}
                 {/*</div>*/}
 
-                <div className={this.state.componentIndex === 1?'personalization__container':'personalization__container hide'}>
+                <div className={this.state.componentIndex === 1?'Episode__personalization':'Episode__personalization hide'}>
                     <Personalization nextComponent={this.goToWhatever}/>
-                    {/*go to hours */}
                 </div>
                 {/*}*/}
             </div>
