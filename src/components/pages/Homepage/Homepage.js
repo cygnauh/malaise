@@ -5,6 +5,7 @@ import SoundAlert from "../../elements/SoundAlert/SoundAlert";
 import AnimLogo from "../../elements/AnimLogo/AnimLogo";
 import Lottie from 'react-lottie';
 import animationHome from '../../../assets/animation/03';
+import { SoundContext } from "../../../store/SoundProvider";
 
 class Homepage extends Component {
 
@@ -48,6 +49,9 @@ class Homepage extends Component {
     toggleInstruction = () => {
         var $currentInstruction = $('.instructions__content').find('.instructions__text--current');
         var $nextInstruction = $currentInstruction.next();
+
+        var currentPage = $nextInstruction.data('step');
+        this.context.playInstructions(currentPage);
 
         $currentInstruction.toggleClass('instructions__text--current');
         $nextInstruction.toggleClass('instructions__text--current');
@@ -118,5 +122,5 @@ class Homepage extends Component {
         );
     }
 }
-
+Homepage.contextType = SoundContext;
 export default Homepage;

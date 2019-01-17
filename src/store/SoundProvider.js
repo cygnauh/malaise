@@ -8,7 +8,8 @@ export const SoundContext = createContext({
     episodeSounds:null,
     setPlaceSounds: () => {},
     loadSound:() => {},
-    playDoorBell:() => {}
+    playDoorBell:() => {},
+    playInstructions:() => {}
 });
 class SoundProvider extends Component {
     state = {
@@ -42,6 +43,17 @@ class SoundProvider extends Component {
         },
         playDoorBell:() => {
             let url = 'https://circegrand.fr/etude/gobelins/malaise/media/sounds/doorbell.mp3';
+            let stream;
+            stream = new Howl({
+                src: [url],
+                ext: ['mp3'],
+                html5: true
+            });
+            stream.play()
+        },
+        playInstructions:(step) => {
+            console.log(step);
+            let url = 'https://circegrand.fr/etude/gobelins/malaise/media/sounds/instruction_' + step +'.mp3';
             let stream;
             stream = new Howl({
                 src: [url],
