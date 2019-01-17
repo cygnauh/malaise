@@ -238,4 +238,19 @@
 
   }
 
+  &__empty {
+    position: absolute;
+    right: 140px;
+    top: 17px;
+    font-size: 14px;
+    letter-spacing: 1px;
+    opacity: 1;
+    transition: opacity 0.2s ease;
+
+    &--hide {
+      opacity: 0;
+    }
+
+  }
+
 }

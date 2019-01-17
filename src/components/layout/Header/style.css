@@ -37,8 +37,13 @@ ul, ol, li {
   list-style: none; }
 
 a {
-  text-decoration: none;
+  text-decoration: none; }
+
+.interface a {
   color: #ffffff; }
+
+.interface-reverse a {
+  color: #000000; }
 
 input:focus, textarea:focus, button:focus, button:active {
   outline: none; }
@@ -57,8 +62,7 @@ input:focus, textarea:focus, button:focus, button:active {
   width: calc(100% - 48px);
   margin-left: 48px;
   height: 45px;
-  z-index: 10;
-  border-bottom: 1px solid #ffffff; }
+  z-index: 10; }
   .Header__logo {
     width: 150px;
     height: 45px;
@@ -67,5 +71,11 @@ input:focus, textarea:focus, button:focus, button:active {
     align-items: center; }
   .Header__icon {
     height: 15px; }
+
+.interface .Header {
+  border-bottom: 1px solid #ffffff; }
+
+.interface-reverse .Header {
+  border-bottom: 1px solid #000000; }
 
 /*# sourceMappingURL=style.css.map */

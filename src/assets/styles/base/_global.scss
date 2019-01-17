@@ -33,7 +33,17 @@ ul, ol, li {
 }
 a {
   text-decoration: none;
-  color: $color__white;
+}
+.interface {
+  a {
+    color: $color__white;
+  }
+}
+
+.interface-reverse {
+  a {
+    color: $color__black;
+  }
 }
 input:focus, textarea:focus, button:focus, button:active {
   outline: none;

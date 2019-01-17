@@ -37,8 +37,13 @@ ul, ol, li {
   list-style: none; }
 
 a {
-  text-decoration: none;
+  text-decoration: none; }
+
+.interface a {
   color: #ffffff; }
+
+.interface-reverse a {
+  color: #000000; }
 
 input:focus, textarea:focus, button:focus, button:active {
   outline: none; }
@@ -215,5 +220,15 @@ input:focus, textarea:focus, button:focus, button:active {
     position: absolute;
     right: 100px;
     cursor: pointer; }
+.episodeForm__empty {
+  position: absolute;
+  right: 140px;
+  top: 17px;
+  font-size: 14px;
+  letter-spacing: 1px;
+  opacity: 1;
+  transition: opacity 0.2s ease; }
+  .episodeForm__empty--hide {
+    opacity: 0; }
 
 /*# sourceMappingURL=episodeForm.css.map */

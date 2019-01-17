@@ -5,7 +5,6 @@
     margin-left: 48px;
     height: 45px;
     z-index: 10;
-    border-bottom: 1px solid $color__white;
 
     &__logo {
       width: 150px;
@@ -18,4 +17,17 @@
     &__icon {
         height: 15px;
     }
+
+}
+
+.interface {
+  .Header {
+    border-bottom: 1px solid $color__white;
+  }
+}
+
+.interface-reverse {
+  .Header {
+    border-bottom: 1px solid $color__black;
+  }
 }

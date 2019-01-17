@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import $ from 'jquery';
 import Homepage from "./pages/Homepage/Homepage";
 import EpisodeSelection from "./EpisodeSelection/EpisodeSelection";
 import Episode from "./Episode"
@@ -18,6 +19,11 @@ class StartProcess extends Component {
     handleClickNext = () => {
         console.log('clicked');
         let index = this.state.index +1 ;
+
+        if(this.state.index === 1) {
+            $('body').removeClass('interface').addClass('interface-reverse');
+        }
+
         this.setState({
             index : index,
         })

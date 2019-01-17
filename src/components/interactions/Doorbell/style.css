@@ -37,8 +37,13 @@ ul, ol, li {
   list-style: none; }
 
 a {
-  text-decoration: none;
+  text-decoration: none; }
+
+.interface a {
   color: #ffffff; }
+
+.interface-reverse a {
+  color: #000000; }
 
 input:focus, textarea:focus, button:focus, button:active {
   outline: none; }

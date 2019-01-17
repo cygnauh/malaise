@@ -141,24 +141,32 @@ class EpisodeForm extends Component {
         var $currentFormStep = $('.episodeForm__content').find('.episodeForm__form--current');
         var $nextFormStep = $currentFormStep.next();
 
-        if($('.selected').length < 1) {
-            console.log('pas de selection');
+        console.log($currentFormStep.find('.form__select'));
+
+        if($currentFormStep.find('.form__select').length > 0 && $currentFormStep.find('.form__select .selected').length < 1) {
+            console.log('remove class empty');
+            $('.episodeForm__empty').toggleClass('episodeForm__empty--hide');
+        } else {
+            if (!$('.episodeForm__empty').hasClass('episodeForm__empty--hide')){
+                $('.episodeForm__empty').addClass('episodeForm__empty--hide');
+            };
+            $currentFormStep.toggleClass('episodeForm__form--current');
+            $nextFormStep.toggleClass('episodeForm__form--current');
+
+            var nextPage = $nextFormStep.data('step');
+
+            setTimeout(() => {
+                this.setState({
+                    currentPage : nextPage
+                });
+            }, 1000);
+
+            if($nextFormStep.is(':last-child') || $currentFormStep.is(':first-child')) {
+                $('.episodeForm__action').toggleClass('episodeForm__hide');
+            }
         }
 
-        $currentFormStep.toggleClass('episodeForm__form--current');
-        $nextFormStep.toggleClass('episodeForm__form--current');
 
-        var nextPage = $nextFormStep.data('step');
-
-        setTimeout(() => {
-            this.setState({
-                currentPage : nextPage
-            });
-        }, 1000);
-
-        if($nextFormStep.is(':last-child') || $currentFormStep.is(':first-child')) {
-            $('.episodeForm__action').toggleClass('episodeForm__hide');
-        }
     }
 
     render() {
@@ -217,7 +225,11 @@ class EpisodeForm extends Component {
                                     {({episode, setEpisode}) => (
                                         <div>
                                             <div className="form__label">Avec qui veux-tu <br />y aller ?</div>
-                                            <div className="form__container">{this.createOption('entourage')}</div>
+                                            <div className="form__container">
+                                                <ul className="form__select">
+                                                    {this.createOption('entourage')}
+                                                </ul>
+                                            </div>
                                             <button
                                                 className="form__validation"
                                                 onClick={()=>setEpisode(this.validateLastQuestion({id:'test'}))}>
@@ -229,6 +241,7 @@ class EpisodeForm extends Component {
                             </div>
                         </div>
                         <div className="episodeForm__action episodeForm__hide">
+                            <div className="episodeForm__empty episodeForm__empty--hide">Oops, tu as oublié de répondre à la question !</div>
                             <button className="episodeForm__next" onClick={this.handleClickNext}>
                                 <img alt="Prochaine étape" src={require('../assets/icons/arrows/arrow_right.svg')} />
                             </button>

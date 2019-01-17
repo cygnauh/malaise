@@ -37,8 +37,13 @@ ul, ol, li {
   list-style: none; }
 
 a {
-  text-decoration: none;
+  text-decoration: none; }
+
+.interface a {
   color: #ffffff; }
+
+.interface-reverse a {
+  color: #000000; }
 
 input:focus, textarea:focus, button:focus, button:active {
   outline: none; }
@@ -224,7 +229,7 @@ input:focus, textarea:focus, button:focus, button:active {
     animation: bottomrightTest 1s ease-in-out forwards; }
 
 .border-white span {
-  text-shadow: none;
+  text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;
   color: white;
   transition: color 0.4s ease-in-out;
   cursor: pointer; }
