@@ -25,7 +25,6 @@ class Presentation extends Component {
             randomLetters:[],
             guestLetters:[],
         };
-        this.myRef = React.createRef();
     }
     componentDidMount(){
         setTimeout(() => {

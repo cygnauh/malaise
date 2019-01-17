@@ -59,7 +59,7 @@ class Doorbell extends Component {
     render() {
         return (
             <div className="Dictionnary">
-                Doorbell
+                {/*Doorbell*/}
                 {!this.state.displayAnim ?
                 <div className="test">
                     <div className={this.state.activeBell ? 'bell animate-bell': 'bell'}>
@@ -77,7 +77,9 @@ class Doorbell extends Component {
                             </div>
                         </div>
                     </div>
-                </div> : <Lottie options={this.defaultOptions}/> }
+                </div> : <div className={"lottie"} >
+                        <Lottie options={this.defaultOptions}/>
+                </div> }
 
             </div>
         )

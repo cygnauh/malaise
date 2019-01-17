@@ -6,6 +6,28 @@
     margin: 20px;
 }
 
+.Personalization{
+    overflow: hidden;
+}
+
 .dot-fill{
     background: black;
 }
+.doorbell__container{
+    opacity: 1;
+    transition: all 0.5s ease-in-out;
+    &.hide{
+        opacity: 0;
+        height: 0;
+    }
+}
+.presentation__container{
+    opacity: 1;
+    overflow: hidden;
+    transition: all 0.5s ease-in-out;
+    &.hide{
+        opacity: 0;
+        height: 0;
+    }
+}
+

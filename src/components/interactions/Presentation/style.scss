@@ -1,4 +1,5 @@
 // temporary
+@import '../../../assets/styles/index.scss';
 @keyframes bottomrightTest {
     0% {
         width: 0;
@@ -59,11 +60,27 @@
 }
 
 .Presentation{
-    background: rgba(0,0,0,1);
-    width: 100vw;
-    height: 100vh;
+    //background: rgba(0,0,0,1);
+    width: 100%;
+    height: 90vh;
     color: white;
     position:relative;
+    .form__btn{
+        height: 50px;
+        background: none;
+        border: none;
+        color: #0B162E;
+        text-shadow: -1px 0 #ffffff, 0 1px #ffffff, 1px 0 #ffffff, 0 -1px #ffffff;
+        font-size: 30px;
+        font-family: "Archivo Black", sans-serif;
+        position: absolute;
+        top: 0;
+        right: 5px;
+        cursor: pointer;
+        -webkit-transition: color 0.5s ease;
+        transition: color 0.5s ease;
+        letter-spacing: 2px;
+    }
 }
 .Presentation_person{
     background: white;
@@ -96,7 +113,7 @@
                     transition-delay: 1s;
                     font-size: 50px;
                     transition: all 1s ease-in-out;
-                    color: black;
+                    color: $color__bg;
                     text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;
                 }
             }
@@ -130,8 +147,6 @@
     position: relative;
     width: 400px;
     height: 50px;
-
-    //background-color: black;
     &:before{
         content: '';
         position: absolute;
@@ -220,7 +235,7 @@
     //transition: all 0.3s ease-in-out;
     span{
         cursor: default;
-        color: black;
+        color: $color__bg;
     }
 }
 
