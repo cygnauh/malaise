@@ -42,12 +42,11 @@ class EpisodeSelection extends Component {
                                 :
                                 <div className="episodeSelection__container">
                                     <div className="episodeSelection__result">
-                                        <h1 className="episodeSelection__intro">Tu vas vivre l'épisode...</h1>
                                         <div className="episodeSelection__episode">
                                             <div className="episode__content">
                                                 <h2 className="episode__title">{this.context.episode.title}</h2>
                                                 <p className="episode__summary">{this.context.episode.summary}</p>
-                                                <a href="/experience"><button className="episode__btn">Continuer</button></a>
+                                                <button className="episode__btn" onClick={this.props.onButtonPressed}>Continuer</button>
                                             </div>
                                         </div>
                                         <div className="episodeSelection__choice">
