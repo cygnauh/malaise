@@ -31,6 +31,9 @@ class Homepage extends Component {
         this.setState ({
             instructions:true
         });
+        setTimeout(() => {
+            this.context.playInstructions(1);
+        }, 1500)
     }
 
     handleClickNext = () => {
@@ -50,13 +53,14 @@ class Homepage extends Component {
         var $currentInstruction = $('.instructions__content').find('.instructions__text--current');
         var $nextInstruction = $currentInstruction.next();
 
-        var currentPage = $nextInstruction.data('step');
-        this.context.playInstructions(currentPage);
+        var nextPage = $nextInstruction.data('step');
+
+        setTimeout(() => {
+            this.context.playInstructions(nextPage);
+        }, 1200);
 
         $currentInstruction.toggleClass('instructions__text--current');
         $nextInstruction.toggleClass('instructions__text--current');
-
-        var nextPage = $nextInstruction.data('step');
 
         setTimeout(() => {
             this.setState({
@@ -68,6 +72,9 @@ class Homepage extends Component {
         if($currentInstruction.is(':last-child')) {
             $('.instructions__process').toggleClass('instructions__hide');
             $('.instructions__end').toggleClass('instructions__hide');
+            setTimeout(() => {
+                this.context.playInstructions(4);
+            }, 1200);
         }
     }
 
