@@ -1,5 +1,7 @@
 import './style.scss';
+import $ from 'jquery';
 import React, { Component } from 'react';
+import Odometer from 'odometer';
 
 class Hours extends Component {
     constructor(props) {
@@ -32,6 +34,27 @@ class Hours extends Component {
     handleClick(e) {
         console.log('clicked to change hours');
         console.log(e.target);
+
+        var hours = document.querySelector('.clock__hours');
+        var hoursValue = hours.dataset.hours;
+        var minutes = document.querySelector('.clock__minutes');
+        var minutesValue = minutes.dataset.minutes;
+
+        var odometerHours = new Odometer({
+            el: hours,
+            value: hoursValue,
+            format: '',
+            theme: 'digital'
+        });
+        odometerHours.update(21);
+
+        var odometerMinutes = new Odometer({
+            el: minutes,
+            value: minutesValue,
+            format: '',
+            theme: 'digital'
+        });
+        odometerMinutes.update(30);
     }
 
     tick() {
@@ -80,10 +103,9 @@ class Hours extends Component {
                         <span>{days[this.state.day]}</span><span>{this.state.date}</span><span>{months[this.state.month]}</span>
                     </div>
                     <div className="eclipse__clock">
-                        <p><span>{this.state.hoursTen}</span><span>{this.state.hoursUnit}</span></p>h<p><span>{this.state.minutesTen}</span><span>{this.state.minutesUnit}</span></p>
+                        <p className="clock__hours" data-hours={this.state.hours}>{this.state.hours}</p>h<p className="clock__minutes" data-minutes={this.state.minutes}>{this.state.minutes}</p>
                     </div>
                 </div>
-                <button onClick={this.handleClick} data-clock="2030">To 20h30</button>
             </div>
         );
     }
