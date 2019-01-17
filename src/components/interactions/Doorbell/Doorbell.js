@@ -48,10 +48,10 @@ class Doorbell extends Component {
             // play the boom
             setTimeout(()=>{
                 this.setState({displayAnim:true})
-            }, 500)
+            }, 1800);
             setTimeout(()=>{
                 this.props.onDoorbellPressed()
-            }, 5000)
+            }, 5800)
 
         }
     }
