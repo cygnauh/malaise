@@ -1,0 +1,18 @@
+@import '../../../assets/styles/index';
+
+.Logo {
+  width: 80px;
+  height: 15px;
+}
+
+.interface {
+  .Logo {
+    fill: $color__white;
+  }
+}
+
+.interface-reverse {
+  .Logo {
+    fill: $color__black
+  }
+}

@@ -62,17 +62,17 @@
 .Presentation{
     background: $color__episode_01;
     width: 100%;
-    height: 90vh;
+    height: 95vh;
     color: white;
     position:relative;
     .form__btn{
         height: 50px;
         background: none;
         border: none;
-        color: #0B162E;
-        text-shadow: -1px 0 #ffffff, 0 1px #ffffff, 1px 0 #ffffff, 0 -1px #ffffff;
+        color: $color__episode_01;
+        text-shadow: -1px 0 $color__white, 0 1px $color__white, 1px 0 $color__white, 0 -1px $color__white;
         font-size: 30px;
-        font-family: "Archivo Black", sans-serif;
+        font-family: $font__archivo--black;
         position: absolute;
         top: 0;
         right: 20px;
@@ -114,7 +114,7 @@
                     font-size: 50px;
                     transition: all 1s ease-in-out;
                     color: $color__episode_01;
-                    text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;
+                    text-shadow: -1px 0 $color__white, 0 1px $color__white, 1px 0 $color__white, 0 -1px $color__white;
                 }
             }
         }
@@ -154,8 +154,8 @@
         height: 50px;
         top: -2px;
         right: 0;
-        border-top: 2px solid #fff;
-        border-left: 2px solid #fff;
+        border-top: 2px solid $color__white;
+        border-left: 2px solid $color__white;
         visibility: hidden;
         //background-color: black; // TODO check what's best
     }
@@ -166,8 +166,8 @@
         left: 0;
         width: 400px;
         height: 50px;
-        border-bottom: 2px solid #fff;
-        border-right: 2px solid #fff;
+        border-bottom: 2px solid $color__white;
+        border-right: 2px solid $color__white;
         visibility: hidden;
     }
     .input__box{
@@ -235,7 +235,7 @@
     //transition: all 0.3s ease-in-out;
     span{
         cursor: default;
-        color: $color__bg;
+        color: $color__episode_01;
     }
 }
 

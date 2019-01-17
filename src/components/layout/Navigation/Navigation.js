@@ -1,6 +1,9 @@
 import './style.scss';
 import React from 'react';
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom';
+import Logo from "../../SVG/Logo/Logo";
+import WordBox from "../../SVG/WordBox/WordBox";
+import SocialShare from "../../SVG/SocialShare/SocialShare";
 
 class Navigation extends React.Component {
     constructor(props) {
@@ -31,10 +34,10 @@ class Navigation extends React.Component {
                     <div className="Navigation__main">
                         <div className="Navigation__header">
                             <Link to="/" className="Navigation__header-logo">
-                                <img className="Navigation__header-logo--icon" alt="Retour à l'accueil" src={require('../../../assets/icons/logo__white.png')} />
+                                <Logo />
                             </Link>
                             <Link to="/dictionnary" className="Navigation__header-box">
-                                <img className="Navigation__header-box--icon" alt="Aller à la boîte à mots" src={require('../../../assets/icons/box.svg')} />
+                                <WordBox />
                             </Link>
                         </div>
                         <ul className="Navigation__items">
@@ -80,11 +83,7 @@ class Navigation extends React.Component {
                             </li>
                         </ul>
                         <div className="Navigation__footer">
-                            <ul className="Navigation__socials">
-                                <li className="Navigation__socials-item"><Link to="#"><img alt="Logo facebook" src={require('../../../assets/icons/facebook__white.svg')} /></Link></li>
-                                <li className="Navigation__socials-item"><Link to="#"><img alt="Logo instagram" src={require('../../../assets/icons/instagram__white.svg')} /></Link></li>
-                                <li className="Navigation__socials-item"><Link to="#"><img alt="Logo twitter" src={require('../../../assets/icons/twitter__white.svg')} /></Link></li>
-                            </ul>
+                            <SocialShare />
                         </div>
                     </div>
                     <div className={this.state.nav ? this.closeNav : this.openNav} onClick={this.handleClick}>

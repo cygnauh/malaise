@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
 import './style.scss';
+import Logo from "../../SVG/Logo/Logo";
 
 class Header extends Component {
     render() {
         return (
             <header className="Header">
                 <div className="Header__logo">
-                    <img className="Header__icon" alt="Logo Malaise" src={require('../../../assets/icons/logo__white.png')} />
+                    <Logo />
                 </div>
             </header>
         )

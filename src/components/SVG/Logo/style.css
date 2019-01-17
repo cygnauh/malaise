@@ -1,0 +1,71 @@
+/*@font-face {
+  font-family: 'Happy Times';
+  src: url('../fonts/happy-times/happy-times.woff2') format('woff2'),
+  url('../fonts/happy-times/happy-times.woff') format('woff'),
+  url('../fonts/happy-times/happy-times.ttf')  format('truetype');
+}*/
+/*@font-face {
+  font-family: 'Happy Times';
+  src: url('../fonts/happy-times/happy-times.woff2') format('woff2'),
+  url('../fonts/happy-times/happy-times.woff') format('woff'),
+  url('../fonts/happy-times/happy-times.ttf')  format('truetype');
+}*/
+* {
+  box-sizing: border-box; }
+
+body, html {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  font-family: "Archivo", sans-serif;
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale; }
+  body.interface, html.interface {
+    background-color: #0B162E;
+    color: #ffffff; }
+  body.interface-reverse, html.interface-reverse {
+    background-color: #ffffff;
+    color: #000000; }
+
+h1, h2, h3, h4, h5, h6, ul, ol, li, a, p {
+  margin: 0;
+  padding: 0; }
+
+ul, ol, li {
+  list-style: none; }
+
+a {
+  text-decoration: none; }
+
+.interface a {
+  color: #ffffff; }
+
+.interface-reverse a {
+  color: #000000; }
+
+input:focus, textarea:focus, button:focus, button:active {
+  outline: none; }
+
+#root, .wrapper-container, .Start-process {
+  width: 100%;
+  height: 100%; }
+
+/*@font-face {
+  font-family: 'Happy Times';
+  src: url('../fonts/happy-times/happy-times.woff2') format('woff2'),
+  url('../fonts/happy-times/happy-times.woff') format('woff'),
+  url('../fonts/happy-times/happy-times.ttf')  format('truetype');
+}*/
+.Logo {
+  width: 80px;
+  height: 15px; }
+
+.interface .Logo {
+  fill: #ffffff; }
+
+.interface-reverse .Logo {
+  fill: #000000; }
+
+/*# sourceMappingURL=style.css.map */
