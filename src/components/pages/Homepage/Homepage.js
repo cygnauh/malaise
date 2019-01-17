@@ -112,7 +112,7 @@ class Homepage extends Component {
                                         <div className="instructions__content" ref={this.instructions}>
                                             <div className="instructions__text instructions__text--current" data-step="1">Malaise t'invite à vivre une expérience immersive à travers différents épisodes interactifs.</div>
                                             <div className="instructions__text" data-step="2">Laisse toi guider et suis les indications en bas de l'écran.</div>
-                                            <div className="instructions__text" data-step="3">Au fil de l'expérience, tu rencontreras des termes spécifiques à l'épisoqes qui se glisseront dans la boîte à mots.</div>
+                                            <div className="instructions__text" data-step="3">Au fil de l'expérience, tu rencontreras des termes spécifiques à l'épisode qui se glisseront dans la boîte à mots.</div>
                                         </div>
                                         <button className="instructions__arrow" onClick={this.handleClickNext}><img alt="Instruction suivante" src={require('../../../assets/icons/arrows/arrow_down.svg')}/></button>
                                     </div>
