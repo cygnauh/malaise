@@ -1,4 +1,4 @@
-import './Hours.scss';
+import './style.scss';
 import React, { Component } from 'react';
 
 class Hours extends Component {

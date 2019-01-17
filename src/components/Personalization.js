@@ -69,7 +69,7 @@ class Personalization extends Component {
     }
     render () {
         return(
-            <div>
+            <div className='Personalization'>
                 {
                     this.state.episode?
                         (<Query query={getEpisode} variables={{ id : this.state.episode }}>
@@ -77,8 +77,8 @@ class Personalization extends Component {
                             if (loading) return (<div>loader</div>);
                             if (error) return `Error!: ${error}`;
                             return (
-                                <div className='Personalization'>
-                                    <div className={this.state.componentIndex === 1?'doorbell__container':'doorbell__container hide'}>
+                                <div className="Personalization__container">
+                                    <div className={this.state.componentIndex === 1?'Personalization__doorbell':'Personalization__doorbell hide'}>
                                         <Doorbell onDoorbellPressed={this.goToPresentation}/>
                                     </div>
 

@@ -141,6 +141,10 @@ class EpisodeForm extends Component {
         var $currentFormStep = $('.episodeForm__content').find('.episodeForm__form--current');
         var $nextFormStep = $currentFormStep.next();
 
+        if($('.selected').length < 1) {
+            console.log('pas de selection');
+        }
+
         $currentFormStep.toggleClass('episodeForm__form--current');
         $nextFormStep.toggleClass('episodeForm__form--current');
 

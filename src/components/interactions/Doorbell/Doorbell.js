@@ -60,9 +60,27 @@ class Doorbell extends Component {
         return (
             <div className="Doorbell">
                 {!this.state.displayAnim ?
-                <div className="Doorbell__container">
-                    <div className={this.state.activeBell ? 'Doorbell__bell Doorbell__animation bell': 'Doorbell__bell bell'}>
-                        <label>ce soir tu es invité(e) chez ta pote qui fait une soirée posée</label>
+                <div className={this.state.activeBell ? 'Doorbell__container Doorbell__animation': 'Doorbell__container'}>
+                    <h1 className="Doorbell__label">Tu arrives chez ta pote qui fait une soirée posée.</h1>
+                    <div className="Doorbell__bell bell">
+                        <div className="repeat-bell__box">
+                            <div className="repeat-bell__container">
+                                <div className="repeat-bell__input"></div>
+                                <div className="repeat-bell__btn"></div>
+                            </div>
+                        </div>
+                        <div className="repeat-bell__box">
+                            <div className="repeat-bell__container">
+                                <div className="repeat-bell__input"></div>
+                                <div className="repeat-bell__btn"></div>
+                            </div>
+                        </div>
+                        <div className="repeat-bell__box">
+                            <div className="repeat-bell__container">
+                                <div className="repeat-bell__input"></div>
+                                <div className="repeat-bell__btn"></div>
+                            </div>
+                        </div>
                         <div className="bell__box">
                             <div className="bell__container">
                                 <div className="bell__input-border">
@@ -70,9 +88,27 @@ class Doorbell extends Component {
                                 </div>
                                 <div className={this.state.clickedBell ? 'bell__btn bell__btn--clicked': 'bell__btn'}>
                                     <button className={this.state.activeBell ? 'btn btn__input btn__bell': 'btn btn__input'} onClick={this.handleClick}>
-                                        <span>OK</span>
+                                        <span>ok</span>
                                     </button>
                                 </div>
+                            </div>
+                        </div>
+                        <div className="repeat-bell__box">
+                            <div className="repeat-bell__container">
+                                <div className="repeat-bell__input"></div>
+                                <div className="repeat-bell__btn"></div>
+                            </div>
+                        </div>
+                        <div className="repeat-bell__box">
+                            <div className="repeat-bell__container">
+                                <div className="repeat-bell__input"></div>
+                                <div className="repeat-bell__btn"></div>
+                            </div>
+                        </div>
+                        <div className="repeat-bell__box">
+                            <div className="repeat-bell__container">
+                                <div className="repeat-bell__input"></div>
+                                <div className="repeat-bell__btn"></div>
                             </div>
                         </div>
                     </div>

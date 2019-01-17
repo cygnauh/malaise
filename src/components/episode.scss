@@ -1,18 +1,34 @@
-.hours__container{
-  opacity: 1;
-  overflow: hidden;
-  transition: all 0.5s ease-in-out;
-  &.hide{
-    opacity: 0;
-    height: 0;
+@import '../assets/styles/index.scss';
+
+.Episode {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  background: $color__white;
+
+  &__hours {
+    width: 100%;
+    height: 100%;
+    opacity: 1;
+    overflow: hidden;
+    transition: all 0.5s ease-in-out;
+    &.hide{
+      opacity: 0;
+      height: 0;
+    }
   }
+
+  &__personalization {
+    width: 100%;
+    height: 100%;
+    opacity: 1;
+    overflow: hidden;
+    transition: all 0.5s ease-in-out;
+    &.hide{
+      opacity: 0;
+      height: 0;
+    }
+  }
+
 }
 
-.personalization__container{
-  opacity: 1;
-  transition: all 0.5s ease-in-out;
-  &.hide{
-    opacity: 0;
-    height: 0;
-  }
-}

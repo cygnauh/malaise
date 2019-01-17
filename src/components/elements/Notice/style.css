@@ -53,47 +53,16 @@ input:focus, textarea:focus, button:focus, button:active {
   url('../fonts/happy-times/happy-times.woff') format('woff'),
   url('../fonts/happy-times/happy-times.ttf')  format('truetype');
 }*/
-.episodeSelection {
-  width: 100%;
-  height: 100%; }
-  .episodeSelection__container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    height: 100%; }
-  .episodeSelection__result {
-    width: 500px;
-    text-align: center; }
-  .episodeSelection__intro {
-    font-family: "Archivo", sans-serif;
-    font-size: 15px;
-    margin-bottom: 50px; }
-  .episodeSelection__choice {
-    font-size: 12px;
-    letter-spacing: 1px; }
-    .episodeSelection__choice a {
-      text-decoration: underline; }
-  .episodeSelection__episode .episode__title {
-    font-family: "Archivo Black", sans-serif;
-    font-size: 45px;
-    letter-spacing: 2px;
-    margin-bottom: 30px; }
-  .episodeSelection__episode .episode__summary {
-    line-height: 25px; }
-  .episodeSelection__episode .episode__btn {
-    border: 1px solid #ffffff;
-    background: none;
-    color: #ffffff;
-    font-size: 12px;
-    padding: 15px 30px;
-    cursor: pointer;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    transition: all 0.5s ease;
-    margin: 50px 0; }
-    .episodeSelection__episode .episode__btn:hover {
-      background: #ffffff;
-      color: #0B162E; }
+.Notice {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: calc(100% - 48px); }
+  .Notice.interface {
+    border-top: 1px solid #ffffff;
+    color: #ffffff; }
+  .Notice.interface-reverse {
+    border-top: 1px solid #000000;
+    color: #000000; }
 
 /*# sourceMappingURL=style.css.map */

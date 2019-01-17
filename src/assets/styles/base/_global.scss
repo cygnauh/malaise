@@ -12,8 +12,17 @@ body, html {
   font-size: 16px;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: $color__bg;
-  color: $color__white;
+
+  &.interface {
+    background-color: $color__bg;
+    color: $color__white;
+  }
+
+  &.interface-reverse {
+    background-color: $color__white;
+    color: $color__black;
+  }
+
 }
 h1, h2, h3, h4, h5, h6, ul, ol, li, a, p {
   margin:0;
