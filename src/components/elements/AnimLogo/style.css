@@ -54,11 +54,14 @@ input:focus, textarea:focus, button:focus, button:active {
   align-items: center;
   width: 450px;
   height: 80px; }
-  .AnimLogo__container span {
-    text-align: center; }
-    .AnimLogo__container span img {
-      margin: 0 30px; }
-      .AnimLogo__container span img.AnimLogo__specialLetter {
-        margin-top: -20px; }
+  .AnimLogo__container {
+    width: 450px;
+    height: 80px; }
+    .AnimLogo__container span {
+      text-align: center; }
+      .AnimLogo__container span img {
+        margin: 0 30px; }
+        .AnimLogo__container span img.AnimLogo__specialLetter {
+          margin-top: -20px; }
 
 /*# sourceMappingURL=style.css.map */

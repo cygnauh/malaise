@@ -4,8 +4,7 @@ import $ from 'jquery';
 import SoundAlert from "../../elements/SoundAlert/SoundAlert";
 import AnimLogo from "../../elements/AnimLogo/AnimLogo";
 import Lottie from 'react-lottie';
-import animationHomeBG3 from '../../../assets/animation/01';
-import animationHomeBG4 from '../../../assets/animation/02';
+import animationHome from '../../../assets/animation/03';
 
 class Homepage extends Component {
 
@@ -17,7 +16,7 @@ class Homepage extends Component {
         this.defaultOptions = {
             loop: true,
             autoplay: true,
-            animationData: animationHomeBG3,
+            animationData: animationHome,
             propsrendererSettings: {
                 preserveAspectRatio: 'xMidYMid slice'
             }
