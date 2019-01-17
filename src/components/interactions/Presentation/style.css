@@ -220,7 +220,7 @@ input:focus, textarea:focus, button:focus, button:active {
     animation: bottomrightTest 1s ease-in-out forwards; }
 
 .border-white span {
-  text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;
+  text-shadow: none;
   color: white;
   transition: color 0.4s ease-in-out;
   cursor: pointer; }

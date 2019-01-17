@@ -25,10 +25,11 @@ class Presentation extends Component {
             randomLetters:[],
             guestLetters:[],
         };
+        this.myRef = React.createRef();
     }
     componentDidMount(){
         setTimeout(() => {
-            console.log("dots",this.dotRefs)
+            // console.log("dots",this.dotRefs)
 
         }, 1000)
         this.calculateIntervalPositions(100,200, 3, 3);
@@ -98,7 +99,7 @@ class Presentation extends Component {
         this.setState({
             positions:pos
         }, () => {
-            console.log(this.state.positions);
+            // console.log(this.state.positions);
         this.hostPositions()}
         );
     }
@@ -120,10 +121,30 @@ class Presentation extends Component {
     };
     displayGuest = () => {
         let guest=[];
+        let posWhite=[
+            {
+                top : 308,
+                left : 588
+            },
+            {
+                top : 350,
+                left : 755
+            },
+            {
+                top : 550,
+                left : 800
+            },
+            {
+                top : 487,
+                left : 616
+            }
+        ];
         for(let i=0;i<this.guestsNb;i++){
             let topPos = this.state.positions[i].top;
             let leftPos = this.state.positions[i].left;
             if(i<this.state.personalizationsQuestions.length){
+                topPos = posWhite[i].top;
+                leftPos = posWhite[i].left;
                 let colorDot = '';
                 if(this.state.displayInput){
                     colorDot ='rgba(255,255,255,0.3)'
@@ -145,7 +166,7 @@ class Presentation extends Component {
                              background:colorDot,
                              top:topPos+'px',
                              left:leftPos+'px'}}
-                         onClick={!this.state.displayInput ? (e)=>this.onDotClicked(i, topPos, leftPos, e):null} // send the refs
+                         onClick={!this.state.displayInput ? (e)=>this.onDotClicked(i, topPos, leftPos,this.dotRefs, e):null} // send the refs
                     />)
             }else{
                 guest.push(
@@ -162,7 +183,8 @@ class Presentation extends Component {
         return guest
     };
 
-    onDotClicked=(i, posTop, posLeft, e)=>{
+    onDotClicked=(i, posTop, posLeft, refs, e)=>{
+        console.log('red', refs)
         let dots = this.state.dotClicked;
         dots.push(i);
         let pos = [{
