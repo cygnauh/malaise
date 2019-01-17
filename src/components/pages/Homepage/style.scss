@@ -1,0 +1,273 @@
+@import '../../../assets/styles/index.scss';
+
+@-webkit-keyframes horizontallyScroll {
+  0%, 100% {
+    margin-left:0;
+  }
+  99.99% {
+    margin-left:-100%;
+  }
+}
+
+.Home {
+    width: 100%;
+    height: 100%;
+    color: $color__white;
+    position: relative;
+
+  &__background-animation {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 0;
+    overflow: hidden;
+    display: flex;
+    justify-content:left;
+    align-items:center;
+    opacity: 0.6;
+
+    & > div {
+      display: flex;
+      justify-content:left;
+      align-items:center;
+    }
+
+    svg {
+      width: 120%!important;
+      height: 120%!important;
+    }
+
+  }
+
+  &__alert {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 50px;
+    border-bottom: 1px solid $color__white;
+    display: flex;
+    justify-content:center;
+    align-items:center;
+    overflow-x: hidden;
+    white-space: nowrap;
+
+    &-text {
+      animation: linear horizontallyScroll 2s infinite ;
+      margin-left:-100%;
+
+      &:after {
+        content:attr(data-text);
+        position:absolute;
+        white-space:nowrap;
+        padding-left:10px;
+      }
+
+    }
+
+  }
+
+  &__container {
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    display: flex;
+    justify-content:center;
+    align-items: center;
+  }
+
+  &__center {
+    width: 450px;
+  }
+
+  &__content {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+    width: 100%;
+    opacity: 1;
+    z-index: 2;
+    transition: opacity 1s 0s;
+  }
+
+  &__logo {
+    margin-bottom: 50px;
+    display: flex;
+    justify-content:center;
+    align-items:center;
+  }
+
+  &__description {
+    font-size: 18px;
+    max-width: 400px;
+    line-height: 25px;
+    margin: 0 auto 80px auto;
+    font-family: "Times New Roman";
+  }
+
+  &__description--small {
+    max-width: 350px;
+  }
+
+  &__start {
+    border: 1px solid $color__white;
+    background: none;
+    color: $color__white;
+    font-size: 12px;
+    padding: 15px 30px;
+    cursor: pointer;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    transition: all 0.5s ease;
+
+    &:hover {
+      background:$color__white;
+      color: $color__bg;
+    }
+
+  }
+
+  &__instructions {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    z-index: 2;
+    opacity: 1;
+    transition: opacity 2s 1.1s;
+    transform: translate(-50%, -50%);
+
+    .instructions {
+
+      width: 100%;
+      height: 100%;
+
+      text-align: left;
+
+      &__container {
+        position: relative;
+        width: 100%;
+        height: 100%;
+      }
+
+      &__hide {
+        opacity: 0!important;
+        z-index: 1!important;
+        transition: opacity 1s 0s!important;
+      }
+
+      &__end {
+        opacity: 1;
+        z-index: 2;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        transition: opacity 1s 1s;
+        text-align: center;
+      }
+
+      &__content {
+        position: relative;
+        text-align: left;
+        width: 500px;
+        min-height: 180px;
+      }
+
+      &__process {
+        text-align: center;
+        position: relative;
+        z-index: 2;
+      }
+
+      &__text {
+        position: absolute;
+        font-family: $font__archivo--black;
+        font-size: 25px;
+        line-height: 35px;
+        opacity: 0;
+        transform: translateY(-20px);
+        transition: opacity 1s 0s, transform 1s ease;
+
+        &--current {
+          opacity: 1;
+          transform: translateY(0);
+          transition: opacity 1s 1s;
+        }
+
+      }
+
+      &__next {
+        border: 1px solid $color__white;
+        background: none;
+        color: $color__white;
+        font-size: 12px;
+        padding: 15px 30px;
+        cursor: pointer;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        transition: all 0.5s ease;
+        margin-top: 100px;
+        cursor: pointer;
+
+        img {
+          cursor: pointer;
+        }
+
+        &:hover {
+          background:$color__white;
+          color: $color__bg;
+        }
+      }
+
+      &__arrow {
+        background: none;
+        border: none;
+        position: absolute;
+        bottom: -100px;
+      }
+
+    }
+
+    .pagination {
+
+      display: flex;
+      margin-bottom: 50px;
+
+      &__currentPage, &__pagesLength {
+        font-size: 30px;
+        text-shadow: -1px 0 $color__white, 0 1px $color__white, 1px 0 $color__white, 0 -1px $color__white;
+        color: $color__bg;
+        font-family: $font__archivo--black;
+        position: relative;
+      }
+
+      &__pagesLength {
+
+        margin-left: 50px;
+
+        &:before {
+          content: "";
+          width: 30px;
+          height: 1px;
+          background-color: $color__white;
+          position: absolute;
+          left: -40px;
+          bottom: 5px;
+        }
+
+      }
+
+    }
+
+  }
+
+  &__hide {
+    opacity: 0;
+    z-index: 1;
+    transition: opacity 1s 0s;
+  }
+
+}

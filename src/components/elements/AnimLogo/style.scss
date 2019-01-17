@@ -1,0 +1,32 @@
+@import '../../../assets/styles/index.scss';
+
+.AnimLogo {
+
+  display: flex;
+  justify-content:center;
+  align-items:center;
+  width: 450px;
+  height: 80px;
+
+  &__container {
+
+    width: 450px;
+    height:80px;
+
+    span {
+
+      text-align: center;
+
+      img {
+        margin: 0 30px;
+
+        &.AnimLogo__specialLetter {
+          margin-top: -20px;
+        }
+
+      }
+
+    }
+  }
+
+}

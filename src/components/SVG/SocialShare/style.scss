@@ -1,0 +1,33 @@
+@import '../../../assets/styles/index';
+
+.SocialShare {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  &__item {
+    margin: 0 20px;
+  }
+  svg {
+    width: 20px;
+  }
+}
+
+.interface {
+  .SocialShare {
+    svg {
+      path {
+        fill: $color__white;
+      }
+    }
+  }
+}
+
+.interface-inverse {
+  .SocialShare {
+    svg {
+      path {
+        fill: $color__black;
+      }
+    }
+  }
+}
