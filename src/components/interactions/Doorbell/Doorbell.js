@@ -4,6 +4,8 @@ import boumboum from '../../../assets/animation/boumboum'
 import './style.scss';
 import { SoundContext } from "../../../store/SoundProvider";
 
+// doorbell, boum
+
 class Doorbell extends Component {
 
     constructor(props) {

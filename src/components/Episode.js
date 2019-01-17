@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Hours from './interactions/Hours'
-import Doorbell from './interactions/Doorbell/Doorbell'
+// import Doorbell from './interactions/Doorbell/Doorbell'
+import Personalization from './Personalization'
 import Presentation from './interactions/Presentation/Presentation'
 import "./episode.scss";
 // 1) hours, --> personnalization ?? doorbell, boum, --> presentation soirée
@@ -20,7 +21,7 @@ class Episode extends Component {
             })
         }, 5000)
     };
-    goToPresentation = () => {
+    goToWhatever = () => {
         this.setState({
             componentIndex:2
         })
@@ -28,18 +29,20 @@ class Episode extends Component {
     render() {
         return (
             <div className="Episode">
+                {/*hello this is the episode page*/}
                 {/*{!this.state.nextComponent?*/}
-                <div className={this.state.nextComponent !== 0?'hours__container hide':'hours__container'}>
+                <div className={this.state.componentIndex !== 0?'hours__container hide':'hours__container'}>
                     <Hours />
                 </div>
 
                 {/*:*/}
-                <div className={this.state.nextComponent === 1?'doorbell__container':'doorbell__container hide'}>
-                    <Doorbell onDoorbellPressed={this.goToPresentation}/>
-                </div>
+                {/*<div className={this.state.componentIndex === 1?'doorbell__container':'doorbell__container hide'}>*/}
+                    {/*<Doorbell onDoorbellPressed={this.goToPresentation}/>*/}
+                {/*</div>*/}
 
-                <div className={this.state.nextComponent === 2?'presentation__container':'presentation__container hide'}>
-                    <Presentation onDoorbellPressed={this.goToPresentation}/>
+                <div className={this.state.componentIndex === 1?'personalization__container':'personalization__container hide'}>
+                    <Personalization nextComponent={this.goToWhatever}/>
+                    {/*go to hours */}
                 </div>
                 {/*}*/}
             </div>

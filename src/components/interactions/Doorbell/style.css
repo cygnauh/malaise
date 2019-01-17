@@ -293,4 +293,7 @@ input:focus, textarea:focus, button:focus, button:active {
 .Doorbell__animation.bell {
   width: 460px; }
 
+.lottie {
+  height: 100vh; }
+
 /*# sourceMappingURL=style.css.map */
