@@ -37,7 +37,8 @@ class SoundProvider extends Component {
                 src: [place.url],
                 ext: ['mp3'],
                 html5: true,
-                volume:0.2
+                volume:0.2,
+                loop: true
             });
             console.log(this.state.placeSoundtrack);
             if(this.state.placeSoundtrack){
