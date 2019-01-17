@@ -27,22 +27,28 @@ class Navigation extends React.Component {
         }
     }
 
+    handleClickLink = () => {
+        this.setState ({
+            nav:false
+        });
+    }
+
     render() {
         return (
             <nav className={this.state.nav ? "Navigation Navigation--open" : "Navigation"}>
                 <div className="Navigation__container">
                     <div className="Navigation__main">
                         <div className="Navigation__header">
-                            <Link to="/" className="Navigation__header-logo">
+                            <Link onClick={this.handleClickLink} to="/" className="Navigation__header-logo">
                                 <Logo />
                             </Link>
-                            <Link to="/dictionnary" className="Navigation__header-box">
+                            <Link onClick={this.handleClickLink} to="/dictionnary" className="Navigation__header-box">
                                 <WordBox />
                             </Link>
                         </div>
                         <ul className="Navigation__items">
                             <li className="Navigation__item">
-                                <Link to='/' className="item__link">
+                                <Link onClick={this.handleClickLink} to='/' className="item__link">
                                     <div className="item__content">
                                         <div className="item__name">
                                             <span>01</span>
@@ -52,7 +58,7 @@ class Navigation extends React.Component {
                                 </Link>
                             </li>
                             <li className="Navigation__item">
-                                <Link to='/catalogue' className="item__link">
+                                <Link onClick={this.handleClickLink} to='/catalogue' className="item__link">
                                     <div className="item__content">
                                         <div className="item__name">
                                             <span>02</span>
@@ -62,7 +68,7 @@ class Navigation extends React.Component {
                                 </Link>
                             </li>
                             <li className="Navigation__item">
-                                <Link to='/dictionnary' className="item__link">
+                                <Link onClick={this.handleClickLink} to='/dictionnary' className="item__link">
                                     <div className="item__content">
                                         <div className="item__name">
                                             <span>03</span>
@@ -72,7 +78,7 @@ class Navigation extends React.Component {
                                 </Link>
                             </li>
                             <li className="Navigation__item">
-                                <Link to='/hours' className="item__link">
+                                <Link onClick={this.handleClickLink} to='/hours' className="item__link">
                                     <div className="item__content">
                                         <div className="item__name">
                                             <span>04</span>
