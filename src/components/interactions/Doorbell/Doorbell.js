@@ -36,10 +36,9 @@ class Doorbell extends Component {
 
     render() {
         return (
-            <div className="Dictionnary">
-                Doorbell
-                <div className="test">
-                    <div className={this.state.activeBell ? 'bell animate-bell': 'bell'}>
+            <div className="Doorbell">
+                <div className="Doorbell__container">
+                    <div className={this.state.activeBell ? 'Doorbell__bell Doorbell__animation bell': 'Doorbell__bell bell'}>
                         <label>ce soir tu es invité(e) chez ta pote qui fait une soirée posée</label>
                         <div className="bell__box">
                             <div className="bell__container">

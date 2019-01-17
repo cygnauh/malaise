@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import Hours from './interactions/Hours'
 import Doorbell from './interactions/Doorbell/Doorbell'
+import Header from "./layout/Header/Header";
+
 // 1) hours
 class Episode extends Component {
     constructor(){
@@ -21,7 +23,6 @@ class Episode extends Component {
     render() {
         return (
             <div className="Episode">
-                hello this is the episode page
                 {!this.state.nextComponent? <Hours/> : <Doorbell/>}
             </div>
         )

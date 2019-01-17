@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './style.scss';
 
+
 // this component help to display all episodes
 
 // 1) waiting for props Data ( getEpisodes : allEpisodes )

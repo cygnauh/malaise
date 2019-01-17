@@ -1,3 +1,5 @@
+@import '../../../assets/styles/index.scss';
+
 @keyframes bottomright {
     0% {
         width: 0;
@@ -140,8 +142,8 @@
     left: 0;
     width: 300px;
     height: 70px;
-    border-bottom: 2px solid #333;
-    border-right: 2px solid #333;
+    border-bottom: 2px solid $color__white;
+    border-right: 2px solid $color__white;
     visibility: hidden;
 }
 .bell__input-border:before {
@@ -151,8 +153,8 @@
     right: 0;
     width: 300px;
     height: 70px;
-    border-top: 2px solid #333;
-    border-left: 2px solid #333;
+    border-top: 2px solid $color__white;
+    border-left: 2px solid $color__white;
     visibility: hidden;
 }
 .animate-bell .bell__input-border:before {
@@ -185,7 +187,7 @@
     transition: opacity 0.5s ease;
 }
 .bell__box {
-    border: 2px solid black;
+    border: 2px solid $color__white;
     margin-top: 40px;
     width: 400px;
     height: 75px;
@@ -239,7 +241,7 @@
     background: none;
     font-weight: bold;
     font-size: 35px;
-    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+    text-shadow: -1px 0 $color__white, 0 1px $color__white, 1px 0 $color__white, 0 -1px $color__white;
     color: white;
     letter-spacing: 2px;
     position: relative;
@@ -285,9 +287,9 @@
     border: 2px solid transparent;
 }
 .animate-bell .btn__input:before {
-    border-top-color: black;
-    border-right-color: black;
-    border-bottom-color: black;
+    border-top-color: $color__white;
+    border-right-color: $color__white;
+    border-bottom-color: $color__white;
     transition:
     border-top-color 0.15s linear,
     border-right-color 0.15s linear 0.10s,
@@ -297,7 +299,7 @@
     border: 0 solid transparent;
 }
 .animate-bell .btn__input:after {
-    border-top: 2px solid black;
+    border-top: 2px solid $color__white;
     border-left-width: 2px;
     border-right-width: 2px;
     transform: rotate(270deg);

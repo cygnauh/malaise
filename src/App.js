@@ -6,8 +6,8 @@ import SoundProvider from "./store/SoundProvider";
 import ApolloBoost from "apollo-boost";
 import Navigation from './components/layout/Navigation/Navigation';
 import Main from './components/layout/Main/Main';
-import Header from './components/layout/Header/Header';
 import './assets/styles/App.scss';
+import Header from "./components/layout/Header/Header";
 
 
 const client = new ApolloBoost({
@@ -19,7 +19,7 @@ const App = () => (
     <ApolloProvider client={client}>
         <UserProvider>
             <SoundProvider>
-               {/* <Header />*/}
+                <Header />
                 <Navigation />
                 <Main />
             </SoundProvider>
