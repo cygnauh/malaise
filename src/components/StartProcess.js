@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import Homepage from "./pages/Homepage/Homepage";
-import Header from "./layout/Header/Header";
-import EpisodeSelection from "./EpisodeSelection";
+import EpisodeSelection from "./EpisodeSelection/EpisodeSelection";
 import Episode from "./Episode"
 
 class StartProcess extends Component {
@@ -29,13 +28,11 @@ class StartProcess extends Component {
         return (
             <div className="Start-process">
                 <div className="wrapper-container">
-                    {this.state.index !== 0 ? <Header /> : null}
                     {this.state.index === 0 ? <Homepage onButtonPressed={this.handleClickNext} /> : null}
                     {this.state.index === 1? <EpisodeSelection onButtonPressed={this.handleClickNext}/> : null}
                     {this.state.index === 2 ? <Episode onButtonPressed={this.handleClickNext}/> : null}
                 </div>
             </div>
-
         )
     }
 

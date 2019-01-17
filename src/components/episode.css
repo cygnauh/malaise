@@ -1,0 +1,16 @@
+.hours__container {
+  opacity: 1;
+  overflow: hidden;
+  transition: all 0.5s ease-in-out; }
+  .hours__container.hide {
+    opacity: 0;
+    height: 0; }
+
+.personalization__container {
+  opacity: 1;
+  transition: all 0.5s ease-in-out; }
+  .personalization__container.hide {
+    opacity: 0;
+    height: 0; }
+
+/*# sourceMappingURL=episode.css.map */
