@@ -26,19 +26,24 @@ type Personalization @model {
 
 type Interaction @model {
   id: ID! @isUnique
+  name:String!
   position: Int!
   interactionType: String!
-  timer: Boolean!
+  timer: Int
+  question:String
   content: String
   soundSequences: [SoundSequence!]! @relation(name: "InteractionSoundSequences")
   episode: Episode! @relation(name:"EpisodeInteractions")
-  anwsers: Answer @relation(name: "AnswersInteractions")
+  originInteraction: Answer @relation(name: "AnswersOriginInteractions")
+  destinationInteraction: Answer @relation(name: "AnswersDestinationInteractions")
+  indication: String
 }
 
 type Answer @model {
   id: ID! @isUnique
   content: String!
-  interactionsSegment: [Interaction!]! @relation(name:"AnswersInteractions")
+  originInteraction: Interaction! @relation(name:"AnswersOriginInteractions")
+  destinationInteraction: Interaction! @relation(name:"AnswersDestinationInteractions")
 }
 
 type SoundSequence @model {
@@ -56,7 +61,7 @@ type Sound @model {
   type: String!
   url: String!
   episode: Episode @relation(name: "EpisodeSounds")
-  soundSequences: SoundSequence! @relation(name: "SoundSoundSequences")
+  soundSequences: [SoundSequence!]! @relation(name: "SoundSoundSequences")
 }
 
 type Testimony @model {
