@@ -49,12 +49,15 @@ export const getEpisode = gql`
             sounds{
                 name,
                 url,
-                type,
-                soundsequences{
+                type
+            },
+            interactions{
+                content,
+                soundSequences{
                     beginAt,
                     endAt
                 }
-            }
+            },
         }
     }
 `;

@@ -69,8 +69,14 @@ class SoundProvider extends Component {
                 volume:0.5
             });
             streamDoorbell.play();
-            setTimeout(()=>{streamOpendoor.play();}, 1500);
-            setTimeout(()=>{this.state.placeSoundtrack.volume(0.7)}, 1800)
+            setTimeout( () => {
+                streamOpendoor.play();
+            }, 1500);
+            setTimeout( () => {
+                if(this.state.placeSoundtrack){
+                    this.state.placeSoundtrack.volume(0.7)
+                }
+            }, 1800)
         },
         playInstructions:(step) => {
             console.log(step);
