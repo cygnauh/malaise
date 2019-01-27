@@ -1,7 +1,5 @@
 import './style.scss';
-import $ from 'jquery';
 import React, { Component } from 'react';
-import Odometer from 'odometer';
 
 class Hours extends Component {
     constructor(props) {
@@ -39,22 +37,6 @@ class Hours extends Component {
         var hoursValue = hours.dataset.hours;
         var minutes = document.querySelector('.clock__minutes');
         var minutesValue = minutes.dataset.minutes;
-
-        var odometerHours = new Odometer({
-            el: hours,
-            value: hoursValue,
-            format: '',
-            theme: 'digital'
-        });
-        odometerHours.update(21);
-
-        var odometerMinutes = new Odometer({
-            el: minutes,
-            value: minutesValue,
-            format: '',
-            theme: 'digital'
-        });
-        odometerMinutes.update(30);
     }
 
     tick() {

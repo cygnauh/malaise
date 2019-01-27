@@ -1,0 +1,47 @@
+@import '../../../assets/styles/index.scss';
+
+.Music {
+  &__item {
+    display: block;
+    overflow: hidden;
+    position: relative;
+    height: 200px;
+  }
+
+  &__name {
+    position: absolute;
+    min-width: 100%;
+    span, &:after {
+      position: relative;
+      display: inline-block;
+      white-space: nowrap;
+      top:0;
+      font-size: 180px;
+      font-family: $font__archivo--black;
+      text-transform: lowercase;
+      color: $color__bg;
+      text-shadow: $color__white 1px 1px, $color__white -1px 1px, $color__white -1px -1px, $color__white 1px -1px;
+    }
+    span {
+      animation: defilement 20s infinite linear;
+    }
+    &:after {
+      position: absolute;
+      top:0;
+      left: 30px;
+      content:attr(data-name);
+      animation: defilement2 20s infinite linear;
+    }
+  }
+
+}
+
+@keyframes defilement {
+  0% { margin-left: 0; }
+  100% { margin-left: -100%; }
+}
+
+@keyframes defilement2 {
+  0% { margin-left: 100%; }
+  100% { margin-left: 0%; }
+}
