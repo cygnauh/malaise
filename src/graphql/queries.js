@@ -7,7 +7,32 @@ export const getEpisodesAndPlaceSounds = gql`
             title,
             summary
             place,
-            entourage
+            entourage,
+            personalizations{
+                name,
+                question,
+                answerLabel
+                type
+            },
+            sounds{
+                name,
+                url,
+                type
+            },
+            interactions{
+                content,
+                indication,
+                question,
+                timer,
+                position,
+                name,
+                interactionType,
+                soundSequences{
+                    beginAt,
+                    endAt,
+                    name
+                }
+            },
         },
         allSounds{
             name,

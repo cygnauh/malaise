@@ -2,6 +2,7 @@
 import React, { createContext, Component } from "react"; // on importe createContext qui servira à la création d'un ou plusieurs contextes
 import { Howl } from 'howler';
 import { UserContext } from "./UserProvider";
+import Sound from "./../assets/sounds/soundtrack_episode1.mp3"
 //state and functions declarations
 export const SoundContext = createContext({
     placeSounds: [],
@@ -11,7 +12,8 @@ export const SoundContext = createContext({
     loadSound:() => {},
     playDoorBell:() => {},
     playInstructions:() => {},
-    playGreeting:() => {}
+    playGreeting:() => {},
+    playInteractionSound:() =>{}
 
 });
 class SoundProvider extends Component {
@@ -32,9 +34,35 @@ class SoundProvider extends Component {
             this.setState({ placeSounds: sounds });
             setTimeout(()=>{console.log(this.state.placeSounds)}, 0)
         },
-        setEpisodeSounds: (sounds, soundSq) => {
-            this.setState({ episodeSounds: {url : sounds, sq : soundSq} });
-            setTimeout(()=>{console.log(this.state.episodeSounds)}, 0)
+        setEpisodeSounds: (sounds, interactions) => {
+            this.setState({ episodeSoundtrack:sounds});
+            let tab = {};
+            setTimeout(()=>{
+                for(let i = 0; i<interactions.length; i++){
+                    let sq = [ interactions[i].soundSequences[0].beginAt, interactions[i].soundSequences[0].endAt]
+                    tab[interactions[i].name] = sq;
+                }
+            }, 0);
+            let sound = new Howl({
+                src: [this.state.episodeSoundtrack],
+                // sprite:{
+                //     regles: [35250, 5930],
+                //     lancement_jeu: [13040, 19840],
+                //     rep: [32980, 2200],
+                //     choix_boisson:[41080, 5150],
+                //     je_nai_jamais1:[46260, 9880],
+                //     anecdote1:[56140, 52930],
+                //     je_nai_jamais_user:[110870, 4570],
+                //     je_nai_jamais3:[114240, 7960],
+                //     anecdote2:[122000, 18820],
+                //     anecdote2_part2:[140020, 79960],
+                //     tour:[220280, 13060],
+                //     tour2:[253340, 10770]
+                // },
+                sprite: tab
+            });
+            this.setState({ episodeSounds: sound });
+            setTimeout(()=>{console.log(this.state.episodeSounds)}, 0);
         },
         registerPlaceSound: (place) =>{ // load place selected
             let stream;
@@ -105,6 +133,10 @@ class SoundProvider extends Component {
             });
             stream.play()
         },
+        playInteractionSound:(value) =>{
+            // this.state.episodeSounds
+            this.state.episodeSounds.play(value);
+        }
     };
 
     render() {

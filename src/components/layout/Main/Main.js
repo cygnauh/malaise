@@ -10,6 +10,7 @@ import Hours from "../../interactions/Hours/Hours";
 import Glass from "../../elements/Glass/Glass";
 import Personalization from "../../Personalization";
 import Episode from "../../Episode";
+import Selection from "../../EpisodeSelection/EpisodeSelection";
 
 /*const firstChild = props => {
     const childrenArray = React.Children.toArray(props.children);
@@ -38,6 +39,7 @@ class Main extends Component {
                                 <Route path="/hours" component={Hours} />
                                 <Route path="/presentation" component={Personalization} />
                                 <Route path="/experience" component={Episode} />
+                                <Route path="/selection" component={Selection} />
                                 <Route path="/test" component={Glass} />
 
 
