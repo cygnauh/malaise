@@ -1,6 +1,4 @@
 import gql from "graphql-tag";
-// import FirstEpisode from "./queries-folder/FirstEpisode";
-
 
 export const getEpisodesAndPlaceSounds = gql`
     {
@@ -49,12 +47,15 @@ export const getEpisode = gql`
             sounds{
                 name,
                 url,
-                type,
-                soundsequences{
+                type
+            },
+            interactions{
+                content,
+                soundSequences{
                     beginAt,
                     endAt
                 }
-            }
+            },
         }
     }
 `;

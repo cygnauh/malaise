@@ -7,6 +7,7 @@ import Catalogue from "../../pages/Catalogue/Catalogue";
 import Dictionnary from "../../pages/Dictionnary/Dictionnary";
 import StartProcess from "../../StartProcess";
 import Hours from "../../interactions/Hours/Hours";
+import Glass from "../../elements/Glass/Glass";
 import Personalization from "../../Personalization";
 import Episode from "../../Episode";
 
@@ -37,6 +38,8 @@ class Main extends Component {
                                 <Route path="/hours" component={Hours} />
                                 <Route path="/presentation" component={Personalization} />
                                 <Route path="/experience" component={Episode} />
+                                <Route path="/test" component={Glass} />
+
 
                             </Switch>
                         </main>

@@ -163,13 +163,13 @@ class AnimLogo extends Component {
         return (
             <div className="AnimLogo">
                 <div className="AnimLogo__container" ref={this.animWrapper}>
-                    <span data-letter="1"><img  src={require('../../../assets/icons/logo/logo_m.svg')}/></span>
-                    <span data-letter="2"><img src={require('../../../assets/icons/logo/logo_a.svg')}/></span>
-                    <span data-letter="3"><img className="AnimLogo__specialLetter" src={require('../../../assets/icons/logo/logo_l.svg')}/></span>
-                    <span data-letter="4"><img src={require('../../../assets/icons/logo/logo_a.svg')}/></span>
-                    <span data-letter="5"><img className="AnimLogo__specialLetter" src={require('../../../assets/icons/logo/logo_i.svg')}/></span>
-                    <span data-letter="6"><img src={require('../../../assets/icons/logo/logo_s.svg')}/></span>
-                    <span data-letter="7"><img src={require('../../../assets/icons/logo/logo_e.svg')}/></span>
+                    <span data-letter="1"><img src={require('../../../assets/icons/logo/logo_m.svg')} alt='' /></span>
+                    <span data-letter="2"><img src={require('../../../assets/icons/logo/logo_a.svg')} alt=''/></span>
+                    <span data-letter="3"><img className="AnimLogo__specialLetter" src={require('../../../assets/icons/logo/logo_l.svg')} alt=''/></span>
+                    <span data-letter="4"><img src={require('../../../assets/icons/logo/logo_a.svg')} alt=''/></span>
+                    <span data-letter="5"><img className="AnimLogo__specialLetter" src={require('../../../assets/icons/logo/logo_i.svg')} alt=''/></span>
+                    <span data-letter="6"><img src={require('../../../assets/icons/logo/logo_s.svg')} alt=''/></span>
+                    <span data-letter="7"><img src={require('../../../assets/icons/logo/logo_e.svg')} alt=''/></span>
                 </div>
             </div>
         );
