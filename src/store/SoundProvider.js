@@ -7,6 +7,7 @@ export const SoundContext = createContext({
     placeSounds: [],
     episodeSounds:null,
     setPlaceSounds: () => {},
+    setEpisodeSounds: () => {},
     loadSound:() => {},
     playDoorBell:() => {},
     playInstructions:() => {},
@@ -27,9 +28,13 @@ class SoundProvider extends Component {
             'reserve': 'https://circegrand.fr/etude/gobelins/malaise/media/sounds/salut-reserve.mp3',
         }],
 
-    setPlaceSounds: sounds => {
+        setPlaceSounds: sounds => {
             this.setState({ placeSounds: sounds });
             setTimeout(()=>{console.log(this.state.placeSounds)}, 0)
+        },
+        setEpisodeSounds: (sounds, soundSq) => {
+            this.setState({ episodeSounds: {url : sounds, sq : soundSq} });
+            setTimeout(()=>{console.log(this.state.episodeSounds)}, 0)
         },
         registerPlaceSound: (place) =>{ // load place selected
             let stream;
@@ -51,6 +56,7 @@ class SoundProvider extends Component {
                 }
             );
         },
+
         playDoorBell:() => {
             let doorbell = 'https://circegrand.fr/etude/gobelins/malaise/media/sounds/doorbell.mp3';
             let opendoor = 'https://circegrand.fr/etude/gobelins/malaise/media/sounds/open_door.mp3';

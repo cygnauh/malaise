@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Query } from "react-apollo";
 import { getEpisodesAndPlaceSounds } from '../../graphql/queries'
-import EpisodeForm from "../EpisodeForm";
+// import EpisodeForm from "../EpisodeForm";
 import { UserContext } from "../../store/UserProvider";
 import "./style.scss";
 
@@ -23,6 +23,10 @@ class EpisodeSelection extends Component {
         console.log(this.context);
         console.log("hello")
     }
+    onContinueClicked (callback, params) {
+        callback(params);
+        this.props.onButtonPressed()
+    }
 
     render () {
         return(
@@ -34,27 +38,34 @@ class EpisodeSelection extends Component {
                     if (networkStatus === 4) return "Refetching!";
                     if (loading) return null;
                     if (error) return `Error!: ${error}`;
-
+                    console.log(data)
                     return (
                         <div className="episodeSelection">
-                            {!this.context.episode?
-                            <EpisodeForm episodes={data}/>
-                                :
-                                <div className="episodeSelection__container">
-                                    <div className="episodeSelection__result">
-                                        <div className="episodeSelection__episode">
-                                            <div className="episode__content">
-                                                <h2 className="episode__title">{this.context.episode.title}</h2>
-                                                <p className="episode__summary">{this.context.episode.summary}</p>
-                                                <button className="episode__btn" onClick={this.props.onButtonPressed}>Continuer</button>
+                            {/*{!this.context.episode?*/}
+                                {/*<EpisodeForm episodes={data}/>*/}
+                                {/*:*/}
+                            <UserContext.Consumer>
+                                {({episode, setEpisode}) => (
+                                    <div>
+                                        <div className="episodeSelection__container">
+                                            <div className="episodeSelection__result">
+                                                <div className="episodeSelection__episode">
+                                                    <div className="episode__content">
+                                                        <h2 className="episode__title">{data.allEpisodes[data.allEpisodes.length-1].title}</h2>
+                                                        <p className="episode__summary">{data.allEpisodes[data.allEpisodes.length-1].summary}</p>
+                                                        {/*<button className="episode__btn" onClick={}>Continuer</button>*/}
+                                                        <button className="episode__btn" onClick={()=>{this.onContinueClicked(setEpisode, data.allEpisodes[data.allEpisodes.length-1] )}}>Continuer</button>
+                                                    </div>
+                                                </div>
+                                                <div className="episodeSelection__choice">
+                                                    - si l'épisode ne te convient pas, jette un coup d'oeil au <a href="/catalogue">catalogue</a> -
+                                                </div>
                                             </div>
                                         </div>
-                                        <div className="episodeSelection__choice">
-                                            - si l'épisode ne te convient pas, jette un coup d'oeil au <a href="/catalogue">catalogue</a> -
-                                        </div>
                                     </div>
-                                </div>
-                            }
+                                )}
+                            </UserContext.Consumer>
+                            {/*}*/}
                         </div>
                     );
                 }}
