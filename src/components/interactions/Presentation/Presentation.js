@@ -286,7 +286,8 @@ class Presentation extends Component {
                 this.setState({currentQuestion: "reserve"});
                 setTimeout(()=>this.context.playGreeting("reloue"), 1000)
             }else{
-                setTimeout(()=>this.context.playGreeting("reserve"), 1000)
+                setTimeout(()=>this.context.playGreeting("reserve"), 1000);
+                setTimeout(()=>this.props.onPresentationEnd(), 3000)
             }
         }
         this.lettersDisappearingOrder(newGreetedGuest[newGreetedGuest.length-1].name.split(''));

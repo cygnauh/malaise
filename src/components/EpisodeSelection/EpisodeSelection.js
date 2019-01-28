@@ -24,11 +24,11 @@ class EpisodeSelection extends Component {
         console.log(this.context);
         console.log("hello")
     }
-    onContinueClicked (callback, params) {
-        callback(params);
+    onContinueClicked (callbackSetEpisode, params, callbackSetSounds) {
+        callbackSetEpisode(params);
+        callbackSetSounds(params.sounds[0].url, params.interactions);
         this.props.onButtonPressed()
     }
-
     render () {
         return(
             <Query

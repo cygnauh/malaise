@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import Hours from './interactions/Hours/Hours'
-// import Doorbell from './interactions/Doorbell/Doorbell'
 import Personalization from './Personalization'
-import Presentation from './interactions/Presentation/Presentation'
+import Interactions from '../components/interactions/Interactions'
 import "./episode.scss";
 // 1) hours, --> personnalization ?? doorbell, boum, --> presentation soirée
 class Episode extends Component {
