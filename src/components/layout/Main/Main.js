@@ -10,6 +10,7 @@ import Hours from "../../interactions/Hours/Hours";
 import Glass from "../../elements/Glass/Glass";
 import Personalization from "../../Personalization";
 import Episode from "../../Episode";
+import MusicChoice from "../../interactions/MusicChoice/MusicChoice";
 import Selection from "../../EpisodeSelection/EpisodeSelection";
 
 /*const firstChild = props => {
@@ -41,6 +42,7 @@ class Main extends Component {
                                 <Route path="/experience" component={Episode} />
                                 <Route path="/selection" component={Selection} />
                                 <Route path="/test" component={Glass} />
+                                <Route path="/music" component={MusicChoice} />
 
 
                             </Switch>

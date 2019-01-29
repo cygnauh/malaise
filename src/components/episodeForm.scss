@@ -227,6 +227,7 @@
   &__action {
     position: relative;
     transition: opacity 2s ease;
+    z-index: 10;
 
     button {
       background: none;

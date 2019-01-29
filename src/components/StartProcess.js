@@ -12,7 +12,7 @@ class StartProcess extends Component {
             home:true,
             selection:false,
             episode:false,
-            index:1 // TODO Temporary
+            index:0 // TODO Temporary
         }
     }
 
