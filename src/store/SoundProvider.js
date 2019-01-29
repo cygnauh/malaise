@@ -11,7 +11,8 @@ export const SoundContext = createContext({
     loadSound:() => {},
     playDoorBell:() => {},
     playInstructions:() => {},
-    playGreeting:() => {}
+    playGreeting:() => {},
+    playChoiceMusic:() => {}
 
 });
 class SoundProvider extends Component {
@@ -21,6 +22,7 @@ class SoundProvider extends Component {
         episodeSounds:null, // episode soundtrack where extract will be extracted
         placeSoundtrack:null,
         episodeSoundtrack:null, // episode soundtrack obj
+        musicSelected:[], // music selected by the user
         url : [{
             'pote': 'https://circegrand.fr/etude/gobelins/malaise/media/sounds/salut-pote.mp3',
             'copain': 'https://circegrand.fr/etude/gobelins/malaise/media/sounds/salut-copain.mp3',
@@ -106,6 +108,27 @@ class SoundProvider extends Component {
             });
             stream.play()
         },
+        playChoiceMusic:(type) => {
+            console.log('play music choice');
+            let url = 'https://circegrand.fr/etude/gobelins/malaise/media/sounds/' + type +'.mp3';
+            let stream;
+            stream = new Howl({
+                src: [url],
+                ext: ['mp3'],
+                html5: true
+            });
+            stream.play()
+        },
+        registerChoiceMusic:(choice) => {
+            let stream;
+            stream = new Howl({
+                src: [choice.url],
+                ext: ['mp3'],
+                html5: true,
+                volume:0.2,
+                loop: true
+            });
+        }
     };
 
     render() {
