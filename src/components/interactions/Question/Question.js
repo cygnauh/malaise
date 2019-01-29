@@ -9,29 +9,32 @@ class Question extends Component {
             question:this.props.question,
             choices:this.props.choices
         };
+        this.choices();
     }
     choices = () => {
-        let choices = [];
+        this.questionChoices = [];
         for(let i = 0; i<this.state.choices.length;i++){
-            choices.push(
-                <div className="question-choice" onClick={this.onChoiceClicked(i)}>
+            this.questionChoices.push(
+                <div key={i} className="question-choice" onClick={()=>this.onChoiceClicked(i)}>
                     {this.state.choices[i]}
                 </div>
             )
         }
+        // return choices
     };
     onChoiceClicked (index) {
-        console.log(this.state.choices[index]) // emit the result
+        this.props.onAnwserClicked(this.state.choices[index]);
     }
 
     render() {
         return (
             <div className="Question">
                 <h2 className="question-label">
+                    QUESTION
                     {this.state.question}
                 </h2>
                 <div className="question-choices">
-                    {this.choices()}
+                    {this.questionChoices ? this.questionChoices : null}
                 </div>
             </div>
         )

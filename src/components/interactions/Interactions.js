@@ -1,36 +1,61 @@
 import React, { Component } from 'react';
-import { UserContext } from "../../store/UserProvider";
+import Question from './Question/Question'
+import DragAndDropDrink from './DragAndDropDrink/DragAndDropDrink'
 import { SoundContext } from "../../store/SoundProvider";
-// 1) hours, --> personnalization ?? doorbell, boum, --> presentation soirée
+
 class Interactions extends Component {
-    constructor(){
-        super();
+    constructor(props){
+        super(props);
         this.state = {
             render:'',
-            interactions:''
-            // componentIndex:0,
+            interactionPosition : 2,
+            interaction : null
         };
-        // this.nextComponent()
+        this.answers = this.props.anwsers.allAnswers
     }
-    getInteractions = (value) =>{
-        if(this.state.interactions === '') this.setState({interactions:value}, ()=>console.log(this.state.interactions))
+    componentDidMount(){
+        this.interactions = this.context.interactions;
+        this.handleInteraction();
+    };
+    handleInteraction = () => {
+        let inte = this.interactions.find(setting => setting.position === this.state.interactionPosition);
+        if(this.interactions && this.state.interactionPosition){
+            this.setState({
+                interaction : inte
+            }, ()=>{
+                console.log(this.state.interaction)
+                this.context.playInteractionSound(this.state.interaction.name)
+            })
+        }
+    };
+    handleAnswer = (value) => {
+        let answer = (value) ? value : null;
+        if(this.answers && this.state.interaction) {
+            for(let i = 0; i <this.answers.length; i++) {
+                if(this.answers[i].originInteraction &&
+                    this.answers[i].originInteraction.id === this.state.interaction.id &&
+                    this.answers[i].content === answer
+                ) {
+                    this.setState({
+                        interactionPosition : this.answers[i].destinationInteraction.position
+                    }, () => this.handleInteraction());
+                    // return
+                }
+            }
+        }
     };
     render() {
         return (
             <div className="Interactions">
-                <UserContext.Consumer>
-                    {({episode}) => {this.getInteractions(episode)}}
-                </UserContext.Consumer>
-                {
-                    this.state.interactions ?
-                    <div>
-
-                    </div>
-                        : null}
-
+                {this.state.interaction && this.state.interaction.interactionType === "question" && this.state.interaction.content ?
+                    <Question question={this.state.interaction.question}
+                              choices={this.state.interaction.content.split(',')}
+                              onAnwserClicked={this.handleAnswer}
+                    />
+                    : null}
             </div>
         )
     }
 }
-
+Interactions.contextType = SoundContext;
 export default Interactions;

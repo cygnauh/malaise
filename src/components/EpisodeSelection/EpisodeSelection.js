@@ -20,10 +20,6 @@ class EpisodeSelection extends Component {
             episode:''
         };
     }
-    componentWillMount(){
-        console.log(this.context);
-        console.log("hello")
-    }
     onContinueClicked (callbackSetEpisode, params, callbackSetSounds) {
         callbackSetEpisode(params);
         callbackSetSounds(params.sounds[0].url, params.interactions);
@@ -39,7 +35,6 @@ class EpisodeSelection extends Component {
                     if (networkStatus === 4) return "Refetching!";
                     if (loading) return null;
                     if (error) return `Error!: ${error}`;
-                    console.log(data)
                     return (
                         <div className="episodeSelection">
                             {/*{!this.context.episode?*/}

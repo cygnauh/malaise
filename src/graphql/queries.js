@@ -20,6 +20,7 @@ export const getEpisodesAndPlaceSounds = gql`
                 type
             },
             interactions{
+                id
                 content,
                 indication,
                 question,
@@ -85,5 +86,22 @@ export const getEpisode = gql`
     }
 `;
 
+export const getAnwsers = gql`
+    {
+        allAnswers{
+            content,
+            destinationInteraction{
+                name,
+                position,
+                id},
+            originInteraction{
+                name,
+                position
+                id}
+        }
+    }
+`;
 
-export default {getEpisodesAndPlaceSounds, getEpisode};
+
+
+export default {getEpisodesAndPlaceSounds, getEpisode, getAnwsers};

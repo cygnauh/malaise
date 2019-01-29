@@ -7,6 +7,7 @@ import Sound from "./../assets/sounds/soundtrack_episode1.mp3"
 export const SoundContext = createContext({
     placeSounds: [],
     episodeSounds:null,
+    interactions:[],
     setPlaceSounds: () => {},
     setEpisodeSounds: () => {},
     loadSound:() => {},
@@ -35,7 +36,7 @@ class SoundProvider extends Component {
             setTimeout(()=>{console.log(this.state.placeSounds)}, 0)
         },
         setEpisodeSounds: (sounds, interactions) => {
-            this.setState({ episodeSoundtrack:sounds});
+            this.setState({ episodeSoundtrack:sounds, interactions: interactions});
             let tab = {};
             setTimeout(()=>{
                 for(let i = 0; i<interactions.length; i++){
