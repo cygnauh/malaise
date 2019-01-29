@@ -66,25 +66,26 @@ input:focus, textarea:focus, button:focus, button:active {
   width: 100%;
   height: 100%;
   position: relative;
-  background: #ffffff; }
-  .Episode__hours {
+  background: #ffffff;
+}
+/*.Episode__hours{*/
+    /*width: 100%;*/
+    /*height: 100%;*/
+    /*opacity: 1;*/
+    /*overflow: hidden;*/
+    /*transition: all 0.5s ease-in-out;*/
+    /*position: relative; }*/
+    /*.Episode__hours.hide {*/
+      /*opacity: 0;*/
+      /*height: 0; }*/
+  .Episode__personalization, .Episode__hours, .Episode__interactions{
     width: 100%;
     height: 100%;
     opacity: 1;
     overflow: hidden;
     transition: all 0.5s ease-in-out;
     position: relative; }
-    .Episode__hours.hide {
-      opacity: 0;
-      height: 0; }
-  .Episode__personalization {
-    width: 100%;
-    height: 100%;
-    opacity: 1;
-    overflow: hidden;
-    transition: all 0.5s ease-in-out;
-    position: relative; }
-    .Episode__personalization.hide {
+    .Episode__personalization.hide, .Episode__hours.hide, .Episode__interactions.hide {
       opacity: 0;
       height: 0; }
 

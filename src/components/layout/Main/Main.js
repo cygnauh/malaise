@@ -12,6 +12,7 @@ import Personalization from "../../Personalization";
 import Episode from "../../Episode";
 import MusicChoice from "../../interactions/MusicChoice/MusicChoice";
 import DragDrop from "../../interactions/DragDrop/DragDrop";
+import Selection from "../../EpisodeSelection/EpisodeSelection";
 
 /*const firstChild = props => {
     const childrenArray = React.Children.toArray(props.children);
@@ -40,6 +41,7 @@ class Main extends Component {
                                 <Route path="/hours" component={Hours} />
                                 <Route path="/presentation" component={Personalization} />
                                 <Route path="/experience" component={Episode} />
+                                <Route path="/selection" component={Selection} />
                                 <Route path="/test" component={Glass} />
                                 <Route path="/music" component={MusicChoice} />
                                 <Route path="/drag-drop" component={DragDrop} />

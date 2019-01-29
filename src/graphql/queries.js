@@ -7,7 +7,33 @@ export const getEpisodesAndPlaceSounds = gql`
             title,
             summary
             place,
-            entourage
+            entourage,
+            personalizations{
+                name,
+                question,
+                answerLabel
+                type
+            },
+            sounds{
+                name,
+                url,
+                type
+            },
+            interactions{
+                id
+                content,
+                indication,
+                question,
+                timer,
+                position,
+                name,
+                interactionType,
+                soundSequences{
+                    beginAt,
+                    endAt,
+                    name
+                }
+            },
         },
         allSounds{
             name,
@@ -60,5 +86,22 @@ export const getEpisode = gql`
     }
 `;
 
+export const getAnwsers = gql`
+    {
+        allAnswers{
+            content,
+            destinationInteraction{
+                name,
+                position,
+                id},
+            originInteraction{
+                name,
+                position
+                id}
+        }
+    }
+`;
 
-export default {getEpisodesAndPlaceSounds, getEpisode};
+
+
+export default {getEpisodesAndPlaceSounds, getEpisode, getAnwsers};

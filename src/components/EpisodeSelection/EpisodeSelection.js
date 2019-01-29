@@ -3,6 +3,7 @@ import { Query } from "react-apollo";
 import { getEpisodesAndPlaceSounds } from '../../graphql/queries'
 // import EpisodeForm from "../EpisodeForm";
 import { UserContext } from "../../store/UserProvider";
+import { SoundContext } from "../../store/SoundProvider";
 import "./style.scss";
 
 // episode selection either select thank to the form, or thank to the catalog
@@ -19,15 +20,11 @@ class EpisodeSelection extends Component {
             episode:''
         };
     }
-    componentWillMount(){
-        console.log(this.context);
-        console.log("hello")
-    }
-    onContinueClicked (callback, params) {
-        callback(params);
+    onContinueClicked (callbackSetEpisode, params, callbackSetSounds) {
+        callbackSetEpisode(params);
+        callbackSetSounds(params.sounds[0].url, params.interactions);
         this.props.onButtonPressed()
     }
-
     render () {
         return(
             <Query
@@ -38,7 +35,6 @@ class EpisodeSelection extends Component {
                     if (networkStatus === 4) return "Refetching!";
                     if (loading) return null;
                     if (error) return `Error!: ${error}`;
-                    console.log(data)
                     return (
                         <div className="episodeSelection">
                             {/*{!this.context.episode?*/}
@@ -46,23 +42,29 @@ class EpisodeSelection extends Component {
                                 {/*:*/}
                             <UserContext.Consumer>
                                 {({episode, setEpisode}) => (
-                                    <div>
-                                        <div className="episodeSelection__container">
-                                            <div className="episodeSelection__result">
-                                                <div className="episodeSelection__episode">
-                                                    <div className="episode__content">
-                                                        <h2 className="episode__title">{data.allEpisodes[data.allEpisodes.length-1].title}</h2>
-                                                        <p className="episode__summary">{data.allEpisodes[data.allEpisodes.length-1].summary}</p>
-                                                        {/*<button className="episode__btn" onClick={}>Continuer</button>*/}
-                                                        <button className="episode__btn" onClick={()=>{this.onContinueClicked(setEpisode, data.allEpisodes[data.allEpisodes.length-1] )}}>Continuer</button>
+                                    <SoundContext.Consumer>
+                                        {({setEpisodeSounds}) => (
+                                            <div>
+                                                <div className="episodeSelection__container">
+                                                    <div className="episodeSelection__result">
+                                                        <div className="episodeSelection__episode">
+                                                            <div className="episode__content">
+                                                                <h2 className="episode__title">{data.allEpisodes[0].title}</h2>
+                                                                <p className="episode__summary">{data.allEpisodes[0].summary}</p>
+                                                                {/*<button className="episode__btn" onClick={}>Continuer</button>*/}
+                                                                <button className="episode__btn" onClick={()=>{this.onContinueClicked(setEpisode, data.allEpisodes[0], setEpisodeSounds)}}>Continuer</button>
+                                                            </div>
+                                                        </div>
+                                                        {data.allEpisodes.length !== 0 ?
+                                                            <div className="episodeSelection__choice">
+                                                                - si l'épisode ne te convient pas, jette un coup d'oeil au <a href="/catalogue">catalogue</a> -
+                                                            </div>
+                                                        : null}
                                                     </div>
                                                 </div>
-                                                <div className="episodeSelection__choice">
-                                                    - si l'épisode ne te convient pas, jette un coup d'oeil au <a href="/catalogue">catalogue</a> -
-                                                </div>
                                             </div>
-                                        </div>
-                                    </div>
+                                        )}
+                                    </SoundContext.Consumer>
                                 )}
                             </UserContext.Consumer>
                             {/*}*/}

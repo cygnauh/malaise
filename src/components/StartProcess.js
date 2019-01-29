@@ -12,12 +12,11 @@ class StartProcess extends Component {
             home:true,
             selection:false,
             episode:false,
-            index:0
+            index:0 // TODO Temporary
         }
     }
 
     handleClickNext = () => {
-        console.log('clicked');
         let index = this.state.index +1 ;
 
         if(this.state.index === 1) {
