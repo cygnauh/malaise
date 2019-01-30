@@ -13,7 +13,6 @@ class DragDrop extends Component {
             }
         }
 
-        console.log(this.state.deltaPosition);
     }
 
     handleStart = () => {
@@ -29,14 +28,15 @@ class DragDrop extends Component {
                 y: y + ui.deltaY,
             }
         });
-        console.log('x:'+ x, 'y:'+y);
+
+        if(this.state.deltaPosition.y === -150) {
+            $('.Drag-drop__draggable').removeClass('Drag-drop__draggable--onDrag');
+        } else {
+            $('.Drag-drop__draggable').addClass('Drag-drop__draggable--onDrag');
+        }
     }
 
     handleStop = () => {
-        console.log('stop handle');
-
-        const {x, y} = this.state.deltaPosition;
-
         if(this.state.deltaPosition.y === -150) {
             $('.Drag-drop__dragEnd').addClass('Drag-drop__dragEnd--full');
             $('.Drag-drop__draggable').removeClass('Drag-drop__draggable--onDrag').addClass('Drag-drop__draggable--dragged');
