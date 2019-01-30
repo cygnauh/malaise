@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import MusicChoice from './MusicChoice/MusicChoice'
 import Question from './Question/Question'
 import DragDrop from './DragDrop/DragDrop'
 import { SoundContext } from "../../store/SoundProvider";
@@ -9,7 +10,8 @@ class Interactions extends Component {
         this.state = {
             render:'',
             interactionPosition : 2,
-            interaction : null
+            interaction : null,
+            show : false
         };
         this.answers = this.props.anwsers.allAnswers
     }
@@ -23,8 +25,11 @@ class Interactions extends Component {
             this.setState({
                 interaction : inte
             }, ()=>{
-                console.log(this.state.interaction)
-                this.context.playInteractionSound(this.state.interaction.name)
+                let test = this.context.playInteractionSound(this.state.interaction.name)
+                setTimeout(()=>{
+                    this.setState({
+                    show : true
+                })}, test)
             })
         }
     };
@@ -47,12 +52,18 @@ class Interactions extends Component {
     render() {
         return (
             <div className="Interactions">
-                {this.state.interaction && this.state.interaction.interactionType === "question" && this.state.interaction.content ?
+                {this.state.show && this.state.interaction && this.state.interaction.interactionType === "music" && this.state.interaction.content ?
+                    <MusicChoice
+                        onAnwserClicked={this.handleAnswer}
+                    />
+                    : null}
+                {this.state.show && this.state.interaction && this.state.interaction.interactionType === "question" && this.state.interaction.content ?
                     <Question question={this.state.interaction.question}
                               choices={this.state.interaction.content.split(',')}
                               onAnwserClicked={this.handleAnswer}
                     />
                     : null}
+
             </div>
         )
     }
