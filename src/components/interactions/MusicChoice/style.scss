@@ -76,7 +76,7 @@
         top:0;
         left: -40px;
         margin-right: 30px;
-        content:attr(data-name);
+        content:attr(data-after);
         animation: toTheLeft2 30s infinite linear;
       }
     }
@@ -100,7 +100,7 @@
         position: absolute;
         top:0;
         left: 40px;
-        content:attr(data-name);
+        content:attr(data-after);
         animation: toTheRight2 50s infinite linear;
       }
     }

@@ -1,12 +1,15 @@
 import React, { Component } from 'react';
+import $ from 'jquery';
 import './style.scss';
+import { SoundContext } from "../../../store/SoundProvider";
 
 class MusicChoice extends Component {
 
     constructor(props) {
         super(props);
         this.state = {
-            selected: false
+            selected: false,
+            hover: false
         }
     }
 
@@ -18,10 +21,9 @@ class MusicChoice extends Component {
         var musics = document.getElementsByClassName('Music__name');
         for (var i = 0; i < musics.length; i++) {
             var $this =  musics[i];
-            var name = $this.dataset.name;
+            var name = $this.dataset.after;
             $this.innerHTML = '<span>' + name.repeat(10) + '</span>';
-            $this.dataset.name = name.repeat(10);
-
+            $this.dataset.after = name.repeat(10);
         }
     }
 
@@ -33,18 +35,42 @@ class MusicChoice extends Component {
         $el.setAttribute("class", "Music__item Music__item--selected");
     }
 
+    handleMouseEnter = (e) => {
+        var $el = $(e.currentTarget);
+        var style = $el.find('.Music__name').data('name');
+        console.log(style);
+        this.setState({
+            hover: true
+        });
+        if(this.state.hover) {
+            console.log('hover true')
+            this.context.playChoiceMusic(style);
+        }
+        else {
+            console.log('rien')
+        }
+
+    }
+
+    handleMouseLeave = () => {
+        this.setState({
+            hover: false
+        });
+        console.log('hover false')
+    }
+
     render() {
         return (
             <div className="Music">
                 <ul className={this.state.selected ? 'Music__list Music__list--select' : 'Music__list' }>
-                    <li className="Music__item" onClick={this.handleClickMusic}>
-                        <div className="Music__name Music__name--toLeft" data-name="pop "></div>
+                    <li className="Music__item" onClick={this.handleClickMusic} onMouseEnter={this.handleMouseEnter} onMouseLeave={this.handleMouseLeave}>
+                        <div className="Music__name Music__name--toLeft" data-name="pop" data-after="pop "></div>
                     </li>
-                    <li className="Music__item" onClick={this.handleClickMusic}>
-                        <div className="Music__name Music__name--toRight" data-name="electro "></div>
+                    <li className="Music__item" onClick={this.handleClickMusic} onMouseEnter={this.handleMouseEnter} onMouseLeave={this.handleMouseLeave}>
+                        <div className="Music__name Music__name--toRight" data-name="electro" data-after="electro "></div>
                     </li>
-                    <li className="Music__item" onClick={this.handleClickMusic}>
-                        <div className="Music__name Music__name--toLeft" data-name="rap "></div>
+                    <li className="Music__item" onClick={this.handleClickMusic} onMouseEnter={this.handleMouseEnter} onMouseLeave={this.handleMouseLeave}>
+                        <div className="Music__name Music__name--toLeft" data-name="rap" data-after="rap "></div>
                     </li>
                 </ul>
             </div>
@@ -53,4 +79,5 @@ class MusicChoice extends Component {
 
 }
 
+MusicChoice.contextType = SoundContext;
 export default MusicChoice;

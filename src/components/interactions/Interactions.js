@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import MusicChoice from './MusicChoice/MusicChoice'
 import Question from './Question/Question'
-import DragAndDropDrink from './DragAndDropDrink/DragAndDropDrink'
+import DragDrop from './DragDrop/DragDrop'
 import { SoundContext } from "../../store/SoundProvider";
 
 class Interactions extends Component {
