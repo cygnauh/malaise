@@ -1,83 +1,44 @@
 import './style.scss';
 import React, { Component } from 'react';
+import Odometer from 'react-odometerjs'
+import 'odometer/themes/odometer-theme-default.css';
 
 class Hours extends Component {
     constructor(props) {
         super(props);
         let currentDateTime = new Date();
+        var currentHours = currentDateTime.getHours();
+        var hours = ("0" + currentHours).slice(-2);
+        var currentMinutes = currentDateTime.getMinutes();
+        var minutes = ("0" + currentMinutes).slice(-2);
+
         this.state = {
             day: currentDateTime.getDay(),
             month: currentDateTime.getMonth(),
             date: currentDateTime.getDate(),
             hours : currentDateTime.getHours(),
-            minutes : currentDateTime.getMinutes(),
-            hoursTen : '0',
-            hoursUnit : '0',
-            minutesTen : '0',
-            minutesUnit : '0'
+            minutes : currentDateTime.getMinutes()
         }
-        this.getHoursTen = this.getHoursTen.bind(this);
+
     }
+
     componentDidMount() {
-        this.intervalID = setInterval(
-            () => this.tick(),
-            1000
-        );
+        setTimeout(() => {
+            this.setState({
+                hours: 20,
+                minutes: 45
+            });
+        }, 600)
     }
 
     componentWillUnmount() {
         clearInterval(this.intervalID);
     }
 
-    handleClick(e) {
-        console.log('clicked to change hours');
-        console.log(e.target);
-
-        var hours = document.querySelector('.clock__hours');
-        var hoursValue = hours.dataset.hours;
-        var minutes = document.querySelector('.clock__minutes');
-        var minutesValue = minutes.dataset.minutes;
-    }
-
-    tick() {
-        let currentDateTime = new Date();
-        this.setState({
-            day: currentDateTime.getDay(),
-            month: currentDateTime.getMonth(),
-            date: currentDateTime.getDate(),
-            hours : currentDateTime.getHours(),
-            minutes : currentDateTime.getMinutes(),
-            hoursTen : this.getHoursTen(this.state.hours),
-            hoursUnit : this.getHoursUnit(this.state.hours),
-            minutesTen : this.getMinutesTen(this.state.minutes),
-            minutesUnit : this.getMinutesUnit(this.state.minutes)
-        });
-    }
-
-    getHoursTen(hours) {
-        var hoursSplit = hours.toString().split('');
-        var hoursTen = hoursSplit[0];
-        return hoursTen;
-    }
-    getHoursUnit(hours) {
-        var hoursSplit = hours.toString().split('');
-        var hoursUnit = hoursSplit[1];
-        return hoursUnit;
-    }
-    getMinutesTen(minutes) {
-        var minutesSplit = minutes.toString().split('');
-        var minutesTen = minutesSplit[0];
-        return minutesTen;
-    }
-    getMinutesUnit(minutes) {
-        var minutesSplit = minutes.toString().split('');
-        var minutesUnit = minutesSplit[1];
-        return minutesUnit;
-    }
-
     render() {
-        const months = ["Janvier", "Février", "Mars", "Avril", "Mars", "Juin", "Juillet", "Aout", "Septembre", "Novembre", "Décembre"]
-        const days = ["Dimanche", "Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi", "Samedi"]
+        const months = ["Janvier", "Février", "Mars", "Avril", "Mars", "Juin", "Juillet", "Aout", "Septembre", "Novembre", "Décembre"];
+        const days = ["Dimanche", "Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi", "Samedi"];
+        const { hours, minutes } = this.state;
         return (
             <div className="eclipse">
                 <div className="eclipse__container">
@@ -85,7 +46,21 @@ class Hours extends Component {
                         <span>{days[this.state.day]}</span><span>{this.state.date}</span><span>{months[this.state.month]}</span>
                     </div>
                     <div className="eclipse__clock">
-                        <p className="clock__hours" data-hours={this.state.hours}>{this.state.hours}</p>h<p className="clock__minutes" data-minutes={this.state.minutes}>{this.state.minutes}</p>
+                        <div className="clock__hours">
+                            <Odometer
+                                format="d"
+                                duration={ 1000 }
+                                value={ hours }
+                            />
+                        </div>
+                        h
+                        <div className="clock__minutes">
+                            <Odometer
+                                format="d"
+                                duration={ 1000 }
+                                value={ minutes }
+                            />
+                        </div>
                     </div>
                 </div>
             </div>
