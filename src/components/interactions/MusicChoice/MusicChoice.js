@@ -32,9 +32,12 @@ class MusicChoice extends Component {
     handleClickMusic = (e) => {
         this.setState({
             selected: !this.state.selected
+        }, ()=>{
+            console.log(this.state.selected)
         })
         var $el = e.currentTarget;
         $el.setAttribute("class", "Music__item Music__item--selected");
+        this.props.onMusicClicked(null)
     }
 
     handleMouseEnter = (e) => {
@@ -44,7 +47,9 @@ class MusicChoice extends Component {
             hover: true
         },()=>{
             let sound = this.musics.find(setting => setting.name === style);
-            this.context.handleMusic(sound.url, "play");
+            if(!this.state.selected){
+                this.context.handleMusic(sound.url, "play");
+            }
         });
     };
 
@@ -52,7 +57,9 @@ class MusicChoice extends Component {
         this.setState({
             hover: false
         }, ()=>{
-            this.context.handleMusic(null, "pause");
+            if(!this.state.selected){
+                this.context.handleMusic(null, "pause");
+            }
         });
     };
 
