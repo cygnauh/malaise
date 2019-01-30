@@ -12,9 +12,12 @@ class DragDrop extends Component {
                 x: 0, y: 0
             }
         }
+
+        console.log(this.state.deltaPosition);
     }
 
     handleStart = () => {
+        $('.Drag-drop__draggable').addClass('Drag-drop__draggable--onDrag');
         $('.Drag-drop__exampleAnimation').remove();
     }
 
@@ -31,9 +34,18 @@ class DragDrop extends Component {
 
     handleStop = () => {
         console.log('stop handle');
+
+        const {x, y} = this.state.deltaPosition;
+
         if(this.state.deltaPosition.y === -150) {
             $('.Drag-drop__dragEnd').addClass('Drag-drop__dragEnd--full');
-            $('.Drag-drop__draggable').addClass('Drag-drop__draggable--dragged');
+            $('.Drag-drop__draggable').removeClass('Drag-drop__draggable--onDrag').addClass('Drag-drop__draggable--dragged');
+            $('.Drag-drop__dragStart').addClass('Drag-drop__dragStart--dragged');
+        } else {
+            $('.Drag-drop__draggable').removeClass('Drag-drop__draggable--onDrag');
+            setTimeout(function() {
+                $('.Drag-drop__dragElement').css('transform', 'translate(0, 0)');
+            }, 200);
         }
     }
 
@@ -42,7 +54,6 @@ class DragDrop extends Component {
             <div className="Drag-drop">
                 <div className="Drag-drop__dragEnd"></div>
                 <div className="Drag-drop__dragBottom">
-                    <div className="Drag-drop__exampleAnimation"></div>
                     <div className="Drag-drop__dragStart"></div>
                     <Draggable
                         axis="y"
@@ -61,6 +72,7 @@ class DragDrop extends Component {
                             </div>
                         </div>
                     </Draggable>
+                    <div className="Drag-drop__exampleAnimation"></div>
                 </div>
             </div>
         );
