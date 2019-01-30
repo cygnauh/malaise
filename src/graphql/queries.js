@@ -102,6 +102,17 @@ export const getAnwsers = gql`
     }
 `;
 
+export const getMusics = gql`
+    {
+        allSounds(filter: {
+            type: "music"
+        }){
+
+            url,
+            name,
+        }
+    }
+`;
 
 
-export default {getEpisodesAndPlaceSounds, getEpisode, getAnwsers};
+export default {getEpisodesAndPlaceSounds, getEpisode, getAnwsers, getMusics};

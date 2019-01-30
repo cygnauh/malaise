@@ -1,4 +1,3 @@
-// store/SoundProvider.js
 import React, { createContext, Component } from "react"; // on importe createContext qui servira à la création d'un ou plusieurs contextes
 import { Howl } from 'howler';
 import { UserContext } from "./UserProvider";
@@ -14,7 +13,8 @@ export const SoundContext = createContext({
     playDoorBell:() => {},
     playInstructions:() => {},
     playGreeting:() => {},
-    playChoiceMusic:() => {},
+    handleMusicChoices:() => {},
+    handleMusic:() => {},
     playInteractionSound:() =>{}
 
 });
@@ -25,7 +25,7 @@ class SoundProvider extends Component {
         episodeSounds:null, // episode soundtrack where extract will be extracted
         placeSoundtrack:null,
         episodeSoundtrack:null, // episode soundtrack obj
-        musicSelected:[], // music selected by the user
+        musicSelected:null, // music selected by the user
         url : [{
             'pote': 'https://circegrand.fr/etude/gobelins/malaise/media/sounds/salut-pote.mp3',
             'copain': 'https://circegrand.fr/etude/gobelins/malaise/media/sounds/salut-copain.mp3',
@@ -37,6 +37,8 @@ class SoundProvider extends Component {
             this.setState({ placeSounds: sounds });
             setTimeout(()=>{console.log(this.state.placeSounds)}, 0)
         },
+
+        // episode soundtrack and set interactions
         setEpisodeSounds: (sounds, interactions) => {
             this.setState({ episodeSoundtrack:sounds, interactions: interactions});
             let tab = {};
@@ -48,24 +50,9 @@ class SoundProvider extends Component {
             }, 0);
             let sound = new Howl({
                 src: [Sound],
-                // sprite:{
-                //     regles: [35250, 5930],
-                //     lancement_jeu: [13040, 19840],
-                //     rep: [32980, 2200],
-                //     choix_boisson:[41080, 5150],
-                //     je_nai_jamais1:[46260, 9880],
-                //     anecdote1:[56140, 52930],
-                //     je_nai_jamais_user:[110870, 4570],
-                //     je_nai_jamais3:[114240, 7960],
-                //     anecdote2:[122000, 18820],
-                //     anecdote2_part2:[140020, 79960],
-                //     tour:[220280, 13060],
-                //     tour2:[253340, 10770]
-                // },
                 sprite: tab
             });
             this.setState({ episodeSounds: sound });
-            setTimeout(()=>{console.log(this.state.episodeSounds)}, 0);
         },
         registerPlaceSound: (place) =>{ // load place selected
             let stream;
@@ -88,7 +75,7 @@ class SoundProvider extends Component {
                 }
             );
         },
-
+        // TODO to be improved
         playDoorBell:() => {
             let doorbell = 'https://circegrand.fr/etude/gobelins/malaise/media/sounds/doorbell.mp3';
             let opendoor = 'https://circegrand.fr/etude/gobelins/malaise/media/sounds/open_door.mp3';
@@ -116,6 +103,7 @@ class SoundProvider extends Component {
                 }
             }, 1800)
         },
+        // TODO to be improved
         playInstructions:(step) => {
             console.log(step);
             let url = 'https://circegrand.fr/etude/gobelins/malaise/media/sounds/instruction_' + step +'.mp3';
@@ -127,6 +115,8 @@ class SoundProvider extends Component {
             });
             stream.play()
         },
+
+        // TODO to be improved
         playGreeting:(value) => {
             let stream;
             stream = new Howl({
@@ -137,35 +127,39 @@ class SoundProvider extends Component {
             });
             stream.play()
         },
-        playChoiceMusic:(type) => {
-            console.log('play music choice');
-            let url = 'https://circegrand.fr/etude/gobelins/malaise/media/sounds/' + type +'.mp3';
-            let stream;
-            stream = new Howl({
-                src: [url],
-                ext: ['mp3'],
-                html5: true
-            });
-            stream.play()
-        },
-        registerChoiceMusic:(choice) => {
-            let stream;
-            stream = new Howl({
-                src: [choice.url],
-                ext: ['mp3'],
-                html5: true,
-                volume: 0.2,
-                loop: true
+        // load the musics
+        handleMusicChoices:(sounds) => {
+            let soundtab = [];
+            for(let i = 0; i< sounds .length; i++){
+                let sound = new Howl({
+                    src: [sounds[i].url],
+                    ext: ['mp3'],
+                    html5: true
+                });
+                soundtab.push(sound)
+            }
+            this.setState({
+                musics: soundtab
             });
         },
+        // handle the play and pause of the music
+        handleMusic:(url, mode) => {
+            if(mode === "pause" && this.state.musicSelected){
+                this.state.musicSelected.pause();
+                return
+            }
+            if(mode === "play"){
+                this.setState({
+                    musicSelected:this.state.musics.find(setting => setting._src === url)
+                }, ()=>{
+                    this.state.musicSelected.play();
+                });
+            }
+        },
+        // voices interaction
         playInteractionSound:(value) => {
-            // this.state.episodeSounds
             this.state.episodeSounds.play(value);
             return this.state.episodeSounds._sprite[value][1]
-            // this.state.episodeSounds.on('end', () => {
-            //     console.log("this is over");
-            //     return true
-            // });
         }
     };
 
@@ -179,13 +173,3 @@ class SoundProvider extends Component {
 }
 SoundProvider.contextType = UserContext;
 export default SoundProvider;
-/**
- * A la suite de notre classe `UserProvider`, on créé notre HOC
- * qui se chargera d'injecter les propriétés de notre contexte
- * à n'importe quel composant qui l'appellera
- */
-export const withUser = Component => props => (
-    <SoundContext.Consumer>
-        {store => <Component {...props} {...store} />}
-    </SoundContext.Consumer>
-)
