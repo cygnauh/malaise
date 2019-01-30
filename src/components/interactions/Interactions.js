@@ -52,11 +52,28 @@ class Interactions extends Component {
     render() {
         return (
             <div className="Interactions">
-                {this.state.show && this.state.interaction && this.state.interaction.interactionType === "music" && this.state.interaction.content ?
-                    <MusicChoice
-                        onAnwserClicked={this.handleAnswer}
-                    />
-                    : null}
+                <Query
+                    query={getMusics}
+                    notifyOnNetworkStatusChange
+                >
+                    {({ loading, error, data, refetch, networkStatus }) => {
+                        if (networkStatus === 4) return "Refetching!";
+                        if (loading) return null;
+                        if (error) return `Error!: ${error}`;
+                        return (<div>
+                                    {this.state.show && this.state.interaction && this.state.interaction.interactionType === "musique" ?
+                                // getMusics
+                                        <div>
+                                            <MusicChoice
+                                                musics={data.allSounds}
+                                                onMusicClicked={this.handleAnswer}
+                                            />
+                                        </div>
+                                        : null}
+                                </div>)
+                    }}
+                    </Query>
+
                 {this.state.show && this.state.interaction && this.state.interaction.interactionType === "question" && this.state.interaction.content ?
                     <Question question={this.state.interaction.question}
                               choices={this.state.interaction.content.split(',')}

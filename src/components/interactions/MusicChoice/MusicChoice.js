@@ -11,10 +11,12 @@ class MusicChoice extends Component {
             selected: false,
             hover: false
         }
+        this.musics = this.props.musics
     }
 
     componentDidMount() {
         this.repeatNameMusic();
+        this.context.handleMusicChoices(this.musics)
     }
 
     repeatNameMusic = () => {
@@ -38,26 +40,21 @@ class MusicChoice extends Component {
     handleMouseEnter = (e) => {
         var $el = $(e.currentTarget);
         var style = $el.find('.Music__name').data('name');
-        console.log(style);
         this.setState({
             hover: true
+        },()=>{
+            let sound = this.musics.find(setting => setting.name === style);
+            this.context.handleMusic(sound.url, "play");
         });
-        if(this.state.hover) {
-            console.log('hover true')
-            this.context.playChoiceMusic(style);
-        }
-        else {
-            console.log('rien')
-        }
-
-    }
+    };
 
     handleMouseLeave = () => {
         this.setState({
             hover: false
+        }, ()=>{
+            this.context.handleMusic(null, "pause");
         });
-        console.log('hover false')
-    }
+    };
 
     render() {
         return (
