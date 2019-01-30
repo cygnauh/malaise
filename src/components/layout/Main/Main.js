@@ -11,7 +11,7 @@ import Glass from "../../elements/Glass/Glass";
 import Personalization from "../../Personalization";
 import Episode from "../../Episode";
 import MusicChoice from "../../interactions/MusicChoice/MusicChoice";
-import DragDrop from "../../interactions/DragDrop/DragDrop";
+import DragDrop from "../../elements/DragDrop/DragDrop";
 import Selection from "../../EpisodeSelection/EpisodeSelection";
 
 /*const firstChild = props => {
