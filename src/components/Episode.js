@@ -30,20 +30,24 @@ class Episode extends Component {
     render() {
         return (
             <div className="Episode">
-                {/*{!this.state.nextComponent?*/}
                 <div className={this.state.componentIndex !== 0?'Episode__hours hide':'Episode__hours'}>
                     <Hours />
                 </div>
 
-                {/*:*/}
-                {/*<div className={this.state.componentIndex === 1?'doorbell__container':'doorbell__container hide'}>*/}
-                    {/*<Doorbell onDoorbellPressed={this.goToPresentation}/>*/}
-                {/*</div>*/}
-
                 <div className={this.state.componentIndex === 1?'Episode__personalization':'Episode__personalization hide'}>
                     <Personalization nextComponent={this.goToWhatever}/>
                 </div>
-                {/*}*/}
+
+                <div className={this.state.componentIndex === 2?'Episode__interactions':'Episode__interactions hide'}>
+                    <Query key="1" query={getAnwsers}>
+                        {({ loading, error, data }) => {
+                            if (error) return <h1>Error...</h1>;
+                            if (loading || !data) return <h1>Loading...</h1>;
+                            // console.log(data);
+                            return <Interactions anwsers={data} nextComponent={this.goToWhatever}/>
+                        }}
+                    </Query>
+                </div>
             </div>
         )
     }
