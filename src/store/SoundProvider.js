@@ -45,7 +45,7 @@ class SoundProvider extends Component {
                 }
             }, 0);
             let sound = new Howl({
-                src: [this.state.episodeSoundtrack],
+                src: [Sound],
                 // sprite:{
                 //     regles: [35250, 5930],
                 //     lancement_jeu: [13040, 19840],
@@ -138,6 +138,11 @@ class SoundProvider extends Component {
         playInteractionSound:(value) =>{
             // this.state.episodeSounds
             this.state.episodeSounds.play(value);
+            return this.state.episodeSounds._sprite[value][1]
+            // this.state.episodeSounds.on('end', () => {
+            //     console.log("this is over");
+            //     return true
+            // });
         }
     };
 
