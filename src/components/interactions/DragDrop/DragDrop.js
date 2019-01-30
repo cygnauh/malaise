@@ -56,7 +56,9 @@ class DragDrop extends Component {
                         onDrag={this.handleDrag}
                         onStop={this.handleStop}>
                         <div>
-                            <div className="Drag-drop__draggable handle"></div>
+                            <div className="Drag-drop__draggable handle">
+                                <div className="Drag-drop__wave"></div>
+                            </div>
                         </div>
                     </Draggable>
                 </div>
