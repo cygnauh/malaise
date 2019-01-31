@@ -2,13 +2,12 @@
 import React, { Component } from 'react';
 import MusicChoice from './MusicChoice/MusicChoice'
 import Question from './Question/Question'
-import DragDrop from './DragDrop/DragDrop'
+import DragDrop from '../elements/DragDrop/DragDrop'
 // QUERY
 import { Query } from "react-apollo";
 import { getMusics } from '../../graphql/queries'
 // API CONTEXT
 import { SoundContext } from "../../store/SoundProvider";
-
 
 class Interactions extends Component {
     constructor(props){
