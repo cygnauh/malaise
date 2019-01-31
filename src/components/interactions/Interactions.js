@@ -33,9 +33,15 @@ class Interactions extends Component {
             }, ()=>{
                 let test = this.context.playInteractionSound(this.state.interaction.name)
                 setTimeout(()=>{
-                    this.setState({
-                    show : true
-                })}, test)
+                    if(this.state.interaction && this.state.interaction.interactionType === "none"){
+                        console.log(this.state.interaction.interactionType)
+                        this.handleAnswer(null)
+                    } else {
+                        this.setState({
+                            show : true
+                        });
+                    }}
+                , test)
             })
         }
     };
@@ -47,15 +53,14 @@ class Interactions extends Component {
                     this.answers[i].originInteraction.id === this.state.interaction.id &&
                     this.answers[i].content === answer
                 ) {
-                    console.log(this.answers[i].destinationInteraction.position)
+                    console.log(this.answers[i].destinationInteraction.position);
                     this.setState({
                         interactionPosition : this.answers[i].destinationInteraction.position,
                         show : !this.state.show
                     }, () =>{
                         this.handleInteraction()
-                    })
-                        ;
-                    // return
+                    });
+                    return
                 }
             }
         }
@@ -88,7 +93,7 @@ class Interactions extends Component {
                 : null}
                 {this.state.show && this.state.interaction && this.state.interaction.interactionType === "question" && this.state.interaction.content ?
                     <Question question={this.state.interaction.question}
-                              choices={this.state.interaction.content.split(',')}
+                              choices={this.state.interaction.content.split('@')}
                               onAnwserClicked={this.handleAnswer}
                     />
                     : null}
