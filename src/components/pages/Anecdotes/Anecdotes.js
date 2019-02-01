@@ -21,26 +21,28 @@ class Anecdotes extends Component {
             <div className="Anecdotes">
                 <div className="Anecdotes__container">
                     <div className={this.state.open ? 'Anecdote-toShare Anecdote-toShare--open': 'Anecdote-toShare'}>
-                        <div className="Anecdote-toShare__column">
-                            <h2 className="Anecdote-toShare__title">Partage <br/>ton anecdote</h2>
-                            <p className="Anecdote-toShare__description">
-                                In hac habitasse platea dictumst.
-                                Vivamus adipiscing fermentum quam volutpat aliquam. In hac habitasse platea dictumst.
-                                Vivamus adipiscing fermentum quam volutpat aliquam.
-                            </p>
-                            <button className={this.state.open ? 'Anecdote-toShare__cta Anecdote-toShare__cta--hidden': 'Anecdote-toShare__cta'} onClick={this.handleClickToOpen}>Raconte ton anecdote</button>
-                        </div>
-                        <div className="Anecdote-toShare__column">
-                            <form className="Anecdote-toShare__shareForm">
-                                <div className="shareForm__field">
-                                    <input className="shareForm__input" placeholder="pseudo" />
-                                </div>
-                                <div className="shareForm__field">
-                                    <textarea className="shareForm__textarea"></textarea>
-                                    <span>700 caractères maximum</span>
-                                </div>
-                                <button type="submit" className="shareForm__cta">Envoyer</button>
-                            </form>
+                        <div className="Anecdote-toShare__container">
+                            <div className="Anecdote-toShare__column">
+                                <h2 className="Anecdote-toShare__title">Partage <br/>ton anecdote</h2>
+                                <p className="Anecdote-toShare__description">
+                                    In hac habitasse platea dictumst.
+                                    Vivamus adipiscing fermentum quam volutpat aliquam. In hac habitasse platea dictumst.
+                                    Vivamus adipiscing fermentum quam volutpat aliquam.
+                                </p>
+                                <button className={this.state.open ? 'Anecdote-toShare__cta Anecdote-toShare__cta--hidden': 'Anecdote-toShare__cta'} onClick={this.handleClickToOpen}>Raconte ton anecdote</button>
+                            </div>
+                            <div className="Anecdote-toShare__column">
+                                <form className="Anecdote-toShare__shareForm">
+                                    <div className="shareForm__field">
+                                        <input className="shareForm__input" placeholder="pseudo" />
+                                    </div>
+                                    <div className="shareForm__field">
+                                        <textarea className="shareForm__textarea"></textarea>
+                                        <span>700 caractères maximum</span>
+                                    </div>
+                                    <button type="submit" className="shareForm__cta">Envoyer</button>
+                                </form>
+                            </div>
                         </div>
                     </div>
                     <div className="Anecdote">

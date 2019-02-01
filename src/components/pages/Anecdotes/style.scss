@@ -14,22 +14,25 @@
       background: none;
       border-right: 1px solid $color__white;
       flex-shrink: 0;
-      display: flex;
       transition: width 0.7s ease;
+      overflow: hidden;
+
+      &__container {
+        width: 700px;
+        display: flex;
+      }
 
       &__column {
+        width: 50%;
         padding: 50px;
         overflow: hidden;
 
         &:first-child {
-          width: 100%;
           z-index: 1;
         }
 
         &:nth-child(2) {
-          width: 0;
           opacity: 0;
-          display: none;
           z-index: 0;
         }
 
@@ -144,13 +147,9 @@
 
         .Anecdote-toShare__column {
 
-          &:first-child {
-            width: 50%;
-          }
           &:nth-child(2) {
-            width: 50%;
             opacity: 1;
-            display: block;
+            z-index: 1;
           }
 
         }
