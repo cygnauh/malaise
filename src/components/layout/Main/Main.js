@@ -13,6 +13,8 @@ import Episode from "../../Episode";
 import MusicChoice from "../../interactions/MusicChoice/MusicChoice";
 import DragDrop from "../../elements/DragDrop/DragDrop";
 import Selection from "../../EpisodeSelection/EpisodeSelection";
+import Anecdotes from "../../pages/Anecdotes/Anecdotes";
+import About from "../../pages/About/About";
 
 /*const firstChild = props => {
     const childrenArray = React.Children.toArray(props.children);
@@ -38,6 +40,7 @@ class Main extends Component {
                                 <Route exact path="/" component={StartProcess} />
                                 <Route path="/catalogue" render={(props) => <Catalogue {...props} episodes={data.allEpisodes} />} />
                                 <Route path="/dictionnary" component={Dictionnary} />
+                                <Route path="/about" component={About} />
                                 <Route path="/hours" component={Hours} />
                                 <Route path="/presentation" component={Personalization} />
                                 <Route path="/experience" component={Episode} />
@@ -45,6 +48,7 @@ class Main extends Component {
                                 <Route path="/test" component={Glass} />
                                 <Route path="/music" component={MusicChoice} />
                                 <Route path="/drag-drop" component={DragDrop} />
+                                <Route path="/anecdotes" component={Anecdotes} />
 
                             </Switch>
                         </main>
