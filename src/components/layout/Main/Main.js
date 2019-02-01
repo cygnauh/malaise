@@ -13,6 +13,7 @@ import Episode from "../../Episode";
 import MusicChoice from "../../interactions/MusicChoice/MusicChoice";
 import DragDrop from "../../elements/DragDrop/DragDrop";
 import Selection from "../../EpisodeSelection/EpisodeSelection";
+import Anecdotes from "../../pages/Anecdotes/Anecdotes";
 
 /*const firstChild = props => {
     const childrenArray = React.Children.toArray(props.children);
@@ -45,6 +46,7 @@ class Main extends Component {
                                 <Route path="/test" component={Glass} />
                                 <Route path="/music" component={MusicChoice} />
                                 <Route path="/drag-drop" component={DragDrop} />
+                                <Route path="/anecdotes" component={Anecdotes} />
 
                             </Switch>
                         </main>
