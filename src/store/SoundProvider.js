@@ -134,7 +134,8 @@ class SoundProvider extends Component {
                 let sound = new Howl({
                     src: [sounds[i].url],
                     ext: ['mp3'],
-                    html5: true
+                    html5: true,
+                    volume:0.2
                 });
                 soundtab.push(sound)
             }
