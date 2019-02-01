@@ -1,15 +1,20 @@
+// COMPONENTS
 import React, { Component } from 'react';
 import MusicChoice from './MusicChoice/MusicChoice'
 import Question from './Question/Question'
 import DragDrop from '../elements/DragDrop/DragDrop'
+import { Query } from "react-apollo";
+import { getMusics } from '../../graphql/queries'
+// API CONTEXT
 import { SoundContext } from "../../store/SoundProvider";
+
 
 class Interactions extends Component {
     constructor(props){
         super(props);
         this.state = {
             render:'',
-            interactionPosition : 2,
+            interactionPosition : 1,
             interaction : null,
             show : false
         };
@@ -41,9 +46,14 @@ class Interactions extends Component {
                     this.answers[i].originInteraction.id === this.state.interaction.id &&
                     this.answers[i].content === answer
                 ) {
+                    console.log(this.answers[i].destinationInteraction.position)
                     this.setState({
-                        interactionPosition : this.answers[i].destinationInteraction.position
-                    }, () => this.handleInteraction());
+                        interactionPosition : this.answers[i].destinationInteraction.position,
+                        show : !this.state.show
+                    }, () =>{
+                        this.handleInteraction()
+                    })
+                        ;
                     // return
                 }
             }
@@ -51,7 +61,10 @@ class Interactions extends Component {
     };
     render() {
         return (
-            <div className="Interactions">
+            <div className="Interactions" style={{backgroundColor:"blue"}}>
+                {this.state.show && this.state.interaction && this.state.interaction.interactionType === "musique" ?
+                    // getMusics
+                    <div>
                 <Query
                     query={getMusics}
                     notifyOnNetworkStatusChange
@@ -61,19 +74,17 @@ class Interactions extends Component {
                         if (loading) return null;
                         if (error) return `Error!: ${error}`;
                         return (<div>
-                                    {this.state.show && this.state.interaction && this.state.interaction.interactionType === "musique" ?
-                                // getMusics
-                                        <div>
+
                                             <MusicChoice
                                                 musics={data.allSounds}
                                                 onMusicClicked={this.handleAnswer}
                                             />
-                                        </div>
-                                        : null}
+
                                 </div>)
                     }}
                     </Query>
-
+                </div>
+                : null}
                 {this.state.show && this.state.interaction && this.state.interaction.interactionType === "question" && this.state.interaction.content ?
                     <Question question={this.state.interaction.question}
                               choices={this.state.interaction.content.split(',')}
