@@ -22,17 +22,22 @@ class EpisodeForm extends Component {
         for(let i=0; i<this.state.data.length; i++){
             episodes.push(
                 <div key={i.toString()}
-                     className={this.state.data[i].id === this.state.episodeSelected ? 'episode-container selected': 'episode-container'}
+                     className={this.state.data[i].id === this.state.episodeSelected ? 'Episode-item selected': 'Episode-item'}
 
                      onClick={()=> this.onEpisodeSelected(this.state.data[i].id)}>
-                    <h2 className="episode-title">
+                    <div className="Episode-item__top">
+                        <div className="Episode-item__number">0{i + 1}</div>
+                        <div className="Episode-item__line"></div>
+                        <div className="Episode-item__date">27.02.2019</div>
+                    </div>
+                    <h2 className="Episode-item__title">
                         {this.state.data[i].title}
                     </h2>
-                    <span>
-                        Description :
-                    </span>
-                    {this.state.data[i].summary}
-                    </div>)
+                    <p className="Episode-item__description">{this.state.data[i].summary}</p>
+                    <button className="Episode-item__cta">Continuer</button>
+
+                    </div>
+            )
         }
         // entourages, display according to
 
