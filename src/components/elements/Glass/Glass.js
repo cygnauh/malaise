@@ -14,7 +14,7 @@ class Glass extends Component {
         return (
             <div className="glass">
                 <span className="glass_name">
-                    Animatedname
+                    {this.props.name}
                 </span>
             </div>
         )

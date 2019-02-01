@@ -77,14 +77,7 @@ class Presentation extends Component {
 
             let positionTop = Math.floor(Math.random() * (maxY-minY+1)) + minY;
             let positionLeft = Math.floor(Math.random() * (maxX-minX+1)) + minX;
-            ////////////  case where the dot goes out of the window
-            // if(positionTop>window.innerHeight-80){
-            //     positionTop = positionTop/2
-            // }
-            // if(positionLeft>window.innerHeight-80){
-            //     positionLeft = positionLeft/1.2
-            // }
-            ///////
+
             // check distant between dots before push
             if(pos.length>0){
                 let paddingRequied = 100;
@@ -100,7 +93,6 @@ class Presentation extends Component {
         this.setState({
             positions:pos
         }, () => {
-            // console.log(this.state.positions);
         this.hostPositions()}
         );
     }
@@ -187,7 +179,7 @@ class Presentation extends Component {
     onDotClicked=(i, posTop, posLeft, refs, e)=>{
         let dots = this.state.dotClicked;
         dots.push(i);
-        console.log(dots)
+        // console.log(dots)
         let pos = [{
             top:posTop,
             left:posLeft
@@ -257,6 +249,7 @@ class Presentation extends Component {
                 left:this.state.dotPositions[0].left+10,
                 randomLetters:[]
             });
+            this.props.onNameFilled(this.state.greetedGuests.length-2, this.state.personalizationsQuestions, this.state.currentInput)
             this.setState({
                 displayInput : false,
                 canClickOnDot:true,
@@ -269,7 +262,6 @@ class Presentation extends Component {
             let bf = null;
             if(this.state.dotClicked[0] < 4){
                 bf = this.dotRefs[this.state.dotClicked[0]+1];
-
             }else{
                 bf = this.dotRefs[this.state.dotClicked[0]-1];
             }

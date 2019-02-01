@@ -20,7 +20,7 @@ class Personalization extends Component {
             render:'',
             episode:'cjqwfe1kj1j2x0122tixfvb5i',
             values:[],
-            // personalizations:[],
+            personalizations:[],
             value: '',
             register:false,
             componentIndex:1
@@ -37,12 +37,22 @@ class Personalization extends Component {
             this.context.setPersonalization(pers);
         });
     };
+
+    handleChangeTest = (i, params, value) => {
+
+        this.setState({
+            values: { ...this.state.values, [params[i].name]: value}
+        },()=>{
+            this.context.setPersonalization(this.state.values);
+        });
+
+
+    };
     personalizationQuestion = (data) => {
         //reveice data, show first question, register anwser, show next question
         let questions=[];
         let paramsP=null;
         if(data.Episode && data.Episode.personalizations){
-            // console.log(data.Episode.personalizations)
             paramsP = data.Episode.personalizations;
         }
         // return questions
@@ -83,7 +93,10 @@ class Personalization extends Component {
                                     </div>
 
                                     {this.state.componentIndex === 2 ? <div className={this.state.componentIndex === 2?'questionP presentation__container':'questionP presentation__container hide'}>
-                                        <Presentation questions={this.presentationQuestions(data)} onPresentationEnd={this.props.nextComponent}/>
+                                        <Presentation questions={this.presentationQuestions(data)}
+                                                      onPresentationEnd={this.props.nextComponent}
+                                                      onNameFilled={this.handleChangeTest}
+                                        />
                                     </div> : null}
 
                                     {/*<div className="questionP">{this.personalizationQuestion(data)}*/}

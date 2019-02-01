@@ -6,7 +6,7 @@
   position: relative;
   background: $color__white;
 
-  &__hours {
+  &__hours, &__personalization, &__interactions {
     width: 100%;
     height: 100%;
     opacity: 1;
@@ -18,19 +18,23 @@
       height: 0;
     }
   }
-
-  &__personalization {
-    width: 100%;
-    height: 100%;
-    opacity: 1;
-    overflow: hidden;
-    transition: all 0.5s ease-in-out;
-    position: relative;
+  &__interactions{
     &.hide{
-      opacity: 0;
-      height: 0;
+      display: none;
     }
   }
+          // {
+  //  width: 100%;
+  //  height: 100%;
+  //  opacity: 1;
+  //  overflow: hidden;
+  //  transition: all 0.5s ease-in-out;
+  //  position: relative;
+  //  &.hide{
+  //    opacity: 0;
+  //    height: 0;
+  //  }
+  //}
 
 }
 

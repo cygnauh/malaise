@@ -2,7 +2,7 @@
 import React, { Component } from 'react';
 import MusicChoice from './MusicChoice/MusicChoice'
 import Question from './Question/Question'
-import DragDrop from '../elements/DragDrop/DragDrop'
+import DrinkAction from './DrinkAction/DrinkAction'
 // QUERY
 import { Query } from "react-apollo";
 import { getMusics } from '../../graphql/queries'
@@ -95,6 +95,10 @@ class Interactions extends Component {
                               choices={this.state.interaction.content.split('@')}
                               onAnwserClicked={this.handleAnswer}
                     />
+                    : null}
+
+                {this.state.show && this.state.interaction && this.state.interaction.interactionType === "drag and drop" ?
+                    <DrinkAction/>
                     : null}
 
             </div>
