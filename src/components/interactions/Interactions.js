@@ -78,14 +78,13 @@ class Interactions extends Component {
                         if (networkStatus === 4) return "Refetching!";
                         if (loading) return null;
                         if (error) return `Error!: ${error}`;
-                        return (<div>
-
-                                            <MusicChoice
-                                                musics={data.allSounds}
-                                                onMusicClicked={this.handleAnswer}
-                                            />
-
-                                </div>)
+                        return (
+                            <div>
+                                <MusicChoice
+                                    musics={data.allSounds}
+                                    onMusicClicked={this.handleAnswer}
+                                />
+                            </div>)
                     }}
                     </Query>
                 </div>

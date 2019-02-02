@@ -28,7 +28,12 @@ class UserProvider extends Component {
     state = {
         userName: '',
         episode: '', // une valeur de départ
-        personalizations:[],
+        personalizations:[
+            {role: "pote", name: "ds", glass: 0},
+            {role: "copain", name: "ok", glass: 0},
+            {role: "reloue", name: "azr", glass: 0},
+            {role: "reserve", name: "non", glass: 0}
+        ],
         setEpisode: episodeSelected => {
             this.setState({ episode: episodeSelected });
             setTimeout(()=>{console.log(this.state.episode)}, 0)

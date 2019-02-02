@@ -27,40 +27,25 @@ class Personalization extends Component {
 
         };
     }
-    handleChange = (i, params, event) => {
+    handleChange = (i, params, value) => {
         let pers = [];
         this.setState({
-            values: { ...this.state.values, [i]: event.target.value}
+            values: [ ...this.state.values, {role:params[i].name, name:value, glass:0}]
         },()=>{
-            // pers.push(this.state.personalizations);
-            pers[params[i].name] = this.state.values[i];
-            this.context.setPersonalization(pers);
+             this.context.setPersonalization(this.state.values);
+             console.log(this.state.values)
         });
     };
-
-    handleChangeTest = (i, params, value) => {
-
-        this.setState({
-            values: { ...this.state.values, [params[i].name]: value}
-        },()=>{
-            this.context.setPersonalization(this.state.values);
-        });
-
-
-    };
-    personalizationQuestion = (data) => {
-        //reveice data, show first question, register anwser, show next question
-        let questions=[];
-        let paramsP=null;
-        if(data.Episode && data.Episode.personalizations){
-            paramsP = data.Episode.personalizations;
-        }
-        // return questions
-    };
-    validateAnswer = (i, params, answer, event) => {
-        // ----------- TODO go next question animation
-    };
-
+    // values: { ...this.state.values, [params[i].name]: value}
+    // personalizationQuestion = (data) => {
+    //     //reveice data, show first question, register anwser, show next question
+    //     let questions=[];
+    //     let paramsP=null;
+    //     if(data.Episode && data.Episode.personalizations){
+    //         paramsP = data.Episode.personalizations;
+    //     }
+    //     // return questions
+    // };
     presentationQuestions = (data) => {
         let questions = [];
         if(data){
@@ -95,7 +80,7 @@ class Personalization extends Component {
                                     {this.state.componentIndex === 2 ? <div className={this.state.componentIndex === 2?'questionP presentation__container':'questionP presentation__container hide'}>
                                         <Presentation questions={this.presentationQuestions(data)}
                                                       onPresentationEnd={this.props.nextComponent}
-                                                      onNameFilled={this.handleChangeTest}
+                                                      onNameFilled={this.handleChange}
                                         />
                                     </div> : null}
 
