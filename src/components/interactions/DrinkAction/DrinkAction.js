@@ -3,6 +3,7 @@ import Glass from '../../elements/Glass/Glass'
 import DragDrop from '../../elements/DragDrop/DragDrop'
 import { UserContext } from "./../../../store/UserProvider";
 import {SoundContext} from "../../../store/SoundProvider";
+import "./DrinkAction.scss";
 
 class DrinkAction extends Component {
     constructor(){
@@ -38,9 +39,13 @@ class DrinkAction extends Component {
     render() {
         return (
             <div className="DrinkAction">
-
-                <div className="Person_list">
-                    {this.state.persons ? this.handleDrink() : null}
+                <div className="wrapper">
+                    <div className="Person_list">
+                        {this.state.persons ? this.handleDrink() : null}
+                    </div>
+                    <span className="Drink_Games_content">
+                        Je n'ai jamais été viré d'un bar
+                    </span>
                 </div>
                 <div className="Drink">
                     <DragDrop onDrink={this.handleDrink}/>
