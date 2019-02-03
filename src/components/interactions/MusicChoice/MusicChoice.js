@@ -37,7 +37,9 @@ class MusicChoice extends Component {
         })
         var $el = e.currentTarget;
         $el.setAttribute("class", "Music__item Music__item--selected");
-        this.props.onMusicClicked(null)
+        setTimeout(() => {
+            this.props.onMusicClicked(null)
+        }, 2000);
     }
 
     handleMouseEnter = (e) => {
