@@ -1,28 +1,28 @@
 @import '../../../assets/styles/index.scss';
-    .glass_name {
-
+.glass{
+  .glass_name {
+    text-transform: capitalize;
     font: 700 4em/1 "Oswald", sans-serif;
-    //letter-spacing: 0;
-    //padding: .25em 0 .325em;
-    //display: block;
-    //margin: 0 auto;
     -webkit-text-stroke: 1px white;
     /* Clip Background Image */
     background: url(../../../assets/img/drink.png) repeat-y;
-    background-position-y: 235px;
+    background-position-y: 253px;
+    background-position-x: -75px;
     -webkit-background-clip: text;
     background-clip: text;
-
     /* Animate Background Image */
     -webkit-text-fill-color: transparent;
-    -webkit-animation: aitf 5s linear infinite;
-    -webkit-animation-duration: 10s;
-
     /* Activate hardware acceleration for smoother animations */
-    -webkit-transform: translate3d(0,0,0);
-    -webkit-backface-visibility: hidden;
-
+    transform: translate3d(0,0,0);
+    backface-visibility: hidden;
+    &.drinking{
+      background-position-y: 235px;
+      animation: aitf 5s linear infinite;
+      animation-duration: 10s;
+    }
   }
+}
+
 
 
 /* Animate Background Image */

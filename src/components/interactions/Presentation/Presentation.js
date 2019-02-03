@@ -14,7 +14,7 @@ class Presentation extends Component {
             render:'',
             positions:null, // dots positions
             intervalExtremeties:[],
-            hote:"Alice", // to be update with the user data // TODO Remove
+            hote:this.props.host,
             canClickOnDot:true,
             dotClicked:[],
             dotPositions:[], // selected dot positions
@@ -77,14 +77,7 @@ class Presentation extends Component {
 
             let positionTop = Math.floor(Math.random() * (maxY-minY+1)) + minY;
             let positionLeft = Math.floor(Math.random() * (maxX-minX+1)) + minX;
-            ////////////  case where the dot goes out of the window
-            // if(positionTop>window.innerHeight-80){
-            //     positionTop = positionTop/2
-            // }
-            // if(positionLeft>window.innerHeight-80){
-            //     positionLeft = positionLeft/1.2
-            // }
-            ///////
+
             // check distant between dots before push
             if(pos.length>0){
                 let paddingRequied = 100;
@@ -100,7 +93,6 @@ class Presentation extends Component {
         this.setState({
             positions:pos
         }, () => {
-            // console.log(this.state.positions);
         this.hostPositions()}
         );
     }
@@ -187,7 +179,6 @@ class Presentation extends Component {
     onDotClicked=(i, posTop, posLeft, refs, e)=>{
         let dots = this.state.dotClicked;
         dots.push(i);
-        console.log(dots)
         let pos = [{
             top:posTop,
             left:posLeft
@@ -201,7 +192,6 @@ class Presentation extends Component {
             });
         }
     };
-
     // TODO format form
     handleDisplayInputOrder=()=>{ // pote, copain, reloue, réservé
         let form = [];
@@ -217,9 +207,6 @@ class Presentation extends Component {
         return form;
     };
     displayPersonalizationInput=()=>{
-        // TODO get the questions,
-        // TODO get a random number in the questions empty --> check in the store if personalization already set
-        // let form = this.state.personalizationsQuestions[2];
         let form = this.handleDisplayInputOrder();
         let questionInput = [];
             if(this.state.dotPositions){
@@ -250,26 +237,24 @@ class Presentation extends Component {
     validateInput = (event) => {
         // TODO display first letter
         let newGreetedGuest = this.state.greetedGuests;
-        // if(this.currentInput !== ''){
             newGreetedGuest.push({
                 name:this.state.currentInput,
                 top:this.state.dotPositions[0].top-18,
                 left:this.state.dotPositions[0].left+10,
                 randomLetters:[]
             });
+            this.props.onNameFilled(this.state.greetedGuests.length-2, this.state.personalizationsQuestions, this.state.currentInput)
             this.setState({
                 displayInput : false,
                 canClickOnDot:true,
                 currentInput:'',
                 greetedGuests:newGreetedGuest
             });
-        // }
         if (this.state.currentQuestion === "pote"){
             this.setState({currentQuestion: "copain"});
             let bf = null;
             if(this.state.dotClicked[0] < 4){
                 bf = this.dotRefs[this.state.dotClicked[0]+1];
-
             }else{
                 bf = this.dotRefs[this.state.dotClicked[0]-1];
             }
@@ -277,7 +262,6 @@ class Presentation extends Component {
                 bf.click()
             },3000);
             setTimeout(()=>this.context.playGreeting("pote"), 1000)
-
         }else if (this.state.currentQuestion === "copain"){
             this.setState({currentQuestion: "reloue"});
             setTimeout(()=>this.context.playGreeting("copain"), 1000)
@@ -291,8 +275,6 @@ class Presentation extends Component {
             }
         }
         this.lettersDisappearingOrder(newGreetedGuest[newGreetedGuest.length-1].name.split(''));
-
-
     };
     lettersDisappearingOrder = (letters) => {
         let letterPosition = [];
@@ -321,7 +303,6 @@ class Presentation extends Component {
                 let lettersHelper = [];
                 for(let j = 0; j<letters.length; j++){
                     let letterClasses = this.state.randomLetters.indexOf(j) !== -1 || (this.state.greetedGuests[i].displayed && j>0)? 'nameLetter removeOpacity': 'nameLetter';
-                    // let letterClasses = this.state.greetedGuests[i].randomLetters[0].indexOf(j) !== -1 ? 'nameLetter removeOpacity': 'nameLetter';
                     if(j===0){
                         letterClasses = 'nameLetter firstLetter'
                     }
@@ -329,10 +310,11 @@ class Presentation extends Component {
                         letterClasses = 'nameLetter firstLetter displayed'
                     }
                     lettersHelper.push(
-                                <span key={j.toString()}
-                                    className={letterClasses}>
-                                    {letters[j]}
-                                </span>)
+                        <span key={j.toString()}
+                            className={letterClasses}>
+                            {letters[j]}
+                        </span>
+                    )
                 }
                 guests.push(
                     <div key={i.toString()}
@@ -343,12 +325,12 @@ class Presentation extends Component {
                             <span className="firstName">
                                 {lettersHelper}
                                 </span>
-                    </div>)
-                }
+                    </div>
+                )
+            }
         }
         return guests
-    }
-
+    };
     render () {
         return(
             <div className="Presentation">

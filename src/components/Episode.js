@@ -23,9 +23,13 @@ class Episode extends Component {
         }, 5000)
     };
     goToWhatever = () => {
-        this.setState({
-            componentIndex:2
-        })
+        if(this.state.componentIndex !== 2){
+            this.setState({
+                componentIndex:2
+            })
+        } else {
+            console.log('next')
+        }
     }
     render() {
         return (
@@ -38,7 +42,8 @@ class Episode extends Component {
                     <Personalization nextComponent={this.goToWhatever}/>
                 </div>
 
-                <div className={this.state.componentIndex === 2?'Episode__interactions':'Episode__interactions hide'}>
+                {this.state.componentIndex === 2 ?
+                    <div className={this.state.componentIndex === 2?'Episode__interactions':'Episode__interactions hide'}>
                     <Query key="1" query={getAnwsers}>
                         {({ loading, error, data }) => {
                             if (error) return <h1>Error...</h1>;
@@ -47,7 +52,8 @@ class Episode extends Component {
                             return <Interactions anwsers={data} nextComponent={this.goToWhatever}/>
                         }}
                     </Query>
-                </div>
+                </div> : null}
+
             </div>
         )
     }

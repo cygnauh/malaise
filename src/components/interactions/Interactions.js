@@ -2,19 +2,20 @@
 import React, { Component } from 'react';
 import MusicChoice from './MusicChoice/MusicChoice'
 import Question from './Question/Question'
-import DragDrop from '../elements/DragDrop/DragDrop'
+import DrinkAction from './DrinkAction/DrinkAction'
 // QUERY
 import { Query } from "react-apollo";
 import { getMusics } from '../../graphql/queries'
 // API CONTEXT
 import { SoundContext } from "../../store/SoundProvider";
+import './interactions.scss'
 
 class Interactions extends Component {
     constructor(props){
         super(props);
         this.state = {
             render:'',
-            interactionPosition : 1,
+            interactionPosition: 1,
             interaction : null,
             show : false
         };
@@ -30,7 +31,7 @@ class Interactions extends Component {
             this.setState({
                 interaction : inte
             }, ()=>{
-                let test = this.context.playInteractionSound(this.state.interaction.name)
+                let time = this.context.playInteractionSound(this.state.interaction.name)
                 setTimeout(()=>{
                     if(this.state.interaction && this.state.interaction.interactionType === "none"){
                         console.log(this.state.interaction.interactionType)
@@ -40,10 +41,10 @@ class Interactions extends Component {
                             show : true
                         });
                     }}
-                , test)
-            })
+                , time);
+           })
         }
-    };
+      };
     handleAnswer = (value) => {
         let answer = (value) ? value : null;
         if(this.answers && this.state.interaction) {
@@ -66,7 +67,7 @@ class Interactions extends Component {
     };
     render() {
         return (
-            <div className="Interactions" style={{backgroundColor:"blue"}}>
+            <div className="Interactions">
                 {this.state.show && this.state.interaction && this.state.interaction.interactionType === "musique" ?
                     // getMusics
                     <div>
@@ -78,14 +79,13 @@ class Interactions extends Component {
                         if (networkStatus === 4) return "Refetching!";
                         if (loading) return null;
                         if (error) return `Error!: ${error}`;
-                        return (<div>
-
-                                            <MusicChoice
-                                                musics={data.allSounds}
-                                                onMusicClicked={this.handleAnswer}
-                                            />
-
-                                </div>)
+                        return (
+                            <div>
+                                <MusicChoice
+                                    musics={data.allSounds}
+                                    onMusicClicked={this.handleAnswer}
+                                />
+                            </div>)
                     }}
                     </Query>
                 </div>
@@ -94,6 +94,14 @@ class Interactions extends Component {
                     <Question question={this.state.interaction.question}
                               choices={this.state.interaction.content.split('@')}
                               onAnwserClicked={this.handleAnswer}
+                    />
+                    : null}
+
+                {this.state.show && this.state.interaction && this.state.interaction.interactionType === "drag and drop" ?
+                    <DrinkAction drinkers={this.state.interaction.content.split('@')}
+                                 timer={this.state.interaction.timer}
+                                 question={this.state.interaction.question.split('@')}
+                                 onMusicClicked={this.handleAnswer}
                     />
                     : null}
 

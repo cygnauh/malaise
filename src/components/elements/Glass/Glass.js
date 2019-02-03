@@ -6,15 +6,21 @@ class Glass extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            render:''
+            render:'',
+            drink: false
         };
     }
 
+    componentWillReceiveProps(){
+        this.setState({
+            drink: this.props.onDrink
+        })
+    }
     render() {
         return (
             <div className="glass">
-                <span className="glass_name">
-                    Animatedname
+                <span className={this.state.drink? 'glass_name drinking' : 'glass_name'}>
+                    {this.props.name}
                 </span>
             </div>
         )

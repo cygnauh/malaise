@@ -4,6 +4,7 @@ import Homepage from "./pages/Homepage/Homepage";
 import EpisodeSelection from "./EpisodeSelection/EpisodeSelection";
 import Episode from "./Episode"
 
+
 class StartProcess extends Component {
 
     constructor(props){
@@ -12,7 +13,7 @@ class StartProcess extends Component {
             home:true,
             selection:false,
             episode:false,
-            index:0 // TODO Temporary
+            index:1 // TODO Temporary
         }
     }
 
