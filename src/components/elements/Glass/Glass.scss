@@ -1,6 +1,7 @@
 @import '../../../assets/styles/index.scss';
 .glass{
   .glass_name {
+    text-transform: capitalize;
     font: 700 4em/1 "Oswald", sans-serif;
     -webkit-text-stroke: 1px white;
     /* Clip Background Image */

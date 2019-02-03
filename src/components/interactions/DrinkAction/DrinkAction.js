@@ -6,12 +6,18 @@ import {SoundContext} from "../../../store/SoundProvider";
 import "./DrinkAction.scss";
 
 class DrinkAction extends Component {
-    constructor(){
-        super();
+    constructor(props){
+        super(props);
         this.state = {
             render:'',
             persons : ''
         };
+        this.drinkers = this.props.drinkers; // persons who drinks at the question
+        this.timer = this.props.timer;
+        this.asker = this.props.question[0]; // who is asking the question
+        this.question = this.props.question[1];
+        console.log(this.drinkers, this.timer, this.asker, this.question)
+        // <DrinkAction whoDrink={this.state.interaction.content.split('@')} timer={this.state.interaction.timer} question={this.state.interaction.question}/>
     }
     componentDidMount(){
         this.setState({
@@ -19,9 +25,6 @@ class DrinkAction extends Component {
         }, ()=>{
             console.log(this.state.persons)
         })
-        // for(let i =0; i<this.persons.length; i++){
-        //     console.log(this.persons[i])
-        // }
 
     };
     handleDrink(){
@@ -30,25 +33,30 @@ class DrinkAction extends Component {
             for (let i = 0; i<this.state.persons.length;i++) {
                 let name = this.state.persons[i].name
                 let glassLevel = this.state.persons[i].glass
-                let test = false
-                glasses.push(<Glass key={i} name={name} glassFilled={glassLevel} onDrink={false}/>)
+                glasses.push(
+                    <div key={i} className="Person_list">
+                        <Glass name={name} glassFilled={glassLevel} onDrink={false}/>
+                        {this.asker === this.state.persons[i].role ?
+                            <span className="Drink_Games_content">
+                            Je n'ai jamais été viré d'un bar
+                            </span> : null}
+
+                    </div>)
             }
         }
         return glasses
+    }
+    userDrank(){
+        console.log("userDrinked")
     }
     render() {
         return (
             <div className="DrinkAction">
                 <div className="wrapper">
-                    <div className="Person_list">
-                        {this.state.persons ? this.handleDrink() : null}
-                    </div>
-                    <span className="Drink_Games_content">
-                        Je n'ai jamais été viré d'un bar
-                    </span>
+                    {this.state.persons ? this.handleDrink() : null}
                 </div>
                 <div className="Drink">
-                    <DragDrop onDrink={this.handleDrink}/>
+                    <DragDrop onDrink={this.userDrank}/>
                 </div>
             </div>
         )

@@ -12,13 +12,12 @@ class DragDrop extends Component {
                 x: 0, y: 0
             }
         }
-
     }
 
     handleStart = () => {
         $('.Drag-drop__draggable').addClass('Drag-drop__draggable--onDrag');
         $('.Drag-drop__exampleAnimation').remove();
-    }
+    };
 
     handleDrag = (e, ui) => {
         const {x, y} = this.state.deltaPosition;
@@ -34,19 +33,22 @@ class DragDrop extends Component {
         } else {
             $('.Drag-drop__draggable').addClass('Drag-drop__draggable--onDrag');
         }
-    }
+    };
 
     handleStop = () => {
         if(this.state.deltaPosition.y === -150) {
             $('.Drag-drop__dragEnd').addClass('Drag-drop__dragEnd--full');
             $('.Drag-drop__draggable').removeClass('Drag-drop__draggable--onDrag').addClass('Drag-drop__draggable--dragged');
             $('.Drag-drop__dragStart').addClass('Drag-drop__dragStart--dragged');
+            // console.log("hello stop")
+            this.props.onDrink()
         } else {
             $('.Drag-drop__draggable').removeClass('Drag-drop__draggable--onDrag');
-            setTimeout(function() {
+            setTimeout(() => {
                 $('.Drag-drop__dragElement').css('transform', 'translate(0, 0)');
             }, 200);
         }
+
     }
 
     render() {

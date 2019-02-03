@@ -30,7 +30,7 @@ class Interactions extends Component {
             this.setState({
                 interaction : inte
             }, ()=>{
-                let test = this.context.playInteractionSound(this.state.interaction.name)
+                let time = this.context.playInteractionSound(this.state.interaction.name)
                 setTimeout(()=>{
                     if(this.state.interaction && this.state.interaction.interactionType === "none"){
                         console.log(this.state.interaction.interactionType)
@@ -40,10 +40,10 @@ class Interactions extends Component {
                             show : true
                         });
                     }}
-                , test)
-            })
+                , time);
+           })
         }
-    };
+      };
     handleAnswer = (value) => {
         let answer = (value) ? value : null;
         if(this.answers && this.state.interaction) {
@@ -66,7 +66,7 @@ class Interactions extends Component {
     };
     render() {
         return (
-            <div className="Interactions" style={{backgroundColor:"blue"}}>
+            <div className="Interactions">
                 {this.state.show && this.state.interaction && this.state.interaction.interactionType === "musique" ?
                     // getMusics
                     <div>
@@ -97,7 +97,11 @@ class Interactions extends Component {
                     : null}
 
                 {this.state.show && this.state.interaction && this.state.interaction.interactionType === "drag and drop" ?
-                    <DrinkAction/>
+                    <DrinkAction drinkers={this.state.interaction.content.split('@')}
+                                 timer={this.state.interaction.timer}
+                                 question={this.state.interaction.question.split('@')}
+                                 onMusicClicked={this.handleAnswer}
+                    />
                     : null}
 
             </div>
