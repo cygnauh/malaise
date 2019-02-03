@@ -10,14 +10,15 @@ class DrinkAction extends Component {
         super(props);
         this.state = {
             render:'',
-            persons : ''
+            persons : '',
+            canDrink: false
         };
         this.drinkers = this.props.drinkers; // persons who drinks at the question
         this.timer = this.props.timer;
         this.asker = this.props.question[0]; // who is asking the question
         this.question = this.props.question[1];
-        console.log(this.drinkers, this.timer, this.asker, this.question)
-        // <DrinkAction whoDrink={this.state.interaction.content.split('@')} timer={this.state.interaction.timer} question={this.state.interaction.question}/>
+        this.userDrank = this.userDrank.bind(this)
+        this.handleTimer = setTimeout( () => {this.userDrank(); console.log("time up")}, this.timer)
     }
     componentDidMount(){
         this.setState({
@@ -25,30 +26,46 @@ class DrinkAction extends Component {
         }, ()=>{
             console.log(this.state.persons)
         })
-
     };
-    handleDrink(){
+    handleDrink = () => {
         let glasses = []
         if(this.state.persons){
             for (let i = 0; i<this.state.persons.length;i++) {
-                let name = this.state.persons[i].name
-                let glassLevel = this.state.persons[i].glass
+                let name = this.state.persons[i].name;
+                let glassLevel = this.state.persons[i].glass;
+                let toDrink = this.state.canDrink && this.drinkers.indexOf(this.state.persons[i].role)!==-1;
                 glasses.push(
                     <div key={i} className="Person_list">
-                        <Glass name={name} glassFilled={glassLevel} onDrink={false}/>
+                        <Glass name={name}
+                               glassFilled={glassLevel}
+                               onDrink={toDrink}/>
                         {this.asker === this.state.persons[i].role ?
                             <span className="Drink_Games_content">
-                            Je n'ai jamais été viré d'un bar
-                            </span> : null}
+                        Je n'ai jamais été viré d'un bar
+                        </span> : null}
+                    </div>
+                )
 
-                    </div>)
             }
         }
         return glasses
-    }
-    userDrank(){
-        console.log("userDrinked")
-    }
+    };
+    userDrank = () => {
+        // show drinkers
+        clearTimeout(this.handleTimer)
+        this.setState({
+            canDrink:!this.state.canDrink
+        }, ()=>{
+            this.setState({
+                test:"Temporary fix"
+            })
+        });
+        //TODO register user alcohol level
+    };
+    // handleTimer = () => {
+    //     // check if user use to do an action
+    //     this.setTimeout()
+    // };
     render() {
         return (
             <div className="DrinkAction">

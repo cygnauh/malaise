@@ -11,6 +11,11 @@ class Glass extends Component {
         };
     }
 
+    componentWillReceiveProps(){
+        this.setState({
+            drink: this.props.onDrink
+        })
+    }
     render() {
         return (
             <div className="glass">
