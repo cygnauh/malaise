@@ -1,0 +1,54 @@
+@import '../../../assets/styles/index.scss';
+
+.TakingPosition {
+  width: 100%;
+  height: 100%;
+
+  &__container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+  }
+
+  &__leftPart, &__rightPart {
+    position: absolute;
+    width: 50%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    z-index: 1;
+    background-color: $color__bg;
+  }
+
+  &__leftPart {
+    top: 0;
+    left: 0;
+    &:after {
+      width: 1px;
+      height:100%;
+      background-color: $color__white;
+      content: '';
+      position: absolute;
+      right: 0;
+    }
+  }
+
+  &__rightPart {
+    right: 0;
+    top: 0;
+  }
+
+  &__name {
+    font-size: 70px;
+    color: $color__bg;
+    text-shadow: -1px 0 $color__white, 0 1px $color__white, 1px 0 $color__white, 0 -1px $color__white;
+    font-family: $font__archivo--black;
+  }
+
+  &__winner {
+    z-index: 2;
+  }
+
+}

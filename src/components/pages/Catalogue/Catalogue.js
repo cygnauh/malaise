@@ -28,7 +28,7 @@ class EpisodeForm extends Component {
                     <div className="Episode-item__top">
                         <div className="Episode-item__number">0{i + 1}</div>
                         <div className="Episode-item__line"></div>
-                        <div className="Episode-item__date">27.02.2019</div>
+                        <div className="Episode-item__date">27.08.2099</div>
                     </div>
                     <h2 className="Episode-item__title">
                         {this.state.data[i].title}

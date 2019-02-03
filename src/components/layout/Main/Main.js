@@ -15,11 +15,7 @@ import DragDrop from "../../elements/DragDrop/DragDrop";
 import Selection from "../../EpisodeSelection/EpisodeSelection";
 import Anecdotes from "../../pages/Anecdotes/Anecdotes";
 import About from "../../pages/About/About";
-
-/*const firstChild = props => {
-    const childrenArray = React.Children.toArray(props.children);
-    return childrenArray[0] || null;
-};*/
+import TakingPosition from "../../interactions/TakingPosition/TakingPosition";
 
 class Main extends Component {
     render() {
@@ -49,6 +45,7 @@ class Main extends Component {
                                 <Route path="/music" component={MusicChoice} />
                                 <Route path="/drag-drop" component={DragDrop} />
                                 <Route path="/anecdotes" component={Anecdotes} />
+                                <Route path="/takingposition" component={TakingPosition} />
 
                             </Switch>
                         </main>
