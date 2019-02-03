@@ -8,13 +8,14 @@ import { Query } from "react-apollo";
 import { getMusics } from '../../graphql/queries'
 // API CONTEXT
 import { SoundContext } from "../../store/SoundProvider";
+import './interactions.scss'
 
 class Interactions extends Component {
     constructor(props){
         super(props);
         this.state = {
             render:'',
-            interactionPosition : 1,
+            interactionPosition: 1,
             interaction : null,
             show : false
         };

@@ -28,7 +28,6 @@ class Personalization extends Component {
         };
     }
     handleChange = (i, params, value) => {
-        let pers = [];
         this.setState({
             values: [ ...this.state.values, {role:params[i].name, name:value, glass:0}]
         },()=>{
@@ -36,16 +35,6 @@ class Personalization extends Component {
              console.log(this.state.values)
         });
     };
-    // values: { ...this.state.values, [params[i].name]: value}
-    // personalizationQuestion = (data) => {
-    //     //reveice data, show first question, register anwser, show next question
-    //     let questions=[];
-    //     let paramsP=null;
-    //     if(data.Episode && data.Episode.personalizations){
-    //         paramsP = data.Episode.personalizations;
-    //     }
-    //     // return questions
-    // };
     presentationQuestions = (data) => {
         let questions = [];
         if(data){
@@ -61,38 +50,35 @@ class Personalization extends Component {
         this.setState({
             componentIndex:2
         })
-    }
+    };
     render () {
         return(
             <div className='Personalization'>
                 {
                     this.state.episode?
                         (<Query query={getEpisode} variables={{ id : this.state.episode }}>
-                        {({ loading, error, data }) => {
-                            if (loading) return (<div>loader</div>);
-                            if (error) return `Error!: ${error}`;
-                            return (
-                                <div className="Personalization__container">
-                                    <div className={this.state.componentIndex === 1?'Personalization__doorbell':'Personalization__doorbell hide'}>
-                                        <Doorbell onDoorbellPressed={this.goToPresentation}/>
+                            {({ loading, error, data }) => {
+                                if (loading) return (<div>loader</div>);
+                                if (error) return `Error!: ${error}`;
+                                return (
+                                    <div className="Personalization__container">
+                                        <div className={this.state.componentIndex === 1?'Personalization__doorbell':'Personalization__doorbell hide'}>
+                                            <Doorbell onDoorbellPressed={this.goToPresentation} onHostRegister={this.handleChange}/>
+                                        </div>
+
+                                        {this.state.componentIndex === 2 ? <div className={this.state.componentIndex === 2?'questionP presentation__container':'questionP presentation__container hide'}>
+                                            <Presentation questions={this.presentationQuestions(data)}
+                                                          onPresentationEnd={this.props.nextComponent}
+                                                          onNameFilled={this.handleChange}
+                                                          host={this.context.personalizations.find(setting=>setting.role === 'hote').name}
+                                            />
+                                        </div> : null}
                                     </div>
-
-                                    {this.state.componentIndex === 2 ? <div className={this.state.componentIndex === 2?'questionP presentation__container':'questionP presentation__container hide'}>
-                                        <Presentation questions={this.presentationQuestions(data)}
-                                                      onPresentationEnd={this.props.nextComponent}
-                                                      onNameFilled={this.handleChange}
-                                        />
-                                    </div> : null}
-
-                                    {/*<div className="questionP">{this.personalizationQuestion(data)}*/}
-                                        {/*<Presentation questions={this.presentationQuestions(data)} />*/}
-                                    {/*</div>*/}
-                                </div>
-                            );
-                        }}
-                        </Query>):null
+                                );
+                            }}
+                        </Query>
+                    ):null
                 }
-
             </div>
         )
     }

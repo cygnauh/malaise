@@ -14,7 +14,8 @@ class Doorbell extends Component {
             render:'',
             activeBell: false,
             clickedBell: false,
-            displayAnim:false
+            displayAnim:false,
+            host: ''
         };
         this.defaultOptions = {
             loop: true,
@@ -47,14 +48,29 @@ class Doorbell extends Component {
             this.context.playDoorBell(); // TODO handle, only on the second click
             // play the boom
             setTimeout(()=>{
-                this.setState({displayAnim:true})
+                this.setState({
+                    displayAnim:true
+                },()=>{
+                    let name = [];
+                    name.push({name:'hote'})
+                        this.props.onHostRegister(0,name, this.state.host)
+                    })
+
             }, 1800);
             setTimeout(()=>{
                 this.props.onDoorbellPressed()
             }, 5800)
 
         }
-    }
+    };
+
+    handleChange = (e) => {
+
+        this.setState({
+            host: e.target.value
+        }, console.log(this.state.host))
+        //
+    };
 
     render() {
         return (
@@ -84,10 +100,15 @@ class Doorbell extends Component {
                         <div className="bell__box">
                             <div className="bell__container">
                                 <div className="bell__input-border">
-                                    <input className="bell__input" type="text" placeholder="son prénom" />
+                                    <input className="bell__input"
+                                           type="text"
+                                           value={this.state.host}
+                                           onChange={this.handleChange}
+                                           placeholder="son prénom" />
                                 </div>
                                 <div className={this.state.clickedBell ? 'bell__btn bell__btn--clicked': 'bell__btn'}>
-                                    <button className={this.state.activeBell ? 'btn btn__input btn__bell': 'btn btn__input'} onClick={this.handleClick}>
+                                    <button className={this.state.activeBell ? 'btn btn__input btn__bell': 'btn btn__input'}
+                                            onClick={this.handleClick}>
                                         <span>ok</span>
                                     </button>
                                 </div>

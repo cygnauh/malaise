@@ -23,9 +23,13 @@ class Episode extends Component {
         }, 5000)
     };
     goToWhatever = () => {
-        this.setState({
-            componentIndex:2
-        })
+        if(this.state.componentIndex !== 2){
+            this.setState({
+                componentIndex:2
+            })
+        } else {
+            console.log('next')
+        }
     }
     render() {
         return (
