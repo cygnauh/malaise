@@ -6,7 +6,8 @@
 
   &__done {
     .TakingPosition__winner {
-      width: 100%;
+      transition: width 1s ease;
+      width: 100%!important;
     }
   }
 
@@ -53,6 +54,14 @@
   &__rightPart {
     right: 0;
     top: 0;
+    &:before {
+      width: 1px;
+      height:100%;
+      background-color: $color__white;
+      content: '';
+      position: absolute;
+      left: 0;
+    }
   }
 
   &__name {

@@ -71,7 +71,7 @@ class TakingPosition extends Component {
                 <div className="TakingPosition__timer">
                     <Timer activeTimer={this.state.started} />
                 </div>
-                <div className="TakingPosition__container" onMouseMove={this.handleMouseMove} ref={this.container}>
+                <div className="TakingPosition__container" onMouseMove={!this.state.timeIsOver ? this.handleMouseMove : null} ref={this.container}>
                     <div className="TakingPosition__leftPart" ref={this.part1}>
                         <p className="TakingPosition__name">Romane</p>
                     </div>
