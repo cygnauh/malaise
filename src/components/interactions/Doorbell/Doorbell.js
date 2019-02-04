@@ -68,7 +68,7 @@ class Doorbell extends Component {
 
         this.setState({
             host: e.target.value
-        }, console.log(this.state.host))
+        })
         //
     };
 
