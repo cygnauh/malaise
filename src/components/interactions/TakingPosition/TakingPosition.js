@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import $ from 'jquery';
 import './style.scss';
+import Timer from "../../elements/Timer/Timer";
 
 class TakingPosition extends Component {
 
@@ -8,14 +9,25 @@ class TakingPosition extends Component {
         super(props);
         this.state = {
             x: 0,
-            defaultWidth: 0
+            defaultWidth: 0,
+            started: false,
+            timeIsOver: false
         };
 
         this.part1 = React.createRef();
         this.part2 = React.createRef();
+        this.container = React.createRef();
     }
 
     componentDidMount() {
+        this.setState({
+            started: true
+        });
+        setTimeout(() => {
+            this.setState({
+                timeIsOver: true
+            });
+        }, 5000);
     }
 
     handleMouseMove = (e) => {
@@ -33,7 +45,7 @@ class TakingPosition extends Component {
 
         p1.style.width = 100 - x / 10 + '%';
         p2.style.width = x / 10 + '%';
-        
+
         var inverseX = (e.currentTarget.offsetWidth / 2) - x;
         p1.querySelector('.TakingPosition__name').style.transform = `scale(${1 + inverseX/500})`;
         p2.querySelector('.TakingPosition__name').style.transform = `scale(${1 - inverseX/500})`;
@@ -53,9 +65,13 @@ class TakingPosition extends Component {
     }
 
     render() {
+
         return (
-            <div className="TakingPosition">
-                <div className="TakingPosition__container" onMouseMove={this.handleMouseMove}>
+            <div className={this.state.timeIsOver ? 'TakingPosition TakingPosition__done' : 'TakingPosition'}>
+                <div className="TakingPosition__timer">
+                    <Timer activeTimer={this.state.started} />
+                </div>
+                <div className="TakingPosition__container" onMouseMove={this.handleMouseMove} ref={this.container}>
                     <div className="TakingPosition__leftPart" ref={this.part1}>
                         <p className="TakingPosition__name">Romane</p>
                     </div>
