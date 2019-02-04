@@ -37,13 +37,14 @@ type Interaction @model {
   originInteraction: Answer @relation(name: "AnswersOriginInteractions")
   destinationInteraction: Answer @relation(name: "AnswersDestinationInteractions")
   indication: String
+  goNext: Boolean
 }
 
 type Answer @model {
   id: ID! @isUnique
-  content: String!
-  originInteraction: Interaction! @relation(name:"AnswersOriginInteractions")
-  destinationInteraction: Interaction! @relation(name:"AnswersDestinationInteractions")
+  content: String
+  originInteraction: Interaction @relation(name:"AnswersOriginInteractions")
+  destinationInteraction: Interaction @relation(name:"AnswersDestinationInteractions")
 }
 
 type SoundSequence @model {

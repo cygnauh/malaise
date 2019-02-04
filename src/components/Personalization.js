@@ -65,14 +65,16 @@ class Personalization extends Component {
                                         <div className={this.state.componentIndex === 1?'Personalization__doorbell':'Personalization__doorbell hide'}>
                                             <Doorbell onDoorbellPressed={this.goToPresentation} onHostRegister={this.handleChange}/>
                                         </div>
-
-                                        {this.state.componentIndex === 2 ? <div className={this.state.componentIndex === 2?'questionP presentation__container':'questionP presentation__container hide'}>
-                                            <Presentation questions={this.presentationQuestions(data)}
-                                                          onPresentationEnd={this.props.nextComponent}
-                                                          onNameFilled={this.handleChange}
-                                                          host={this.context.personalizations.find(setting=>setting.role === 'hote').name}
-                                            />
-                                        </div> : null}
+                                        {this.state.componentIndex === 2 ?
+                                            <div className={this.state.componentIndex === 2?'questionP presentation__container':'questionP presentation__container hide'}>
+                                                <Presentation
+                                                    questions={this.presentationQuestions(data)}
+                                                    onPresentationEnd={this.props.nextComponent}
+                                                    onNameFilled={this.handleChange}
+                                                    host={this.context.personalizations.find(setting=>setting.role === 'hote').name}
+                                                />
+                                            </div>
+                                            : null}
                                     </div>
                                 );
                             }}

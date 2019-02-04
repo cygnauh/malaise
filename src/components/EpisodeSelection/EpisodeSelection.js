@@ -20,9 +20,12 @@ class EpisodeSelection extends Component {
             episode:''
         };
     }
-    onContinueClicked (callbackSetEpisode, params, callbackSetSounds) {
-        callbackSetEpisode(params);
-        callbackSetSounds(params.sounds[0].url, params.interactions);
+    onContinueClicked (callbackSetEpisode, params, callbackSetSounds, registerPlaceSound) {
+        // for real project --> replace params.allEpisodes[0] by params.allEpisodes[params.allEpisodes.length-1]
+        let placeSound = params.allSounds.find(setting => setting.name === params.allEpisodes[0].place)
+        callbackSetEpisode(params.allEpisodes[0]);
+        callbackSetSounds(params.allEpisodes[0].sounds[0].url, params.allEpisodes[0].interactions);
+        registerPlaceSound(placeSound)
         this.props.onButtonPressed()
     }
     render () {
@@ -37,13 +40,10 @@ class EpisodeSelection extends Component {
                     if (error) return `Error!: ${error}`;
                     return (
                         <div className="episodeSelection">
-                            {/*{!this.context.episode?*/}
-                                {/*<EpisodeForm episodes={data}/>*/}
-                                {/*:*/}
                             <UserContext.Consumer>
                                 {({episode, setEpisode}) => (
                                     <SoundContext.Consumer>
-                                        {({setEpisodeSounds}) => (
+                                        {({setEpisodeSounds, registerPlaceSound}) => (
                                             <div>
                                                 <div className="episodeSelection__container">
                                                     <div className="episodeSelection__result">
@@ -52,7 +52,10 @@ class EpisodeSelection extends Component {
                                                                 <h2 className="episode__title">{data.allEpisodes[0].title}</h2>
                                                                 <p className="episode__summary">{data.allEpisodes[0].summary}</p>
                                                                 {/*<button className="episode__btn" onClick={}>Continuer</button>*/}
-                                                                <button className="episode__btn" onClick={()=>{this.onContinueClicked(setEpisode, data.allEpisodes[0], setEpisodeSounds)}}>Continuer</button>
+                                                                <button className="episode__btn"
+                                                                        onClick={ ()=>{this.onContinueClicked(setEpisode, data, setEpisodeSounds, registerPlaceSound)}}>
+                                                                    Continuer
+                                                                </button>
                                                             </div>
                                                         </div>
                                                         {data.allEpisodes.length !== 0 ?
