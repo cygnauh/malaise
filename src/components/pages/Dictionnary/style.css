@@ -62,5 +62,9 @@ input:focus, textarea:focus, button:focus, button:active {
   url('../fonts/happy-times/happy-times.woff') format('woff'),
   url('../fonts/happy-times/happy-times.ttf')  format('truetype');
 }*/
+.Dictionnary {
+  width: 100%;
+  height: 100%;
+  overflow-y: scroll; }
 
 /*# sourceMappingURL=style.css.map */

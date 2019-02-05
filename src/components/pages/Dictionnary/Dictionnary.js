@@ -11,7 +11,7 @@ class Dictionnary extends Component {
     render() {
         return (
             <div className="Dictionnary">
-                Dictionnaire
+               <div className="Dictionnary__header"></div>
             </div>
         )
     }
