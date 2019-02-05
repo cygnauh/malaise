@@ -1,7 +1,7 @@
 import React, { createContext, Component } from "react"; // on importe createContext qui servira à la création d'un ou plusieurs contextes
 import { Howl } from 'howler';
 import { UserContext } from "./UserProvider";
-import Sound from "./../assets/sounds/soundtrack_episode1.mp3"
+import Sound from "./../assets/sounds/final-voice2.mp3"
 //state and functions declarations
 export const SoundContext = createContext({
     placeSounds: [],

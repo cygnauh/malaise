@@ -5,9 +5,9 @@
     font: 700 4em/1 "Oswald", sans-serif;
     -webkit-text-stroke: 1px white;
     /* Clip Background Image */
-    background: url(../../../assets/img/drink.png) repeat-y;
-    background-position-y: 253px;
-    background-position-x: -75px;
+    background: url(../../../assets/img/drink_medium4.svg) repeat-y;
+    //background-position-y: 253px;
+    background-position-x: -45px;
     -webkit-background-clip: text;
     background-clip: text;
     /* Animate Background Image */
@@ -15,10 +15,14 @@
     /* Activate hardware acceleration for smoother animations */
     transform: translate3d(0,0,0);
     backface-visibility: hidden;
+    animation-duration: 180s;
+    opacity: 0.7;
     &.drinking{
-      background-position-y: 235px;
+      opacity: 1;
+      background-position-y: 37px; // TODO Update according to the volume
+      background-repeat-y:no-repeat;
       animation: aitf 5s linear infinite;
-      animation-duration: 10s;
+      animation-duration: 50s;
     }
   }
 }
