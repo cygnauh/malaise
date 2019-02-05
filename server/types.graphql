@@ -54,7 +54,7 @@ type SoundSequence @model {
   id: ID! @isUnique
   name: String!
   beginAt: Int!
-  endAt: Int!
+  duration: Int!
   sound: Sound! @relation(name: "SoundSoundSequences")
   interactions: Interaction! @relation(name: "InteractionSoundSequences")
 }

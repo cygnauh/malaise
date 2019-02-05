@@ -22,6 +22,11 @@ class Glass extends Component {
                 <span className={this.state.drink? 'glass_name drinking' : 'glass_name'}>
                     {this.props.name}
                 </span>
+                {!this.props.name?
+                    <span className='glass_name drinking'>
+                        Marjolaine
+                    </span>
+                :null}
             </div>
         )
     }

@@ -17,6 +17,7 @@ import Selection from "../../EpisodeSelection/EpisodeSelection";
 import Anecdotes from "../../pages/Anecdotes/Anecdotes";
 import About from "../../pages/About/About";
 import TakingPosition from "../../interactions/TakingPosition/TakingPosition";
+import UserQuestion from "../../interactions/UserQuestion/UserQuestion";
 
 class Main extends Component {
     render() {
@@ -42,11 +43,12 @@ class Main extends Component {
                                 <Route path="/presentation" component={Personalization} />
                                 <Route path="/experience" component={Episode} />
                                 <Route path="/selection" component={Selection} />
-                                <Route path="/test" component={Glass} />
+                                <Route path="/glass" component={Glass} />
                                 <Route path="/music" component={MusicChoice} />
                                 <Route path="/drag-drop" component={DragDrop} />
                                 <Route path="/anecdotes" component={Anecdotes} />
                                 <Route path="/takingposition" component={TakingPosition} />
+                                <Route path="/user-question" component={UserQuestion} />
                                 <Route path="/timer" component={Timer} />
 
                             </Switch>

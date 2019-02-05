@@ -32,7 +32,7 @@ export const getEpisodesAndPlaceSounds = gql`
                 interactionType,
                 soundSequences{
                     beginAt,
-                    endAt,
+                    duration,
                     name
                 }
             },
@@ -85,7 +85,7 @@ export const getEpisode = gql`
                 content,
                 soundSequences{
                     beginAt,
-                    endAt
+                    duration
                 }
             },
         }
