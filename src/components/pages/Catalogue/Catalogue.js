@@ -16,19 +16,37 @@ class EpisodeForm extends Component {
             episodeSelected:null
         };
     }
+
+    handleHoverItem = (e) => {
+        let hoverColor = e.currentTarget.dataset.bgcolor;
+        e.currentTarget.style.backgroundColor = hoverColor;
+        e.currentTarget.querySelector('.Episode-item__number').style.color = hoverColor;
+    }
+
+    handleLeaveHoverItem = (e) => {
+        let interfaceColor = e.currentTarget.closest('.interface').style.backgroundColor;
+        e.currentTarget.style.backgroundColor = 'transparent';
+        e.currentTarget.querySelector('.Episode-item__number').style.color = interfaceColor;
+    }
+
+
     displayEpisodes() {
         let episodes = []; // return in the render
         // places display all places from data base
         for(let i=0; i<this.state.data.length; i++){
+            var creation = this.state.data[i].createdAt,
+                date = (new Date(creation)).toLocaleDateString();
             episodes.push(
                 <div key={i.toString()}
                      className={this.state.data[i].id === this.state.episodeSelected ? 'Episode-item selected': 'Episode-item'}
                      onClick={()=> this.onEpisodeSelected(this.state.data[i].id)}
+                     onMouseEnter={this.handleHoverItem}
+                     onMouseLeave={this.handleLeaveHoverItem}
                      data-bgcolor={this.state.data[i].darkColor} >
                     <div className="Episode-item__top">
                         <div className="Episode-item__number">0{i + 1}</div>
                         <div className="Episode-item__line"></div>
-                        <div className="Episode-item__date">{this.state.data[i].createdAt}</div>
+                        <div className="Episode-item__date">{ date }</div>
                     </div>
                     <h2 className="Episode-item__title">
                         {this.state.data[i].title}
