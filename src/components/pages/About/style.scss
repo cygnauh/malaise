@@ -32,12 +32,12 @@
   }
 
   &__description {
-    padding: 50px 100px 150px 100px;
+    padding: 60px 100px 120px 100px;
     border-bottom: 1px solid $color__white;
-    over
 
     &__title {
-      font-size: 30px;
+      font-size: 28px;
+      line-height: 35px;
       font-weight: normal;
       font-family: $font__archivo--black;
       width: 500px;
@@ -45,7 +45,7 @@
     }
 
     &__content {
-      font-size: 22px;
+      font-size: 20px;
       font-family: $font__happy-times;
       line-height: 27px;
       column-count: 2;
@@ -55,15 +55,149 @@
   }
 
   &__team {
+    position: relative;
 
     .team {
 
       &__title {
+        height: 70px;
         font-size: 70px;
         font-family: $font__archivo--black;
         font-weight: normal;
+        position: absolute;
+        top: -70px;
+        left: 100px;
+        overflow: hidden;
+
+
+        span {
+          display: block;
+          margin-top: 15px;
+        }
+
       }
 
+      &__presentation {
+        border-bottom: 1px solid $color__white;
+        display: flex;
+      }
+
+      &__description {
+        width: 60%;
+        font-size: 20px;
+        font-family: $font__happy-times;
+        line-height: 27px;
+        border-right: 1px solid $color__white;
+        padding: 50px 100px;
+      }
+
+      &__logo {
+        width: 40%;
+        display: flex;
+        justify-content:center;
+        align-items: center;
+
+        img {
+          height: 130px;
+        }
+
+      }
+
+      &__worker {
+        display: flex;
+        border-bottom: 1px solid $color__white;
+
+        .worker {
+          width: 20%;
+          border-right: 1px solid $color__white;
+
+          &:last-child {
+            border-right: none;
+          }
+
+          &__name {
+            font-family: $font__archivo--black;
+            font-size: 25px;
+            font-weight: normal;
+            line-height: 32px;
+            padding: 20px 20px 10px 20px;
+            border-bottom: 1px solid $color__white;
+          }
+
+          &__illustration {
+            width: 100%;
+            border-bottom: 1px solid $color__white;
+
+            &:after {
+              content: "";
+              display: block;
+              padding-bottom: 100%;
+            }
+
+          }
+
+          &__description {
+            padding: 30px;
+            font-size: 16px;
+            font-family: $font__happy-times;
+            line-height: 20px;
+            height: 300px;
+            position: relative;
+
+          }
+
+          &__socials-share {
+            display: grid;
+            grid-template-columns: repeat(3, auto);
+            column-gap: 10px;
+            position: absolute;
+            bottom: 30px;
+            left: 30px;
+          }
+
+        }
+
+      }
+
+    }
+
+  }
+
+  &__footer {
+    height: 150px;
+    font-size:  50px;
+    font-family: $font__archivo--black;
+    font-weight: normal;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 80%;
+    letter-spacing: 2px;
+    position: relative;
+    border-right: 1px solid $color__white;
+
+    &:after, &:before {
+      left: 100%;
+      top: 50%;
+      border: solid transparent;
+      content: " ";
+      height: 0;
+      width: 0;
+      position: absolute;
+      pointer-events: none;
+    }
+
+    &:after {
+      border-color: rgba(136, 183, 213, 0);
+      border-left-color: $color__bg;
+      border-width: 50px;
+      margin-top: -50px;
+    }
+    &:before {
+      border-color: rgba(194, 225, 245, 0);
+      border-left-color: $color__white;
+      border-width: 51px;
+      margin-top: -51px;
     }
 
   }
