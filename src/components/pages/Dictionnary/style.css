@@ -66,5 +66,102 @@ input:focus, textarea:focus, button:focus, button:active {
   width: 100%;
   height: 100%;
   overflow-y: scroll; }
+  .Dictionnary__header {
+    display: flex;
+    height: 100px;
+    border-bottom: 1px solid #ffffff; }
+    .Dictionnary__header__icon {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 150px;
+      height: 100%;
+      border-right: 1px solid #ffffff; }
+      .Dictionnary__header__icon svg {
+        width: 50px;
+        fill: #0B162E;
+        stroke: #ffffff; }
+    .Dictionnary__header__filterActions {
+      margin: auto 100px; }
+    .Dictionnary__header__filterButton {
+      font-size: 12px;
+      color: #ffffff;
+      border: 1px solid #ffffff;
+      background: none;
+      padding: 15px 30px;
+      letter-spacing: 2px;
+      line-height: 14px;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: color 0.5s ease-in, background-color 0.5s ease-in;
+      font-size: 10px;
+      width: 220px; }
+      .Dictionnary__header__filterButton:hover {
+        background-color: #ffffff;
+        color: #0B162E; }
+      .Dictionnary__header__filterButton:first-child {
+        margin-right: 20px; }
+  .Dictionnary__subHeader {
+    border-bottom: 1px solid #ffffff;
+    height: 60px;
+    overflow-x: scroll; }
+    .Dictionnary__subHeader .subHeader__themesFilter {
+      display: flex;
+      height: 60px; }
+    .Dictionnary__subHeader .subHeader__theme {
+      width: 20%;
+      border-right: 1px solid #ffffff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: "Happy times";
+      font-size: 20px;
+      cursor: pointer; }
+  .Dictionnary__definitions {
+    padding: 25px 0; }
+    .Dictionnary__definitions .definitions__themeName {
+      border-bottom: 1px solid #ffffff;
+      position: relative;
+      margin-bottom: 50px; }
+      .Dictionnary__definitions .definitions__themeName:after, .Dictionnary__definitions .definitions__themeName:before {
+        top: 100%;
+        right: 20%;
+        border: solid transparent;
+        content: "";
+        height: 0;
+        width: 0;
+        position: absolute;
+        pointer-events: none; }
+      .Dictionnary__definitions .definitions__themeName:after {
+        border-color: rgba(136, 183, 213, 0);
+        border-top-color: #0B162E;
+        border-width: 40px;
+        margin-left: -40px;
+        margin-right: 1px; }
+      .Dictionnary__definitions .definitions__themeName:before {
+        border-color: rgba(194, 225, 245, 0);
+        border-top-color: #ffffff;
+        border-width: 41px;
+        margin-left: -41px; }
+      .Dictionnary__definitions .definitions__themeName h2 {
+        margin-left: 50px;
+        font-family: "Happy times";
+        font-size: 50px;
+        line-height: 80px;
+        height: 54px;
+        overflow: hidden; }
+    .Dictionnary__definitions .definitions__themeList {
+      padding: 0 100px; }
+    .Dictionnary__definitions .definitions__item {
+      margin-bottom: 50px; }
+      .Dictionnary__definitions .definitions__item h3 {
+        font-family: "Archivo", sans-serif;
+        font-size: 25px;
+        line-height: 27px;
+        margin-bottom: 5px; }
+      .Dictionnary__definitions .definitions__item p {
+        font-family: "Happy times";
+        font-size: 18px;
+        line-height: 22px; }
 
 /*# sourceMappingURL=style.css.map */
