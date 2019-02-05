@@ -34,7 +34,10 @@ class EpisodeForm extends Component {
                         {this.state.data[i].title}
                     </h2>
                     <p className="Episode-item__description">{this.state.data[i].summary}</p>
-                    <button className="Episode-item__cta">Continuer</button>
+                    <div className="Episode-item__actions">
+                        <button className="Episode-item__cta">Continuer</button>
+                        <button className="Episode-item__cta">Article</button>
+                    </div>
 
                     </div>
             )
