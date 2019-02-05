@@ -1,5 +1,12 @@
 @import '../../../assets/styles/index.scss';
 
 .Dictionnary {
+  width: 100%;
+  height: 100%;
+  overflow-y: scroll;
+
+  &__header {
+
+  }
 
 }

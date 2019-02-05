@@ -15,6 +15,14 @@ type Episode @model {
   darkColor: String
   lightColor: String
   createdAt: DateTime!
+  definitions: [Definition!]! @relation(name: "EpisodeDefinitions")
+}
+
+type Definition @model {
+  id: ID! @isUnique
+  name: String!
+  description: String!
+  episode: Episode! @relation(name:"EpisodeDefinitions")
 }
 
 type Personalization @model {
