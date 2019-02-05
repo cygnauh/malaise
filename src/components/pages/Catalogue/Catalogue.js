@@ -23,12 +23,12 @@ class EpisodeForm extends Component {
             episodes.push(
                 <div key={i.toString()}
                      className={this.state.data[i].id === this.state.episodeSelected ? 'Episode-item selected': 'Episode-item'}
-
-                     onClick={()=> this.onEpisodeSelected(this.state.data[i].id)}>
+                     onClick={()=> this.onEpisodeSelected(this.state.data[i].id)}
+                     data-bgcolor={this.state.data[i].darkColor} >
                     <div className="Episode-item__top">
                         <div className="Episode-item__number">0{i + 1}</div>
                         <div className="Episode-item__line"></div>
-                        <div className="Episode-item__date">27.08.2099</div>
+                        <div className="Episode-item__date">{this.state.data[i].createdAt}</div>
                     </div>
                     <h2 className="Episode-item__title">
                         {this.state.data[i].title}
