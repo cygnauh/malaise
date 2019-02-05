@@ -7,7 +7,7 @@ import './style.scss';
 // 1) waiting for props Data ( getEpisodes : allEpisodes )
 
 
-class EpisodeForm extends Component {
+class Catalogue extends Component {
     constructor(props){
         super(props);
         this.state = {
@@ -85,4 +85,4 @@ class EpisodeForm extends Component {
     }
 }
 
-export default EpisodeForm;
+export default Catalogue;

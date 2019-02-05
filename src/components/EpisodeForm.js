@@ -141,10 +141,7 @@ class EpisodeForm extends Component {
         var $currentFormStep = $('.episodeForm__content').find('.episodeForm__form--current');
         var $nextFormStep = $currentFormStep.next();
 
-        console.log($currentFormStep.find('.form__select'));
-
         if($currentFormStep.find('.form__select').length > 0 && $currentFormStep.find('.form__select .selected').length < 1) {
-            console.log('remove class empty');
             $('.episodeForm__empty').toggleClass('episodeForm__empty--hide');
         } else {
             if (!$('.episodeForm__empty').hasClass('episodeForm__empty--hide')){

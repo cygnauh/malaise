@@ -6,6 +6,154 @@
   overflow-y: scroll;
 
   &__header {
+    display: flex;
+    height: 100px;
+    border-bottom: 1px solid $color__white;
+
+    &__icon {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 150px;
+      height: 100%;
+      border-right: 1px solid $color__white;
+
+      svg {
+        width: 50px;
+        fill: $color__bg;
+        stroke: $color__white;
+      }
+
+    }
+
+    &__filterActions {
+      margin: auto 100px;
+    }
+
+    &__filterButton {
+      @include default-button($color__white);
+      font-size: 10px;
+      width: 220px;
+
+      &:hover {
+        background-color: $color__white;
+        color: $color__bg;
+      }
+
+      &:first-child {
+        margin-right: 20px;
+      }
+
+    }
+
+  }
+
+  &__subHeader {
+    border-bottom: 1px solid $color__white;
+    height: 60px;
+    overflow-x: scroll;
+
+    .subHeader {
+
+      &__themesFilter {
+        display: flex;
+        height: 60px;
+      }
+
+      &__theme {
+        width: 20%;
+        border-right: 1px solid $color__white;
+        display: flex;
+        justify-content:center;
+        align-items:center;
+        font-family: $font__happy-times;
+        font-size: 20px;
+        cursor: pointer;
+      }
+
+    }
+
+  }
+
+  &__definitions {
+    padding: 25px 0;
+
+    .definitions {
+
+      &__byTheme {
+
+      }
+
+      &__themeName {
+        border-bottom: 1px solid $color__white;
+        position: relative;
+        margin-bottom: 50px;
+
+        &:after, &:before {
+          top: 100%;
+          right: 20%;
+          border: solid transparent;
+          content: "";
+          height: 0;
+          width: 0;
+          position: absolute;
+          pointer-events: none;
+        }
+
+        &:after {
+          border-color: rgba(136, 183, 213, 0);
+          border-top-color: $color__bg;
+          border-width: 40px;
+          margin-left: -40px;
+          margin-right: 1px;
+        }
+
+        &:before {
+          border-color: rgba(194, 225, 245, 0);
+          border-top-color: $color__white;
+          border-width: 41px;
+          margin-left: -41px;
+        }
+
+        h2 {
+          margin-left: 50px;
+          font-family: $font__happy-times;
+          font-size: 50px;
+          line-height: 80px;
+          height: 54px;
+          overflow: hidden;
+        }
+
+        span {
+
+        }
+
+      }
+
+      &__themeList {
+        padding: 0 100px;
+
+      }
+
+      &__item {
+        margin-bottom: 50px;
+
+        h3 {
+          font-family: $font__archivo;
+          font-size: 25px;
+          line-height: 27px;
+          margin-bottom: 5px;
+        }
+
+        p {
+          font-family: $font__happy-times;
+          font-size: 18px;
+          line-height: 22px;
+        }
+
+      }
+
+    }
 
   }
 

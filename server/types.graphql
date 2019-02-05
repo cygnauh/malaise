@@ -16,6 +16,7 @@ type Episode @model {
   lightColor: String
   createdAt: DateTime!
   definitions: [Definition!]! @relation(name: "EpisodeDefinitions")
+  theme: String
 }
 
 type Definition @model {

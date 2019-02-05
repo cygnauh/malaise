@@ -1,5 +1,19 @@
 import gql from "graphql-tag";
 
+export const getEpisodesAndDefinitions = gql`
+    {
+        allEpisodes {
+            id,
+            title,
+            theme,
+            definitions {
+                name, 
+                description
+            }
+        }
+    }
+`;
+
 export const getEpisodesAndPlaceSounds = gql`
     {
         allEpisodes{
@@ -121,4 +135,4 @@ export const getMusics = gql`
 `;
 
 
-export default {getEpisodesAndPlaceSounds, getEpisode, getAnwsers, getMusics};
+export default {getEpisodesAndPlaceSounds, getEpisode, getAnwsers, getMusics, getEpisodesAndDefinitions};
