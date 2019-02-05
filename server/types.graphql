@@ -12,6 +12,9 @@ type Episode @model {
   interactions: [Interaction!]! @relation(name: "EpisodeInteractions")
   place: String!
   entourage: String!
+  darkColor: String
+  lightColor: String
+  createdAt: DateTime!
 }
 
 type Personalization @model {

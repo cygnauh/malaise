@@ -4,6 +4,22 @@
   width: 100%;
   height: 100%;
 
+  &__done {
+    .TakingPosition__winner {
+      transition: width 1s ease;
+      width: 100%!important;
+    }
+  }
+
+  &__timer {
+    width: 70px;
+    height: 70px;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    z-index: 20;
+  }
+
   &__container {
     position: relative;
     width: 100%;
@@ -38,6 +54,14 @@
   &__rightPart {
     right: 0;
     top: 0;
+    &:before {
+      width: 1px;
+      height:100%;
+      background-color: $color__white;
+      content: '';
+      position: absolute;
+      left: 0;
+    }
   }
 
   &__name {

@@ -12,6 +12,7 @@ import Personalization from "../../Personalization";
 import Episode from "../../Episode";
 import MusicChoice from "../../interactions/MusicChoice/MusicChoice";
 import DragDrop from "../../elements/DragDrop/DragDrop";
+import Timer from "../../elements/Timer/Timer";
 import Selection from "../../EpisodeSelection/EpisodeSelection";
 import Anecdotes from "../../pages/Anecdotes/Anecdotes";
 import About from "../../pages/About/About";
@@ -48,6 +49,7 @@ class Main extends Component {
                                 <Route path="/anecdotes" component={Anecdotes} />
                                 <Route path="/takingposition" component={TakingPosition} />
                                 <Route path="/user-question" component={UserQuestion} />
+                                <Route path="/timer" component={Timer} />
 
                             </Switch>
                         </main>

@@ -40,19 +40,42 @@ class SoundProvider extends Component {
 
         // episode soundtrack and set interactions
         setEpisodeSounds: (sounds, interactions) => {
-            this.setState({ episodeSoundtrack:sounds, interactions: interactions});
+            this.setState({ episodeSoundtrack:sounds, interactions: interactions},
+                console.log(this.state.episodeSoundtrack));
             let tab = {};
             setTimeout(()=>{
+
                 for(let i = 0; i<interactions.length; i++){
-                    let sq = [ interactions[i].soundSequences[0].beginAt, interactions[i].soundSequences[0].endAt]
-                    tab[interactions[i].name] = sq;
+                    if(interactions[i].soundSequences){
+                        console.log(interactions[i].soundSequences)
+                        let sq = [ interactions[i].soundSequences[0].beginAt, interactions[i].soundSequences[0].duration]
+                        tab[interactions[i].name] = sq;
+                    }
                 }
             }, 0);
             let sound = new Howl({
                 src: [Sound],
-                sprite: tab
+                sprite:{
+                    regles: [7270, 2995],
+                    lancement_jeu: [13040, 19840],
+                    rep: [32980, 2200],
+                    choix_boisson:[41080, 5150],
+                    je_nai_jamais1:[46260, 9880],
+                    anecdote1:[56140, 52930],
+                    je_nai_jamais_user:[110870, 4570],
+                    je_nai_jamais3:[114240, 7960],
+                    anecdote2:[122000, 18820],
+                    anecdote2_part2:[140020, 79960],
+                    tour:[220280, 13060],
+                    tour2:[253340, 10770]
+                },
+                // sprite: tab
             });
-            this.setState({ episodeSounds: sound });
+            this.setState({ episodeSounds: sound },()=>{
+                    console.log(this.state.episodeSounds)
+                    this.state.episodeSounds.play('regles')
+            });
+
         },
         registerPlaceSound: (place) =>{ // load place selected
             let stream;

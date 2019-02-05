@@ -8,6 +8,8 @@ export const getEpisodesAndPlaceSounds = gql`
             summary
             place,
             entourage,
+            darkColor,
+            createdAt,
             personalizations{
                 name,
                 question,
@@ -30,7 +32,7 @@ export const getEpisodesAndPlaceSounds = gql`
                 interactionType,
                 soundSequences{
                     beginAt,
-                    endAt,
+                    duration,
                     name
                 }
             },
@@ -50,7 +52,9 @@ export const getEpisodes = gql`
             title,
             summary
             place,
-            entourage
+            entourage,
+            darkColor,
+            createdAt
         }
     }
 `;
@@ -64,6 +68,8 @@ export const getEpisode = gql`
             summary,
             place,
             entourage,
+            darkColor,
+            createdAt,
             personalizations{
                 name,
                 question,
@@ -79,7 +85,7 @@ export const getEpisode = gql`
                 content,
                 soundSequences{
                     beginAt,
-                    endAt
+                    duration
                 }
             },
         }
