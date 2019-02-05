@@ -41,6 +41,7 @@ type Interaction @model {
   destinationInteraction: Answer @relation(name: "AnswersDestinationInteractions")
   indication: String
   goNext: Boolean
+  animation: String
 }
 
 type Answer @model {
