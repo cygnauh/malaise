@@ -59,9 +59,17 @@
 
     .subHeader {
 
-      &__themesFilter {
-        display: flex;
+      &__themesFilter, &__lettersFilter {
         height: 60px;
+        display: none;
+        &.filterActive {
+          display: flex;
+        }
+      }
+
+      &__lettersFilter {
+        justify-content: center;
+        align-items: center;
       }
 
       &__theme {
@@ -73,6 +81,13 @@
         font-family: $font__happy-times;
         font-size: 20px;
         cursor: pointer;
+      }
+
+      &__letter {
+        font-family: $font__happy-times;
+        font-size: 20px;
+        cursor: pointer;
+        margin: 0 1%;
       }
 
     }

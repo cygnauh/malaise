@@ -33,7 +33,6 @@ class Dictionnary extends Component {
         let themes = [];
 
         for (let i = 0; i < data.length; i++) {
-            var id = '#' + data[i].theme;
             themes.push(
                 <div key={i.toString()}
                      className="subHeader__theme"
@@ -46,11 +45,29 @@ class Dictionnary extends Component {
         return themes
     }
 
+    displayLetters = () => {
+        let letters = [];
+        let alphabetical = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
+
+        for (let i = 0; i < alphabetical.length; i++) {
+            letters.push(
+                <div key={i.toString()}
+                     className="subHeader__letter"
+                     onClick={this.handleClickThemeScroll}
+                     data-id={alphabetical[i]} >
+                    {alphabetical[i]}
+                </div>
+            )
+        }
+
+        return letters
+    }
+
     handleClickThemeScroll = (e) => {
         var id = $(e.currentTarget).data('id');
         console.log(id);
         $('.Dictionnary').animate({
-            scrollTop: $('#' + id).offset().top
+            scrollTop: $('#' + id).offset().top - 50
         }, 2000);
     }
 
@@ -158,10 +175,12 @@ class Dictionnary extends Component {
                                </div>
                            </div>
                             <div className="Dictionnary__subHeader">
-                                <div className="subHeader__themesFilter">
+                                <div className={this.state.themeFilter ? 'subHeader__themesFilter filterActive' : 'subHeader__themesFilter'}>
                                     {this.displayThemes(data.allEpisodes)}
                                 </div>
-                                <div className="Dictionnary__orderFilter"></div>
+                                <div className={this.state.themeFilter ? 'subHeader__lettersFilter' : 'subHeader__lettersFilter  filterActive'}>
+                                    {this.displayLetters()}
+                                </div>
                             </div>
                             <div className="Dictionnary__definitions">
                                 {this.state.themeFilter ? this.displayDefinitionsByTheme(data.allEpisodes) : this.displayDefinitionsByOrder(data.allEpisodes)}

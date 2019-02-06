@@ -107,9 +107,14 @@ input:focus, textarea:focus, button:focus, button:active {
     border-bottom: 1px solid #ffffff;
     height: 60px;
     overflow-x: scroll; }
-    .Dictionnary__subHeader .subHeader__themesFilter {
-      display: flex;
-      height: 60px; }
+    .Dictionnary__subHeader .subHeader__themesFilter, .Dictionnary__subHeader .subHeader__lettersFilter {
+      height: 60px;
+      display: none; }
+      .Dictionnary__subHeader .subHeader__themesFilter.filterActive, .Dictionnary__subHeader .subHeader__lettersFilter.filterActive {
+        display: flex; }
+    .Dictionnary__subHeader .subHeader__lettersFilter {
+      justify-content: center;
+      align-items: center; }
     .Dictionnary__subHeader .subHeader__theme {
       width: 20%;
       border-right: 1px solid #ffffff;
@@ -119,6 +124,11 @@ input:focus, textarea:focus, button:focus, button:active {
       font-family: "Happy times";
       font-size: 20px;
       cursor: pointer; }
+    .Dictionnary__subHeader .subHeader__letter {
+      font-family: "Happy times";
+      font-size: 20px;
+      cursor: pointer;
+      margin: 0 1%; }
   .Dictionnary__definitions {
     padding: 25px 0; }
     .Dictionnary__definitions .definitions__themeName, .Dictionnary__definitions .definitions__orderName {
