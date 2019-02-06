@@ -89,7 +89,7 @@ class SoundProvider extends Component {
                 sprite: tab // TODO Uncomment
             });
             this.setState({ episodeSounds: sound },()=>{
-                    console.log(this.state.episodeSounds)
+                    // console.log(this.state.episodeSounds)
                     // this.state.episodeSounds.play('fin')
             });
 
@@ -103,14 +103,14 @@ class SoundProvider extends Component {
                 volume:0.2,
                 loop: true
             });
-            console.log(this.state.placeSoundtrack);
+            // console.log(this.state.placeSoundtrack);
             if(this.state.placeSoundtrack){
                 this.state.placeSoundtrack.pause();
             }
             this.setState({
                     placeSoundtrack:stream
                 }, ()=>{
-                    console.log(this.state.placeSoundtrack);
+                    // console.log(this.state.placeSoundtrack);
                     this.state.placeSoundtrack.play();
                 }
             );
@@ -181,34 +181,45 @@ class SoundProvider extends Component {
             }
             this.setState({
                 musics: soundtab
-            }, console.log(this.state.musics));
+            },
+                console.log(this.state.musics)
+            );
         },
         // handle the play and pause of the music
         handleMusic:(url, mode) => {
             if(mode === "pause" && this.state.musicSelected){
-                this.state.musicSelected.pause(); // TODO Uncomment
+                // this.state.musicSelected.pause(); // TODO Uncomment
                 return
             }
             if(mode === "play"){
                 this.setState({
                     musicSelected:this.state.musics.find(setting => setting._src === url)
                 }, ()=>{
-                    this.state.musicSelected.play(); // TODO Uncomment
+                    // this.state.musicSelected.play(); // TODO Uncomment
                 });
             }
         },
         // voices interaction
         playInteractionSound:(value) => {
-            console.log(this.state.episodeSounds)
-            this.state.episodeSounds.play(value);
-            if(this.state.episodeSounds && this.state.episodeSounds._sprite[value] && this.state.episodeSounds._sprite[value][1]){
-                // this.state.episodeSounds.on('end', ()=>{
-                //     console.log("this is the end");
-                //     // return true
-                // });
-                return this.state.episodeSounds
-                // return this.state.episodeSounds._sprite[value][1]
-            } // TODO Uncomment all
+            console.log(value)
+            // console.log(this.state.episodeSounds);
+            // this.state.episodeSounds.once('load', ()=>{
+                this.state.episodeSounds.play(value);
+                if(this.state.episodeSounds && this.state.episodeSounds._sprite[value]
+                    && this.state.episodeSounds._sprite[value][1]){
+
+                    // this.state.episodeSounds.on('end', ()=>{
+                    //     console.log("this is the end");
+                    //     // return true
+                    // });
+
+                    return [this.state.episodeSounds, this.state.episodeSounds._sprite[value][1]]
+                    // console.log(this.state.episodeSounds._sprite[value])
+                    // console.log(this.state.episodeSounds._sprite[value][1])
+                    // return this.state.episodeSounds._sprite[value][1]
+                } // TODO Uncomment all
+            // });
+
         }
     };
 

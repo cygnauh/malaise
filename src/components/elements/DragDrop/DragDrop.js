@@ -8,10 +8,16 @@ class DragDrop extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            deltaPosition: {
-                x: 0, y: 0
-            }
+            deltaPosition: {x: 0, y: 0},
+            disabled: this.props.disableDrag
         }
+
+    }
+    componentWillReceiveProps(){
+        console.log(this.props.disableDrag)
+        this.setState({
+            disabled: this.props.disableDrag
+        })
     }
 
     handleStart = () => {
@@ -53,7 +59,8 @@ class DragDrop extends Component {
 
     render() {
         return (
-            <div className="Drag-drop">
+            <div className={this.state.disabled ? 'Drag-drop disabled' : 'Drag-drop'} style={ this.state.disabled ? { opacity:0.3 } :null }>
+            {/*<div className="Drag-drop" style={ this.state.disabled ? { opacity:0.3 } :null }>*/}
                 <div className="Drag-drop__dragEnd"></div>
                 <div className="Drag-drop__dragBottom">
                     <div className="Drag-drop__dragStart"></div>
@@ -65,6 +72,7 @@ class DragDrop extends Component {
                         defaultClassName="Drag-drop__dragElement"
                         position={null}
                         scale={1}
+                        disabled={this.state.disabled}
                         onStart={this.handleStart}
                         onDrag={this.handleDrag}
                         onStop={this.handleStop}>

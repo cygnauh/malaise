@@ -4,23 +4,24 @@
     text-transform: capitalize;
     font: 700 4em/1 "Oswald", sans-serif;
     -webkit-text-stroke: 1px white;
-    /* Clip Background Image */
     background: url(../../../assets/img/drink_medium4.svg) repeat-y;
-    //background-position-y: 253px;
     background-position-x: -45px;
     -webkit-background-clip: text;
     background-clip: text;
+    background-repeat-y:no-repeat;
     /* Animate Background Image */
     -webkit-text-fill-color: transparent;
     /* Activate hardware acceleration for smoother animations */
     transform: translate3d(0,0,0);
     backface-visibility: hidden;
-    animation-duration: 180s;
-    opacity: 0.7;
+    animation: aitf 180s linear infinite;
+    //animation-duration: 180s;
+    background-position-y: 37px; // TODO Update according to the volume
+
+    opacity: 0.3;
     &.drinking{
       opacity: 1;
       background-position-y: 37px; // TODO Update according to the volume
-      background-repeat-y:no-repeat;
       animation: aitf 5s linear infinite;
       animation-duration: 50s;
     }

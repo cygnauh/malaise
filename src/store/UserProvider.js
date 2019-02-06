@@ -29,6 +29,7 @@ class UserProvider extends Component {
         userName: '',
         episode: '', // une valeur de départ
         personalizations:[
+            {role: "hote", name: "ariane", glass: 0},
             {role: "pote", name: "leslie", glass: 0},
             {role: "copain", name: "paul", glass: 0},
             {role: "reloue", name: "corine", glass: 0},
