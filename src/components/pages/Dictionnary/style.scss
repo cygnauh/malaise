@@ -33,7 +33,6 @@
     &__filterButton {
       @include default-button($color__white);
       font-size: 10px;
-      width: 220px;
 
       &:hover {
         background-color: $color__white;
@@ -42,6 +41,11 @@
 
       &:first-child {
         margin-right: 20px;
+      }
+
+      &.filterActive {
+        background-color: $color__white;
+        color: $color__bg;
       }
 
     }
@@ -84,7 +88,7 @@
 
       }
 
-      &__themeName {
+      &__themeName, &__orderName {
         border-bottom: 1px solid $color__white;
         position: relative;
         margin-bottom: 50px;
@@ -130,7 +134,7 @@
 
       }
 
-      &__themeList {
+      &__themeList, &__orderList {
         padding: 0 100px;
 
       }

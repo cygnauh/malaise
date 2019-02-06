@@ -1,12 +1,15 @@
 import gql from "graphql-tag";
 
+
 export const getEpisodesAndDefinitions = gql`
     {
         allEpisodes {
             id,
             title,
             theme,
-            definitions {
+            definitions (
+                orderBy: name_ASC
+            ) {
                 name, 
                 description
             }

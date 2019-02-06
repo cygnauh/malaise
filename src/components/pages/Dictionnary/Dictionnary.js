@@ -3,7 +3,6 @@ import './style.scss';
 import WordBox from "../../SVG/WordBox/WordBox";
 import { Query } from "react-apollo";
 import { getEpisodesAndDefinitions } from '../../../graphql/queries';
-import { Link } from 'react-router-dom';
 import $ from 'jquery';
 
 class Dictionnary extends Component {
@@ -12,16 +11,22 @@ class Dictionnary extends Component {
         super(props);
         this.state = {
             render:'',
-            data:this.props.episodes
+            themeFilter: true
         };
+
+    this.dictionnary = React.createRef();
     }
 
     handleClickThemeFilter = () => {
-        console.log('click on theme filter');
+        this.setState({
+            themeFilter: true
+        });
     }
 
     handleClickOrderFilter = () => {
-        console.log('click on order filter');
+        this.setState({
+            themeFilter: false
+        });
     }
 
     displayThemes = (data) => {
@@ -49,7 +54,7 @@ class Dictionnary extends Component {
         }, 2000);
     }
 
-    displayDefinitionsList = (data) => {
+    displayDefinitionsListByTheme = (data) => {
         let definitionsList = [];
 
         for(let j = 0; j < data.definitions.length; j++) {
@@ -64,7 +69,7 @@ class Dictionnary extends Component {
         return definitionsList
     }
 
-    displayDefinitions = (data) => {
+    displayDefinitionsByTheme = (data) => {
         let definitions = [];
 
         for (let i = 0; i < data.length; i++) {
@@ -78,13 +83,59 @@ class Dictionnary extends Component {
                         </h2>
                     </div>
                     <ul className="definitions__themeList">
-                        {this.displayDefinitionsList(data[i])}
+                        {this.displayDefinitionsListByTheme(data[i])}
                     </ul>
                 </div>
             )
         }
 
         return definitions
+    }
+
+    displayDefinitionsListByOrder = (letter, data) => {
+        let definitionsList = [];
+
+        for (let j = 0; j < data.length; j++) {
+            for (let k = 0; k < data[j].definitions.length; k++) {
+                if(data[j].definitions[k].name.charAt(0) === letter) {
+                    definitionsList.push(
+                        <li key={k.toString()} className="definitions__item">
+                            <h3>{data[j].definitions[k].name}</h3>
+                            <p>{data[j].definitions[k].description}</p>
+                        </li>
+                    )
+                }
+            }
+            if(definitionsList < 1) {
+
+            }
+        }
+
+        return definitionsList
+    }
+
+    displayDefinitionsByOrder = (data) => {
+        let letters = [];
+        let alphabetical = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
+
+        for(let i = 0; i < alphabetical.length; i++){
+            letters.push (
+                <div key={i.toString()}
+                     className="definitons__byOrder"
+                     id={alphabetical[i]} >
+                    <div className="definitions__orderName">
+                        <h2>
+                            <span>{alphabetical[i]}</span>
+                        </h2>
+                    </div>
+                    <ul className="definitions__orderList">
+                        {this.displayDefinitionsListByOrder(alphabetical[i], data)}
+                    </ul>
+                </div>
+            )
+        }
+
+        return letters;
     }
 
     render() {
@@ -98,12 +149,12 @@ class Dictionnary extends Component {
                     if (loading) return null;
                     if (error) return `Error!: ${error}`;
                     return (
-                        <div className="Dictionnary">
+                        <div className="Dictionnary" ref={this.dictionnary}>
                            <div className="Dictionnary__header">
                                <div className="Dictionnary__header__icon"><WordBox /></div>
                                <div className="Dictionnary__header__filterActions">
-                                   <button className="Dictionnary__header__filterButton" onClick={this.handleClickThemeFilter}>Thèmes</button>
-                                   <button className="Dictionnary__header__filterButton" onClick={this.handleClickOrderFilter}>Ordre alphabétique</button>
+                                   <button className={this.state.themeFilter ? 'Dictionnary__header__filterButton filterActive' : 'Dictionnary__header__filterButton'}  onClick={this.handleClickThemeFilter}>Thèmes</button>
+                                   <button className={this.state.themeFilter ? 'Dictionnary__header__filterButton' : 'Dictionnary__header__filterButton filterActive'} onClick={this.handleClickOrderFilter}>Ordre alphabétique</button>
                                </div>
                            </div>
                             <div className="Dictionnary__subHeader">
@@ -113,7 +164,7 @@ class Dictionnary extends Component {
                                 <div className="Dictionnary__orderFilter"></div>
                             </div>
                             <div className="Dictionnary__definitions">
-                                {this.displayDefinitions(data.allEpisodes)}
+                                {this.state.themeFilter ? this.displayDefinitionsByTheme(data.allEpisodes) : this.displayDefinitionsByOrder(data.allEpisodes)}
                             </div>
                         </div>
                     );
