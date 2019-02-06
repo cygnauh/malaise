@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { Query } from "react-apollo";
-import { getEpisodesAndPlaceSounds } from '../../graphql/queries'
-import { UserContext } from "../../store/UserProvider";
-import { SoundContext } from "../../store/SoundProvider";
+import { getEpisodesAndPlaceSounds } from '../../../graphql/queries'
+import { UserContext } from "../../../store/UserProvider";
+import { SoundContext } from "../../../store/SoundProvider";
 import "./style.scss";
 
 // episode selection either select thank to the form, or thank to the catalog
