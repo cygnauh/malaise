@@ -17,6 +17,29 @@ type Episode @model {
   createdAt: DateTime!
   definitions: [Definition!]! @relation(name: "EpisodeDefinitions")
   theme: String
+  voices: [Voice!]! @relation(name: "EpisodeVoices")
+  directors: [Director!]! @relation(name: "EpisodeDirectors")
+  anecdotes: [Anecdote!]! @relation(name: "EpisodeAnecdotes")
+}
+
+type Voice @model {
+  id: ID! @isUnique
+  name: String!
+  role: String!
+  episode: Episode! @relation(name:"EpisodeVoices")
+}
+
+type Director @model {
+  id: ID! @isUnique
+  name: String!
+  episode: Episode! @relation(name:"EpisodeDirectors")
+}
+
+type Anecdote @model {
+  id: ID! @isUnique
+  author: String!
+  content: String!
+  episode: Episode! @relation(name:"EpisodeAnecdotes")
 }
 
 type Definition @model {

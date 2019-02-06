@@ -48,6 +48,25 @@
       text-align: center;
       flex: 1;
 
+      &__voice {
+        display: flex;
+
+        ul {
+
+          &:first-child {
+            text-align: right;
+            margin-right: 20px;
+          }
+
+          &:last-child {
+            text-align: left;
+            margin-left: 20px;
+          }
+
+        }
+
+      }
+
       &__title {
         font-family: $font__happy-times;
         color: $color__xp--light;
@@ -56,11 +75,19 @@
         font-weight: normal;
       }
 
-      &__person {
+      &__roles, &__persons {
+        flex: 1;
+      }
+
+      &__person, &__role {
         font-size: 15px;
         font-family: $font__archivo;
         font-weight: 500;
         line-height: 30px;
+      }
+
+      &__role {
+        font-weight: 800;
       }
 
     }

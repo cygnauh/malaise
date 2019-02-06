@@ -21,7 +21,7 @@ class Credits extends Component {
                     </p>
                     <div className="Credits__thanks">
                         <div className="thanks">
-                            <h2 className="thanks__title">Ecrit et réalisé par:</h2>
+                            <h2 className="thanks__title">Ecrit et réalisé par :</h2>
                             <ul className="thanks__list">
                                 <li className="thanks__person">Noémie Eyoum</li>
                                 <li className="thanks__person">Noémie Eyoum</li>
@@ -31,14 +31,23 @@ class Credits extends Component {
                             </ul>
                         </div>
                         <div className="thanks">
-                            <h2 className="thanks__title">avec les voix de:</h2>
-                            <ul className="thanks__list">
-                                <li className="thanks__person">Noémie Eyoum</li>
-                                <li className="thanks__person">Noémie Eyoum</li>
-                                <li className="thanks__person">Noémie Eyoum</li>
-                                <li className="thanks__person">Noémie Eyoum</li>
-                                <li className="thanks__person">Noémie Eyoum</li>
-                            </ul>
+                            <h2 className="thanks__title">avec les voix de :</h2>
+                            <div className="thanks__voice">
+                                <ul className="thanks__roles">
+                                    <li className="thanks__role">Inconnu</li>
+                                    <li className="thanks__role">Inconnu</li>
+                                    <li className="thanks__role">Inconnu</li>
+                                    <li className="thanks__role">Inconnu</li>
+                                    <li className="thanks__role">Inconnu</li>
+                                </ul>
+                                <ul className="thanks__persons">
+                                    <li className="thanks__person">Noémie Eyoum</li>
+                                    <li className="thanks__person">Noémie Eyoum</li>
+                                    <li className="thanks__person">Noémie Eyoum</li>
+                                    <li className="thanks__person">Noémie Eyoum</li>
+                                    <li className="thanks__person">Noémie Eyoum</li>
+                                </ul>
+                            </div>
                         </div>
                     </div>
                     <div className="Credits__actions">
