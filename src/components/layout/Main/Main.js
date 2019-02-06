@@ -13,7 +13,7 @@ import Episode from "../../Episode";
 import MusicChoice from "../../interactions/MusicChoice/MusicChoice";
 import DragDrop from "../../elements/DragDrop/DragDrop";
 import Timer from "../../elements/Timer/Timer";
-import Selection from "../../EpisodeSelection/EpisodeSelection";
+import Selection from "../../elements/EpisodeSelection/EpisodeSelection";
 import Anecdotes from "../../pages/Anecdotes/Anecdotes";
 import About from "../../pages/About/About";
 import Credits from "../../pages/Credits/Credits";

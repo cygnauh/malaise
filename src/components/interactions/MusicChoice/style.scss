@@ -1,4 +1,5 @@
-@import '../../../assets/styles/index.scss';
+@import '../../../assets/styles/variables/index.scss';
+@import '../../../assets/styles/mixins/index.scss';
 
 .Music {
 
@@ -64,7 +65,7 @@
         font-size: 180px;
         font-family: $font__archivo--black;
         text-transform: lowercase;
-        color: $color__bg;
+        color: $color__xp--dark;
         text-shadow: $color__white 1px 1px, $color__white -1px 1px, $color__white -1px -1px, $color__white 1px -1px;
         transition: color 0.5s ease;
       }
@@ -89,7 +90,7 @@
         font-size: 180px;
         font-family: $font__archivo--black;
         text-transform: lowercase;
-        color: $color__bg;
+        color: $color__xp--dark;
         text-shadow: $color__white 1px 1px, $color__white -1px 1px, $color__white -1px -1px, $color__white 1px -1px;
         transition: color 0.5s ease;
       }

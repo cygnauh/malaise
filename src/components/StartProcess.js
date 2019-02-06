@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import $ from 'jquery';
 import Homepage from "./pages/Homepage/Homepage";
-import EpisodeSelection from "./EpisodeSelection/EpisodeSelection";
+import EpisodeSelection from "./elements/EpisodeSelection/EpisodeSelection";
 import Episode from "./Episode"
 
 
@@ -13,7 +13,7 @@ class StartProcess extends Component {
             home:true,
             selection:false,
             episode:false,
-            index:1 // TODO Temporary
+            index: 0
         }
     }
 
@@ -22,6 +22,10 @@ class StartProcess extends Component {
 
         if(this.state.index === 1) {
             $('body').removeClass('interface').addClass('interface-reverse');
+        }
+
+        if(this.state.index === 2) {
+            $('body').removeClass('interface-reverse').addClass('episode');
         }
 
         this.setState({

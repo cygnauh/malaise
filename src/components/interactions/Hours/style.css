@@ -1,3 +1,12 @@
+/* GLOBAL */
+/* INTERFACE */
+/* XP 1 */
+/*@font-face {
+  font-family: 'Happy Times';
+  src: url('../fonts/happy-times/happy-times.woff2') format('woff2'),
+  url('../fonts/happy-times/happy-times.woff') format('woff'),
+  url('../fonts/happy-times/happy-times.ttf')  format('truetype');
+}*/
 .eclipse {
   text-align: center;
   font-weight: bold;
@@ -8,7 +17,9 @@
   align-items: center; }
 
 .eclipse__date {
-  font-size: 40px;
+  font-size: 30px;
+  font-family: "Archivo Black", sans-serif;
+  font-weight: normal;
   text-transform: lowercase;
   margin-bottom: 30px; }
 
@@ -16,9 +27,17 @@
   margin: 0 6px; }
 
 .eclipse__clock {
-  font-size: 70px;
+  font-size: 80px;
   display: flex;
   justify-content: center;
-  align-items: center; }
+  align-items: center;
+  font-family: "Archivo Black", sans-serif; }
+
+.odometer-value {
+  font-family: "Archivo Black", sans-serif;
+  font-size: 80px; }
+
+.odometer-digit {
+  width: 55px; }
 
 /*# sourceMappingURL=style.css.map */

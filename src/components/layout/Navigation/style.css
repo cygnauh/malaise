@@ -7,70 +7,6 @@
   url('../fonts/happy-times/happy-times.woff') format('woff'),
   url('../fonts/happy-times/happy-times.ttf')  format('truetype');
 }*/
-/* GLOBAL */
-/* INTERFACE */
-/* XP 1 */
-/*@font-face {
-  font-family: 'Happy Times';
-  src: url('../fonts/happy-times/happy-times.woff2') format('woff2'),
-  url('../fonts/happy-times/happy-times.woff') format('woff'),
-  url('../fonts/happy-times/happy-times.ttf')  format('truetype');
-}*/
-* {
-  box-sizing: border-box; }
-
-body, html {
-  margin: 0;
-  padding: 0;
-  width: 100%;
-  height: 100%;
-  font-family: "Archivo", sans-serif;
-  font-size: 15px;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale; }
-  body.interface, html.interface {
-    background-color: #0B162E;
-    color: #EAEAEA; }
-  body.interface-reverse, html.interface-reverse {
-    background-color: #EAEAEA;
-    color: #000000; }
-
-h1, h2, h3, h4, h5, h6, ul, ol, li, a, p {
-  margin: 0;
-  padding: 0; }
-
-ul, ol, li {
-  list-style: none; }
-
-a {
-  text-decoration: none; }
-
-.interface a {
-  color: #EAEAEA; }
-
-.interface-reverse a {
-  color: #000000; }
-
-input:focus, textarea:focus, button:focus, button:active {
-  outline: none; }
-
-#root, .wrapper-container {
-  width: 100%;
-  height: 100%; }
-
-.Start-process {
-  width: 100%;
-  height: calc(100% - 45px); }
-
-/* GLOBAL */
-/* INTERFACE */
-/* XP 1 */
-/*@font-face {
-  font-family: 'Happy Times';
-  src: url('../fonts/happy-times/happy-times.woff2') format('woff2'),
-  url('../fonts/happy-times/happy-times.woff') format('woff'),
-  url('../fonts/happy-times/happy-times.ttf')  format('truetype');
-}*/
 .Navigation {
   width: 100%;
   height: 100%;
@@ -131,6 +67,7 @@ input:focus, textarea:focus, button:focus, button:active {
     .Navigation__item .item__link span {
       margin-right: 100px; }
     .Navigation__item .item__link:hover .item__name {
+      color: #7B61FF;
       transform: translateY(0); }
     .Navigation__item .item__content {
       position: absolute;
@@ -194,14 +131,14 @@ input:focus, textarea:focus, button:focus, button:active {
 
 .interface-reverse .Navigation {
   background: #EAEAEA;
-  color: #000000; }
+  color: #002c36; }
   .interface-reverse .Navigation__action {
-    border-left: 1px solid #000000;
-    border-right: 1px solid #000000; }
+    border-left: 1px solid #002c36;
+    border-right: 1px solid #002c36; }
   .interface-reverse .Navigation__item {
-    border-bottom: 1px solid #000000; }
+    border-bottom: 1px solid #002c36; }
     .interface-reverse .Navigation__item .item__link:focus, .interface-reverse .Navigation__item .item__link:active {
-      text-shadow: -1px 0 #000000, 0 1px #000000, 1px 0 #000000, 0 -1px #000000;
+      text-shadow: -1px 0 #002c36, 0 1px #002c36, 1px 0 #002c36, 0 -1px #002c36;
       color: #EAEAEA; }
 
 /*# sourceMappingURL=style.css.map */

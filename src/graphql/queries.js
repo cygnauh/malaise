@@ -1,5 +1,22 @@
 import gql from "graphql-tag";
 
+export const getCredits = gql`
+    query CreditEpisode($id: ID!) {
+        Episode(id: $id)
+        {
+            id,
+            title,
+            thanks,
+            voices {
+                name,
+                role
+            },
+            directors {
+                name
+            }
+        }
+    }
+`;
 
 export const getEpisodesAndDefinitions = gql`
     {
@@ -138,4 +155,4 @@ export const getMusics = gql`
 `;
 
 
-export default {getEpisodesAndPlaceSounds, getEpisode, getAnwsers, getMusics, getEpisodesAndDefinitions};
+export default {getEpisodesAndPlaceSounds, getEpisode, getAnwsers, getMusics, getEpisodesAndDefinitions, getCredits};

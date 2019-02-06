@@ -1,4 +1,5 @@
-@import '../../../assets/styles/index.scss';
+@import '../../../assets/styles/variables/index.scss';
+@import '../../../assets/styles/mixins/index.scss';
 
 .Notice {
   position: absolute;
@@ -12,8 +13,8 @@
   }
 
   &.interface-reverse {
-    border-top: 1px solid $color__black;
-    color: $color__black;
+    border-top: 1px solid $color__xp--dark;
+    color: $color__xp--dark;
   }
 
 }

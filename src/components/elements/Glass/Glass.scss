@@ -1,5 +1,8 @@
-@import '../../../assets/styles/index.scss';
-.glass{
+@import '../../../assets/styles/variables/index.scss';
+@import '../../../assets/styles/mixins/index.scss';
+
+.glass {
+
   .glass_name {
     text-transform: capitalize;
     font: 700 4em/1 "Oswald", sans-serif;
@@ -14,6 +17,9 @@
     /* Activate hardware acceleration for smoother animations */
     transform: translate3d(0,0,0);
     backface-visibility: hidden;
+    animation-duration: 180s;
+    opacity: 0.7;
+
     animation: aitf 180s linear infinite;
     //animation-duration: 180s;
     background-position-y: 37px; // TODO Update according to the volume

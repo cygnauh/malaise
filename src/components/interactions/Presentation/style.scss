@@ -1,5 +1,6 @@
-// temporary
-@import '../../../assets/styles/index.scss';
+@import '../../../assets/styles/variables/index.scss';
+@import '../../../assets/styles/mixins/index.scss';
+
 @keyframes bottomrightTest {
     0% {
         width: 0;
