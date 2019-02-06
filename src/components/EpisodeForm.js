@@ -162,8 +162,6 @@ class EpisodeForm extends Component {
                 $('.episodeForm__action').toggleClass('episodeForm__hide');
             }
         }
-
-
     }
 
     render() {

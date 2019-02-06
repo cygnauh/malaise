@@ -46,34 +46,51 @@ class SoundProvider extends Component {
             setTimeout(()=>{
 
                 for(let i = 0; i<interactions.length; i++){
-                    if(interactions[i].soundSequences){
-                        console.log(interactions[i].soundSequences)
+                    if(interactions[i].soundSequences.length !== 0){
+                        // console.log(interactions[i].soundSequences)
                         let sq = [ interactions[i].soundSequences[0].beginAt, interactions[i].soundSequences[0].duration]
                         tab[interactions[i].name] = sq;
                     }
                 }
+                console.log(tab)
             }, 0);
             let sound = new Howl({
                 src: [Sound],
-                sprite:{
-                    regles: [7270, 2995],
-                    lancement_jeu: [13040, 19840],
-                    rep: [32980, 2200],
-                    choix_boisson:[41080, 5150],
-                    je_nai_jamais1:[46260, 9880],
-                    anecdote1:[56140, 52930],
-                    je_nai_jamais_user:[110870, 4570],
-                    je_nai_jamais3:[114240, 7960],
-                    anecdote2:[122000, 18820],
-                    anecdote2_part2:[140020, 79960],
-                    tour:[220280, 13060],
-                    tour2:[253340, 10770]
-                },
-                // sprite: tab
+                // sprite:{
+                //     proposition_jeu: [11980, 7390], // ok
+                //     question_regles: [19475, 3635], // ok
+                //     explication_regles: [23220, 4830], //ok
+                //     choix_boisson:[28110, 2480], //ok
+                //     choix_boisson_a:[30590, 910], // ok
+                //     je_n_ai_jamais1:[32000, 3000], // ok
+                //     je_n_ai_jamais1_r:[35000, 4450], // ok
+                //     je_n_ai_jamais1_a:[39450, 930], //ok
+                //     reaction1:[41600, 3390], // ok
+                //     anecdote1:[45090, 18005], // ok
+                //     anecdote1bis:[63095, 24605], //ok
+                //     je_n_ai_jamais_user:[87700, 2800], // ok
+                //     reaction2:[94420, 2175], // ok
+                //     heure2:[0, 0],
+                //     je_n_ai_jamais3_r:[97900, 4500], // ok
+                //     je_n_ai_jamais3:[102400, 1600], // ok
+                //     je_n_ai_jamais3_p:[104000, 26400], //ok
+                //     je_n_ai_jamais3_a:[0, 0],
+                //     reaction3:[132105, 15695], // ok
+                //     anecdote2:[147800, 46200], // ok
+                //     je_n_ai_jamais4_r:[194000, 3730], //ok
+                //     je_n_ai_jamais4:[197730, 2270], // ok
+                //     reaction4:[200820, 53400], // ok
+                //     recherche_google:[254220, 58290], // ok
+                //     reaction4_c:[312510, 5120], // ok
+                //     je_n_ai_jamais5:[317630, 14370], //ok
+                //     reaction5:[333000, 2890],//ok
+                //     fin:[335890, 20610] //ok
+                // },
+                sprite: tab // TODO Uncomment
             });
             this.setState({ episodeSounds: sound },()=>{
                     console.log(this.state.episodeSounds)
-                    this.state.episodeSounds.play('regles')
+                    // this.state.episodeSounds.play('fin')
             });
 
         },
@@ -164,26 +181,34 @@ class SoundProvider extends Component {
             }
             this.setState({
                 musics: soundtab
-            });
+            }, console.log(this.state.musics));
         },
         // handle the play and pause of the music
         handleMusic:(url, mode) => {
             if(mode === "pause" && this.state.musicSelected){
-                this.state.musicSelected.pause();
+                this.state.musicSelected.pause(); // TODO Uncomment
                 return
             }
             if(mode === "play"){
                 this.setState({
                     musicSelected:this.state.musics.find(setting => setting._src === url)
                 }, ()=>{
-                    this.state.musicSelected.play();
+                    this.state.musicSelected.play(); // TODO Uncomment
                 });
             }
         },
         // voices interaction
         playInteractionSound:(value) => {
+            console.log(this.state.episodeSounds)
             this.state.episodeSounds.play(value);
-            return this.state.episodeSounds._sprite[value][1]
+            if(this.state.episodeSounds && this.state.episodeSounds._sprite[value] && this.state.episodeSounds._sprite[value][1]){
+                // this.state.episodeSounds.on('end', ()=>{
+                //     console.log("this is the end");
+                //     // return true
+                // });
+                return this.state.episodeSounds
+                // return this.state.episodeSounds._sprite[value][1]
+            } // TODO Uncomment all
         }
     };
 

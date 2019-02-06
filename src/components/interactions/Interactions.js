@@ -32,16 +32,25 @@ class Interactions extends Component {
                 interaction : inte
             }, ()=>{
                 let time = this.context.playInteractionSound(this.state.interaction.name)
-                setTimeout(()=>{
+                // setTimeout(()=>{
+                console.log(this.state.interaction.interactionType)
                     if(this.state.interaction && this.state.interaction.interactionType === "none"){
-                        console.log(this.state.interaction.interactionType)
-                        this.handleAnswer(null)
+                        // console.log(time)
+                        // if(time){
+                        time.on('end', ()=>{
+                            if(this.state.interaction.interactionType === "none") {
+                                console.log("this is the end");
+                                this.handleAnswer(null)
+                            }
+                            // return true
+                        });
+                        // }
                     } else {
                         this.setState({
                             show : true
                         });
-                    }}
-                , time);
+                    }
+                    // }, time);
            })
         }
       };

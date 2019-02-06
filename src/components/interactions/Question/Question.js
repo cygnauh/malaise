@@ -23,6 +23,7 @@ class Question extends Component {
         // return choices
     };
     onChoiceClicked (index) {
+        console.log("clicked on queston")
         this.props.onAnwserClicked(this.state.choices[index]);
     }
 
