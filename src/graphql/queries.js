@@ -1,8 +1,9 @@
 import gql from "graphql-tag";
 
 export const getCredits = gql`
-    {
-        allEpisodes {
+    query CreditEpisode($id: ID!) {
+        Episode(id: $id)
+        {
             id,
             title,
             thanks,
