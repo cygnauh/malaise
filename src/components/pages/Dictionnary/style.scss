@@ -33,7 +33,6 @@
     &__filterButton {
       @include default-button($color__white);
       font-size: 10px;
-      width: 220px;
 
       &:hover {
         background-color: $color__white;
@@ -42,6 +41,11 @@
 
       &:first-child {
         margin-right: 20px;
+      }
+
+      &.filterActive {
+        background-color: $color__white;
+        color: $color__bg;
       }
 
     }
@@ -55,9 +59,17 @@
 
     .subHeader {
 
-      &__themesFilter {
-        display: flex;
+      &__themesFilter, &__lettersFilter {
         height: 60px;
+        display: none;
+        &.filterActive {
+          display: flex;
+        }
+      }
+
+      &__lettersFilter {
+        justify-content: center;
+        align-items: center;
       }
 
       &__theme {
@@ -69,6 +81,13 @@
         font-family: $font__happy-times;
         font-size: 20px;
         cursor: pointer;
+      }
+
+      &__letter {
+        font-family: $font__happy-times;
+        font-size: 20px;
+        cursor: pointer;
+        margin: 0 1%;
       }
 
     }
@@ -84,7 +103,7 @@
 
       }
 
-      &__themeName {
+      &__themeName, &__orderName {
         border-bottom: 1px solid $color__white;
         position: relative;
         margin-bottom: 50px;
@@ -130,7 +149,7 @@
 
       }
 
-      &__themeList {
+      &__themeList, &__orderList {
         padding: 0 100px;
 
       }

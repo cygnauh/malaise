@@ -94,20 +94,27 @@ input:focus, textarea:focus, button:focus, button:active {
       text-transform: uppercase;
       cursor: pointer;
       transition: color 0.5s ease-in, background-color 0.5s ease-in;
-      font-size: 10px;
-      width: 220px; }
+      font-size: 10px; }
       .Dictionnary__header__filterButton:hover {
         background-color: #ffffff;
         color: #0B162E; }
       .Dictionnary__header__filterButton:first-child {
         margin-right: 20px; }
+      .Dictionnary__header__filterButton.filterActive {
+        background-color: #ffffff;
+        color: #0B162E; }
   .Dictionnary__subHeader {
     border-bottom: 1px solid #ffffff;
     height: 60px;
     overflow-x: scroll; }
-    .Dictionnary__subHeader .subHeader__themesFilter {
-      display: flex;
-      height: 60px; }
+    .Dictionnary__subHeader .subHeader__themesFilter, .Dictionnary__subHeader .subHeader__lettersFilter {
+      height: 60px;
+      display: none; }
+      .Dictionnary__subHeader .subHeader__themesFilter.filterActive, .Dictionnary__subHeader .subHeader__lettersFilter.filterActive {
+        display: flex; }
+    .Dictionnary__subHeader .subHeader__lettersFilter {
+      justify-content: center;
+      align-items: center; }
     .Dictionnary__subHeader .subHeader__theme {
       width: 20%;
       border-right: 1px solid #ffffff;
@@ -117,13 +124,18 @@ input:focus, textarea:focus, button:focus, button:active {
       font-family: "Happy times";
       font-size: 20px;
       cursor: pointer; }
+    .Dictionnary__subHeader .subHeader__letter {
+      font-family: "Happy times";
+      font-size: 20px;
+      cursor: pointer;
+      margin: 0 1%; }
   .Dictionnary__definitions {
     padding: 25px 0; }
-    .Dictionnary__definitions .definitions__themeName {
+    .Dictionnary__definitions .definitions__themeName, .Dictionnary__definitions .definitions__orderName {
       border-bottom: 1px solid #ffffff;
       position: relative;
       margin-bottom: 50px; }
-      .Dictionnary__definitions .definitions__themeName:after, .Dictionnary__definitions .definitions__themeName:before {
+      .Dictionnary__definitions .definitions__themeName:after, .Dictionnary__definitions .definitions__themeName:before, .Dictionnary__definitions .definitions__orderName:after, .Dictionnary__definitions .definitions__orderName:before {
         top: 100%;
         right: 20%;
         border: solid transparent;
@@ -132,25 +144,25 @@ input:focus, textarea:focus, button:focus, button:active {
         width: 0;
         position: absolute;
         pointer-events: none; }
-      .Dictionnary__definitions .definitions__themeName:after {
+      .Dictionnary__definitions .definitions__themeName:after, .Dictionnary__definitions .definitions__orderName:after {
         border-color: rgba(136, 183, 213, 0);
         border-top-color: #0B162E;
         border-width: 40px;
         margin-left: -40px;
         margin-right: 1px; }
-      .Dictionnary__definitions .definitions__themeName:before {
+      .Dictionnary__definitions .definitions__themeName:before, .Dictionnary__definitions .definitions__orderName:before {
         border-color: rgba(194, 225, 245, 0);
         border-top-color: #ffffff;
         border-width: 41px;
         margin-left: -41px; }
-      .Dictionnary__definitions .definitions__themeName h2 {
+      .Dictionnary__definitions .definitions__themeName h2, .Dictionnary__definitions .definitions__orderName h2 {
         margin-left: 50px;
         font-family: "Happy times";
         font-size: 50px;
         line-height: 80px;
         height: 54px;
         overflow: hidden; }
-    .Dictionnary__definitions .definitions__themeList {
+    .Dictionnary__definitions .definitions__themeList, .Dictionnary__definitions .definitions__orderList {
       padding: 0 100px; }
     .Dictionnary__definitions .definitions__item {
       margin-bottom: 50px; }
