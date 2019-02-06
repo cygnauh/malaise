@@ -1,5 +1,8 @@
-@import '../../../assets/styles/index.scss';
-.glass{
+@import '../../../assets/styles/variables/index.scss';
+@import '../../../assets/styles/mixins/index.scss';
+
+.glass {
+
   .glass_name {
     text-transform: capitalize;
     font: 700 4em/1 "Oswald", sans-serif;
@@ -17,6 +20,7 @@
     backface-visibility: hidden;
     animation-duration: 180s;
     opacity: 0.7;
+
     &.drinking{
       opacity: 1;
       background-position-y: 37px; // TODO Update according to the volume
@@ -24,7 +28,9 @@
       animation: aitf 5s linear infinite;
       animation-duration: 50s;
     }
+
   }
+
 }
 
 

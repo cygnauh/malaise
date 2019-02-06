@@ -1,22 +1,24 @@
-@import '../../../assets/styles/index.scss';
+@import '../../../assets/styles/variables/index.scss';
+@import '../../../assets/styles/mixins/index.scss';
 
 .Header {
-    width: calc(100% - 48px);
-    margin-left: 48px;
+  width: calc(100% - 48px);
+  margin-left: 48px;
+  height: 45px;
+  z-index: 10;
+  display: none;
+
+  &__logo {
+    width: 150px;
     height: 45px;
-    z-index: 10;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
 
-    &__logo {
-      width: 150px;
-      height: 45px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-
-    &__icon {
-        height: 15px;
-    }
+  &__icon {
+      height: 15px;
+  }
 
 }
 
@@ -28,6 +30,6 @@
 
 .interface-reverse {
   .Header {
-    border-bottom: 1px solid $color__black;
+    border-bottom: 1px solid $color__xp--dark;
   }
 }

@@ -20,7 +20,12 @@ body, html {
 
   &.interface-reverse {
     background-color: $color__white;
-    color: $color__black;
+    color: $color__xp--dark;
+  }
+
+  &.episode {
+    background-color: $color__xp--dark;
+    color: $color__white;
   }
 
 }
@@ -42,9 +47,11 @@ a {
 
 .interface-reverse {
   a {
-    color: $color__black;
+    color: $color__xp--dark;
   }
 }
+
+
 input:focus, textarea:focus, button:focus, button:active {
   outline: none;
 }
@@ -54,5 +61,5 @@ input:focus, textarea:focus, button:focus, button:active {
 }
 .Start-process {
   width: 100%;
-  height: calc(100% - 45px);
+  height: 100%;
 }

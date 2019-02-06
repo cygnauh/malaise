@@ -1,12 +1,10 @@
 import React from 'react';
-import './assets/styles/index.scss';
 import { ApolloProvider } from 'react-apollo';
 import UserProvider from "./store/UserProvider";
 import SoundProvider from "./store/SoundProvider";
 import ApolloBoost from "apollo-boost";
 import Navigation from './components/layout/Navigation/Navigation';
 import Main from './components/layout/Main/Main';
-import './assets/styles/App.scss';
 import Header from "./components/layout/Header/Header";
 
 
