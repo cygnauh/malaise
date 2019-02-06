@@ -16,6 +16,7 @@ import Timer from "../../elements/Timer/Timer";
 import Selection from "../../EpisodeSelection/EpisodeSelection";
 import Anecdotes from "../../pages/Anecdotes/Anecdotes";
 import About from "../../pages/About/About";
+import Credits from "../../pages/Credits/Credits";
 import TakingPosition from "../../interactions/TakingPosition/TakingPosition";
 import UserQuestion from "../../interactions/UserQuestion/UserQuestion";
 
@@ -50,6 +51,7 @@ class Main extends Component {
                                 <Route path="/takingposition" component={TakingPosition} />
                                 <Route path="/user-question" component={UserQuestion} />
                                 <Route path="/timer" component={Timer} />
+                                <Route path="/credits" component={Credits} />
 
                             </Switch>
                         </main>

@@ -1,9 +1,15 @@
+/* GLOBAL */
+/* INTERFACE */
+/* XP 1 */
 /*@font-face {
   font-family: 'Happy Times';
   src: url('../fonts/happy-times/happy-times.woff2') format('woff2'),
   url('../fonts/happy-times/happy-times.woff') format('woff'),
   url('../fonts/happy-times/happy-times.ttf')  format('truetype');
 }*/
+/* GLOBAL */
+/* INTERFACE */
+/* XP 1 */
 /*@font-face {
   font-family: 'Happy Times';
   src: url('../fonts/happy-times/happy-times.woff2') format('woff2'),
@@ -24,9 +30,9 @@ body, html {
   -moz-osx-font-smoothing: grayscale; }
   body.interface, html.interface {
     background-color: #0B162E;
-    color: #ffffff; }
+    color: #EAEAEA; }
   body.interface-reverse, html.interface-reverse {
-    background-color: #ffffff;
+    background-color: #EAEAEA;
     color: #000000; }
 
 h1, h2, h3, h4, h5, h6, ul, ol, li, a, p {
@@ -40,7 +46,7 @@ a {
   text-decoration: none; }
 
 .interface a {
-  color: #ffffff; }
+  color: #EAEAEA; }
 
 .interface-reverse a {
   color: #000000; }
@@ -56,6 +62,9 @@ input:focus, textarea:focus, button:focus, button:active {
   width: 100%;
   height: calc(100% - 45px); }
 
+/* GLOBAL */
+/* INTERFACE */
+/* XP 1 */
 /*@font-face {
   font-family: 'Happy Times';
   src: url('../fonts/happy-times/happy-times.woff2') format('woff2'),
@@ -68,8 +77,8 @@ input:focus, textarea:focus, button:focus, button:active {
   right: 0;
   width: calc(100% - 48px); }
   .Notice.interface {
-    border-top: 1px solid #ffffff;
-    color: #ffffff; }
+    border-top: 1px solid #EAEAEA;
+    color: #EAEAEA; }
   .Notice.interface-reverse {
     border-top: 1px solid #000000;
     color: #000000; }
