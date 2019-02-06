@@ -20,7 +20,7 @@ type Episode @model {
   voices: [Voice!]! @relation(name: "EpisodeVoices")
   directors: [Director!]! @relation(name: "EpisodeDirectors")
   anecdotes: [Anecdote!]! @relation(name: "EpisodeAnecdotes")
-  thanks: String!
+  thanks: String
 }
 
 type Voice @model {
