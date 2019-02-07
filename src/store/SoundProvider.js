@@ -52,7 +52,7 @@ class SoundProvider extends Component {
                         tab[interactions[i].name] = sq;
                     }
                 }
-                console.log(tab)
+                // console.log(tab)
             }, 0);
             let sound = new Howl({
                 src: [Sound],

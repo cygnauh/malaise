@@ -18,12 +18,9 @@
     transform: translate3d(0,0,0);
     backface-visibility: hidden;
     animation-duration: 180s;
-    opacity: 0.7;
-
     animation: aitf 180s linear infinite;
     //animation-duration: 180s;
     background-position-y: 37px; // TODO Update according to the volume
-
     opacity: 0.3;
     &.drinking{
       opacity: 1;

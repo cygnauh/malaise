@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import $ from 'jquery';
 import './style.scss';
 import Timer from "../../elements/Timer/Timer";
+import Glass from '../../elements/Glass/Glass'
+import { UserContext } from './../../../store/UserProvider'
 
 class TakingPosition extends Component {
 
@@ -11,18 +13,30 @@ class TakingPosition extends Component {
             x: 0,
             defaultWidth: 0,
             started: false,
-            timeIsOver: false
+            timeIsOver: false,
+            arguers:'',
+            persons:''
         };
 
         this.part1 = React.createRef();
         this.part2 = React.createRef();
         this.container = React.createRef();
     }
-
     componentDidMount() {
+        let arguers  = [];
         this.setState({
-            started: true
-        });
+            started: true,
+            persons : this.context.personalizations
+        }, ()=>{
+                for(let i = 0 ; i < this.props.arguers.length ; i++){
+                    let argument = this.props.arguers[i].split(':');
+                    let person = this.state.persons.find(setting=>setting.role === argument[0]);
+                    arguers.push([person.name, argument[1], person.glass]);
+                }
+                this.setState({
+                    arguers:arguers,
+                });
+            });
         setTimeout(() => {
             this.setState({
                 timeIsOver: true
@@ -33,7 +47,6 @@ class TakingPosition extends Component {
     handleMouseMove = (e) => {
         const p1 = this.part1.current;
         const p2 = this.part2.current;
-
 
         let $currentTarget = $(e.currentTarget);
 
@@ -61,8 +74,7 @@ class TakingPosition extends Component {
                 p1.classList.remove("TakingPosition__winner");
             }
         }
-
-    }
+    };
 
     render() {
 
@@ -73,16 +85,42 @@ class TakingPosition extends Component {
                 </div>
                 <div className="TakingPosition__container" onMouseMove={!this.state.timeIsOver ? this.handleMouseMove : null} ref={this.container}>
                     <div className="TakingPosition__leftPart" ref={this.part1}>
-                        <p className="TakingPosition__name">Romane</p>
+                        {
+                            this.state.arguers[0]?
+                                <div className="TakingPosition__name">
+                                    <Glass
+                                        name={this.state.arguers[0][0]}
+                                        glassFilled={2}
+                                        onDrink={false}
+                                        mode="position"
+                                    />
+                                    <p>{this.state.arguers[0][1]}</p>
+                                </div>
+                                :
+                                <p className="TakingPosition__name">Romane</p>
+                        }
+
                     </div>
                     <div className="TakingPosition__rightPart" ref={this.part2}>
-                        <p className="TakingPosition__name">Arthur</p>
+                        {
+                            this.state.arguers[1] ?
+                                <div className="TakingPosition__name">
+                                    <Glass
+                                        name={this.state.arguers[1][0]}
+                                        glassFilled={2}
+                                        onDrink={false}
+                                        mode="position"
+                                    />
+                                    <p>{this.state.arguers[1][1]}</p>
+                                </div>
+                                :
+                                <p className="TakingPosition__name">Arthur</p>
+                        }
                     </div>
                 </div>
             </div>
         )
     }
-
 }
-
+TakingPosition.contextType = UserContext;
 export default TakingPosition;

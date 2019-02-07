@@ -5,19 +5,23 @@ import boumboum from '../../assets/animation/boumboum'
 import MusicChoice from './MusicChoice/MusicChoice'
 import Question from './Question/Question'
 import DrinkAction from './DrinkAction/DrinkAction'
+import UserQuestion from './UserQuestion/UserQuestion'
+import Hours from './Hours/Hours'
+import TakingPosition from './TakingPosition/TakingPosition'
 // QUERY
 import {Query} from "react-apollo";
 import {getMusics} from '../../graphql/queries'
 // API CONTEXT
 import {SoundContext} from "../../store/SoundProvider";
 import './interactions.scss'
+import UserContext from '../../store/UserProvider'
 
 class Interactions extends Component {
     constructor(props) {
         super(props);
         this.state = {
             render: '',
-            interactionPosition: 10,
+            interactionPosition: 1,
             interaction: null,
             show: false,
             soundSequence: ''
@@ -45,6 +49,13 @@ class Interactions extends Component {
             this.setState({
                 interaction: inte
             }, () => {
+                if(this.state.interaction.interactionType === 'heure'){
+                    this.setState({
+                        show: true
+                    });
+                    setTimeout(this.handleAnswer(null), 5000)
+                    return
+                }
                 this.setState({
                     soundSequence: this.context.playInteractionSound(this.state.interaction.name)
                 }, () => {
@@ -70,6 +81,7 @@ class Interactions extends Component {
                     }
 
                     if (this.state.interaction && this.state.interaction.interactionType !== "none") {
+                        console.log("hello")
                         this.setState({
                             show: true
                         });
@@ -79,14 +91,24 @@ class Interactions extends Component {
         }
     };
     handleAnswer = (value) => {
-
+        // console.log('a');
         let answer = (value) ? value : null;
-        let destinationFound = false
+        let destinationFound = false;
+        let destination = ''
         if (this.answers && this.state.interaction) {
+            // console.log('b');
             for (let i = 0; i < this.answers.length; i++) {
+                // console.log(this.answers[i].originInteraction);
+                // console.log(this.answers[i].originInteraction.id);
+                // console.log(this.state.interaction.id);
+                // console.log(this.answers[i].content);
+                // console.log(answer);
+                // console.log(!destinationFound)
                 if (this.answers[i].originInteraction &&
                     this.answers[i].originInteraction.id === this.state.interaction.id &&
                     this.answers[i].content === answer &&
+                    this.answers[i].destinationInteraction &&
+                    this.answers[i].destinationInteraction.position &&
                     !destinationFound
                 ) {
                     console.log('answer')
@@ -96,9 +118,12 @@ class Interactions extends Component {
                         interactionPosition: this.answers[i].destinationInteraction.position,
                         show: !this.state.show
                     }, () => {
+                        console.log('a');
                         this.handleInteraction();
                         destinationFound = true;
+
                     });
+                    return
                 }
             }
         }
@@ -107,7 +132,8 @@ class Interactions extends Component {
     render() {
         return (
             <div className="Interactions">
-                {this.state.show && this.state.interaction && this.state.interaction.interactionType === "musique" ?
+
+                {this.state.show && this.state.interaction && this.state.interaction.interactionType === "music" ?
                     // getMusics
                     <div>
                         <Query
@@ -140,13 +166,31 @@ class Interactions extends Component {
                     <DrinkAction drinkers={this.state.interaction.content.split('@')}
                                  timer={this.state.interaction.timer}
                                  question={this.state.interaction.question.split('@')}
-                                 onMusicClicked={this.handleAnswer}
+                                 drinkActionEnd={this.handleAnswer}
                     />
                     : null}
 
+                {this.state.show && this.state.interaction && this.state.interaction.interactionType === "user question" ?
+                    <UserQuestion drinkActionEnd={this.handleAnswer}/>
+                    : null}
+
+                {this.state.show && this.state.interaction && this.state.interaction.interactionType === "heure" ?
+                    <Hours/>
+                    : null}
+                    {/*TODO Fix error or handle it differently */}
+
+
+                {this.state.show && this.state.interaction && this.state.interaction.interactionType === "taking position" ?
+
+                            // console.log(personalizations)
+                            <TakingPosition arguers={this.state.interaction.content.split('@')} onEnd={this.handleAnswer}/>
+                    //     )}
+                    // </UserContext.Consumer>
+                    : null}
             </div>
         )
     }
 }
+
 Interactions.contextType = SoundContext;
 export default Interactions;

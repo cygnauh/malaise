@@ -5,7 +5,8 @@ class UserQuestion extends Component {
     constructor(){
         super();
         this.state = {
-            render:''
+            render:'',
+            proposition: ''
         };
         this.propositions =[
             "été en dehors de la France",
@@ -14,18 +15,45 @@ class UserQuestion extends Component {
             "couché avec quelqu’un dans cette pièce"
         ]
     }
+    displayProposition = () => {
+        let propositions = []
+        for (let i = 0; i<this.propositions.length; i ++){
+            propositions.push(
+                <div key={i} onClick={()=>this.propositionSelected(this.propositions[i])}>
+                    {this.propositions[i].toString()}
+                </div>
+            )
+        }
+        return propositions
+    };
+    propositionSelected = (value) => {
+        this.setState({
+            proposition : value
+        })
+    };
+    inputChange = (e) => {
+        this.setState({
+            proposition : e.target.value
+        })
+    };
+    validateProposition = () => {
+        console.log(this.state.proposition)
+        if(this.state.proposition !== ''){
+            this.props.drinkActionEnd()
+        }
+    };
 
     render() {
         return (
-            <div className="UserQuestion">
-                <h2>Je n'ai jamais</h2>
-                <div className="wrapper-input">
-                    <input type="text"/>
-                    <button>ok</button>
+            <div className="userQuestion">
+                <div className="userQuestion__wrapper-input">
+                    <label className="userQuestion__input-label">Je n'ai jamais</label>
+                    <input type="text" value={this.state.proposition} onChange={this.inputChange}/>
+                    <button onClick={this.validateProposition}>ok</button>
                 </div>
                 <div className="wrapper-proposition">
                     <div className="proposition">
-                        été en dehors de la France
+                        {this.displayProposition()}
                     </div>
                 </div>
             </div>

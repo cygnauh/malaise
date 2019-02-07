@@ -39,10 +39,13 @@ class DrinkAction extends Component {
                     <div key={i} className="Person_list">
                         <Glass name={name}
                                glassFilled={glassLevel}
-                               onDrink={toDrink}/>
+                               onDrink={toDrink}
+                               mode="interaction"
+                        />
                         {this.asker === this.state.persons[i].role ?
                             <span className="Drink_Games_content">
-                                Je n'ai jamais été viré d'un bar
+                                {this.question}
+                                {/*Je n'ai jamais été viré d'un bar*/}
                             </span> : null}
                     </div>
                 )
@@ -70,6 +73,7 @@ class DrinkAction extends Component {
                 test:"Temporary fix"
             })
         });
+        setTimeout(()=>{ this.props.drinkActionEnd() }, 2000)
         //TODO register user alcohol level
     };
     // handleTimer = () => {
