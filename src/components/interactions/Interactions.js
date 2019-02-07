@@ -53,7 +53,7 @@ class Interactions extends Component {
                     this.setState({
                         show: true
                     });
-                    setTimeout(this.handleAnswer(null), 5000)
+                    // setTimeout(this.handleAnswer(null), 10000)
                     return
                 }
                 this.setState({
@@ -136,21 +136,16 @@ class Interactions extends Component {
                 {this.state.show && this.state.interaction && this.state.interaction.interactionType === "music" ?
                     // getMusics
                     <div>
-                        <Query
-                            query={getMusics}
-                            notifyOnNetworkStatusChange
-                        >
+                        <Query query={getMusics} notifyOnNetworkStatusChange>
                             {({loading, error, data, refetch, networkStatus}) => {
                                 if (networkStatus === 4) return "Refetching!";
                                 if (loading) return null;
                                 if (error) return `Error!: ${error}`;
                                 return (
                                     <div>
-                                        <MusicChoice
-                                            musics={data.allSounds}
-                                            onMusicClicked={this.handleAnswer}
-                                        />
-                                    </div>)
+                                        <MusicChoice musics={data.allSounds} onMusicClicked={this.handleAnswer}/>
+                                    </div>
+                                )
                             }}
                         </Query>
                     </div>
@@ -175,17 +170,12 @@ class Interactions extends Component {
                     : null}
 
                 {this.state.show && this.state.interaction && this.state.interaction.interactionType === "heure" ?
-                    <Hours/>
+                    <Hours hours={22} minutes={26} onEnd={this.handleAnswer}/>
                     : null}
                     {/*TODO Fix error or handle it differently */}
 
-
                 {this.state.show && this.state.interaction && this.state.interaction.interactionType === "taking position" ?
-
-                            // console.log(personalizations)
-                            <TakingPosition arguers={this.state.interaction.content.split('@')} onEnd={this.handleAnswer}/>
-                    //     )}
-                    // </UserContext.Consumer>
+                    <TakingPosition arguers={this.state.interaction.content.split('@')} onEnd={this.handleAnswer}/>
                     : null}
             </div>
         )

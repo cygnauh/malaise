@@ -28,6 +28,7 @@ class TakingPosition extends Component {
             started: true,
             persons : this.context.personalizations
         }, ()=>{
+            if(this.props.arguers){
                 for(let i = 0 ; i < this.props.arguers.length ; i++){
                     let argument = this.props.arguers[i].split(':');
                     let person = this.state.persons.find(setting=>setting.role === argument[0]);
@@ -36,11 +37,12 @@ class TakingPosition extends Component {
                 this.setState({
                     arguers:arguers,
                 });
+            }
             });
         setTimeout(() => {
             this.setState({
                 timeIsOver: true
-            }, this.props.onEnd()); // TODO Temporary
+            }, ()=>(this.props.onEnd ? this.props.onEnd() : null )); // TODO Temporary
         }, 5000);
     }
 

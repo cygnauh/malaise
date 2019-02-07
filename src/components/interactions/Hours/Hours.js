@@ -23,12 +23,25 @@ class Hours extends Component {
     }
 
     componentDidMount() {
+
         setTimeout(() => {
-            this.setState({
-                hours: 20,
-                minutes: 45
-            });
-        }, 600)
+            if(this.props.hours&&this.props.minutes){
+                this.setState({
+                    hours: this.props.hours,
+                    minutes: this.props.minutes
+                });
+            }else{
+                this.setState({
+                    hours: 20,
+                    minutes: 45
+                });
+            }
+        }, 600);
+        setTimeout(()=>{
+            if(this.props.onEnd){
+                this.props.onEnd()
+            }
+        }, 3000)
     }
 
     componentWillUnmount() {
