@@ -3,19 +3,30 @@ import "./style.scss";
 import Jingle from "../Jingle/Jingle";
 import EpisodeSelection from "../EpisodeSelection/EpisodeSelection";
 import Instructions from "../Instructions/Instructions";
+import $ from 'jquery';
 
 class Introduction extends Component {
 
     constructor(props){
         super(props);
+        this.state = {
+            currentPage : '1'
+        };
     }
 
     handleClickSkipJingle = (e) => {
-        console.log(e.currentTarget);
+        this.nextIntroductionStep();
     }
 
     nextIntroductionStep = () => {
         console.log('next step');
+
+        var $currentIntroStep = $('.Introduction__step--current');
+        var $nextIntroStep = $currentIntroStep.next();
+
+        $currentIntroStep.toggleClass('Introduction__step--current');
+        $nextIntroStep.toggleClass('Introduction__step--current');
+
     }
 
     handleClickNextIntroStep = () => {

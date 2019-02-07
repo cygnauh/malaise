@@ -4,6 +4,7 @@ import { getEpisodesAndPlaceSounds } from '../../../graphql/queries'
 import { UserContext } from "../../../store/UserProvider";
 import { SoundContext } from "../../../store/SoundProvider";
 import "./style.scss";
+import { Link } from 'react-router-dom';
 
 // episode selection either select thank to the form, or thank to the catalog
 
@@ -38,32 +39,30 @@ class EpisodeSelection extends Component {
                     if (loading) return null;
                     if (error) return `Error!: ${error}`;
                     return (
-                        <div className="episodeSelection">
+                        <div className="EpisodeSelection">
                             <UserContext.Consumer>
                                 {({episode, setEpisode}) => (
                                     <SoundContext.Consumer>
                                         {({setEpisodeSounds, registerPlaceSound}) => (
-                                            <div>
-                                                <div className="episodeSelection__container">
-                                                    <div className="episodeSelection__result">
-                                                        <div className="episodeSelection__episode">
-                                                            <div className="episode__content">
-                                                                <h2 className="episode__title">{data.allEpisodes[0].title}</h2>
-                                                                <p className="episode__summary">{data.allEpisodes[0].summary}</p>
-                                                                {/*<button className="episode__btn" onClick={}>Continuer</button>*/}
-                                                                <button className="episode__btn"
-                                                                        onClick={ ()=>{this.onContinueClicked(setEpisode, data, setEpisodeSounds, registerPlaceSound)}}>
-                                                                    Continuer
-                                                                </button>
-                                                            </div>
-                                                        </div>
-                                                        {data.allEpisodes.length !== 0 ?
-                                                            <div className="episodeSelection__choice">
-                                                                - si l'épisode ne te convient pas, jette un coup d'oeil au <a href="/catalogue">catalogue</a> -
-                                                            </div>
-                                                            : null}
+                                            <div className="EpisodeSelection__container">
+                                                <div className="EpisodeSelection__episode episode">
+                                                    <div className="episode__top">
+                                                        <div className="episode__number">03</div>
+                                                        <div className="episode__line"></div>
+                                                        <div className="episode__date">{ (new Date(data.allEpisodes[0].createdAt)).toLocaleDateString() }</div>
+                                                    </div>
+                                                    <h2 className="episode__title">
+                                                        {data.allEpisodes[0].title}
+                                                    </h2>
+                                                    <p className="episode__description">{data.allEpisodes[0].summary}</p>
+                                                    <div className="episode__actions">
+                                                        <button className="episode__cta"
+                                                                onClick={ ()=>{this.onContinueClicked(setEpisode, data, setEpisodeSounds, registerPlaceSound)}}>
+                                                            Continuer
+                                                        </button>
                                                     </div>
                                                 </div>
+                                                <Link className="EpisodeSelection__choice" to="/catalogue">ou choisir un autre épisode</Link>
                                             </div>
                                         )}
                                     </SoundContext.Consumer>

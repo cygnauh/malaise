@@ -6,6 +6,7 @@ import Presentation from "./interactions/Presentation/Presentation";
 import Doorbell from './interactions/Doorbell/Doorbell'
 import './personalization.scss';
 
+
 // 1) Fetch personalizations questions from data base : can use <Query> or <ApolloConsumer>
 // 2) Display the questions
 // 3) Register Anwser in the store

@@ -3,10 +3,39 @@
 
 .Introduction {
 
+  &__container {
+    position: relative;
+  }
+
+  &__step {
+    z-index: 1;
+    opacity: 0;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+    min-width: 350px;
+    transition: opacity 0.5s ease-in;
+
+    &--current {
+      z-index: 5;
+      opacity: 1;
+      transition: opacity 0.5s ease-in;
+    }
+
+  }
+
   &__jingle {
 
     &__cta {
       @include default-button($color__white);
+      margin-top: 100px;
+
+      &:hover, &:focus, &:active {
+        background-color: $color__white;
+        color: $color__bg;
+      }
+
     }
 
   }

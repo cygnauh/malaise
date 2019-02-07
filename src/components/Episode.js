@@ -16,7 +16,6 @@ class Episode extends Component {
             componentIndex:0,
         };
         this.nextComponent();
-        $('body').removeClass('interface-reverse').addClass('episode');
     }
     nextComponent = () => {
         setTimeout(()=>{

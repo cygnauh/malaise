@@ -13,7 +13,8 @@ class Homepage extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            instructions: false
+            instructions: false,
+            currentPage : '1'
         };
         this.defaultOptions = {
             loop: true,
@@ -22,9 +23,6 @@ class Homepage extends Component {
             propsrendererSettings: {
                 preserveAspectRatio: 'xMidYMid slice'
             }
-        };
-        this.state = {
-            currentPage : '1'
         }
     }
 
@@ -56,9 +54,9 @@ class Homepage extends Component {
 
         var nextPage = $nextInstruction.data('step');
 
-        setTimeout(() => {
+        /*setTimeout(() => {
             this.context.playInstructions(nextPage);
-        }, 1200);
+        }, 1200);*/
 
         $currentInstruction.toggleClass('instructions__text--current');
         $nextInstruction.toggleClass('instructions__text--current');
@@ -73,9 +71,9 @@ class Homepage extends Component {
         if($currentInstruction.is(':last-child')) {
             $('.instructions__process').toggleClass('instructions__hide');
             $('.instructions__end').toggleClass('instructions__hide');
-            setTimeout(() => {
+            /*setTimeout(() => {
                 this.context.playInstructions(4);
-            }, 1200);
+            }, 1200);*/
         }
     }
 
@@ -101,8 +99,8 @@ class Homepage extends Component {
                             <button className="Home__start" onClick={this.handleClickStart}>démarrer l'expérience</button>
                         </div>
                         <div className={this.state.instructions ? "Home__instructions" : "Home__instructions  Home__hide"}>
-                            {/*<Introduction />*/}
-                            <div className="instructions">
+                            <Introduction />
+                            {/*<div className="instructions">
                                 <div className="instructions__container">
                                     <div className="instructions__process">
                                         <div className="instructions__pagination">
@@ -113,8 +111,6 @@ class Homepage extends Component {
                                         </div>
                                         <div className="instructions__content" ref={this.instructions}>
                                             <div className="instructions__text instructions__text--current" data-step="1">Malaise t'invite à vivre une expérience immersive à travers différents épisodes interactifs.</div>
-                                            <div className="instructions__text" data-step="2">Laisse toi guider et suis les indications en bas de l'écran.</div>
-                                            <div className="instructions__text" data-step="3">Au fil de l'expérience, tu rencontreras des termes spécifiques à l'épisode qui se glisseront dans la boîte à mots.</div>
                                         </div>
                                         <button className="instructions__arrow" onClick={this.handleClickNext}><img alt="Instruction suivante" src={require('../../../assets/icons/arrows/arrow_down.svg')}/></button>
                                     </div>
@@ -123,7 +119,7 @@ class Homepage extends Component {
                                         <button className="instructions__next" onClick={this.props.onButtonPressed}>continuer</button>
                                     </div>
                                 </div>
-                            </div>
+                            </div>*/}
                         </div>
                     </div>
                 </div>

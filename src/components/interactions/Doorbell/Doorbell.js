@@ -3,6 +3,7 @@ import Lottie from 'react-lottie';
 import boumboum from '../../../assets/animation/boumboum'
 import './style.scss';
 import { SoundContext } from "../../../store/SoundProvider";
+import $ from 'jquery';
 
 // doorbell, boum
 
@@ -48,6 +49,7 @@ class Doorbell extends Component {
             this.context.playDoorBell(); // TODO handle, only on the second click
             // play the boom
             setTimeout(()=>{
+                $('body').removeClass('interface-reverse').addClass('episode');
                 this.setState({
                     displayAnim:true
                 },()=>{
