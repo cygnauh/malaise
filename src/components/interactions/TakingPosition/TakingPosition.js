@@ -40,7 +40,7 @@ class TakingPosition extends Component {
         setTimeout(() => {
             this.setState({
                 timeIsOver: true
-            });
+            }, this.props.onEnd()); // TODO Temporary
         }, 5000);
     }
 
