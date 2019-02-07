@@ -18,10 +18,12 @@
     opacity: 1;
     overflow: hidden;
     transition: all 0.5s ease-in-out;
-    position: relative; }
+    position: relative;
+    z-index: 1; }
     .Episode__hours.hide, .Episode__personalization.hide, .Episode__interactions.hide {
+      position: absolute;
       opacity: 0;
-      height: 0; }
+      z-index: 0; }
   .Episode__interactions.hide {
     display: none; }
 

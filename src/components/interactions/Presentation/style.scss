@@ -59,6 +59,17 @@
         visibility: visible;
     }
 }
+@keyframes scaleRound {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(0.8);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
 
 .Presentation{
     background: $color__episode_01;
@@ -126,6 +137,21 @@
     }
     &.clickable{
         z-index: 2;
+        &:after {
+            content: "";
+            width: 34px;
+            height: 34px;
+            border-radius: 50%;
+            background-color: transparent;
+            border: 2px solid $color__white;
+            opacity: 0.3;
+            position: absolute;
+            top: -9px;
+            left: -9px;
+            transform-origin: center;
+            transform: translate(-50%, -50%);
+            animation: scaleRound 2s linear infinite;
+        }
     }
     &.clickable:not(.hote):hover{
         cursor: pointer;

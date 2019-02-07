@@ -1,14 +1,50 @@
 import React, { Component } from 'react';
 import "./style.scss";
+import $ from 'jquery';
+import { SoundContext } from "../../../store/SoundProvider";
 
 class Instructions extends Component {
 
     constructor(props){
         super(props);
+    }
+
+    componentWillReceiveProps() {
+        console.log(this.props.startInstruction);
+        if(this.props.startInstruction === true) {
+            let $currentInstructionStep = $('.Instruction--current');
+            let stepCurrent = $currentInstructionStep.data('step');
+            this.playInstruction(stepCurrent);
+        }
+    }
+
+    nextInstruction = () => {
+        let $currentInstructionStep = $('.Instruction--current');
+        let $nextInstructionStep = $currentInstructionStep.next();
+
+        let stepNextStep = $nextInstructionStep.data('step');
+
+        $currentInstructionStep.toggleClass('Instruction--current');
+        $nextInstructionStep.toggleClass('Instruction--current');
+
+        if($currentInstructionStep.is(':last-child')) {
+            this.props.onEnd();
+        } else {
+            setTimeout(() => {
+                this.playInstruction(stepNextStep);
+            }, 1000);
+        }
 
     }
 
-
+    playInstruction = (step) => {
+        let instruction = this.context.playInstructions(step);
+        instruction.on('end', () => {
+            setTimeout(() => {
+                this.nextInstruction();
+            }, 1000);
+        });
+    }
 
     render() {
         return(
@@ -23,4 +59,5 @@ class Instructions extends Component {
     }
 }
 
+Instructions.contextType = SoundContext;
 export default Instructions;

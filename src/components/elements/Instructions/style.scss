@@ -4,25 +4,27 @@
 .Instructions {
 
   &__container {
-    min-width: 400px;
     position: relative;
   }
 
   .Instruction {
+    min-width: 400px;
     position: absolute;
     left: 50%;
     top: 50%;
     transform: translate(-50%,-50%);
     opacity: 0;
-    transition: opacity 0.5s ease;
+    transition: opacity 1s 0s;
     font-family: $font__happy-times;
     font-size: 28px;
     text-align: center;
     z-index: 1;
 
+
     &--current {
       opacity: 1;
       z-index: 5;
+      transition: opacity 1s 1s;
     }
 
   }

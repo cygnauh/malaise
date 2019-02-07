@@ -32,8 +32,8 @@ class Hours extends Component {
                 });
             }else{
                 this.setState({
-                    hours: 20,
-                    minutes: 45
+                    hours: 21,
+                    minutes: 52
                 });
             }
         }, 600);

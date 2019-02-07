@@ -52,6 +52,13 @@
     height: 50px;
     opacity: 1;
     visibility: visible; } }
+@keyframes scaleRound {
+  0% {
+    transform: scale(1); }
+  50% {
+    transform: scale(0.8); }
+  100% {
+    transform: scale(1); } }
 .Presentation {
   background: #002c36;
   width: 100%;
@@ -106,6 +113,20 @@
     opacity: 0; }
   .Presentation_person.clickable {
     z-index: 2; }
+    .Presentation_person.clickable:after {
+      content: "";
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      background-color: transparent;
+      border: 2px solid #EAEAEA;
+      opacity: 0.3;
+      position: absolute;
+      top: -9px;
+      left: -9px;
+      transform-origin: center;
+      transform: translate(-50%, -50%);
+      animation: scaleRound 2s linear infinite; }
   .Presentation_person.clickable:not(.hote):hover {
     cursor: pointer;
     transform: scale(1.5); }

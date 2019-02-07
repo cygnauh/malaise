@@ -10,8 +10,8 @@ class Introduction extends Component {
     constructor(props){
         super(props);
         this.state = {
-            currentPage : '1'
-        };
+            instructions: false
+        }
     }
 
     handleClickSkipIntro = () => {
@@ -23,12 +23,19 @@ class Introduction extends Component {
         var $currentIntroStep = $('.Introduction__step--current');
         var $nextIntroStep = $currentIntroStep.next();
 
+        if($nextIntroStep.hasClass('Introduction__instruction')){
+            console.log('has instruction');
+            this.setState({
+                instructions: true
+            }, () => {
+                this.setState({
+                    instructions: true
+                })
+            })
+        }
+
         $currentIntroStep.toggleClass('Introduction__step--current');
         $nextIntroStep.toggleClass('Introduction__step--current');
-
-        if($currentIntroStep.hasClass('Introduction__instruction')){
-
-        }
 
     }
 
@@ -45,7 +52,7 @@ class Introduction extends Component {
                         <button onClick={this.nextIntroductionStep}>next</button>
                     </div>
                     <div className="Introduction__step Introduction__instruction">
-                        <Instructions />
+                        <Instructions onEnd={this.nextIntroductionStep} startInstruction={this.state.instructions ? this.state.instructions : null}/>
                     </div>
                     <div className="Introduction__step Introduction__episode">
                         <EpisodeSelection onButtonPressed={this.props.onClickStartEpisode} />

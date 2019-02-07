@@ -30,9 +30,6 @@ class Homepage extends Component {
         this.setState ({
             instructions:true
         });
-        /*setTimeout(() => {
-            this.context.playInstructions(1);
-        }, 1500)*/
     }
 
     handleClickNext = () => {
@@ -54,10 +51,6 @@ class Homepage extends Component {
 
         var nextPage = $nextInstruction.data('step');
 
-        /*setTimeout(() => {
-            this.context.playInstructions(nextPage);
-        }, 1200);*/
-
         $currentInstruction.toggleClass('instructions__text--current');
         $nextInstruction.toggleClass('instructions__text--current');
 
@@ -71,9 +64,6 @@ class Homepage extends Component {
         if($currentInstruction.is(':last-child')) {
             $('.instructions__process').toggleClass('instructions__hide');
             $('.instructions__end').toggleClass('instructions__hide');
-            /*setTimeout(() => {
-                this.context.playInstructions(4);
-            }, 1200);*/
         }
     }
 
@@ -92,7 +82,7 @@ class Homepage extends Component {
                             <div className="Home__logo">
                                 <AnimLogo />
                             </div>
-                            <p className="Home__description">Une websérie immersive sonore qui vous plonge au coeur d'histoires et d'anecdotes du quotidien.</p>
+                            <p className="Home__description">La plateforme de podcasts interactifs qui vous plonge au coeur d'histoires et d'anecdotes du quotidien.</p>
                             <div className="Home__sound">
                                 <SoundAlert />
                             </div>

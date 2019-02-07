@@ -143,17 +143,18 @@ class SoundProvider extends Component {
                 }
             }, 1800)
         },
-        // TODO to be improved
+
         playInstructions:(step) => {
-            console.log(step);
             let url = 'https://circegrand.fr/etude/gobelins/malaise/media/sounds/instruction_' + step +'.mp3';
-            let stream;
-            stream = new Howl({
+            let instruction;
+            instruction = new Howl({
                 src: [url],
                 ext: ['mp3'],
                 html5: true
             });
-            stream.play()
+            instruction.play();
+
+            return instruction;
         },
 
         // TODO to be improved
