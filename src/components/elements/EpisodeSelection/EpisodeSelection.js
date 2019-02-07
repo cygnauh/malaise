@@ -61,7 +61,7 @@ class EpisodeSelection extends Component {
                                                             <div className="episodeSelection__choice">
                                                                 - si l'épisode ne te convient pas, jette un coup d'oeil au <a href="/catalogue">catalogue</a> -
                                                             </div>
-                                                        : null}
+                                                            : null}
                                                     </div>
                                                 </div>
                                             </div>
@@ -79,4 +79,3 @@ class EpisodeSelection extends Component {
 }
 EpisodeSelection.contextType = UserContext;
 export default EpisodeSelection;
-

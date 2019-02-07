@@ -56,8 +56,7 @@ class Catalogue extends Component {
                         <button className="Episode-item__cta">Continuer</button>
                         <button className="Episode-item__cta">Article</button>
                     </div>
-
-                    </div>
+                </div>
             )
         }
         // entourages, display according to

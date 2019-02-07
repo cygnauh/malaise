@@ -10,18 +10,33 @@ class Introduction extends Component {
         super(props);
     }
 
+    handleClickSkipJingle = (e) => {
+        console.log(e.currentTarget);
+    }
+
+    nextIntroductionStep = () => {
+        console.log('next step');
+    }
+
+    handleClickNextIntroStep = () => {
+        this.nextIntroductionStep();
+    }
+
     render() {
         return(
             <div className="Introduction">
                 <div className="Introduction__container">
-                    <div className="Introduction__jingle">
+                    <div className="Introduction__step Introduction__jingle Introduction__step--current">
                         <Jingle />
-                        <button className="Introduction__jingle__cta">Passer le jingle</button>
+                        <button className="Introduction__jingle__cta"
+                                onClick={this.handleClickSkipJingle}>
+                            Passer le jingle
+                        </button>
                     </div>
-                    <div className="Introduction__episode">
-                        <EpisodeSelection />
+                    <div className="Introduction__step Introduction__episode">
+                        <EpisodeSelection onButtonPressed={this.handleClickNextIntroStep} />
                     </div>
-                    <div className="Introduction__instruction">
+                    <div className="Introduction__step Introduction__instruction">
                         <Instructions />
                     </div>
                 </div>

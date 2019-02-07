@@ -5,6 +5,8 @@ import { Query } from "react-apollo";
 import { getAnwsers } from './../graphql/queries'
 import Interactions from '../components/interactions/Interactions'
 import "./episode.scss";
+import $ from 'jquery';
+
 // 1) hours, --> personnalization ?? doorbell, boum, --> presentation soirée
 class Episode extends Component {
     constructor(){
@@ -13,7 +15,8 @@ class Episode extends Component {
             render:'',
             componentIndex:0,
         };
-        this.nextComponent()
+        this.nextComponent();
+        $('body').removeClass('interface-reverse').addClass('episode');
     }
     nextComponent = () => {
         setTimeout(()=>{

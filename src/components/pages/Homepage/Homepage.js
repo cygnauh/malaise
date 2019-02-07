@@ -6,6 +6,7 @@ import AnimLogo from "../../elements/AnimLogo/AnimLogo";
 import Lottie from 'react-lottie';
 import animationHome from '../../../assets/animation/03';
 import { SoundContext } from "../../../store/SoundProvider";
+import Introduction from "../../elements/Introduction/Introduction";
 
 class Homepage extends Component {
 
@@ -27,13 +28,13 @@ class Homepage extends Component {
         }
     }
 
-    handleClickStart = (e) => {
+    handleClickStart = () => {
         this.setState ({
             instructions:true
         });
-        setTimeout(() => {
+        /*setTimeout(() => {
             this.context.playInstructions(1);
-        }, 1500)
+        }, 1500)*/
     }
 
     handleClickNext = () => {
@@ -100,6 +101,7 @@ class Homepage extends Component {
                             <button className="Home__start" onClick={this.handleClickStart}>démarrer l'expérience</button>
                         </div>
                         <div className={this.state.instructions ? "Home__instructions" : "Home__instructions  Home__hide"}>
+                            {/*<Introduction />*/}
                             <div className="instructions">
                                 <div className="instructions__container">
                                     <div className="instructions__process">

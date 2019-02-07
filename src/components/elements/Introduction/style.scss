@@ -3,4 +3,12 @@
 
 .Introduction {
 
+  &__jingle {
+
+    &__cta {
+      @include default-button($color__white);
+    }
+
+  }
+
 }

@@ -12,7 +12,10 @@ class Instructions extends Component {
             <div className="Instructions">
                 <div className="Instructions__container">
                     <div className="Instruction instruction--current" data-step="1">Bienvenue dans un nouvel épisode de malaise</div>
-                    <div className="Instruction" data-step="2" data-notice="Les indications seront affichées ici !">Laisse toi guider et suis les indications en bas de l'écran.</div>
+                    <div className="Instruction" data-step="2" data-notice="Les indications seront affichées ici !">
+                        Laisse toi guider et suis les indications en bas de l'écran.
+                        <button>Commencer</button>
+                    </div>
                 </div>
             </div>
         )
