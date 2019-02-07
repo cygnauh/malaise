@@ -11,7 +11,8 @@ class DrinkAction extends Component {
         this.state = {
             render:'',
             persons : '',
-            canDrink: false
+            canDrink: false,
+            toDrink: false
         };
         this.drinkers = this.props.drinkers; // persons who drinks at the question
         this.timer = this.props.timer;
@@ -38,11 +39,14 @@ class DrinkAction extends Component {
                     <div key={i} className="Person_list">
                         <Glass name={name}
                                glassFilled={glassLevel}
-                               onDrink={toDrink}/>
+                               onDrink={toDrink}
+                               mode="interaction"
+                        />
                         {this.asker === this.state.persons[i].role ?
                             <span className="Drink_Games_content">
-                        Je n'ai jamais été viré d'un bar
-                        </span> : null}
+                                {this.question}
+                                {/*Je n'ai jamais été viré d'un bar*/}
+                            </span> : null}
                     </div>
                 )
 
@@ -53,13 +57,23 @@ class DrinkAction extends Component {
     userDrank = () => {
         // show drinkers
         clearTimeout(this.handleTimer)
+        for (let i = 0; i<this.state.persons.length;i++) {
+            if(this.drinkers.indexOf(this.state.persons[i].role)!==-1){
+                let persons = this.state.persons;
+                persons[i].glass = 1;
+                // console.log(persons)
+                this.context.setPersonalization(persons)
+            }
+        }
         this.setState({
-            canDrink:!this.state.canDrink
+            canDrink:!this.state.canDrink,
+            persons : this.context.personalizations
         }, ()=>{
             this.setState({
                 test:"Temporary fix"
             })
         });
+        setTimeout(()=>{ this.props.drinkActionEnd() }, 2000)
         //TODO register user alcohol level
     };
     // handleTimer = () => {
@@ -73,7 +87,7 @@ class DrinkAction extends Component {
                     {this.state.persons ? this.handleDrink() : null}
                 </div>
                 <div className="Drink">
-                    <DragDrop onDrink={this.userDrank}/>
+                    <DragDrop onDrink={this.userDrank} disableDrag={this.state.canDrink}/>
                 </div>
             </div>
         )

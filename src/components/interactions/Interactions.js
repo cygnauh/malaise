@@ -1,104 +1,160 @@
 // COMPONENTS
-import React, { Component } from 'react';
+import React, {Component} from 'react';
+import Lottie from 'react-lottie';
+import boumboum from '../../assets/animation/boumboum'
 import MusicChoice from './MusicChoice/MusicChoice'
 import Question from './Question/Question'
 import DrinkAction from './DrinkAction/DrinkAction'
+import UserQuestion from './UserQuestion/UserQuestion'
+import Hours from './Hours/Hours'
+import TakingPosition from './TakingPosition/TakingPosition'
 // QUERY
-import { Query } from "react-apollo";
-import { getMusics } from '../../graphql/queries'
+import {Query} from "react-apollo";
+import {getMusics} from '../../graphql/queries'
 // API CONTEXT
-import { SoundContext } from "../../store/SoundProvider";
+import {SoundContext} from "../../store/SoundProvider";
 import './interactions.scss'
+import UserContext from '../../store/UserProvider'
 
 class Interactions extends Component {
-    constructor(props){
+    constructor(props) {
         super(props);
         this.state = {
-            render:'',
+            render: '',
             interactionPosition: 1,
-            interaction : null,
-            show : false
+            interaction: null,
+            show: false,
+            soundSequence: ''
         };
         this.answers = this.props.anwsers.allAnswers
+        this.defaultOptions = {
+            loop: true,
+            autoplay: true,
+            animationData: boumboum,
+            rendererSettings: {
+                preserveAspectRatio: 'xMidYMid slice'
+            }
+        };
     }
-    componentDidMount(){
+
+    componentDidMount() {
         this.interactions = this.context.interactions;
         this.handleInteraction();
     };
+
     handleInteraction = () => {
+        // console.log('handleInteraction', this.state.interactionPosition)
         let inte = this.interactions.find(setting => setting.position === this.state.interactionPosition);
-        if(this.interactions && this.state.interactionPosition){
+        if (this.interactions && this.state.interactionPosition) {
             this.setState({
-                interaction : inte
-            }, ()=>{
-                let time = this.context.playInteractionSound(this.state.interaction.name)
-                // setTimeout(()=>{
-                console.log(this.state.interaction.interactionType)
-                    if(this.state.interaction && this.state.interaction.interactionType === "none"){
-                        // console.log(time)
-                        // if(time){
-                        time.on('end', ()=>{
-                            if(this.state.interaction.interactionType === "none") {
-                                console.log("this is the end");
+                interaction: inte
+            }, () => {
+                if(this.state.interaction.interactionType === 'heure'){
+                    this.setState({
+                        show: true
+                    });
+                    setTimeout(this.handleAnswer(null), 5000)
+                    return
+                }
+                this.setState({
+                    soundSequence: this.context.playInteractionSound(this.state.interaction.name)
+                }, () => {
+                    // console.log(this.state.soundSequence)
+                    // console.log(this.state.soundSequence[0])
+                    // let time = this.context.playInteractionSound(this.state.interaction.name)
+                    if (this.state.interaction.interactionType === "none" && this.state.interaction.content === null) {
+                        this.state.soundSequence[0].on('end', (id) => {
+                            console.log(id)
+                            if (this.state.interaction.interactionType === "none" && this.state.interaction.content === null) {
+                                // console.log(this.state.interaction)
+                                console.log("end1");
                                 this.handleAnswer(null)
                             }
                             // return true
                         });
-                        // }
-                    } else {
+                    }
+                    else if (this.state.interaction.interactionType === "none" && this.state.interaction.content !== null){
+                        setTimeout(()=>{
+                            console.log("end2");
+                            this.handleAnswer(null)
+                        },this.state.soundSequence[1])
+                    }
+
+                    if (this.state.interaction && this.state.interaction.interactionType !== "none") {
+                        console.log("hello")
                         this.setState({
-                            show : true
+                            show: true
                         });
                     }
-                    // }, time);
-           })
+                });
+            })
         }
-      };
+    };
     handleAnswer = (value) => {
+        // console.log('a');
         let answer = (value) ? value : null;
-        if(this.answers && this.state.interaction) {
-            for(let i = 0; i <this.answers.length; i++) {
-                if(this.answers[i].originInteraction &&
+        let destinationFound = false;
+        let destination = ''
+        if (this.answers && this.state.interaction) {
+            // console.log('b');
+            for (let i = 0; i < this.answers.length; i++) {
+                // console.log(this.answers[i].originInteraction);
+                // console.log(this.answers[i].originInteraction.id);
+                // console.log(this.state.interaction.id);
+                // console.log(this.answers[i].content);
+                // console.log(answer);
+                // console.log(!destinationFound)
+                if (this.answers[i].originInteraction &&
                     this.answers[i].originInteraction.id === this.state.interaction.id &&
-                    this.answers[i].content === answer
+                    this.answers[i].content === answer &&
+                    this.answers[i].destinationInteraction &&
+                    this.answers[i].destinationInteraction.position &&
+                    !destinationFound
                 ) {
+                    console.log('answer')
                     console.log(this.answers[i].destinationInteraction.position);
                     this.setState({
-                        interactionPosition : this.answers[i].destinationInteraction.position,
-                        show : !this.state.show
-                    }, () =>{
-                        this.handleInteraction()
+                        // interactionPosition : destination,
+                        interactionPosition: this.answers[i].destinationInteraction.position,
+                        show: !this.state.show
+                    }, () => {
+                        console.log('a');
+                        this.handleInteraction();
+                        destinationFound = true;
+
                     });
                     return
                 }
             }
         }
     };
+
     render() {
         return (
             <div className="Interactions">
-                {this.state.show && this.state.interaction && this.state.interaction.interactionType === "musique" ?
+
+                {this.state.show && this.state.interaction && this.state.interaction.interactionType === "music" ?
                     // getMusics
                     <div>
-                <Query
-                    query={getMusics}
-                    notifyOnNetworkStatusChange
-                >
-                    {({ loading, error, data, refetch, networkStatus }) => {
-                        if (networkStatus === 4) return "Refetching!";
-                        if (loading) return null;
-                        if (error) return `Error!: ${error}`;
-                        return (
-                            <div>
-                                <MusicChoice
-                                    musics={data.allSounds}
-                                    onMusicClicked={this.handleAnswer}
-                                />
-                            </div>)
-                    }}
-                    </Query>
-                </div>
-                : null}
+                        <Query
+                            query={getMusics}
+                            notifyOnNetworkStatusChange
+                        >
+                            {({loading, error, data, refetch, networkStatus}) => {
+                                if (networkStatus === 4) return "Refetching!";
+                                if (loading) return null;
+                                if (error) return `Error!: ${error}`;
+                                return (
+                                    <div>
+                                        <MusicChoice
+                                            musics={data.allSounds}
+                                            onMusicClicked={this.handleAnswer}
+                                        />
+                                    </div>)
+                            }}
+                        </Query>
+                    </div>
+                    : null}
                 {this.state.show && this.state.interaction && this.state.interaction.interactionType === "question" && this.state.interaction.content ?
                     <Question question={this.state.interaction.question}
                               choices={this.state.interaction.content.split('@')}
@@ -110,13 +166,31 @@ class Interactions extends Component {
                     <DrinkAction drinkers={this.state.interaction.content.split('@')}
                                  timer={this.state.interaction.timer}
                                  question={this.state.interaction.question.split('@')}
-                                 onMusicClicked={this.handleAnswer}
+                                 drinkActionEnd={this.handleAnswer}
                     />
                     : null}
 
+                {this.state.show && this.state.interaction && this.state.interaction.interactionType === "user question" ?
+                    <UserQuestion drinkActionEnd={this.handleAnswer}/>
+                    : null}
+
+                {this.state.show && this.state.interaction && this.state.interaction.interactionType === "heure" ?
+                    <Hours/>
+                    : null}
+                    {/*TODO Fix error or handle it differently */}
+
+
+                {this.state.show && this.state.interaction && this.state.interaction.interactionType === "taking position" ?
+
+                            // console.log(personalizations)
+                            <TakingPosition arguers={this.state.interaction.content.split('@')} onEnd={this.handleAnswer}/>
+                    //     )}
+                    // </UserContext.Consumer>
+                    : null}
             </div>
         )
     }
 }
+
 Interactions.contextType = SoundContext;
 export default Interactions;

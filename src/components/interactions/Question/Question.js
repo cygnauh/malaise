@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-
+// import '../../../assets/styles/variables/index.scss';
+import './Question.scss';
 class Question extends Component {
 
     constructor(props) {
