@@ -141,16 +141,14 @@ class Interactions extends Component {
 
                 {this.state.show && this.state.interaction && this.state.interaction.interactionType === "music" ?
                     // getMusics
-                    <div>
+                    <div className="Interactions__music">
                         <Query query={getMusics} notifyOnNetworkStatusChange>
                             {({loading, error, data, refetch, networkStatus}) => {
                                 if (networkStatus === 4) return "Refetching!";
                                 if (loading) return null;
                                 if (error) return `Error!: ${error}`;
                                 return (
-                                    <div>
                                         <MusicChoice musics={data.allSounds} onMusicClicked={this.handleAnswer}/>
-                                    </div>
                                 )
                             }}
                         </Query>

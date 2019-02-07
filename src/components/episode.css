@@ -10,8 +10,7 @@
 .Episode {
   width: 100%;
   height: 100%;
-  position: relative;
-  background: #EAEAEA; }
+  position: relative; }
   .Episode__hours, .Episode__personalization, .Episode__interactions {
     width: 100%;
     height: 100%;

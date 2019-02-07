@@ -29,7 +29,7 @@
       .Music__name--toLeft, .Music__name--toRight {
         span, &:after {
           animation-play-state: paused;
-          color: $color__white;
+          color: $color__xp--light;
         }
       }
     }

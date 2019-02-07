@@ -10,3 +10,11 @@
   cursor: pointer;
   transition: color 0.5s ease-in, background-color 0.5s ease-in;
 }
+
+@mixin border-button($color, $borderColor, $font, $size) {
+  text-transform: lowercase;
+  font-family: $font;
+  font-weight: normal;
+  letter-spacing: 1px;
+  font-size: $font;
+}

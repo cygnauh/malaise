@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-// import '../../../assets/styles/variables/index.scss';
 import './Question.scss';
 class Question extends Component {
 
@@ -16,7 +15,7 @@ class Question extends Component {
         this.questionChoices = [];
         for(let i = 0; i<this.state.choices.length;i++){
             this.questionChoices.push(
-                <div key={i} className="question-choice" onClick={()=>this.onChoiceClicked(i)}>
+                <div key={i} className="Question__choice" onClick={()=>this.onChoiceClicked(i)}>
                     {this.state.choices[i]}
                 </div>
             )
@@ -24,19 +23,20 @@ class Question extends Component {
         // return choices
     };
     onChoiceClicked (index) {
-        console.log("clicked on queston")
+        console.log("clicked on queston");
         this.props.onAnwserClicked(this.state.choices[index]);
     }
 
     render() {
         return (
             <div className="Question">
-                <h2 className="question-label">
-                    QUESTION
-                    {this.state.question}
-                </h2>
-                <div className="question-choices">
-                    {this.questionChoices ? this.questionChoices : null}
+                <div className="Question__container">
+                    <h2 className="Question__label">
+                        <span>{this.state.question}</span>
+                    </h2>
+                    <div className="Question__choices">
+                        {this.questionChoices ? this.questionChoices : null}
+                    </div>
                 </div>
             </div>
         )
