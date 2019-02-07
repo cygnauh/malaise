@@ -17,9 +17,9 @@
   transition: transform 0.8s ease;
   transform: translateX(calc(48px - 100%)); }
   .Navigation--open {
-    transform: translateX(0); }
+    transform: translateX(0) !important; }
     .Navigation--open .Navigation__action-cta {
-      transform: rotate(45deg); }
+      transform: rotate(45deg) !important; }
   .Navigation__header {
     display: flex;
     align-items: center;
@@ -131,14 +131,34 @@
 
 .interface-reverse .Navigation {
   background: #EAEAEA;
-  color: #002c36; }
+  color: #002c36;
+  transform: translateX(calc(18px - 100%)); }
   .interface-reverse .Navigation__action {
     border-left: 1px solid #002c36;
     border-right: 1px solid #002c36; }
   .interface-reverse .Navigation__item {
     border-bottom: 1px solid #002c36; }
+    .interface-reverse .Navigation__item .item__link:hover .item__name {
+      color: #EAEAEA;
+      text-shadow: -1px 0 #002c36, 0 1px #002c36, 1px 0 #002c36, 0 -1px #002c36; }
     .interface-reverse .Navigation__item .item__link:focus, .interface-reverse .Navigation__item .item__link:active {
       text-shadow: -1px 0 #002c36, 0 1px #002c36, 1px 0 #002c36, 0 -1px #002c36;
       color: #EAEAEA; }
+
+.episode .Navigation {
+  background: #002c36;
+  color: #EAEAEA; }
+  .episode .Navigation__action {
+    border-left: 1px solid #EAEAEA;
+    border-right: 1px solid #EAEAEA; }
+  .episode .Navigation__item {
+    border-bottom: 1px solid #EAEAEA; }
+    .episode .Navigation__item .item__link {
+      color: #EAEAEA; }
+      .episode .Navigation__item .item__link:hover .item__name {
+        color: #ff7471; }
+      .episode .Navigation__item .item__link:focus, .episode .Navigation__item .item__link:active {
+        text-shadow: -1px 0 #EAEAEA, 0 1px #EAEAEA, 1px 0 #EAEAEA, 0 -1px #EAEAEA;
+        color: #002c36; }
 
 /*# sourceMappingURL=style.css.map */

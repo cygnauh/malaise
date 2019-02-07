@@ -5,4 +5,8 @@
   position: relative;
   overflow: hidden; }
 
+.interface-reverse .Main, .episode .Main {
+  width: calc(100% - 18px);
+  margin-left: 18px; }
+
 /*# sourceMappingURL=style.css.map */

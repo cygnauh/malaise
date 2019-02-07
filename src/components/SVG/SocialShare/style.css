@@ -16,10 +16,13 @@
   .SocialShare svg {
     width: 20px; }
 
-.interface .SocialShare svg path {
+.interface .SocialShare svg {
   fill: #EAEAEA; }
 
-.interface-inverse .SocialShare svg path {
+.interface-inverse .SocialShare svg {
   fill: #002c36; }
+
+.episode .SocialShare svg {
+  fill: #EAEAEA; }
 
 /*# sourceMappingURL=style.css.map */

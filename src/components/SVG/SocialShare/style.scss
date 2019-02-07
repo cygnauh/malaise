@@ -16,9 +16,7 @@
 .interface {
   .SocialShare {
     svg {
-      path {
-        fill: $color__white;
-      }
+      fill: $color__white;
     }
   }
 }
@@ -26,9 +24,15 @@
 .interface-inverse {
   .SocialShare {
     svg {
-      path {
-        fill: $color__xp--dark;
-      }
+      fill: $color__xp--dark;
+    }
+  }
+}
+
+.episode {
+  .SocialShare {
+    svg {
+      fill: $color__white;
     }
   }
 }

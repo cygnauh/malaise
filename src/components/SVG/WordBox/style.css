@@ -12,9 +12,16 @@
   height: auto; }
 
 .interface .WordBox {
-  stroke: #EAEAEA; }
+  stroke: #EAEAEA;
+  fill: #0B162E; }
 
 .interface-reverse .WordBox {
-  stroke: #002c36; }
+  fill: #EAEAEA; }
+  .interface-reverse .WordBox g {
+    stroke: #002c36; }
+
+.episode .WordBox {
+  stroke: #EAEAEA;
+  fill: #002c36; }
 
 /*# sourceMappingURL=style.css.map */

@@ -5,3 +5,10 @@
     position: relative;
     overflow: hidden;
 }
+
+.interface-reverse, .episode {
+    .Main {
+        width: calc(100% - 18px);
+        margin-left: 18px;
+    }
+}

@@ -12,10 +12,10 @@
   @include slide(100%, 48px);
 
   &--open {
-    transform: translateX(0);
+    transform: translateX(0)!important;
 
     .Navigation__action-cta {
-      transform: rotate(45deg);
+      transform: rotate(45deg)!important;
     }
 
   }
@@ -224,23 +224,87 @@
 }
 
 .interface-reverse {
+
   .Navigation {
     background: $color__white;
     color: $color__xp--dark;
+    @include slide(100%, 18px);
+
     &__action {
       border-left: 1px solid $color__xp--dark;
       border-right: 1px solid $color__xp--dark;
     }
+
     &__item {
       border-bottom: 1px solid $color__xp--dark;
+
       .item {
+
         &__link {
+
+          &:hover {
+
+            .item__name {
+              color: $color__white;
+              text-shadow: -1px 0 $color__xp--dark, 0 1px $color__xp--dark, 1px 0 $color__xp--dark, 0 -1px $color__xp--dark;
+            }
+
+          }
+
           &:focus, &:active {
             text-shadow: -1px 0 $color__xp--dark, 0 1px $color__xp--dark, 1px 0 $color__xp--dark, 0 -1px $color__xp--dark;
             color: $color__white;
           }
+
         }
+
       }
+
     }
+
   }
+
+}
+
+.episode {
+
+  .Navigation {
+    background: $color__xp--dark;
+    color: $color__white;
+
+    &__action {
+      border-left: 1px solid $color__white;
+      border-right: 1px solid $color__white;
+
+    }
+
+    &__item {
+      border-bottom: 1px solid $color__white;
+
+      .item {
+
+        &__link {
+          color: $color__white;
+
+          &:hover {
+
+            .item__name {
+              color: $color__xp--light;
+            }
+
+          }
+
+          &:focus, &:active {
+            text-shadow: -1px 0 $color__white, 0 1px $color__white, 1px 0 $color__white, 0 -1px $color__white;
+            color: $color__xp--dark;
+          }
+
+        }
+
+      }
+
+    }
+
+  }
+
 }

@@ -9,11 +9,22 @@
 .interface {
   .WordBox {
     stroke: $color__white;
+    fill: $color__bg;
   }
 }
 
 .interface-reverse {
   .WordBox {
-    stroke: $color__xp--dark;
+    fill: $color__white;
+    g {
+      stroke: $color__xp--dark;
+    }
+  }
+}
+
+.episode {
+  .WordBox {
+    stroke: $color__white;
+    fill: $color__xp--dark;
   }
 }
