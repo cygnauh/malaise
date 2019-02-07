@@ -20,17 +20,14 @@ class StartProcess extends Component {
     handleClickNext = () => {
         let index = this.state.index +1 ;
 
-        if(this.state.index === 1) {
-            $('body').removeClass('interface').addClass('interface-reverse');
-        }
-
-        if(this.state.index === 2) {
-            $('body').removeClass('interface-reverse').addClass('episode');
-        }
-
         this.setState({
-            index : index,
-        })
+            index : index
+        }, () => {
+            if(this.state.index === 1) {
+                $('body').removeClass('interface').addClass('interface-reverse');
+            }
+        });
+
     }
 
     render () {
@@ -39,8 +36,7 @@ class StartProcess extends Component {
             <div className="Start-process">
                 <div className="wrapper-container">
                     {this.state.index === 0 ? <Homepage onButtonPressed={this.handleClickNext} /> : null}
-                    {this.state.index === 1? <EpisodeSelection onButtonPressed={this.handleClickNext}/> : null}
-                    {this.state.index === 2 ? <Episode onButtonPressed={this.handleClickNext}/> : null}
+                    {this.state.index === 1 ? <Episode onButtonPressed={this.handleClickNext}/> : null}
                 </div>
             </div>
         )

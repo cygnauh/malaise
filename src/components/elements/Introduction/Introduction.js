@@ -14,23 +14,22 @@ class Introduction extends Component {
         };
     }
 
-    handleClickSkipJingle = (e) => {
-        this.nextIntroductionStep();
+    handleClickSkipIntro = () => {
+        $('.Introduction__step--current').removeClass('Introduction__step--current');
+        $('.Introduction__episode').addClass('Introduction__step--current');
     }
 
     nextIntroductionStep = () => {
-        console.log('next step');
-
         var $currentIntroStep = $('.Introduction__step--current');
         var $nextIntroStep = $currentIntroStep.next();
 
         $currentIntroStep.toggleClass('Introduction__step--current');
         $nextIntroStep.toggleClass('Introduction__step--current');
 
-    }
+        if($currentIntroStep.hasClass('Introduction__instruction')){
 
-    handleClickNextIntroStep = () => {
-        this.nextIntroductionStep();
+        }
+
     }
 
     render() {
@@ -40,15 +39,16 @@ class Introduction extends Component {
                     <div className="Introduction__step Introduction__jingle Introduction__step--current">
                         <Jingle />
                         <button className="Introduction__jingle__cta"
-                                onClick={this.handleClickSkipJingle}>
-                            Passer le jingle
+                                onClick={this.handleClickSkipIntro}>
+                            Passer l'intro
                         </button>
-                    </div>
-                    <div className="Introduction__step Introduction__episode">
-                        <EpisodeSelection onButtonPressed={this.handleClickNextIntroStep} />
+                        <button onClick={this.nextIntroductionStep}>next</button>
                     </div>
                     <div className="Introduction__step Introduction__instruction">
                         <Instructions />
+                    </div>
+                    <div className="Introduction__step Introduction__episode">
+                        <EpisodeSelection onButtonPressed={this.props.onClickStartEpisode} />
                     </div>
                 </div>
             </div>
