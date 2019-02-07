@@ -14,7 +14,9 @@ class Instructions extends Component {
         if(this.props.startInstruction === true) {
             let $currentInstructionStep = $('.Instruction--current');
             let stepCurrent = $currentInstructionStep.data('step');
-            this.playInstruction(stepCurrent);
+            setTimeout(() => {
+                this.playInstruction(stepCurrent);
+            }, 1000)
         }
     }
 
@@ -32,7 +34,7 @@ class Instructions extends Component {
         } else {
             setTimeout(() => {
                 this.playInstruction(stepNextStep);
-            }, 1000);
+            }, 1200);
         }
 
     }

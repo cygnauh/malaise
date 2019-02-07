@@ -15,12 +15,12 @@
     top: 50%;
     transform: translate(-50%,-50%);
     min-width: 350px;
-    transition: opacity 0.5s ease-in;
+    transition: opacity 1s 0s;
 
     &--current {
       z-index: 5;
       opacity: 1;
-      transition: opacity 0.5s ease-in;
+      transition: opacity 1s 1s;
     }
 
   }
