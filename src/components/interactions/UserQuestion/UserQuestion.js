@@ -12,14 +12,17 @@ class UserQuestion extends Component {
             "été en dehors de la France",
             "couché avec quelqu’un dans cette pièce",
             "été en garde à vue",
-            "couché avec quelqu’un dans cette pièce"
+            "volé dans un magasin"
         ]
     }
     displayProposition = () => {
         let propositions = []
         for (let i = 0; i<this.propositions.length; i ++){
             propositions.push(
-                <div key={i} onClick={()=>this.propositionSelected(this.propositions[i])}>
+                <div key={i}
+                     className={this.propositions[i] === this.state.proposition ? 'proposition clicked':'proposition'}
+                     onClick={()=>this.propositionSelected(this.propositions[i])}>
+                {/*<div key={i} className="proposition" onClick={()=>this.propositionSelected(this.propositions[i])}>*/}
                     {this.propositions[i].toString()}
                 </div>
             )
@@ -46,14 +49,16 @@ class UserQuestion extends Component {
     render() {
         return (
             <div className="userQuestion">
-                <div className="userQuestion__wrapper-input">
-                    <label className="userQuestion__input-label">Je n'ai jamais</label>
-                    <input type="text" value={this.state.proposition} onChange={this.inputChange}/>
-                    <button onClick={this.validateProposition}>ok</button>
-                </div>
-                <div className="wrapper-proposition">
-                    <div className="proposition">
-                        {this.displayProposition()}
+                <div className="userQuestion__wrapper">
+                    <div className="userQuestion__input_wrapper">
+                        <label className="userQuestion__label">Je n'ai jamais...</label>
+                        <input className="userQuestion__input" type="text" value={this.state.proposition} onChange={this.inputChange} placeholder={'entre ta proposition'}/>
+                        <button className="userQuestion__valid" onClick={this.validateProposition}>ok</button>
+                    </div>
+                    <div className="wrapper-proposition">
+                        <div className="propositions">
+                            {this.displayProposition()}
+                        </div>
                     </div>
                 </div>
             </div>
