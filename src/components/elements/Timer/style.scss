@@ -7,7 +7,7 @@
   height: 100%;
 
   &__active {
-    @include timer('.Timer__container', $color__xp--light, $color__bg, 50, 5, 13);
+    @include timer('.Timer__container', $color__xp--light, $color__bg, 50, 6.6, 13); // TODO replace in another
   }
 
   &__container {

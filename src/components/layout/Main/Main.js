@@ -52,7 +52,6 @@ class Main extends Component {
                                 <Route path="/user-question" component={UserQuestion} />
                                 <Route path="/timer" component={Timer} />
                                 <Route path="/credits" component={Credits} />
-
                             </Switch>
                         </main>
                     );

@@ -49,13 +49,14 @@ class Interactions extends Component {
             this.setState({
                 interaction: inte
             }, () => {
-                if(this.state.interaction.interactionType === 'heure'){
-                    this.setState({
-                        show: true
-                    });
-                    // setTimeout(this.handleAnswer(null), 10000)
-                    return
-                }
+                // if(this.state.interaction.interactionType === 'heure'){
+                //     this.setState({
+                //         show: true
+                //     });
+                //     // setTimeout(this.handleAnswer(null), 10000)
+                //     return
+                // }
+
                 this.setState({
                     soundSequence: this.context.playInteractionSound(this.state.interaction.name)
                 }, () => {
@@ -78,10 +79,15 @@ class Interactions extends Component {
                             console.log("end2");
                             this.handleAnswer(null)
                         },this.state.soundSequence[1])
-                    }
+                    } // TODO Uncomment
 
-                    if (this.state.interaction && this.state.interaction.interactionType !== "none") {
-                        console.log("hello")
+                    if (this.state.interaction && this.state.interaction.interactionType === 'drag and drop' && this.state.interactionPosition === 20){
+                        setTimeout( () =>{
+                            this.setState({
+                                show: true
+                            });
+                        }, this.state.soundSequence[1]-1000)
+                    } else if (this.state.interaction && this.state.interaction.interactionType !== "none") {
                         this.setState({
                             show: true
                         });

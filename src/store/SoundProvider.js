@@ -87,10 +87,18 @@ class SoundProvider extends Component {
                 //     fin:[335890, 20610] //ok
                 // },
                 sprite: tab // TODO Uncomment
+                // sprite:{
+                //     je_n_ai_jamais3:[102400, 12600], // ok
+                //     je_n_ai_jamais3_p: [115000, 10300], // ok for taking position
+                //     je_n_ai_jamais3_a: [125300, 6805], // ok --> maybe drag and drop display later : maybe add another interaaction or setTimeOut or playing at the end
+                //     reaction3:[132105, 15695],
+                //     // je_n_ai_jamais3_a: [125300, 10000], // ok
+                //     recherche_google:[254220, 58290], // ok
+                //     }
             });
             this.setState({ episodeSounds: sound },()=>{
                     // console.log(this.state.episodeSounds)
-                    // this.state.episodeSounds.play('fin')
+                    // this.state.episodeSounds.play('recherche_google')
             });
 
         },
@@ -202,24 +210,11 @@ class SoundProvider extends Component {
         },
         // voices interaction
         playInteractionSound:(value) => {
-            console.log(value)
-            // console.log(this.state.episodeSounds);
-            // this.state.episodeSounds.once('load', ()=>{
-                this.state.episodeSounds.play(value);
-                if(this.state.episodeSounds && this.state.episodeSounds._sprite[value]
-                    && this.state.episodeSounds._sprite[value][1]){
-
-                    // this.state.episodeSounds.on('end', ()=>{
-                    //     console.log("this is the end");
-                    //     // return true
-                    // });
-
-                    return [this.state.episodeSounds, this.state.episodeSounds._sprite[value][1]]
-                    // console.log(this.state.episodeSounds._sprite[value])
-                    // console.log(this.state.episodeSounds._sprite[value][1])
-                    // return this.state.episodeSounds._sprite[value][1]
-                } // TODO Uncomment all
-            // });
+            this.state.episodeSounds.play(value);
+            if(this.state.episodeSounds && this.state.episodeSounds._sprite[value]
+                && this.state.episodeSounds._sprite[value][1]){
+                return [this.state.episodeSounds, this.state.episodeSounds._sprite[value][1]]
+            } // TODO Uncomment all
 
         }
     };

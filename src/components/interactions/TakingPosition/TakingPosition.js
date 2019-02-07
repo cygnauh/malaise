@@ -14,8 +14,9 @@ class TakingPosition extends Component {
             defaultWidth: 0,
             started: false,
             timeIsOver: false,
-            arguers:'',
-            persons:''
+            arguers: '',
+            persons: '',
+            hide: false
         };
 
         this.part1 = React.createRef();
@@ -42,8 +43,20 @@ class TakingPosition extends Component {
         setTimeout(() => {
             this.setState({
                 timeIsOver: true
-            }, ()=>(this.props.onEnd ? this.props.onEnd() : null )); // TODO Temporary
-        }, 5000);
+            });
+        }, 6600);
+        setTimeout(() => {
+            this.setState({
+                hide: true
+            });
+        }, 8600);
+        setTimeout(() => {
+            if (this.props.onEnd) {
+                this.props.onEnd();
+
+            }// TODO Temporary
+        }, 10600);
+
     }
 
     handleMouseMove = (e) => {
@@ -81,7 +94,8 @@ class TakingPosition extends Component {
     render() {
 
         return (
-            <div className={this.state.timeIsOver ? 'TakingPosition TakingPosition__done' : 'TakingPosition'}>
+            <div className={this.state.timeIsOver ? 'TakingPosition TakingPosition__done' : 'TakingPosition'}
+                style={this.state.hide ? {opacity:0}:null}>
                 <div className="TakingPosition__timer">
                     <Timer activeTimer={this.state.started} />
                 </div>
