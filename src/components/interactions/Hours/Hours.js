@@ -26,7 +26,7 @@ class Hours extends Component {
     componentDidMount() {
 
         setTimeout(() => {
-            if(this.props.hours&&this.props.minutes&&this.props.date){
+            if(this.props.hours&&this.props.minute){
                 this.setState({
                     hours: this.props.hours,
                     minutes: this.props.minutes,
@@ -41,7 +41,7 @@ class Hours extends Component {
         }, 600);
         setTimeout(()=>{
             if(this.props.onEnd){
-                this.props.onEnd()
+                this.props.onEnd('hours')
             }
         }, 3000)
     }

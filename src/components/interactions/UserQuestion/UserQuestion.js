@@ -42,7 +42,7 @@ class UserQuestion extends Component {
     validateProposition = () => {
         console.log(this.state.proposition)
         if(this.state.proposition !== ''){
-            this.props.drinkActionEnd()
+            this.props.drinkActionEnd('user question')
         }
     };
 

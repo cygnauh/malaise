@@ -22,10 +22,10 @@ class EpisodeSelection extends Component {
     }
     onContinueClicked (callbackSetEpisode, params, callbackSetSounds, registerPlaceSound) {
         // for real project --> replace params.allEpisodes[0] by params.allEpisodes[params.allEpisodes.length-1]
-        let placeSound = params.allSounds.find(setting => setting.name === params.allEpisodes[0].place)
+        let placeSound = params.allSounds.find(setting => setting.name === params.allEpisodes[0].place);
         callbackSetEpisode(params.allEpisodes[0]);
         callbackSetSounds(params.allEpisodes[0].sounds[0].url, params.allEpisodes[0].interactions);
-        // registerPlaceSound(placeSound)
+        // registerPlaceSound(placeSound) // TODO uncomment
         this.props.onButtonPressed();
     }
     render () {

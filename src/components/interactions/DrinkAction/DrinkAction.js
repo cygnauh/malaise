@@ -73,7 +73,7 @@ class DrinkAction extends Component {
                 test:"Temporary fix"
             })
         });
-        setTimeout(()=>{ this.props.drinkActionEnd() }, 2000)
+        setTimeout(()=>{ this.props.drinkActionEnd('drink action') }, 2000)
         //TODO register user alcohol level
     };
     // handleTimer = () => {
