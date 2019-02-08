@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import "./style.scss";
 import gql from "graphql-tag";
 import { Mutation } from "react-apollo";
 import $ from 'jquery';
@@ -10,10 +11,11 @@ class AnecdoteForm extends Component {
 
     render() {
         const ADD_ANECDOTE = gql`
-            mutation createAnecdote($author: String!, $episode: ID!) {
-                createAnecdote(author: $author, episodeId: $episode) {
+            mutation createAnecdote($author: String!, $content: String!, $episode: ID!) {
+                createAnecdote(author: $author, content: $content, episodeId: $episode) {
                     id
                     author
+                    content
                     episode {
                         id
                     }
@@ -21,7 +23,7 @@ class AnecdoteForm extends Component {
             }
         `;
 
-        let input
+        let input, textarea;
 
         return (
             <Mutation mutation={ADD_ANECDOTE}>
@@ -30,17 +32,23 @@ class AnecdoteForm extends Component {
                         <form
                             onSubmit={e => {
                                 e.preventDefault();
-                                createAnecdote({ variables: { author: input.value, episode: "cjqwfe1kj1j2x0122tixfvb5i" } });
+                                createAnecdote({ variables: { author: input.value, content: textarea.value, episode: "cjqwfe1kj1j2x0122tixfvb5i" } });
                                 input.value = "";
+                                textarea.value = "";
                             }}
                         >
                             <input
                                 ref={node => {
                                     input = node;
                                 }}
-                                placeholder="Pseudo"
+                                placeholder="pseudo"
                             />
-                            <button type="submit">Add Anecdote</button>
+                            <textarea
+                                ref={node => {
+                                    textarea = node;
+                                }}
+                            />
+                            <button type="submit">Envoyer</button>
                         </form>
                     </div>
                 )}

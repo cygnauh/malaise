@@ -19,7 +19,7 @@ type Episode @model {
   theme: String
   voices: [Voice!]! @relation(name: "EpisodeVoices")
   directors: [Director!]! @relation(name: "EpisodeDirectors")
-  anecdotes: [Anecdote!]! @relation(name: "EpisodeAnecdotes")
+  anecdotes: [Anecdote] @relation(name: "EpisodeAnecdotes")
   thanks: String
   serpentin: String
 }
@@ -42,7 +42,7 @@ type Anecdote @model {
   author: String!
   content: String!
   createdAt: DateTime!
-  episode: Episode! @relation(name:"EpisodeAnecdotes")
+  episode: Episode @relation(name:"EpisodeAnecdotes")
 }
 
 type Definition @model {
