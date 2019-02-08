@@ -9,6 +9,14 @@ class AnecdoteForm extends Component {
         super(props);
     }
 
+    onSuccessForm = () => {
+
+    }
+
+    onErrorForm = () => {
+
+    }
+
     render() {
         const ADD_ANECDOTE = gql`
             mutation createAnecdote($author: String!, $content: String!) {
@@ -23,7 +31,7 @@ class AnecdoteForm extends Component {
         let input, textarea;
 
         return (
-            <Mutation mutation={ADD_ANECDOTE}>
+            <Mutation mutation={ADD_ANECDOTE} onCompleted={this.onSuccessForm} onError={this.onErrorForm}>
                 {(createAnecdote, { data }) => (
                     <form className="AnecdoteForm"
                         onSubmit={e => {
@@ -51,7 +59,6 @@ class AnecdoteForm extends Component {
                              />
                             <span>700 caractères maximum</span>
                         </div>
-
                         <button type="submit" className="AnecdoteForm__cta">Envoyer</button>
                     </form>
                 )}
