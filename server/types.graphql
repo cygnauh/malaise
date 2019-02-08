@@ -40,7 +40,7 @@ type Director @model {
 type Anecdote @model {
   id: ID! @isUnique
   author: String!
-  content: String!
+  createdAt: DateTime!
   episode: Episode! @relation(name:"EpisodeAnecdotes")
 }
 

@@ -20,6 +20,7 @@ import Credits from "../../pages/Credits/Credits";
 import TakingPosition from "../../interactions/TakingPosition/TakingPosition";
 import UserQuestion from "../../interactions/UserQuestion/UserQuestion";
 import Talk from "../../interactions/Talk/Talk";
+import AnecdoteForm from "../../elements/AnecdoteForm/AnecdoteForm";
 
 class Main extends Component {
     render() {
@@ -54,6 +55,7 @@ class Main extends Component {
                                 <Route path="/timer" component={Timer} />
                                 <Route path="/credits" component={Credits} />
                                 <Route path="/talk" component={Talk} />
+                                <Route path="/formAnecdote" component={AnecdoteForm} />
                             </Switch>
                         </main>
                     );
