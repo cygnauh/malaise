@@ -30,11 +30,11 @@ class Homepage extends Component {
         this.setState ({
             instructions:true
         });
-    }
+    };
 
     handleClickNext = () => {
         this.toggleInstruction();
-    }
+    };
 
     handleKeyDown = (e) => {
         if (e.key === 'Enter') {
@@ -43,13 +43,13 @@ class Homepage extends Component {
         if(e.keyCode === 40) {
             this.toggleInstruction();
         }
-    }
+    };
 
     toggleInstruction = () => {
-        var $currentInstruction = $('.instructions__content').find('.instructions__text--current');
-        var $nextInstruction = $currentInstruction.next();
+        let $currentInstruction = $('.instructions__content').find('.instructions__text--current');
+        let $nextInstruction = $currentInstruction.next();
 
-        var nextPage = $nextInstruction.data('step');
+        let nextPage = $nextInstruction.data('step');
 
         $currentInstruction.toggleClass('instructions__text--current');
         $nextInstruction.toggleClass('instructions__text--current');

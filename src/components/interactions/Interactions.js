@@ -39,47 +39,53 @@ class Interactions extends Component {
 
     componentDidMount() {
         this.interactions = this.context.interactions;
+        // console.log(this.interactions)
         this.handleInteraction();
     };
 
     handleInteraction = () => {
         // console.log('handleInteraction', this.state.interactionPosition)
         let inte = this.interactions.find(setting => setting.position === this.state.interactionPosition);
-        if (this.interactions && this.state.interactionPosition) {
+        if (inte && this.interactions && this.state.interactionPosition) {
             this.setState({
                 interaction: inte
             }, () => {
-                // if(this.state.interaction.interactionType === 'heure'){
-                //     this.setState({
-                //         show: true
-                //     });
-                //     // setTimeout(this.handleAnswer(null), 10000)
-                //     return
-                // }
-
                 this.setState({
                     soundSequence: this.context.playInteractionSound(this.state.interaction.name)
                 }, () => {
-                    // console.log(this.state.soundSequence)
-                    // console.log(this.state.soundSequence[0])
-                    // let time = this.context.playInteractionSound(this.state.interaction.name)
-                    if (this.state.interaction.interactionType === "none" && this.state.interaction.content === null) {
-                        this.state.soundSequence[0].on('end', (id) => {
-                            console.log(id)
-                            if (this.state.interaction.interactionType === "none" && this.state.interaction.content === null) {
-                                // console.log(this.state.interaction)
-                                console.log("end1");
+                    if(this.state.interactionPosition<17){
+                        if (this.state.interaction.interactionType === "none" && this.state.interaction.content === null) {
+                            this.state.soundSequence[0].on('end', (id) => {
+                                console.log(id)
+                                if (this.state.interaction.interactionType === "none" && this.state.interaction.content === null) {
+                                    this.setState({
+                                        currentSequenceEnded:true
+                                    }, ()=>{
+                                        console.log("end1");
+                                        this.handleAnswer(null)
+                                    })
+                                }
+                            });
+                        } else if (this.state.interaction.interactionType === "none" && this.state.interaction.content !== null){
+                            setTimeout(()=>{
+                                console.log("end2");
                                 this.handleAnswer(null)
+                            },this.state.soundSequence[1])
+                        } // TODO Uncomment
+                    }else{
+                        this.state.soundSequence[0].on('end', (id) => {
+                            console.log(id, this.state.interaction.name)
+                            if (this.state.interaction.interactionType === "none") {
+                                this.setState({
+                                    currentSequenceEnded:true
+                                }, ()=>{
+                                    console.log("end1");
+                                    this.handleAnswer(null)
+                                })
                             }
-                            // return true
                         });
                     }
-                    else if (this.state.interaction.interactionType === "none" && this.state.interaction.content !== null){
-                        setTimeout(()=>{
-                            console.log("end2");
-                            this.handleAnswer(null)
-                        },this.state.soundSequence[1])
-                    } // TODO Uncomment
+
 
                     if (this.state.interaction && this.state.interaction.interactionType === 'drag and drop' && this.state.interactionPosition === 20){
                         setTimeout( () =>{
@@ -102,14 +108,7 @@ class Interactions extends Component {
         let destinationFound = false;
         let destination = ''
         if (this.answers && this.state.interaction) {
-            // console.log('b');
             for (let i = 0; i < this.answers.length; i++) {
-                // console.log(this.answers[i].originInteraction);
-                // console.log(this.answers[i].originInteraction.id);
-                // console.log(this.state.interaction.id);
-                // console.log(this.answers[i].content);
-                // console.log(answer);
-                // console.log(!destinationFound)
                 if (this.answers[i].originInteraction &&
                     this.answers[i].originInteraction.id === this.state.interaction.id &&
                     this.answers[i].content === answer &&
@@ -122,12 +121,12 @@ class Interactions extends Component {
                     this.setState({
                         // interactionPosition : destination,
                         interactionPosition: this.answers[i].destinationInteraction.position,
-                        show: !this.state.show
+                        show: !this.state.show,
+                        currentSequenceEnded:false
                     }, () => {
                         console.log('a');
                         this.handleInteraction();
                         destinationFound = true;
-
                     });
                     return
                 }
