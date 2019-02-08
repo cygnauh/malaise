@@ -10,17 +10,18 @@ class AnecdoteForm extends Component {
 
     render() {
         const ADD_ANECDOTE = gql`
-            mutation createAnecdote($author: String!, $content: String!) {
-                createAnecdote(author: $author, content: $content) {
+            mutation createAnecdote($author: String!, $episode: ID!) {
+                createAnecdote(author: $author, episodeId: $episode) {
                     id
                     author
-                    content
-                    episode
+                    episode {
+                        id
+                    }
                 }
             }
         `;
 
-        let input;
+        let input
 
         return (
             <Mutation mutation={ADD_ANECDOTE}>
@@ -29,8 +30,7 @@ class AnecdoteForm extends Component {
                         <form
                             onSubmit={e => {
                                 e.preventDefault();
-                                createAnecdote({ variables: { author: input.value, content: input.value, episode: 'cjqwfe1kj1j2x0122tixfvb5i' } });
-                                input.value = "";
+                                createAnecdote({ variables: { author: input.value, episode: "cjqwfe1kj1j2x0122tixfvb5i" } });
                                 input.value = "";
                             }}
                         >
@@ -39,12 +39,6 @@ class AnecdoteForm extends Component {
                                     input = node;
                                 }}
                                 placeholder="Pseudo"
-                            />
-                            <input
-                                ref={node => {
-                                    input = node;
-                                }}
-                                placeholder="Histoire"
                             />
                             <button type="submit">Add Anecdote</button>
                         </form>
