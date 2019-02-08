@@ -1,13 +1,12 @@
 // COMPONENTS
 import React, {Component} from 'react';
-import Lottie from 'react-lottie';
-import boumboum from '../../assets/animation/boumboum'
 import MusicChoice from './MusicChoice/MusicChoice'
 import Question from './Question/Question'
 import DrinkAction from './DrinkAction/DrinkAction'
 import UserQuestion from './UserQuestion/UserQuestion'
 import Hours from './Hours/Hours'
 import TakingPosition from './TakingPosition/TakingPosition'
+import AnimationLottie from './Animation/AnimationLottie'
 // QUERY
 import {Query} from "react-apollo";
 import {getMusics} from '../../graphql/queries'
@@ -24,114 +23,119 @@ class Interactions extends Component {
             interactionPosition: 1,
             interaction: null,
             show: false,
-            soundSequence: ''
+            soundSequence: '',
+            origin:''
+            // currentSequenceEnded : false
         };
-        this.answers = this.props.anwsers.allAnswers
-        this.defaultOptions = {
-            loop: true,
-            autoplay: true,
-            animationData: boumboum,
-            rendererSettings: {
-                preserveAspectRatio: 'xMidYMid slice'
-            }
-        };
+        this.answers = this.props.anwsers.allAnswers;
     }
 
     componentDidMount() {
         this.interactions = this.context.interactions;
         // console.log(this.interactions)
-        this.handleInteraction();
+        this.handleInteraction(1, '');
     };
 
-    handleInteraction = () => {
+    handleInteraction = (newPos, origin) => {
         // console.log('handleInteraction', this.state.interactionPosition)
-        let inte = this.interactions.find(setting => setting.position === this.state.interactionPosition);
+        let inte = this.interactions.find(setting => setting.position === newPos);
         if (inte && this.interactions && this.state.interactionPosition) {
             this.setState({
-                interaction: inte
+                origin:origin,
+                show: !this.state.show,
+                interaction: inte,
+                soundSequence: this.context.playInteractionSound(inte.name)
             }, () => {
-                this.setState({
-                    soundSequence: this.context.playInteractionSound(this.state.interaction.name)
-                }, () => {
-                    if(this.state.interactionPosition<17){
-                        if (this.state.interaction.interactionType === "none" && this.state.interaction.content === null) {
+                // this.setState({
+                //
+                // }, () => {
+                    // if(this.state.interactionPosition<17){
+                        if (this.state.interaction.interactionType === "none") {
+                        // if (this.state.interaction.interactionType === "none" && this.state.interaction.content === null) {
                             this.state.soundSequence[0].on('end', (id) => {
                                 console.log(id)
                                 if (this.state.interaction.interactionType === "none" && this.state.interaction.content === null) {
-                                    this.setState({
-                                        currentSequenceEnded:true
-                                    }, ()=>{
+                                    // this.setState({
+                                    //     currentSequenceEnded:true
+                                    // }, ()=>{
                                         console.log("end1");
-                                        this.handleAnswer(null)
-                                    })
+                                        this.handleAnswer('nothing')
+                                    // })
                                 }
                             });
-                        } else if (this.state.interaction.interactionType === "none" && this.state.interaction.content !== null){
-                            setTimeout(()=>{
-                                console.log("end2");
-                                this.handleAnswer(null)
-                            },this.state.soundSequence[1])
-                        } // TODO Uncomment
-                    }else{
-                        this.state.soundSequence[0].on('end', (id) => {
-                            console.log(id, this.state.interaction.name)
-                            if (this.state.interaction.interactionType === "none") {
+                        }
+                            // else if (this.state.interaction.interactionType === "none" && this.state.interaction.content !== null){
+                        //     setTimeout(()=>{
+                        //         console.log("end2");
+                        //         this.handleAnswer(null)
+                        //     },this.state.soundSequence[1])
+                        // } // TODO Uncomment
+                    // }else{
+                    //     this.state.soundSequence[0].on('end', (id) => {
+                    //         console.log(id, this.state.interaction.name)
+                    //         if (this.state.interaction.interactionType === "none") {
+                    //             this.setState({
+                    //                 currentSequenceEnded:true
+                    //             }, ()=>{
+                    //                 console.log("end1");
+                    //                 this.handleAnswer(null)
+                    //             })
+                    //         }
+                    //     });
+                    // }
+                    else{
+                            if (this.state.interaction && this.state.interaction.interactionType === 'drag and drop' && this.state.interactionPosition === 20){
+                                setTimeout( () =>{
+                                    this.setState({
+                                        show: true
+                                    });
+                                }, this.state.soundSequence[1]-1000)
+                            } else {
                                 this.setState({
-                                    currentSequenceEnded:true
-                                }, ()=>{
-                                    console.log("end1");
-                                    this.handleAnswer(null)
-                                })
+                                    show: true
+                                });
                             }
-                        });
-                    }
+                        }
 
-
-                    if (this.state.interaction && this.state.interaction.interactionType === 'drag and drop' && this.state.interactionPosition === 20){
-                        setTimeout( () =>{
-                            this.setState({
-                                show: true
-                            });
-                        }, this.state.soundSequence[1]-1000)
-                    } else if (this.state.interaction && this.state.interaction.interactionType !== "none") {
-                        this.setState({
-                            show: true
-                        });
-                    }
-                });
+                // });
             })
         }
     };
-    handleAnswer = (value) => {
+    handleAnswer = (origin, value) => {
+        console.log()
         // console.log('a');
         let answer = (value) ? value : null;
         let destinationFound = false;
-        let destination = ''
-        if (this.answers && this.state.interaction) {
-            for (let i = 0; i < this.answers.length; i++) {
-                if (this.answers[i].originInteraction &&
-                    this.answers[i].originInteraction.id === this.state.interaction.id &&
-                    this.answers[i].content === answer &&
-                    this.answers[i].destinationInteraction &&
-                    this.answers[i].destinationInteraction.position &&
-                    !destinationFound
-                ) {
-                    console.log('answer')
-                    console.log(this.answers[i].destinationInteraction.position);
-                    this.setState({
-                        // interactionPosition : destination,
-                        interactionPosition: this.answers[i].destinationInteraction.position,
-                        show: !this.state.show,
-                        currentSequenceEnded:false
-                    }, () => {
-                        console.log('a');
-                        this.handleInteraction();
-                        destinationFound = true;
-                    });
-                    return
+        if(this.state.origin !== origin) {
+            console.log(origin)
+            // this.setState({origin:origin})
+            if (this.answers && this.state.interaction) {
+                for (let i = 0; i < this.answers.length; i++) {
+                    if (this.answers[i].originInteraction &&
+                        this.answers[i].originInteraction.id === this.state.interaction.id &&
+                        this.answers[i].content === answer &&
+                        this.answers[i].destinationInteraction &&
+                        this.answers[i].destinationInteraction.position &&
+                        !destinationFound
+                    ) {
+                        console.log('answer')
+                        console.log(this.answers[i].destinationInteraction.position);
+                        // this.setState({
+                        //     // interactionPosition : destination,
+                        //     interactionPosition: this.answers[i].destinationInteraction.position,
+                        //     show: !this.state.show,
+                        //     // currentSequenceEnded:false
+                        // }, () => {
+                            console.log('a');
+                            this.handleInteraction(this.answers[i].destinationInteraction.position, origin);
+                            destinationFound = true;
+                        // });
+                        return
+                    }
                 }
             }
         }
+
     };
 
     render() {
@@ -179,6 +183,9 @@ class Interactions extends Component {
 
                 {this.state.show && this.state.interaction && this.state.interaction.interactionType === "taking position" ?
                     <TakingPosition arguers={this.state.interaction.content.split('@')} onEnd={this.handleAnswer}/>
+                    : null}
+                {this.state.show && this.state.interaction && (this.state.interaction.interactionType === "animation" || this.state.interaction.interactionType === "animation-bis") ?
+                    <AnimationLottie name='Anim2' timer={this.state.soundSequence[1]} onEnd={this.handleAnswer} animationType={this.state.interaction.interactionType}/>
                     : null}
             </div>
         )

@@ -52,7 +52,7 @@ class TakingPosition extends Component {
         }, 8600);
         setTimeout(() => {
             if (this.props.onEnd) {
-                this.props.onEnd();
+                this.props.onEnd('position taking');
 
             }// TODO Temporary
         }, 10600);

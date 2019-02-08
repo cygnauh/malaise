@@ -38,7 +38,7 @@ class MusicChoice extends Component {
         var $el = e.currentTarget;
         $el.setAttribute("class", "Music__item Music__item--selected");
         setTimeout(() => {
-            this.props.onMusicClicked(null)
+            this.props.onMusicClicked('music')
         }, 2000);
     }
 
