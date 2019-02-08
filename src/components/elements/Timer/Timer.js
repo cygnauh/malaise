@@ -11,11 +11,11 @@ class Timer extends Component {
         return (
             <div className={this.props.activeTimer ? 'Timer Timer__active'  : 'Timer'}>
                 <div className="Timer__container">
-                    <div className="Timer__base"></div>
                     <div className="Timer__object" data-anim="base wrapper">
                         <div className="Timer__circle" data-anim="base left"></div>
                         <div className="Timer__circle" data-anim="base right"></div>
                     </div>
+                    <div className="Timer__base"></div>
                     <div className="Timer__mask"></div>
                 </div>
             </div>

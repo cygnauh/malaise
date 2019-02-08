@@ -19,6 +19,7 @@ import About from "../../pages/About/About";
 import Credits from "../../pages/Credits/Credits";
 import TakingPosition from "../../interactions/TakingPosition/TakingPosition";
 import UserQuestion from "../../interactions/UserQuestion/UserQuestion";
+import Talk from "../../interactions/Talk/Talk";
 
 class Main extends Component {
     render() {
@@ -52,6 +53,7 @@ class Main extends Component {
                                 <Route path="/user-question" component={UserQuestion} />
                                 <Route path="/timer" component={Timer} />
                                 <Route path="/credits" component={Credits} />
+                                <Route path="/talk" component={Talk} />
                             </Switch>
                         </main>
                     );

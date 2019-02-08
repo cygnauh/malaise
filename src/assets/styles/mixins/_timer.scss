@@ -1,8 +1,8 @@
 @mixin timer($item, $color, $bgColor, $size, $duration, $border-size) {
 
   #{$item} .Timer__base {
-    width: $size + 2 + px;
-    height: $size + 2 + px;
+    width: $size + 1 + px;
+    height: $size + 1 + px;
     border-radius: 50%;
     border: 1px solid $color__white;
     position: absolute;
