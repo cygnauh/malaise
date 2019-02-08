@@ -42,7 +42,7 @@ class Catalogue extends Component {
                      onClick={()=> this.onEpisodeSelected(this.state.data[i].id)}
                      onMouseEnter={this.handleHoverItem}
                      onMouseLeave={this.handleLeaveHoverItem}
-                     data-bgcolor={this.state.data[i].darkColor} >
+                     data-bgcolor={this.state.data[i].lightColor} >
                     <div className="Episode-item__top">
                         <div className="Episode-item__number">0{i + 1}</div>
                         <div className="Episode-item__line"></div>

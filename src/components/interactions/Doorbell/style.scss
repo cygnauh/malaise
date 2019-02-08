@@ -277,14 +277,14 @@
   margin: 0 0 0 20px;
   padding: 0;
   border-radius: 50%;
-  border: none;
-  background: none;
   font-weight: bold;
-  font-size: 35px;
-  text-shadow: -1px 0 $color__xp--dark, 0 1px $color__xp--dark, 1px 0 $color__xp--dark, 0 -1px $color__xp--dark;
-  color: $color__white;
-  letter-spacing: 2px;
   position: relative;
+  @include border-button($color__white, $color__xp--dark, $font__archivo--black, 35px);
+
+  &:hover, &:focus, &:active {
+    color: $color__xp--dark;
+  }
+
 }
 .btn__input span {
   transition: opacity 0.5s ease;

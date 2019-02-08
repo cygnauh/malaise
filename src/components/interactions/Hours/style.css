@@ -22,6 +22,8 @@
   font-weight: normal;
   text-transform: lowercase;
   margin-bottom: 30px; }
+  .eclipse__date--hide {
+    display: none; }
 
 .eclipse__date span {
   margin: 0 6px; }

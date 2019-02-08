@@ -88,6 +88,7 @@ export const getEpisodes = gql`
             place,
             entourage,
             darkColor,
+            lightColor,
             createdAt
         }
     }
@@ -103,6 +104,7 @@ export const getEpisode = gql`
             place,
             entourage,
             darkColor,
+            lightColor,
             createdAt,
             personalizations{
                 name,

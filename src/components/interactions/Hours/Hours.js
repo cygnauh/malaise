@@ -17,7 +17,8 @@ class Hours extends Component {
             month: currentDateTime.getMonth(),
             date: currentDateTime.getDate(),
             hours : currentDateTime.getHours(),
-            minutes : currentDateTime.getMinutes()
+            minutes : currentDateTime.getMinutes(),
+            dataDisplay : true
         }
 
     }
@@ -25,10 +26,11 @@ class Hours extends Component {
     componentDidMount() {
 
         setTimeout(() => {
-            if(this.props.hours&&this.props.minutes){
+            if(this.props.hours&&this.props.minutes&&this.props.date){
                 this.setState({
                     hours: this.props.hours,
-                    minutes: this.props.minutes
+                    minutes: this.props.minutes,
+                    dateDisplay: this.props.date
                 });
             }else{
                 this.setState({
@@ -55,7 +57,7 @@ class Hours extends Component {
         return (
             <div className="eclipse">
                 <div className="eclipse__container">
-                    <div className="eclipse__date">
+                    <div className={this.state.dataDisplay ? 'eclipse__date' : 'eclipse__date eclipse__date--hide'}>
                         <span>{days[this.state.day]}</span><span>{this.state.date}</span><span>{months[this.state.month]}</span>
                     </div>
                     <div className="eclipse__clock">

@@ -15,6 +15,11 @@
   text-transform: lowercase;
   font-family: $font;
   font-weight: normal;
-  letter-spacing: 1px;
-  font-size: $font;
+  letter-spacing: 2px;
+  font-size: $size;
+  background: none;
+  border: none;
+  text-shadow: -1px 0 $borderColor, 0 1px $borderColor, 1px 0 $borderColor, 0 -1px $borderColor;
+  color: $color;
+  cursor: pointer;
 }

@@ -6,10 +6,12 @@
   height: 100%;
 
   &__done {
+
     .TakingPosition__winner {
       transition: width 1s ease;
       width: 100%!important;
     }
+
   }
 
   &__timer {
@@ -36,12 +38,13 @@
     align-items: center;
     cursor: pointer;
     z-index: 1;
-    background-color: $color__bg;
+    background-color: $color__xp--dark;
   }
 
   &__leftPart {
     top: 0;
     left: 0;
+
     &:after {
       width: 1px;
       height:100%;
@@ -50,11 +53,13 @@
       position: absolute;
       right: 0;
     }
+
   }
 
   &__rightPart {
     right: 0;
     top: 0;
+
     &:before {
       width: 1px;
       height:100%;
@@ -63,13 +68,7 @@
       position: absolute;
       left: 0;
     }
-  }
 
-  &__name {
-    //font-size: 70px;
-    //color: $color__bg;
-    //text-shadow: -1px 0 $color__white, 0 1px $color__white, 1px 0 $color__white, 0 -1px $color__white;
-    //font-family: $font__archivo--black;
   }
 
   &__winner {

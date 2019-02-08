@@ -69,15 +69,21 @@ class MusicChoice extends Component {
         return (
             <div className="Music">
                 <ul className={this.state.selected ? 'Music__list Music__list--select' : 'Music__list' }>
-                    <li className="Music__item" onClick={this.handleClickMusic} onMouseEnter={this.handleMouseEnter} onMouseLeave={this.handleMouseLeave}>
-                        <div className="Music__name Music__name--toLeft" data-name="pop" data-after="pop "></div>
-                    </li>
-                    <li className="Music__item" onClick={this.handleClickMusic} onMouseEnter={this.handleMouseEnter} onMouseLeave={this.handleMouseLeave}>
-                        <div className="Music__name Music__name--toRight" data-name="electro" data-after="electro "></div>
-                    </li>
-                    <li className="Music__item" onClick={this.handleClickMusic} onMouseEnter={this.handleMouseEnter} onMouseLeave={this.handleMouseLeave}>
-                        <div className="Music__name Music__name--toLeft" data-name="rap" data-after="rap "></div>
-                    </li>
+                    <div className="Music__content">
+                        <li className="Music__item" onClick={this.handleClickMusic} onMouseEnter={this.handleMouseEnter} onMouseLeave={this.handleMouseLeave}>
+                            <div className="Music__name Music__name--toLeft" data-name="pop" data-after="pop "></div>
+                        </li>
+                    </div>
+                    <div className="Music__content">
+                        <li className="Music__item" onClick={this.handleClickMusic} onMouseEnter={this.handleMouseEnter} onMouseLeave={this.handleMouseLeave}>
+                            <div className="Music__name Music__name--toRight" data-name="electro" data-after="electro "></div>
+                        </li>
+                    </div>
+                    <div className="Music__content">
+                        <li className="Music__item" onClick={this.handleClickMusic} onMouseEnter={this.handleMouseEnter} onMouseLeave={this.handleMouseLeave}>
+                            <div className="Music__name Music__name--toLeft" data-name="rap" data-after="rap "></div>
+                        </li>
+                    </div>
                 </ul>
             </div>
         )
