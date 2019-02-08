@@ -42,7 +42,7 @@ type Anecdote @model {
   author: String!
   content: String!
   createdAt: DateTime!
-  episode: Episode! @relation(name:"EpisodeAnecdotes")
+  episode: Episode @relation(name:"EpisodeAnecdotes")
 }
 
 type Definition @model {

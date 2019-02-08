@@ -1,5 +1,18 @@
 import gql from "graphql-tag";
 
+export const getAnecdotes = gql`
+    {
+        allAnecdotes (
+            orderBy: createdAt_DESC
+        ){
+            id,
+            author,
+            content,
+            createdAt
+        }
+    }
+`;
+
 export const getCredits = gql`
     query CreditEpisode($id: ID!) {
         Episode(id: $id)
