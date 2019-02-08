@@ -11,14 +11,11 @@ class AnecdoteForm extends Component {
 
     render() {
         const ADD_ANECDOTE = gql`
-            mutation createAnecdote($author: String!, $content: String!, $episode: ID!) {
-                createAnecdote(author: $author, content: $content, episodeId: $episode) {
+            mutation createAnecdote($author: String!, $content: String!) {
+                createAnecdote(author: $author, content: $content) {
                     id
                     author
                     content
-                    episode {
-                        id
-                    }
                 }
             }
         `;
@@ -28,29 +25,35 @@ class AnecdoteForm extends Component {
         return (
             <Mutation mutation={ADD_ANECDOTE}>
                 {(createAnecdote, { data }) => (
-                    <div>
-                        <form
-                            onSubmit={e => {
-                                e.preventDefault();
-                                createAnecdote({ variables: { author: input.value, content: textarea.value, episode: "cjqwfe1kj1j2x0122tixfvb5i" } });
-                                input.value = "";
-                                textarea.value = "";
-                            }}
-                        >
+                    <form className="AnecdoteForm"
+                        onSubmit={e => {
+                            e.preventDefault();
+                            createAnecdote({ variables: { author: input.value, content: textarea.value } });
+                            input.value = "";
+                            textarea.value = "";
+                        }}
+                    >
+                        <div className="AnecdoteForm__field">
                             <input
                                 ref={node => {
                                     input = node;
                                 }}
+                                className="AnecdoteForm__input"
                                 placeholder="pseudo"
                             />
-                            <textarea
-                                ref={node => {
-                                    textarea = node;
-                                }}
-                            />
-                            <button type="submit">Envoyer</button>
-                        </form>
-                    </div>
+                        </div>
+                        <div className="AnecdoteForm__field">
+                             <textarea
+                                 ref={node => {
+                                     textarea = node;
+                                 }}
+                                 className="AnecdoteForm__textarea"
+                             />
+                            <span>700 caractères maximum</span>
+                        </div>
+
+                        <button type="submit" className="AnecdoteForm__cta">Envoyer</button>
+                    </form>
                 )}
             </Mutation>
         )

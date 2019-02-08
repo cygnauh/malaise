@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './style.scss';
 import { Query } from "react-apollo";
 import { getAnecdotes} from '../../../graphql/queries';
+import AnecdoteForm from "../../elements/AnecdoteForm/AnecdoteForm";
 
 
 class Anecdotes extends Component {
@@ -65,16 +66,7 @@ class Anecdotes extends Component {
                                             <button className={this.state.open ? 'Anecdote-toShare__cta Anecdote-toShare__cta--hidden': 'Anecdote-toShare__cta'} onClick={this.handleClickToOpen}>Raconte ton anecdote</button>
                                         </div>
                                         <div className="Anecdote-toShare__column">
-                                            <form className="Anecdote-toShare__shareForm">
-                                                <div className="shareForm__field">
-                                                    <input className="shareForm__input" placeholder="pseudo" />
-                                                </div>
-                                                <div className="shareForm__field">
-                                                    <textarea className="shareForm__textarea"></textarea>
-                                                    <span>700 caractères maximum</span>
-                                                </div>
-                                                <button type="submit" className="shareForm__cta">Envoyer</button>
-                                            </form>
+                                            <AnecdoteForm />
                                         </div>
                                     </div>
                                 </div>
