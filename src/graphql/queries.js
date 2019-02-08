@@ -44,6 +44,7 @@ export const getEpisodesAndPlaceSounds = gql`
             entourage,
             darkColor,
             createdAt,
+            serpentin,
             personalizations{
                 name,
                 question,
@@ -81,7 +82,9 @@ export const getEpisodesAndPlaceSounds = gql`
 
 export const getEpisodes = gql`
     {
-        allEpisodes{
+        allEpisodes (
+            orderBy: createdAt_DESC
+        ){
             id,
             title,
             summary
@@ -89,7 +92,8 @@ export const getEpisodes = gql`
             entourage,
             darkColor,
             lightColor,
-            createdAt
+            createdAt,
+            serpentin
         }
     }
 `;
@@ -106,6 +110,7 @@ export const getEpisode = gql`
             darkColor,
             lightColor,
             createdAt,
+            serpentin,
             personalizations{
                 name,
                 question,

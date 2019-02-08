@@ -21,6 +21,7 @@ type Episode @model {
   directors: [Director!]! @relation(name: "EpisodeDirectors")
   anecdotes: [Anecdote!]! @relation(name: "EpisodeAnecdotes")
   thanks: String
+  serpentin: String
 }
 
 type Voice @model {
@@ -40,6 +41,7 @@ type Anecdote @model {
   id: ID! @isUnique
   author: String!
   content: String!
+  createdAt: DateTime!
   episode: Episode! @relation(name:"EpisodeAnecdotes")
 }
 

@@ -20,6 +20,20 @@
         position: relative;
         cursor: pointer;
 
+        &__background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 0;
+        }
+
+        &__container {
+            z-index: 2;
+            position: relative;
+            height: 100%;
+        }
+
         &__top {
             display: flex;
             justify-content: center;
@@ -67,7 +81,7 @@
         &__actions {
             display: flex;
             position: absolute;
-            bottom: 50px;
+            bottom: 0;
         }
 
         &__cta {

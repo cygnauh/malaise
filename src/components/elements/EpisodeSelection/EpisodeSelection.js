@@ -45,24 +45,29 @@ class EpisodeSelection extends Component {
                                     <SoundContext.Consumer>
                                         {({setEpisodeSounds, registerPlaceSound}) => (
                                             <div className="EpisodeSelection__container">
-                                                <div className="EpisodeSelection__episode episode">
-                                                    <div className="episode__top">
-                                                        <div className="episode__number">03</div>
-                                                        <div className="episode__line"></div>
-                                                        <div className="episode__date">{ (new Date(data.allEpisodes[0].createdAt)).toLocaleDateString() }</div>
-                                                    </div>
-                                                    <h2 className="episode__title">
-                                                        {data.allEpisodes[0].title}
-                                                    </h2>
-                                                    <p className="episode__description">{data.allEpisodes[0].summary}</p>
-                                                    <div className="episode__actions">
-                                                        <button className="episode__cta"
-                                                                onClick={ ()=>{this.onContinueClicked(setEpisode, data, setEpisodeSounds, registerPlaceSound)}}>
-                                                            Continuer
-                                                        </button>
-                                                    </div>
+                                                <div className="EpisodeSelection__background">
+                                                    <img src={data.allEpisodes[0].serpentin ? 'fonts/'+data.allEpisodes[0].serpentin+'.svg'  : null} alt="Episode serpentin" />
                                                 </div>
-                                                <Link className="EpisodeSelection__choice" to="/catalogue">ou choisir un autre épisode</Link>
+                                                <div className="EpisodeSelection__content">
+                                                    <div className="EpisodeSelection__episode episode">
+                                                        <div className="episode__top">
+                                                            <div className="episode__number">03</div>
+                                                            <div className="episode__line"></div>
+                                                            <div className="episode__date">{ (new Date(data.allEpisodes[0].createdAt)).toLocaleDateString() }</div>
+                                                        </div>
+                                                        <h2 className="episode__title">
+                                                            {data.allEpisodes[0].title}
+                                                        </h2>
+                                                        <p className="episode__description">{data.allEpisodes[0].summary}</p>
+                                                        <div className="episode__actions">
+                                                            <button className="episode__cta"
+                                                                    onClick={ ()=>{this.onContinueClicked(setEpisode, data, setEpisodeSounds, registerPlaceSound)}}>
+                                                                Continuer
+                                                            </button>
+                                                        </div>
+                                                    </div>
+                                                    <Link className="EpisodeSelection__choice" to="/catalogue">ou choisir un autre épisode</Link>
+                                                </div>
                                             </div>
                                         )}
                                     </SoundContext.Consumer>

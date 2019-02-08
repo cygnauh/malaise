@@ -36,6 +36,7 @@ class Catalogue extends Component {
         for(let i=0; i<this.state.data.length; i++){
             var creation = this.state.data[i].createdAt,
                 date = (new Date(creation)).toLocaleDateString();
+            console.log('serpentin', this.state.data[i].serpentin);
             episodes.push(
                 <div key={i.toString()}
                      className={this.state.data[i].id === this.state.episodeSelected ? 'Episode-item selected': 'Episode-item'}
@@ -43,18 +44,23 @@ class Catalogue extends Component {
                      onMouseEnter={this.handleHoverItem}
                      onMouseLeave={this.handleLeaveHoverItem}
                      data-bgcolor={this.state.data[i].lightColor} >
-                    <div className="Episode-item__top">
-                        <div className="Episode-item__number">0{i + 1}</div>
-                        <div className="Episode-item__line"></div>
-                        <div className="Episode-item__date">{ date }</div>
+                    <div className="Episode-item__background">
+                        <img src={this.state.data[i].serpentin ? 'fonts/'+this.state.data[i].serpentin+'.svg'  : null} alt="Episode serpentin" />
                     </div>
-                    <h2 className="Episode-item__title">
-                        {this.state.data[i].title}
-                    </h2>
-                    <p className="Episode-item__description">{this.state.data[i].summary}</p>
-                    <div className="Episode-item__actions">
-                        <button className="Episode-item__cta">Continuer</button>
-                        <button className="Episode-item__cta">Article</button>
+                    <div className="Episode-item__container">
+                        <div className="Episode-item__top">
+                            <div className="Episode-item__number">0{i + 1}</div>
+                            <div className="Episode-item__line"></div>
+                            <div className="Episode-item__date">{ date }</div>
+                        </div>
+                        <h2 className="Episode-item__title">
+                            {this.state.data[i].title}
+                        </h2>
+                        <p className="Episode-item__description">{this.state.data[i].summary}</p>
+                        <div className="Episode-item__actions">
+                            <button className="Episode-item__cta">Continuer</button>
+                            <button className="Episode-item__cta">Article</button>
+                        </div>
                     </div>
                 </div>
             )

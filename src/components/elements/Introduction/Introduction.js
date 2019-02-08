@@ -44,15 +44,19 @@ class Introduction extends Component {
             <div className="Introduction">
                 <div className="Introduction__container">
                     <div className="Introduction__step Introduction__jingle Introduction__step--current">
-                        <Jingle />
-                        <button className="Introduction__jingle__cta"
-                                onClick={this.handleClickSkipIntro}>
-                            Passer l'intro
-                        </button>
+                        <div className="Introduction__step__container">
+                            <Jingle />
+                            <button className="Introduction__jingle__cta"
+                                    onClick={this.handleClickSkipIntro}>
+                                Passer l'intro
+                            </button>
+                        </div>
                         <button onClick={this.nextIntroductionStep}>next</button>
                     </div>
                     <div className="Introduction__step Introduction__instruction">
-                        <Instructions onEnd={this.nextIntroductionStep} startInstruction={this.state.instructions ? this.state.instructions : null}/>
+                        <div className="Introduction__step__container">
+                            <Instructions onEnd={this.nextIntroductionStep} startInstruction={this.state.instructions ? this.state.instructions : null}/>
+                        </div>
                     </div>
                     <div className="Introduction__step Introduction__episode">
                         <EpisodeSelection onButtonPressed={this.props.onClickStartEpisode} />

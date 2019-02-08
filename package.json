@@ -55,6 +55,7 @@
     "postcss-safe-parser": "4.0.1",
     "react": "^16.7.0",
     "react-apollo": "^2.3.3",
+    "react-apollo-form": "^0.1.7",
     "react-app-polyfill": "^0.2.0",
     "react-bodymovin": "^2.0.0",
     "react-dev-utils": "^7.0.1",
@@ -79,7 +80,8 @@
   "scripts": {
     "start": "node scripts/start.js",
     "build": "node scripts/build.js",
-    "test": "node scripts/test.js"
+    "test": "node scripts/test.js",
+    "react-apollo-form": "react-apollo-form fetch-mutations 'https://api.graph.cool/simple/v1/cjp2pniu98sw30122z5bavdwc' './src/graphql/forms'"
   },
   "eslintConfig": {
     "extends": "react-app"

@@ -31,12 +31,14 @@ class Navigation extends Component {
     handleClickLink = () => {
         this.setState ({
             nav:false
+        }, () => {
+            $('body').removeClass('episode').removeClass('interface-reverse').addClass('interface');
+            $('.Navigation').css('transform', 'translateX(calc(48px - 100%))');
         });
     }
 
     handleActionHover = () => {
         if(!$('body').hasClass('interface')) {
-            console.log('xp');
             $('.Navigation').css('transform', 'translateX(calc(48px - 100%))');
         }
     }
