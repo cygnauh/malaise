@@ -25,14 +25,12 @@ class Interactions extends Component {
             show: false,
             soundSequence: '',
             origin:''
-            // currentSequenceEnded : false
         };
         this.answers = this.props.anwsers.allAnswers;
     }
 
     componentDidMount() {
         this.interactions = this.context.interactions;
-        // console.log(this.interactions)
         this.handleInteraction(1, '');
     };
 
@@ -46,69 +44,33 @@ class Interactions extends Component {
                 interaction: inte,
                 soundSequence: this.context.playInteractionSound(inte.name)
             }, () => {
-                // this.setState({
-                //
-                // }, () => {
-                    // if(this.state.interactionPosition<17){
-                        if (this.state.interaction.interactionType === "none") {
-                        // if (this.state.interaction.interactionType === "none" && this.state.interaction.content === null) {
-                            this.state.soundSequence[0].on('end', (id) => {
-                                console.log(id)
-                                if (this.state.interaction.interactionType === "none" && this.state.interaction.content === null) {
-                                    // this.setState({
-                                    //     currentSequenceEnded:true
-                                    // }, ()=>{
-                                        console.log("end1");
-                                        this.handleAnswer('nothing')
-                                    // })
-                                }
-                            });
-                        }
-                            // else if (this.state.interaction.interactionType === "none" && this.state.interaction.content !== null){
-                        //     setTimeout(()=>{
-                        //         console.log("end2");
-                        //         this.handleAnswer(null)
-                        //     },this.state.soundSequence[1])
-                        // } // TODO Uncomment
-                    // }else{
-                    //     this.state.soundSequence[0].on('end', (id) => {
-                    //         console.log(id, this.state.interaction.name)
-                    //         if (this.state.interaction.interactionType === "none") {
-                    //             this.setState({
-                    //                 currentSequenceEnded:true
-                    //             }, ()=>{
-                    //                 console.log("end1");
-                    //                 this.handleAnswer(null)
-                    //             })
-                    //         }
-                    //     });
-                    // }
+                    if (this.state.interaction.interactionType === "none") {
+                        this.state.soundSequence[0].on('end', () => {
+                            if (this.state.interaction.interactionType === "none" && this.state.interaction.content === null) {
+                                this.handleAnswer('nothing')
+                            }
+                        });
+                    }
                     else{
-                            if (this.state.interaction && this.state.interaction.interactionType === 'drag and drop' && this.state.interactionPosition === 20){
-                                setTimeout( () =>{
-                                    this.setState({
-                                        show: true
-                                    });
-                                }, this.state.soundSequence[1]-1000)
-                            } else {
+                        if (this.state.interaction && this.state.interaction.interactionType === 'drag and drop' && this.state.interactionPosition === 20){
+                            setTimeout( () =>{
                                 this.setState({
                                     show: true
                                 });
-                            }
+                            }, this.state.soundSequence[1]-1000)
+                        } else {
+                            this.setState({
+                                show: true
+                            });
                         }
-
-                // });
+                    }
             })
         }
     };
     handleAnswer = (origin, value) => {
-        console.log()
-        // console.log('a');
         let answer = (value) ? value : null;
         let destinationFound = false;
         if(this.state.origin !== origin) {
-            console.log(origin)
-            // this.setState({origin:origin})
             if (this.answers && this.state.interaction) {
                 for (let i = 0; i < this.answers.length; i++) {
                     if (this.answers[i].originInteraction &&
@@ -118,18 +80,8 @@ class Interactions extends Component {
                         this.answers[i].destinationInteraction.position &&
                         !destinationFound
                     ) {
-                        console.log('answer')
-                        console.log(this.answers[i].destinationInteraction.position);
-                        // this.setState({
-                        //     // interactionPosition : destination,
-                        //     interactionPosition: this.answers[i].destinationInteraction.position,
-                        //     show: !this.state.show,
-                        //     // currentSequenceEnded:false
-                        // }, () => {
-                            console.log('a');
-                            this.handleInteraction(this.answers[i].destinationInteraction.position, origin);
-                            destinationFound = true;
-                        // });
+                        this.handleInteraction(this.answers[i].destinationInteraction.position, origin);
+                        destinationFound = true;
                         return
                     }
                 }
@@ -185,7 +137,7 @@ class Interactions extends Component {
                     <TakingPosition arguers={this.state.interaction.content.split('@')} onEnd={this.handleAnswer}/>
                     : null}
                 {this.state.show && this.state.interaction && (this.state.interaction.interactionType === "animation" || this.state.interaction.interactionType === "animation-bis") ?
-                    <AnimationLottie name='Anim2' timer={this.state.soundSequence[1]} onEnd={this.handleAnswer} animationType={this.state.interaction.interactionType}/>
+                    <AnimationLottie name={this.state.interaction.content} timer={this.state.soundSequence[1]} onEnd={this.handleAnswer} animationType={this.state.interaction.interactionType}/>
                     : null}
             </div>
         )
