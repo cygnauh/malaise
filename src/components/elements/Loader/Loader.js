@@ -10,7 +10,7 @@ class Loader extends Component {
     render() {
         return (
             <div className='Loader'>
-                <span className='Notice__text'>LOADER PLACE</span>
+                <span className='Notice__text'>LOADER</span>
             </div>
         )
     }

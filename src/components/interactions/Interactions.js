@@ -130,6 +130,14 @@ class Interactions extends Component {
                                  timer={this.state.interaction.timer}
                                  question={this.state.interaction.question.split('@')}
                                  drinkActionEnd={this.handleAnswer}
+                                 mode='action'
+                    />
+                    : null}
+
+                {this.state.show && this.state.interaction && this.state.interaction.interactionType === "drink" ?
+                    <DrinkAction drinkers={this.state.interaction.content.split('@')}
+                                 drinkActionEnd={this.handleAnswer}
+                                 mode='drink'
                     />
                     : null}
 

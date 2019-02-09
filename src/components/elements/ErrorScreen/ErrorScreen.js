@@ -10,7 +10,7 @@ class ErrorScreen extends Component {
     render() {
         return (
             <div className='ErrorScreen'>
-                <span className='ErrorScreen__text'>LOADER PLACE</span>
+                <span className='ErrorScreen__text'>ERROR</span>
             </div>
         )
     }

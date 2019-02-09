@@ -20,7 +20,6 @@ class Hours extends Component {
             minutes : currentDateTime.getMinutes(),
             dataDisplay : true
         }
-
     }
 
     componentDidMount() {
