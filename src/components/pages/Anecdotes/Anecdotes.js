@@ -3,6 +3,8 @@ import './style.scss';
 import { Query } from "react-apollo";
 import { getAnecdotes} from '../../../graphql/queries';
 import AnecdoteForm from "../../elements/AnecdoteForm/AnecdoteForm";
+import Loader from "../../elements/Loader/Loader";
+import ErrorScreen from "../../elements/ErrorScreen/ErrorScreen";
 
 
 class Anecdotes extends Component {
@@ -50,8 +52,8 @@ class Anecdotes extends Component {
             <div className="Anecdotes">
                 <Query query={getAnecdotes} variables={{ id : this.state.episode }}>
                     {({ loading, error, data }) => {
-                        if (loading) return (<div>loader</div>);
-                        if (error) return `Error!: ${error}`;
+                        if (loading) return (<div><Loader/></div>);
+                        if (error) return (<div><ErrorScreen/></div>);
                         return (
                             <div className="Anecdotes__container">
                                 <div className={this.state.open ? 'Anecdote-toShare Anecdote-toShare--open': 'Anecdote-toShare'}>

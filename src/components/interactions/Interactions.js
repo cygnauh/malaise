@@ -7,6 +7,9 @@ import UserQuestion from './UserQuestion/UserQuestion'
 import Hours from './Hours/Hours'
 import TakingPosition from './TakingPosition/TakingPosition'
 import AnimationLottie from './Animation/AnimationLottie'
+import Notice from './../elements/Notice/Notice'
+import Loader from './../elements/Loader/Loader'
+import ErrorScreen from './../elements/ErrorScreen/ErrorScreen'
 // QUERY
 import {Query} from "react-apollo";
 import {getMusics} from '../../graphql/queries'
@@ -37,8 +40,14 @@ class Interactions extends Component {
     handleInteraction = (newPos, origin) => {
         // console.log('handleInteraction', this.state.interactionPosition)
         let inte = this.interactions.find(setting => setting.position === newPos);
+        let indication = false
         if (inte && this.interactions && this.state.interactionPosition) {
+            if(inte.indication){
+                indication = true;
+                console.log(inte.indication)
+            }
             this.setState({
+                indication:indication,
                 origin:origin,
                 show: !this.state.show,
                 interaction: inte,
@@ -100,8 +109,8 @@ class Interactions extends Component {
                         <Query query={getMusics} notifyOnNetworkStatusChange>
                             {({loading, error, data, refetch, networkStatus}) => {
                                 if (networkStatus === 4) return "Refetching!";
-                                if (loading) return null;
-                                if (error) return `Error!: ${error}`;
+                                if (loading) return <div><Loader/></div>;
+                                if (error) return (<div><ErrorScreen/></div>);
                                 return (
                                         <MusicChoice musics={data.allSounds} onMusicClicked={this.handleAnswer}/>
                                 )
@@ -139,6 +148,11 @@ class Interactions extends Component {
                 {this.state.show && this.state.interaction && (this.state.interaction.interactionType === "animation" || this.state.interaction.interactionType === "animation-bis") ?
                     <AnimationLottie name={this.state.interaction.content} timer={this.state.soundSequence[1]} onEnd={this.handleAnswer} animationType={this.state.interaction.interactionType}/>
                     : null}
+
+                {/*<Notice notice={"this is the first notice"} show={this.state.indication}/>*/}
+                <div className={this.state.interaction && this.state.interaction.indication ? 'Notice__wrapper' : 'Notice__wrapper hide'}>
+                    <Notice notice={this.state.interaction && this.state.interaction.indication ?this.state.interaction.indication:null}/>
+                </div>
             </div>
         )
     }

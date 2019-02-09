@@ -5,6 +5,8 @@ import { UserContext } from "../../../store/UserProvider";
 import { SoundContext } from "../../../store/SoundProvider";
 import "./style.scss";
 import { Link } from 'react-router-dom';
+import Loader from '../../elements/Loader/Loader'
+import ErrorScreen from '../../elements/ErrorScreen/ErrorScreen'
 
 // episode selection either select thank to the form, or thank to the catalog
 
@@ -36,8 +38,8 @@ class EpisodeSelection extends Component {
             >
                 {({ loading, error, data, refetch, networkStatus }) => {
                     if (networkStatus === 4) return "Refetching!";
-                    if (loading) return null;
-                    if (error) return `Error!: ${error}`;
+                    if (loading) return (<div><Loader/></div>);
+                    if (error) return (<div><ErrorScreen/></div>);
                     return (
                         <div className="EpisodeSelection">
                             <UserContext.Consumer>

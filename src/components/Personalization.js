@@ -4,7 +4,10 @@ import { getEpisode } from '../graphql/queries'
 import { UserContext } from "../store/UserProvider";
 import Presentation from "./interactions/Presentation/Presentation";
 import Doorbell from './interactions/Doorbell/Doorbell'
+import Loader from './elements/Loader/Loader'
+import ErrorScreen from './elements/ErrorScreen/ErrorScreen'
 import './personalization.scss';
+
 
 
 // 1) Fetch personalizations questions from data base : can use <Query> or <ApolloConsumer>
@@ -59,8 +62,8 @@ class Personalization extends Component {
                     this.state.episode?
                         (<Query query={getEpisode} variables={{ id : this.state.episode }}>
                             {({ loading, error, data }) => {
-                                if (loading) return (<div>loader</div>);
-                                if (error) return `Error!: ${error}`;
+                                if (loading) return (<div><Loader/></div>);
+                                if (error) return (<div><ErrorScreen/></div>);
                                 return (
                                     <div className="Personalization__container">
                                         <div className={this.state.componentIndex === 1?'Personalization__doorbell':'Personalization__doorbell hide'}>

@@ -4,6 +4,8 @@ import Personalization from './Personalization'
 import { Query } from "react-apollo";
 import { getAnwsers } from './../graphql/queries'
 import Interactions from '../components/interactions/Interactions'
+import Loader from '../components/elements/Loader/Loader'
+import ErrorScreen from '../components/elements/ErrorScreen/ErrorScreen'
 import "./episode.scss";
 import $ from 'jquery';
 

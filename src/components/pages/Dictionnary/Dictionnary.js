@@ -4,6 +4,8 @@ import WordBox from "../../SVG/WordBox/WordBox";
 import { Query } from "react-apollo";
 import { getEpisodesAndDefinitions } from '../../../graphql/queries';
 import $ from 'jquery';
+import Loader from '../../elements/Loader/Loader'
+import ErrorScreen from '../../elements/ErrorScreen/ErrorScreen'
 
 class Dictionnary extends Component {
 
@@ -163,8 +165,8 @@ class Dictionnary extends Component {
             >
                 {({ loading, error, data, refetch, networkStatus }) => {
                     if (networkStatus === 4) return "Refetching!";
-                    if (loading) return null;
-                    if (error) return `Error!: ${error}`;
+                    if (loading) return (<div><Loader/></div>);
+                    if (error) return (<div><ErrorScreen/></div>);
                     return (
                         <div className="Dictionnary" ref={this.dictionnary}>
                            <div className="Dictionnary__header">
