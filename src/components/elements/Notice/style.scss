@@ -2,20 +2,27 @@
 @import '../../../assets/styles/mixins/index.scss';
 
 .Notice {
-  position: absolute;
-  bottom: 0;
-  right: 0;
-  width: calc(100% - 48px);
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  .Notice__text{
+    margin: 0 auto;
+  }
+}
 
-  &.interface {
+.interface {
+  .Notice {
     border-top: 1px solid $color__white;
     color: $color__white;
   }
+}
 
-  &.interface-reverse {
+.interface-reverse {
+  .Notice {
     border-top: 1px solid $color__xp--dark;
     color: $color__xp--dark;
   }
-
 }
 
