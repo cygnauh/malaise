@@ -21,6 +21,8 @@ import TakingPosition from "../../interactions/TakingPosition/TakingPosition";
 import UserQuestion from "../../interactions/UserQuestion/UserQuestion";
 import Talk from "../../interactions/Talk/Talk";
 import AnecdoteForm from "../../elements/AnecdoteForm/AnecdoteForm";
+import Loader from "../../elements/Loader/Loader";
+import ErrorScreen from "../../elements/ErrorScreen/ErrorScreen";
 
 class Main extends Component {
     render() {
@@ -32,8 +34,8 @@ class Main extends Component {
             >
                 {({ loading, error, data, refetch, networkStatus }) => {
                     if (networkStatus === 4) return "Refetching!";
-                    if (loading) return null;
-                    if (error) return `Error!: ${error}`;
+                    if (loading) return (<div><Loader/></div>);
+                    if (error) return (<div><ErrorScreen/></div>);
 
                     return (
                         <main className="Main">
@@ -56,6 +58,7 @@ class Main extends Component {
                                 <Route path="/credits" component={Credits} />
                                 <Route path="/talk" component={Talk} />
                                 <Route path="/formAnecdote" component={AnecdoteForm} />
+                                <Route path="/loader" component={Loader} />
                             </Switch>
                         </main>
                     );

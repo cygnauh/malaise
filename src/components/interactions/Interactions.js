@@ -8,6 +8,8 @@ import Hours from './Hours/Hours'
 import TakingPosition from './TakingPosition/TakingPosition'
 import AnimationLottie from './Animation/AnimationLottie'
 import Notice from './../elements/Notice/Notice'
+import Loader from './../elements/Loader/Loader'
+import ErrorScreen from './../elements/ErrorScreen/ErrorScreen'
 // QUERY
 import {Query} from "react-apollo";
 import {getMusics} from '../../graphql/queries'
@@ -107,8 +109,8 @@ class Interactions extends Component {
                         <Query query={getMusics} notifyOnNetworkStatusChange>
                             {({loading, error, data, refetch, networkStatus}) => {
                                 if (networkStatus === 4) return "Refetching!";
-                                if (loading) return null;
-                                if (error) return `Error!: ${error}`;
+                                if (loading) return <div><Loader/></div>;
+                                if (error) return (<div><ErrorScreen/></div>);
                                 return (
                                         <MusicChoice musics={data.allSounds} onMusicClicked={this.handleAnswer}/>
                                 )

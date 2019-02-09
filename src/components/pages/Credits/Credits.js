@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 import './style.scss';
 import { Query } from "react-apollo";
 import { getCredits } from '../../../graphql/queries';
+import Loader from '../../elements/Loader/Loader'
+import ErrorScreen from '../../elements/ErrorScreen/ErrorScreen'
+
 
 class Credits extends Component {
 
@@ -51,8 +54,8 @@ class Credits extends Component {
                     this.state.episode?
                         (<Query query={getCredits} variables={{ id : this.state.episode }}>
                                 {({ loading, error, data }) => {
-                                    if (loading) return (<div>loader</div>);
-                                    if (error) return `Error!: ${error}`;
+                                    if (loading) return (<div><Loader/></div>);
+                                    if (error) return (<div><ErrorScreen/></div>);
                                     return (
                                         <div className="Credits__container">
                                             <div className="Credits__episode">
