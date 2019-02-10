@@ -56,28 +56,41 @@ class Interactions extends Component {
                 let new_now = null;
                 let new_time = null;
                 let isEnded = false;
+                console.log(this.state.interaction.position)
+                if(this.state.interaction&&this.state.interaction.timer)console.log(this.state.interaction.timer)
+
+                    this.state.soundSequence[0].on('end', () => {
+                        new_now = new Date ()
+                        new_time = new_now - now
+                        console.log(new_time, 'new_time',this.state.soundSequence[1], 'duration')
+                        isEnded = true
+                        console.log(isEnded, 'isEnded')
+                        if(newPos<=15 && this.state.interaction.interactionType === "none"){
+                            this.handleAnswer('nothing')
+                        }
+                    });
                     if (this.state.interaction.interactionType === "none") {
+                        console.log('a')
                         if(newPos>15){
+                            console.log('b')
                             setTimeout(()=>{
+                                console.log(isEnded, 'isEnded')
                                 if (isEnded){
+                                    console.log('c')
                                     this.handleAnswer('nothing')
+                                }else{
+                                    setTimeout(()=>{
+                                        if (isEnded){
+                                            console.log('d')
+                                            this.handleAnswer('nothing')
+                                        }
+                                    }, 2000)
                                 }
                                 console.log('time')
                             }, this.state.soundSequence[1])
                         }
                     }
 
-                    this.state.soundSequence[0].once('end', () => {
-                        new_now = new Date ()
-                        new_time = new_now - now
-                        console.log(new_now, 'new_now')
-                        console.log(new_time, 'new_time')
-                        console.log(this.state.soundSequence[1], 'duration')
-                        isEnded = true
-                        if(newPos<=15 && this.state.interaction.interactionType === "none"){
-                            this.handleAnswer('nothing')
-                        }
-                    });
 
                     //TEST 2
                 // let isLoad = false

@@ -18,22 +18,13 @@ class DrinkAction extends Component {
         this.drinkers = this.props.drinkers; // persons who drinks at the question
         this.userDrank = this.userDrank.bind(this);
 
-        if (this.props.mode ==='action') {
-            this.asker = this.props.question[0]; // who is asking the question
-            this.question = this.props.question[1];
-            this.timer = this.props.timer;
-            this.handleTimer = setTimeout( () => {
-                this.userDrank();
-                console.log("time up")
-            }, this.timer);
-        }
     }
     componentDidMount(){
         this.setState({
             persons: this.context.personalizations
         }, ()=>{
             console.log(this.state.persons);
-            if(this.props.mode === 'drink') this.userDrank();
+            if(this.props.mode === 'drink') this.userDrank(false);
             if (this.props.mode ==='action') {
                 this.asker = this.props.question[0]; // who is asking the question
                 this.question = this.props.question[1];
@@ -41,7 +32,7 @@ class DrinkAction extends Component {
                 this.hasAnswer = this.props.hasAnswer;
                 console.log(this.hasAnswer, 'AAA')
                 this.handleTimer = setTimeout( () => {
-                    this.userDrank();
+                    this.userDrank(false);
                     console.log("time up")
                     console.log(this.timer)
                 }, this.timer);
@@ -74,7 +65,7 @@ class DrinkAction extends Component {
         }
         return glasses
     };
-    userDrank = () => {
+    userDrank = (value) => {
         // show drinkers
         clearTimeout(this.handleTimer)
         for (let i = 0; i<this.state.persons.length;i++) {
@@ -96,7 +87,7 @@ class DrinkAction extends Component {
             clearTimeout(this.handleTimer);
             setTimeout( () => {
                 console.log(this.props.hasAnwser)
-                if(this.props.hasAnwser){
+                if(this.props.hasAnwser && value){
                     this.props.drinkActionEnd('drink action', 'drink')
                 }else{
                     this.props.drinkActionEnd('drink action')
@@ -122,7 +113,7 @@ class DrinkAction extends Component {
                 </div>
                 {this.props.mode ==='action' ?
                     <div className="Drink">
-                        <DragDrop onDrink={this.userDrank} disableDrag={this.state.canDrink}/>
+                        <DragDrop onDrink={()=>this.userDrank(true)} disableDrag={this.state.canDrink}/>
                     </div>
                  : null}
 
