@@ -34,7 +34,18 @@ class DrinkAction extends Component {
         }, ()=>{
             console.log(this.state.persons);
             if(this.props.mode === 'drink') this.userDrank();
-
+            if (this.props.mode ==='action') {
+                this.asker = this.props.question[0]; // who is asking the question
+                this.question = this.props.question[1];
+                this.timer = this.props.timer;
+                this.hasAnswer = this.props.hasAnswer;
+                console.log(this.hasAnswer, 'AAA')
+                this.handleTimer = setTimeout( () => {
+                    this.userDrank();
+                    console.log("time up")
+                    console.log(this.timer)
+                }, this.timer);
+            }
         })
     };
     handleDrink = () => {
@@ -84,7 +95,12 @@ class DrinkAction extends Component {
         if(this.props.mode ==='action'){
             clearTimeout(this.handleTimer);
             setTimeout( () => {
-                this.props.drinkActionEnd('drink action')
+                console.log(this.props.hasAnwser)
+                if(this.props.hasAnwser){
+                    this.props.drinkActionEnd('drink action', 'drink')
+                }else{
+                    this.props.drinkActionEnd('drink action')
+                }
             }, 2000)
         }else{
             setTimeout( () => {

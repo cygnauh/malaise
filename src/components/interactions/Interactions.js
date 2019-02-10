@@ -130,7 +130,7 @@ class Interactions extends Component {
                         //     }, this.state.soundSequence[1])
                         // });
 
-                        if (this.state.interaction && this.state.interaction.interactionType === 'drag and drop' && this.state.interactionPosition === 20){
+                        if (this.state.interaction && this.state.interaction.interactionType === 'drag and drop' && (this.state.interaction.position === 20 || this.state.interaction.position === 28)){
                             setTimeout( () =>{
                                 this.setState({
                                     show: true
@@ -194,7 +194,7 @@ class Interactions extends Component {
                     />
                     : null}
 
-                {this.state.show && this.state.interaction && this.state.interaction.interactionType === "drag and drop" ?
+                {this.state.show && this.state.interaction && this.state.interaction.interactionType === "drag and drop" && this.state.interaction.position !== 28 ?
                     <DrinkAction drinkers={this.state.interaction.content.split('@')}
                                  timer={this.state.interaction.timer}
                                  question={this.state.interaction.question.split('@')}
@@ -208,6 +208,20 @@ class Interactions extends Component {
                                  drinkActionEnd={this.handleAnswer}
                                  mode='drink'
                     />
+                    : null}
+
+                {this.state.show && this.state.interaction && this.state.interaction.interactionType === "drag and drop" && this.state.interaction.position === 28 ?
+
+                    <div>
+                        <DrinkAction drinkers={this.state.interaction.content.split('@')}
+                                     timer={this.state.interaction.timer}
+                                     question={this.state.interaction.question.split('@')}
+                                     drinkActionEnd={this.handleAnswer}
+                                     mode='action'
+                                     hasAnwser={true}
+                        />
+
+                    </div>
                     : null}
 
                 {this.state.show && this.state.interaction && this.state.interaction.interactionType === "user question" ?
