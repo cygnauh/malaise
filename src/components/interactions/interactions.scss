@@ -123,10 +123,11 @@
     bottom: 0;
     right: 0;
     width: 100%;
-    height: 70px;
-    transition: bottom 0.4s ease-in-out;
+    height: 50px;
+    transition: height 0.4s ease-in-out;
+
     &.hide{
         transition: bottom 0.4s ease-in-out;
-        bottom: -70px;
+        bottom: -50px;
     }
 }

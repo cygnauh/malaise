@@ -240,7 +240,7 @@ class Interactions extends Component {
                     : null}
 
                 {this.state.show && this.state.interaction && this.state.interaction.interactionType === "heure" ?
-                    <Hours date={false} hours={22} minutes={26} onEnd={this.handleAnswer}/>
+                    <Hours duration={5000} hours={22} minutes={26} onEnd={this.handleAnswer}/>
                     : null}
                     {/*TODO Fix error or handle it differently */}
 

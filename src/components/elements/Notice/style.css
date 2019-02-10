@@ -8,15 +8,27 @@
   url('../fonts/happy-times/happy-times.ttf')  format('truetype');
 }*/
 .Notice {
-  position: absolute;
-  bottom: 0;
-  right: 0;
-  width: calc(100% - 48px); }
-  .Notice.interface {
-    border-top: 1px solid #EAEAEA;
-    color: #EAEAEA; }
-  .Notice.interface-reverse {
-    border-top: 1px solid #002c36;
-    color: #002c36; }
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  display: flex;
+  align-items: center; }
+  .Notice .Notice__text {
+    margin: 0 auto; }
+
+.interface .Notice {
+  border-top: 1px solid #EAEAEA;
+  color: #EAEAEA;
+  background-color: #0B162E; }
+
+.interface-reverse .Notice {
+  border-top: 1px solid #002c36;
+  color: #002c36;
+  background-color: #EAEAEA; }
+
+.episode .Notice {
+  border-top: 1px solid #EAEAEA;
+  color: #EAEAEA;
+  background-color: #002c36; }
 
 /*# sourceMappingURL=style.css.map */

@@ -1,4 +1,4 @@
-import React, { createContext, Component } from "react"; // on importe createContext qui servira à la création d'un ou plusieurs contextes
+import React, { createContext, Component } from "react";
 import { Howl } from 'howler';
 import { UserContext } from "./UserProvider";
 import Sound from "./../assets/sounds/final-voice2.mp3"
