@@ -12,20 +12,29 @@ class DrinkAction extends Component {
             render:'',
             persons : '',
             canDrink: false,
-            toDrink: false
+            toDrink: false,
+            hide:false
         };
         this.drinkers = this.props.drinkers; // persons who drinks at the question
-        this.timer = this.props.timer;
-        this.asker = this.props.question[0]; // who is asking the question
-        this.question = this.props.question[1];
-        this.userDrank = this.userDrank.bind(this)
-        this.handleTimer = setTimeout( () => {this.userDrank(); console.log("time up")}, this.timer)
+        this.userDrank = this.userDrank.bind(this);
+
+        if (this.props.mode ==='action') {
+            this.asker = this.props.question[0]; // who is asking the question
+            this.question = this.props.question[1];
+            this.timer = this.props.timer;
+            this.handleTimer = setTimeout( () => {
+                this.userDrank();
+                console.log("time up")
+            }, this.timer);
+        }
     }
     componentDidMount(){
         this.setState({
             persons: this.context.personalizations
         }, ()=>{
-            console.log(this.state.persons)
+            console.log(this.state.persons);
+            if(this.props.mode === 'drink') this.userDrank();
+
         })
     };
     handleDrink = () => {
@@ -60,8 +69,7 @@ class DrinkAction extends Component {
         for (let i = 0; i<this.state.persons.length;i++) {
             if(this.drinkers.indexOf(this.state.persons[i].role)!==-1){
                 let persons = this.state.persons;
-                persons[i].glass = 1;
-                // console.log(persons)
+                persons[i].glass ++;
                 this.context.setPersonalization(persons)
             }
         }
@@ -73,22 +81,35 @@ class DrinkAction extends Component {
                 test:"Temporary fix"
             })
         });
-        setTimeout(()=>{ this.props.drinkActionEnd('drink action') }, 2000)
+        if(this.props.mode ==='action'){
+            clearTimeout(this.handleTimer);
+            setTimeout( () => {
+                this.props.drinkActionEnd('drink action')
+            }, 2000)
+        }else{
+            setTimeout( () => {
+                this.setState({hide:true})
+            }, 2000)
+            setTimeout( () => {
+                this.props.drinkActionEnd('drink action')
+            }, 2800)
+        }
+
         //TODO register user alcohol level
     };
-    // handleTimer = () => {
-    //     // check if user use to do an action
-    //     this.setTimeout()
-    // };
+
     render() {
         return (
-            <div className="DrinkAction">
+            <div className={!this.state.hide?"DrinkAction":"DrinkAction hide"}>
                 <div className="wrapper">
                     {this.state.persons ? this.handleDrink() : null}
                 </div>
-                <div className="Drink">
-                    <DragDrop onDrink={this.userDrank} disableDrag={this.state.canDrink}/>
-                </div>
+                {this.props.mode ==='action' ?
+                    <div className="Drink">
+                        <DragDrop onDrink={this.userDrank} disableDrag={this.state.canDrink}/>
+                    </div>
+                 : null}
+
             </div>
         )
     }

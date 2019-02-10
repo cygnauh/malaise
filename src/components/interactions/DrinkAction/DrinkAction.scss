@@ -6,6 +6,11 @@
   justify-content: space-around;
   height: 100%;
   align-items: center;
+  transition: opacity 0.1s ease-in-out;
+  &.hide{
+    opacity: 0;
+    transition: opacity 0.1s ease-in-out;
+  }
   .wrapper{
     display: flex;
     flex-direction: column;

@@ -110,7 +110,7 @@ class TakingPosition extends Component {
                                         onDrink={false}
                                         mode="position"
                                     />
-                                    <p>{this.state.arguers[0][1]}</p>
+                                    <p className="TakingPosition__label">{this.state.arguers[0][1]}</p>
                                 </div>
                                 :
                                 <p className="TakingPosition__name">Romane</p>
@@ -127,7 +127,7 @@ class TakingPosition extends Component {
                                         onDrink={false}
                                         mode="position"
                                     />
-                                    <p>{this.state.arguers[1][1]}</p>
+                                    <p className="TakingPosition__label">{this.state.arguers[1][1]}</p>
                                 </div>
                                 :
                                 <p className="TakingPosition__name">Arthur</p>

@@ -34,17 +34,16 @@ class Interactions extends Component {
 
     componentDidMount() {
         this.interactions = this.context.interactions;
-        this.handleInteraction(1, '');
+        this.handleInteraction(this.state.interactionPosition, '');
     };
 
     handleInteraction = (newPos, origin) => {
         // console.log('handleInteraction', this.state.interactionPosition)
         let inte = this.interactions.find(setting => setting.position === newPos);
         let indication = false
-        if (inte && this.interactions && this.state.interactionPosition) {
+        if (inte && this.interactions) {
             if(inte.indication){
                 indication = true;
-                console.log(inte.indication)
             }
             this.setState({
                 indication:indication,
@@ -53,14 +52,84 @@ class Interactions extends Component {
                 interaction: inte,
                 soundSequence: this.context.playInteractionSound(inte.name)
             }, () => {
+                let now = new Date ();
+                let new_now = null;
+                let new_time = null;
+                let isEnded = false;
                     if (this.state.interaction.interactionType === "none") {
-                        this.state.soundSequence[0].on('end', () => {
-                            if (this.state.interaction.interactionType === "none" && this.state.interaction.content === null) {
-                                this.handleAnswer('nothing')
-                            }
-                        });
+                        if(newPos>15){
+                            setTimeout(()=>{
+                                if (isEnded){
+                                    this.handleAnswer('nothing')
+                                }
+                                console.log('time')
+                            }, this.state.soundSequence[1])
+                        }
                     }
-                    else{
+
+                    this.state.soundSequence[0].once('end', () => {
+                        new_now = new Date ()
+                        new_time = new_now - now
+                        console.log(new_now, 'new_now')
+                        console.log(new_time, 'new_time')
+                        console.log(this.state.soundSequence[1], 'duration')
+                        isEnded = true
+                        if(newPos<=15 && this.state.interaction.interactionType === "none"){
+                            this.handleAnswer('nothing')
+                        }
+                    });
+
+                    //TEST 2
+                // let isLoad = false
+                // if (this.state.interaction.interactionType === "none") {
+                //     setTimeout(()=>{
+                //         if (isEnded){
+                //             this.handleAnswer('nothing')
+                //         }
+                //         console.log('time')
+                //     }, this.state.soundSequence[1])
+                // }
+                //
+                // this.state.soundSequence[0].once('load', () => {
+                //     new_now = new Date ()
+                //     new_time = new_now - now
+                //     console.log(new_now, 'new_now')
+                //     console.log(new_time, 'new_time')
+                //     console.log(this.state.soundSequence[1], 'duration')
+                //     isLoad = true
+                //     if(newPos<=15 && this.state.interaction.interactionType === "none"){
+                //         this.handleAnswer('nothing')
+                //     }
+                // });
+                    // this.state.soundSequence[0].once('end', () => {
+                    //     new_now = new Date ()
+                    //     new_time = new_now - now
+                    //     console.log(new_now, 'new_now')
+                    //     console.log(new_time, 'new_time')
+                    //     console.log(this.state.soundSequence[1], 'duration')
+                    //     if (this.state.interaction.interactionType === "none" && this.state.interaction.content === null) {
+                    //         this.handleAnswer('nothing')
+                    //     }
+                    // });
+                    // }
+                    // else{
+
+
+                        // this.state.soundSequence[0].once('load', () => {
+                        //     new_now = new Date ()
+                        //     new_time = new_now - now
+                        //     console.log(new_now, 'new_now')
+                        //     console.log(new_time, 'new_time')
+                        //     console.log(this.state.soundSequence[1], 'duration')
+                        //     isEnded = true
+                        //     setTimeout(()=>{
+                        //         if (this.state.interaction.interactionType==='none'){
+                        //             this.handleAnswer('nothing')
+                        //         }
+                        //         console.log('time')
+                        //     }, this.state.soundSequence[1])
+                        // });
+
                         if (this.state.interaction && this.state.interaction.interactionType === 'drag and drop' && this.state.interactionPosition === 20){
                             setTimeout( () =>{
                                 this.setState({
@@ -72,7 +141,7 @@ class Interactions extends Component {
                                 show: true
                             });
                         }
-                    }
+                    // }
             })
         }
     };
@@ -130,6 +199,14 @@ class Interactions extends Component {
                                  timer={this.state.interaction.timer}
                                  question={this.state.interaction.question.split('@')}
                                  drinkActionEnd={this.handleAnswer}
+                                 mode='action'
+                    />
+                    : null}
+
+                {this.state.show && this.state.interaction && this.state.interaction.interactionType === "drink" ?
+                    <DrinkAction drinkers={this.state.interaction.content.split('@')}
+                                 drinkActionEnd={this.handleAnswer}
+                                 mode='drink'
                     />
                     : null}
 

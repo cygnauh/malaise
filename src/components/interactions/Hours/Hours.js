@@ -21,8 +21,6 @@ class Hours extends Component {
             dateDisplay : true
         }
 
-        console.log('initialize');
-
     }
 
     componentDidMount() {
@@ -55,7 +53,6 @@ class Hours extends Component {
         const months = ["Janvier", "Février", "Mars", "Avril", "Mars", "Juin", "Juillet", "Aout", "Septembre", "Novembre", "Décembre"];
         const days = ["Dimanche", "Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi", "Samedi"];
         const { hours, minutes } = this.state;
-        console.log('dateDisplay', this.state.dateDisplay);
         return (
             <div className="eclipse">
                 <div className="eclipse__container">
