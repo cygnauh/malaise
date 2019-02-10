@@ -56,28 +56,41 @@ class Interactions extends Component {
                 let new_now = null;
                 let new_time = null;
                 let isEnded = false;
+                console.log(this.state.interaction.position)
+                if(this.state.interaction&&this.state.interaction.timer)console.log(this.state.interaction.timer)
+
+                    this.state.soundSequence[0].on('end', () => {
+                        new_now = new Date ()
+                        new_time = new_now - now
+                        console.log(new_time, 'new_time',this.state.soundSequence[1], 'duration')
+                        isEnded = true
+                        console.log(isEnded, 'isEnded')
+                        if(newPos<=15 && this.state.interaction.interactionType === "none"){
+                            this.handleAnswer('nothing')
+                        }
+                    });
                     if (this.state.interaction.interactionType === "none") {
+                        console.log('a')
                         if(newPos>15){
+                            console.log('b')
                             setTimeout(()=>{
+                                console.log(isEnded, 'isEnded')
                                 if (isEnded){
+                                    console.log('c')
                                     this.handleAnswer('nothing')
+                                }else{
+                                    setTimeout(()=>{
+                                        if (isEnded){
+                                            console.log('d')
+                                            this.handleAnswer('nothing')
+                                        }
+                                    }, 500)
                                 }
                                 console.log('time')
                             }, this.state.soundSequence[1])
                         }
                     }
 
-                    this.state.soundSequence[0].once('end', () => {
-                        new_now = new Date ()
-                        new_time = new_now - now
-                        console.log(new_now, 'new_now')
-                        console.log(new_time, 'new_time')
-                        console.log(this.state.soundSequence[1], 'duration')
-                        isEnded = true
-                        if(newPos<=15 && this.state.interaction.interactionType === "none"){
-                            this.handleAnswer('nothing')
-                        }
-                    });
 
                     //TEST 2
                 // let isLoad = false
@@ -130,7 +143,7 @@ class Interactions extends Component {
                         //     }, this.state.soundSequence[1])
                         // });
 
-                        if (this.state.interaction && this.state.interaction.interactionType === 'drag and drop' && this.state.interactionPosition === 20){
+                        if (this.state.interaction && this.state.interaction.interactionType === 'drag and drop' && (this.state.interaction.position === 20 || this.state.interaction.position === 28)){
                             setTimeout( () =>{
                                 this.setState({
                                     show: true
@@ -146,10 +159,12 @@ class Interactions extends Component {
         }
     };
     handleAnswer = (origin, value) => {
+        console.log(origin, value)
         let answer = (value) ? value : null;
         let destinationFound = false;
         if(this.state.origin !== origin) {
             if (this.answers && this.state.interaction) {
+                console.log(this.answers)
                 for (let i = 0; i < this.answers.length; i++) {
                     if (this.answers[i].originInteraction &&
                         this.answers[i].originInteraction.id === this.state.interaction.id &&
@@ -194,7 +209,7 @@ class Interactions extends Component {
                     />
                     : null}
 
-                {this.state.show && this.state.interaction && this.state.interaction.interactionType === "drag and drop" ?
+                {this.state.show && this.state.interaction && this.state.interaction.interactionType === "drag and drop" && this.state.interaction.position !== 28 ?
                     <DrinkAction drinkers={this.state.interaction.content.split('@')}
                                  timer={this.state.interaction.timer}
                                  question={this.state.interaction.question.split('@')}
@@ -207,6 +222,16 @@ class Interactions extends Component {
                     <DrinkAction drinkers={this.state.interaction.content.split('@')}
                                  drinkActionEnd={this.handleAnswer}
                                  mode='drink'
+                    />
+                    : null}
+
+                {this.state.show && this.state.interaction && this.state.interaction.interactionType === "drag and drop" && this.state.interaction.position === 28 ?
+                    <DrinkAction drinkers={this.state.interaction.content.split('@')}
+                                 timer={this.state.interaction.timer}
+                                 question={this.state.interaction.question.split('@')}
+                                 drinkActionEnd={this.handleAnswer}
+                                 mode='action'
+                                 hasAnwser={true}
                     />
                     : null}
 
