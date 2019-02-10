@@ -159,10 +159,12 @@ class Interactions extends Component {
         }
     };
     handleAnswer = (origin, value) => {
+        console.log(origin, value)
         let answer = (value) ? value : null;
         let destinationFound = false;
         if(this.state.origin !== origin) {
             if (this.answers && this.state.interaction) {
+                console.log(this.answers)
                 for (let i = 0; i < this.answers.length; i++) {
                     if (this.answers[i].originInteraction &&
                         this.answers[i].originInteraction.id === this.state.interaction.id &&

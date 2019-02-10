@@ -44,15 +44,12 @@ class SoundProvider extends Component {
                 console.log(this.state.episodeSoundtrack));
             let tab = {};
             setTimeout(()=>{
-
                 for(let i = 0; i<interactions.length; i++){
                     if(interactions[i].soundSequences.length !== 0){
-                        // console.log(interactions[i].soundSequences)
                         let sq = [ interactions[i].soundSequences[0].beginAt, interactions[i].soundSequences[0].duration]
                         tab[interactions[i].name] = sq;
                     }
                 }
-                // console.log(tab)
             }, 0);
             let sound = new Howl({
                 src: [Sound],
@@ -85,22 +82,21 @@ class SoundProvider extends Component {
                 //     je_n_ai_jamais5:[317630, 14370], //ok
                 //     reaction5:[333000, 2890],//ok
                 //     fin:[335890, 20610] //ok
-                // },
-                sprite: tab // TODO Uncomment
-                // sprite:{
+                // ----- udaapte value
+                //     je_n_ai_jamais3_r:[97900, 4500], // ok
                 //     je_n_ai_jamais3:[102400, 12600], // ok
                 //     je_n_ai_jamais3_p: [115000, 10300], // ok for taking position
                 //     je_n_ai_jamais3_a: [125300, 6805], // ok --> maybe drag and drop display later : maybe add another interaaction or setTimeOut or playing at the end
                 //     reaction3:[132105, 15695],
                 //     // je_n_ai_jamais3_a: [125300, 10000], // ok
                 //     recherche_google:[254220, 58290], // ok
-                //     }
+                //     fin:[335890, 20610] //ok,
+                //     reaction4_c:[312510, 5120], // ok
+                //     je_n_ai_jamais5:[317630, 14370], //ok
+                // },
+                sprite: tab // TODO Uncomment
             });
-            this.setState({ episodeSounds: sound },()=>{
-                    // console.log(this.state.episodeSounds)
-                    // this.state.episodeSounds.play('recherche_google')
-            });
-
+            this.setState({ episodeSounds: sound });
         },
         registerPlaceSound: (place) =>{ // load place selected
             let stream;

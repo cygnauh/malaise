@@ -14,7 +14,7 @@ class DragDrop extends Component {
 
     }
     componentWillReceiveProps(){
-        console.log(this.props.disableDrag)
+        // console.log(this.props.disableDrag)
         this.setState({
             disabled: this.props.disableDrag
         })

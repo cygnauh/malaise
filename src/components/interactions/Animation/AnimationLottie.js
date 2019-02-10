@@ -33,7 +33,6 @@ class AnimationLottie extends Component {
         this.timer = setTimeout(()=>{
             if(this.props.onEnd) {this.props.onEnd(this.props.animationType)}
         }, this.props.timer)
-        console.log(this.props.timer)
     };
     componentWillReceiveProps(){
         clearTimeout(this.timer);
@@ -41,7 +40,6 @@ class AnimationLottie extends Component {
             if(this.props.onEnd) {this.props.onEnd(this.props.animationType)}
             console.log(this.props.animationType)
         }, this.props.timer)
-        console.log(this.props.timer, "3")
     }
     render() {
         return (

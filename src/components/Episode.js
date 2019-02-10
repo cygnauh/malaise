@@ -50,8 +50,8 @@ class Episode extends Component {
                     <div className={this.state.componentIndex === 2?'Episode__interactions':'Episode__interactions hide'}>
                     <Query key="1" query={getAnwsers}>
                         {({ loading, error, data }) => {
-                            if (error) return <h1>Error...</h1>;
-                            if (loading || !data) return <h1>Loading...</h1>;
+                            if (error) return (<div><ErrorScreen/></div>);
+                            if (loading || !data) return (<div><Loader/></div>);
                             // console.log(data);
                             return <Interactions anwsers={data} nextComponent={this.goToWhatever}/>
                         }}

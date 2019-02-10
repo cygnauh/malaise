@@ -30,10 +30,9 @@ class DrinkAction extends Component {
                 this.question = this.props.question[1];
                 this.timer = this.props.timer;
                 this.hasAnswer = this.props.hasAnswer;
-                console.log(this.hasAnswer, 'AAA')
                 this.handleTimer = setTimeout( () => {
                     this.userDrank(false);
-                    console.log("time up")
+                    console.log("time up");
                     console.log(this.timer)
                 }, this.timer);
             }
