@@ -21,14 +21,17 @@
   }
 
   #{$item} .Timer__mask {
-    width: $size / 2 + px;
-    height: $size / 2 + px;
+    width: $size / 2 + 2 + px;
+    height: $size / 2 + 2 + px;
     border-radius: 50%;
     border: 1px solid $color__white;
     position: absolute;
-    top: 13px;
-    left: 13px;
+    top: 12px;
+    left: 12px;
     background-color: $bgColor;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 
   #{$item} .Timer__circle {

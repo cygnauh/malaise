@@ -7,6 +7,8 @@ import Lottie from 'react-lottie';
 import animationHome from '../../../assets/animation/03';
 import { SoundContext } from "../../../store/SoundProvider";
 import Introduction from "../../elements/Introduction/Introduction";
+import Logo from "../../SVG/Logo/Logo";
+import EmojiSmile from "../../SVG/EmojiSmile/EmojiSmile";
 
 class Homepage extends Component {
 
@@ -70,13 +72,29 @@ class Homepage extends Component {
     render() {
         return (
             <div className="Home" onKeyDown={this.handleKeyDown}>
+                <div className="Home__onMobile">
+                    <div className="Home__onMobile__container">
+                        <div className="Home__onMobile__logo">
+                            <Logo />
+                        </div>
+                        <p className="Home__onMobile__description">Le podcast interactif qui revient sur les mots qui font débat.</p>
+                        <div className="Home__onMobile__box">
+                            <h2 className="box__title">Salut</h2>
+                            <p className="box__description">Pour vivre l'expérience, rendez-vous sur ton ordinateur, à tout de suite !</p>
+                            <div className="box__icon">
+                                <EmojiSmile />
+                            </div>
+
+                        </div>
+                    </div>
+                    <div className="Home__alert">
+                        <p className="Home__alert-text" data-text="Malaise se lance sur ordinateur ! Malaise se lance sur ordinateur ! Malaise se lance sur ordinateur ! Malaise se lance sur ordinateur ! Malaise se lance sur ordinateur ! "> Malaise se lance sur ordinateur ! Malaise se lance sur ordinateur ! Malaise se lance sur ordinateur ! Malaise se lance sur ordinateur ! Malaise se lance sur ordinateur !</p>
+                    </div>
+                </div>
                 <div className={this.state.instructions ? "Home__background-animation Home__hide" : "Home__background-animation"} >
                     <Lottie options={this.defaultOptions} />
                 </div>
                 <div className="Home__container">
-                    {/*<div className="Home__alert">
-                        <p className="Home__alert-text" data-text="nouvel épisode ! nouvel épisode ! nouvel épisode ! nouvel épisode ! nouvel épisode ! nouvel épisode ! nouvel épisode ! nouvel épisode ! "> nouvel épisode ! nouvel épisode ! nouvel épisode ! nouvel épisode ! nouvel épisode ! nouvel épisode ! nouvel épisode !</p>
-                    </div>*/}
                     <div className="Home__center">
                         <div className={this.state.instructions ? "Home__content Home__hide" : "Home__content"}>
                             <div className="Home__logo">
@@ -90,28 +108,11 @@ class Homepage extends Component {
                         </div>
                         <div className={this.state.instructions ? "Home__instructions" : "Home__instructions  Home__hide"}>
                             <Introduction onClickStartEpisode={this.props.onButtonPressed} />
-                            {/*<div className="instructions">
-                                <div className="instructions__container">
-                                    <div className="instructions__process">
-                                        <div className="instructions__pagination">
-                                            <div className="pagination">
-                                                <div className="pagination__currentPage">{this.state.currentPage }</div>
-                                                <div className="pagination__pagesLength">3</div>
-                                            </div>
-                                        </div>
-                                        <div className="instructions__content" ref={this.instructions}>
-                                            <div className="instructions__text instructions__text--current" data-step="1">Malaise t'invite à vivre une expérience immersive à travers différents épisodes interactifs.</div>
-                                        </div>
-                                        <button className="instructions__arrow" onClick={this.handleClickNext}><img alt="Instruction suivante" src={require('../../../assets/icons/arrows/arrow_down.svg')}/></button>
-                                    </div>
-                                    <div className="instructions__end instructions__hide">
-                                        <SoundAlert />
-                                        <button className="instructions__next" onClick={this.props.onButtonPressed}>continuer</button>
-                                    </div>
-                                </div>
-                            </div>*/}
                         </div>
                     </div>
+                    {/*<div className="Home__alert">
+                        <p className="Home__alert-text" data-text="nouvel épisode ! nouvel épisode ! nouvel épisode ! nouvel épisode ! nouvel épisode ! nouvel épisode ! nouvel épisode ! nouvel épisode ! "> nouvel épisode ! nouvel épisode ! nouvel épisode ! nouvel épisode ! nouvel épisode ! nouvel épisode ! nouvel épisode !</p>
+                    </div>*/}
                 </div>
             </div>
         );

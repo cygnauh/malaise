@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Glass from '../../elements/Glass/Glass'
 import DragDrop from '../../elements/DragDrop/DragDrop'
 import { UserContext } from "./../../../store/UserProvider";
+import Timer from "../../elements/Timer/Timer";
 import {SoundContext} from "../../../store/SoundProvider";
 import "./DrinkAction.scss";
 
@@ -13,7 +14,8 @@ class DrinkAction extends Component {
             persons : '',
             canDrink: false,
             toDrink: false,
-            hide:false
+            hide:false,
+            started: false
         };
         this.drinkers = this.props.drinkers; // persons who drinks at the question
         this.userDrank = this.userDrank.bind(this);
@@ -30,6 +32,7 @@ class DrinkAction extends Component {
     }
     componentDidMount(){
         this.setState({
+            started: true,
             persons: this.context.personalizations
         }, ()=>{
             console.log(this.state.persons);
@@ -100,7 +103,10 @@ class DrinkAction extends Component {
 
     render() {
         return (
-            <div className={!this.state.hide?"DrinkAction":"DrinkAction hide"}>
+            <div className={!this.state.hide ? "DrinkAction" : "DrinkAction hide"}>
+                <div className="DrinkAction__timer">
+                    <Timer activeTimer={this.state.started} />
+                </div>
                 <div className="wrapper">
                     {this.state.persons ? this.handleDrink() : null}
                 </div>

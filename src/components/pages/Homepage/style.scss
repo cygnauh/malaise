@@ -16,6 +16,10 @@
     color: $color__white;
     position: relative;
 
+  &__onMobile {
+    display: none;
+  }
+
   &__background-animation {
     width: 100%;
     height: 100%;
@@ -44,16 +48,17 @@
 
   &__alert {
     position: absolute;
-    top: 0;
+    bottom: 0;
     left: 0;
     width: 100%;
     height: 50px;
-    border-bottom: 1px solid $color__white;
+    border-top: 1px solid $color__white;
     display: flex;
     justify-content:center;
     align-items:center;
     overflow-x: hidden;
     white-space: nowrap;
+    font-family: $font__happy-times;
 
     &-text {
       animation: linear horizontallyScroll 2s infinite ;
@@ -271,6 +276,80 @@
     opacity: 0;
     z-index: 1;
     transition: opacity 1s 0s;
+  }
+
+}
+
+/* mobile et tablet */
+@media screen and (max-width: 768px) {
+
+  .Home {
+
+    &__container, &__background-animation {
+      display: none;
+    }
+
+    &__onMobile {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      height: 100%;
+      font-family: $font__happy-times;
+
+      &__container {
+        text-align: center;
+        padding: 0 30px;
+      }
+
+      &__logo {
+        margin-bottom: 20px;
+        text-align: center;
+
+        svg {
+          width: 200px;
+          height: 30px;
+        }
+
+      }
+
+      &__description {
+        max-width: 300px;
+        margin: 0 auto 50px auto;
+        font-size: 18px;
+      }
+
+      &__box {
+        border: 1px solid $color__white;
+        padding: 30px;
+
+        .box {
+
+          &__title {
+            font-size: 28px;
+            margin-bottom: 20px;
+          }
+
+          &__description {
+            font-size: 18px;
+            margin-bottom: 20px;
+          }
+
+          &__icon {
+
+            svg {
+              width: 50px;
+              height: 50px;
+            }
+
+          }
+
+        }
+
+      }
+
+    }
+
   }
 
 }
