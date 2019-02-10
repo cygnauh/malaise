@@ -7,15 +7,18 @@
   text-align: center;
   display: flex;
   align-items: center;
+
   .Notice__text{
     margin: 0 auto;
   }
+
 }
 
 .interface {
   .Notice {
     border-top: 1px solid $color__white;
     color: $color__white;
+    background-color: $color__bg;
   }
 }
 
@@ -23,6 +26,15 @@
   .Notice {
     border-top: 1px solid $color__xp--dark;
     color: $color__xp--dark;
+    background-color: $color__white;
+  }
+}
+
+.episode {
+  .Notice {
+    border-top: 1px solid $color__white;
+    color: $color__white;
+    background-color: $color__xp--dark;
   }
 }
 

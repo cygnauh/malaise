@@ -18,32 +18,33 @@ class Hours extends Component {
             date: currentDateTime.getDate(),
             hours : currentDateTime.getHours(),
             minutes : currentDateTime.getMinutes(),
-            dataDisplay : true
+            dateDisplay : true
         }
+
+        console.log('initialize');
 
     }
 
     componentDidMount() {
+        console.log(this.props.duration);
+        if(this.props.hours && this.props.minutes){
+            this.setState({
+                hours: this.props.hours,
+                minutes: this.props.minutes,
+                dateDisplay: false
+            });
+        }else{
+            this.setState({
+                hours: 21,
+                minutes: 52
+            });
+        }
 
-        setTimeout(() => {
-            if(this.props.hours&&this.props.minute){
-                this.setState({
-                    hours: this.props.hours,
-                    minutes: this.props.minutes,
-                    dateDisplay: this.props.date
-                });
-            }else{
-                this.setState({
-                    hours: 21,
-                    minutes: 52
-                });
-            }
-        }, 600);
         setTimeout(()=>{
             if(this.props.onEnd){
                 this.props.onEnd('hours')
             }
-        }, 3000)
+        }, this.props.duration ? this.props.duration : 3000)
     }
 
     componentWillUnmount() {
@@ -54,10 +55,11 @@ class Hours extends Component {
         const months = ["Janvier", "Février", "Mars", "Avril", "Mars", "Juin", "Juillet", "Aout", "Septembre", "Novembre", "Décembre"];
         const days = ["Dimanche", "Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi", "Samedi"];
         const { hours, minutes } = this.state;
+        console.log('dateDisplay', this.state.dateDisplay);
         return (
             <div className="eclipse">
                 <div className="eclipse__container">
-                    <div className={this.state.dataDisplay ? 'eclipse__date' : 'eclipse__date eclipse__date--hide'}>
+                    <div className={this.state.dateDisplay ? 'eclipse__date' : 'eclipse__date eclipse__date--hide'}>
                         <span>{days[this.state.day]}</span><span>{this.state.date}</span><span>{months[this.state.month]}</span>
                     </div>
                     <div className="eclipse__clock">

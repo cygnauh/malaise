@@ -24,7 +24,7 @@ class Episode extends Component {
             this.setState({
                 componentIndex:1
             })
-        }, 5000)
+        }, 4000)
     };
     goToWhatever = () => {
         if(this.state.componentIndex !== 2){
