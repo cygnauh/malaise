@@ -84,7 +84,7 @@ class Interactions extends Component {
                                             console.log('d')
                                             this.handleAnswer('nothing')
                                         }
-                                    }, 2000)
+                                    }, 500)
                                 }
                                 console.log('time')
                             }, this.state.soundSequence[1])
@@ -224,17 +224,13 @@ class Interactions extends Component {
                     : null}
 
                 {this.state.show && this.state.interaction && this.state.interaction.interactionType === "drag and drop" && this.state.interaction.position === 28 ?
-
-                    <div>
-                        <DrinkAction drinkers={this.state.interaction.content.split('@')}
-                                     timer={this.state.interaction.timer}
-                                     question={this.state.interaction.question.split('@')}
-                                     drinkActionEnd={this.handleAnswer}
-                                     mode='action'
-                                     hasAnwser={true}
-                        />
-
-                    </div>
+                    <DrinkAction drinkers={this.state.interaction.content.split('@')}
+                                 timer={this.state.interaction.timer}
+                                 question={this.state.interaction.question.split('@')}
+                                 drinkActionEnd={this.handleAnswer}
+                                 mode='action'
+                                 hasAnwser={true}
+                    />
                     : null}
 
                 {this.state.show && this.state.interaction && this.state.interaction.interactionType === "user question" ?
