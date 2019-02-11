@@ -97,7 +97,9 @@ class SoundProvider extends Component {
                 // },
                 sprite: tab // TODO Uncomment
             });
-            this.setState({ episodeSounds: sound });
+            this.setState({ episodeSounds: sound }, ()=>{
+                // this.state.episodeSounds.play('anecdote1fusion')
+            });
         },
         registerPlaceSound: (place) =>{ // load place selected
             let stream;

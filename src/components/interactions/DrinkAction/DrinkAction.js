@@ -19,6 +19,13 @@ class DrinkAction extends Component {
         };
         this.drinkers = this.props.drinkers; // persons who drinks at the question
         this.userDrank = this.userDrank.bind(this);
+        if (this.props.mode === 'action') {
+            this.asker = this.props.question[0]; // who is asking the question
+            console.log(this.asker, 'componentDidMount')
+            this.question = this.props.question[1];
+            this.timer = this.props.timer;
+            this.hasAnswer = this.props.hasAnswer;
+        }
 
     }
     componentDidMount(){
@@ -28,11 +35,12 @@ class DrinkAction extends Component {
         }, ()=>{
             console.log(this.state.persons);
             if(this.props.mode === 'drink') this.userDrank(false);
-            if (this.props.mode ==='action') {
-                this.asker = this.props.question[0]; // who is asking the question
-                this.question = this.props.question[1];
-                this.timer = this.props.timer;
-                this.hasAnswer = this.props.hasAnswer;
+            if (this.props.mode === 'action') {
+                // this.asker = this.props.question[0]; // who is asking the question
+                // console.log(this.asker, 'componentDidMount')
+                // this.question = this.props.question[1];
+                // this.timer = this.props.timer;
+                // this.hasAnswer = this.props.hasAnswer;
                 this.handleTimer = setTimeout( () => {
                     this.userDrank(false);
                     console.log("time up");
