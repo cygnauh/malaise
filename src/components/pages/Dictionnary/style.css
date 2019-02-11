@@ -101,14 +101,14 @@
         border-width: 41px;
         margin-left: -41px; }
       .Dictionnary__definitions .definitions__themeName h2, .Dictionnary__definitions .definitions__orderName h2 {
-        margin-left: 50px;
+        margin-left: 100px;
         font-family: "Happy times";
         font-size: 50px;
         line-height: 80px;
         height: 54px;
         overflow: hidden; }
     .Dictionnary__definitions .definitions__themeList, .Dictionnary__definitions .definitions__orderList {
-      padding: 0 100px; }
+      padding: 0 200px; }
     .Dictionnary__definitions .definitions__item {
       margin-bottom: 50px; }
       .Dictionnary__definitions .definitions__item h3 {
