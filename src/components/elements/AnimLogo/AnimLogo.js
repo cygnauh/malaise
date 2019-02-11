@@ -128,7 +128,7 @@ class AnimLogo extends Component {
             var x0 = $el.offsetLeft;
             var y0 = $el.offsetTop;
             var x1 = this.mouseX;
-            var y1 = this.mouseY - 100;
+            var y1 = this.mouseY - 200;
 
             var distanceX = x1 - x0;
             var distanceY = y1 - y0;
