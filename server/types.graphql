@@ -84,6 +84,7 @@ type Answer @model {
   content: String
   originInteraction: Interaction @relation(name:"AnswersOriginInteractions")
   destinationInteraction: Interaction @relation(name:"AnswersDestinationInteractions")
+  name: String
 }
 
 type SoundSequence @model {
