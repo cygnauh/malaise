@@ -124,10 +124,10 @@
     right: 0;
     width: 100%;
     height: 50px;
-    transition: height 0.4s ease-in-out;
+    transition: height 0.1s ease-in-out;
 
     &.hide{
-        transition: bottom 0.4s ease-in-out;
+        transition: bottom 0.1s ease-in-out;
         bottom: -50px;
     }
 }
