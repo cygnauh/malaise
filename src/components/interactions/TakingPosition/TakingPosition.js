@@ -71,8 +71,11 @@ class TakingPosition extends Component {
 
         let x = this.state.x;
 
-        p1.style.width = 100 - x / 10 + '%';
-        p2.style.width = x / 10 + '%';
+        let p1Pourcent = 100 - x / 10;
+        let p2Pourcent = x / 10
+        p1.style.width = p1Pourcent + '%';
+        p2.style.width = p2Pourcent + '%';
+        
 
         var inverseX = (e.currentTarget.offsetWidth / 2) - x;
         p1.querySelector('.TakingPosition__name').style.transform = `scale(${1 + inverseX/500})`;
