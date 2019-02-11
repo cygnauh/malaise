@@ -108,7 +108,8 @@
 
         &:hover {
           .item__name {
-            color: $color__medium;
+            text-shadow: -1px 0 $color__white, 0 1px $color__white, 1px 0 $color__white, 0 -1px $color__white;
+            color: $color__bg;
             transform: translateY(0);
           }
         }
@@ -163,18 +164,13 @@
     display: flex;
     align-items: center;
     justify-content: flex-end;
-  }
 
-  &__socials {
-    display: flex;
+    .SocialShare__item {
+      transition: transform 0.5s ease;
 
-    &-item {
-      margin: 0 25px;
-
-      img {
-        height: 20px;
+      &:hover {
+        transform: translateY(-10px);
       }
-
     }
 
   }
@@ -220,6 +216,7 @@
     }
     &__item {
       border-bottom: 1px solid $color__white;
+
       .item {
         &__link {
           &:focus, &:active {
@@ -295,17 +292,13 @@
         &__link {
           color: $color__white;
 
-          &:hover {
+          &:hover, &:focus, &:active {
 
             .item__name {
-              color: $color__xp--light;
+              text-shadow: -1px 0 $color__white, 0 1px $color__white, 1px 0 $color__white, 0 -1px $color__white;
+              color: $color__xp--dark;
             }
 
-          }
-
-          &:focus, &:active {
-            text-shadow: -1px 0 $color__white, 0 1px $color__white, 1px 0 $color__white, 0 -1px $color__white;
-            color: $color__xp--dark;
           }
 
         }

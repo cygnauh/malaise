@@ -7,9 +7,16 @@
   display: flex;
   justify-content:center;
   align-items:center;
+  position: relative;
+
+  &__background {
+    position: absolute;
+    z-index: 0;
+  }
 
   &__container {
     text-align: center;
+    z-index: 1;
   }
 
   &__episode {

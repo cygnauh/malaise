@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './style.scss';
 import { Link } from 'react-router-dom';
 import GobelinsLogo from '../../../assets/img/logo-gobelins.png';
+import Heart from "../../SVG/Heart/Heart";
 
 
 class About extends Component {
@@ -23,19 +24,25 @@ class About extends Component {
                             <ul className="advice__podcastList">
                                 <li className="advice__podcastItem">
                                     <div className="podcastItem__illustration"></div>
-                                    <div className="podcastItem__like"></div>
+                                    <div className="podcastItem__like">
+                                        <Heart />
+                                    </div>
                                     <h3 className="podcastItem__name">Programme B</h3>
                                     <p className="podcastItem__description">Comment éduquer à la tolérence.</p>
                                 </li>
                                 <li className="advice__podcastItem">
                                     <div className="podcastItem__illustration"></div>
-                                    <div className="podcastItem__like"></div>
+                                    <div className="podcastItem__like">
+                                        <Heart />
+                                    </div>
                                     <h3 className="podcastItem__name">Programme B</h3>
                                     <p className="podcastItem__description">Les zinzins d'internet prennent-ils le pouvoir ?</p>
                                 </li>
                                 <li className="advice__podcastItem">
                                     <div className="podcastItem__illustration"></div>
-                                    <div className="podcastItem__like"></div>
+                                    <div className="podcastItem__like">
+                                        <Heart />
+                                    </div>
                                     <h3 className="podcastItem__name">1 episode et j'arrête</h3>
                                     <p className="podcastItem__description">Peut-on rire de tout dans les séries ?</p>
                                 </li>

@@ -10,6 +10,7 @@
     .TakingPosition__winner {
       transition: width 1s ease;
       width: 100%!important;
+      max-width: 100%;
     }
 
   }
@@ -39,6 +40,8 @@
     cursor: pointer;
     z-index: 1;
     background-color: $color__xp--dark;
+    max-width: 80%;
+    min-width: 20%;
   }
 
   &__leftPart {

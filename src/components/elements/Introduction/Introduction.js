@@ -4,19 +4,41 @@ import Jingle from "../Jingle/Jingle";
 import EpisodeSelection from "../EpisodeSelection/EpisodeSelection";
 import Instructions from "../Instructions/Instructions";
 import $ from 'jquery';
+import { SoundContext } from "../../../store/SoundProvider";
 
 class Introduction extends Component {
 
     constructor(props){
         super(props);
         this.state = {
-            instructions: false
+            instructions: false,
+            jingle: true,
+            episode: false,
+            jingleSound: ''
         }
+    }
+
+    componentDidMount(){
+        this.setState({
+            jingleSound: this.context.playJingle()
+        })
+    }
+
+    componentWillReceiveProps() {
+        setTimeout(() => {
+            this.setState({
+                start:true
+            });
+            if(this.state.start && this.props.startedJingle){
+                this.state.jingleSound.play();
+            }
+        }, 1500);
     }
 
     handleClickSkipIntro = () => {
         $('.Introduction__step--current').removeClass('Introduction__step--current');
         $('.Introduction__episode').addClass('Introduction__step--current');
+        this.state.jingleSound.stop();
     }
 
     nextIntroductionStep = () => {
@@ -24,18 +46,22 @@ class Introduction extends Component {
         var $nextIntroStep = $currentIntroStep.next();
 
         if($nextIntroStep.hasClass('Introduction__instruction')){
-            console.log('has instruction');
             this.setState({
-                instructions: true
+                instructions: true,
+                jingle: false
             }, () => {
                 this.setState({
-                    instructions: true
+                    instructions: true,
+                    jingle: false
                 })
             })
         }
 
-        $currentIntroStep.toggleClass('Introduction__step--current');
-        $nextIntroStep.toggleClass('Introduction__step--current');
+        if(!$currentIntroStep.is(':last-child')) {
+            $currentIntroStep.toggleClass('Introduction__step--current');
+            $nextIntroStep.toggleClass('Introduction__step--current');
+            console.log('disappear step');
+        }
 
     }
 
@@ -45,13 +71,18 @@ class Introduction extends Component {
                 <div className="Introduction__container">
                     <div className="Introduction__step Introduction__jingle Introduction__step--current">
                         <div className="Introduction__step__container">
-                            <Jingle />
+                            {this.state.jingle && this.props.startedJingle ?
+                                <Jingle
+                                launchLottie={this.props.startedJingle}
+                                onEnd={this.nextIntroductionStep}
+                                />
+                                : null
+                            }
                             <button className="Introduction__jingle__cta"
                                     onClick={this.handleClickSkipIntro}>
                                 Passer l'intro
                             </button>
                         </div>
-                        <button onClick={this.nextIntroductionStep}>next</button>
                     </div>
                     <div className="Introduction__step Introduction__instruction">
                         <div className="Introduction__step__container">
@@ -67,4 +98,5 @@ class Introduction extends Component {
     }
 }
 
+Introduction.contextType = SoundContext;
 export default Introduction;

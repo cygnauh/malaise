@@ -79,7 +79,7 @@ class Doorbell extends Component {
             <div className="Doorbell">
                 {!this.state.displayAnim ?
                 <div className={this.state.activeBell ? 'Doorbell__container Doorbell__animation': 'Doorbell__container'}>
-                    <h1 className="Doorbell__label">Tu arrives chez ta pote qui fait une soirée posée.</h1>
+                    <h1 className="Doorbell__label"><span>Tu arrives chez ta pote qui fait une soirée posée.</span></h1>
                     <div className="Doorbell__bell bell">
                         <div className="repeat-bell__box">
                             <div className="repeat-bell__container">

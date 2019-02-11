@@ -107,7 +107,7 @@ class Homepage extends Component {
                             <button className="Home__start" onClick={this.handleClickStart}>démarrer l'expérience</button>
                         </div>
                         <div className={this.state.instructions ? "Home__instructions" : "Home__instructions  Home__hide"}>
-                            <Introduction onClickStartEpisode={this.props.onButtonPressed} />
+                            <Introduction onClickStartEpisode={this.props.onButtonPressed} startedJingle = {this.state.instructions}/>
                         </div>
                     </div>
                     {/*<div className="Home__alert">

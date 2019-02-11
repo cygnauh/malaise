@@ -4,6 +4,8 @@ import { Query } from "react-apollo";
 import { getCredits } from '../../../graphql/queries';
 import Loader from '../../elements/Loader/Loader'
 import ErrorScreen from '../../elements/ErrorScreen/ErrorScreen'
+import Lottie from 'react-lottie';
+import lottieCredit from '../../../assets/animation/text_3_7_ending.json';
 
 
 class Credits extends Component {
@@ -14,6 +16,14 @@ class Credits extends Component {
             render:'',
             episode:'cjqwfe1kj1j2x0122tixfvb5i'
         };
+        this.defaultOptions = {
+            loop: true,
+            autoplay: true,
+            animationData: lottieCredit,
+            propsrendererSettings: {
+                preserveAspectRatio: 'xMidYMid slice'
+            }
+        }
     }
 
     displayDirectors = (data) => {
@@ -50,6 +60,9 @@ class Credits extends Component {
     render() {
         return(
             <div className="Credits">
+                <div className="Credits__background">
+                    <Lottie options={this.defaultOptions} />
+                </div>
                 {
                     this.state.episode?
                         (<Query query={getCredits} variables={{ id : this.state.episode }}>

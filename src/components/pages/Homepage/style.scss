@@ -28,20 +28,15 @@
     left: 0;
     z-index: 0;
     overflow: hidden;
-    display: flex;
-    justify-content:left;
-    align-items:center;
     opacity: 0.6;
 
     & > div {
-      display: flex;
-      justify-content:left;
-      align-items:center;
-    }
-
-    svg {
       width: 120%!important;
       height: 120%!important;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%,-50%);
     }
 
   }

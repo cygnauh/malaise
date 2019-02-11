@@ -10,7 +10,6 @@ class Instructions extends Component {
     }
 
     componentWillReceiveProps() {
-        console.log(this.props.startInstruction);
         if(this.props.startInstruction === true) {
             let $currentInstructionStep = $('.Instruction--current');
             let stepCurrent = $currentInstructionStep.data('step');

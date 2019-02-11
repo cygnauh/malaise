@@ -35,9 +35,18 @@
 
   &__jingle {
 
+    .Introduction__step__container {
+      width: 100%;
+      height: 100%;
+    }
+
     &__cta {
       @include default-button($color__white);
       margin-top: 100px;
+      position: absolute;
+      bottom: 50px;
+      right: 100px;
+      background-color: $color__bg;
 
       &:hover, &:focus, &:active {
         background-color: $color__white;

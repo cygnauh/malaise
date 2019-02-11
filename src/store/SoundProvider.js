@@ -15,7 +15,8 @@ export const SoundContext = createContext({
     playGreeting:() => {},
     handleMusicChoices:() => {},
     handleMusic:() => {},
-    playInteractionSound:() =>{}
+    playInteractionSound:() =>{},
+    playJingle:() =>{}
 
 });
 class SoundProvider extends Component {
@@ -159,6 +160,19 @@ class SoundProvider extends Component {
             instruction.play();
 
             return instruction;
+        },
+
+        playJingle:() => {
+            let url = 'https://circegrand.fr/etude/gobelins/malaise/media/sounds/jingle.mp3';
+            let jingle;
+
+            jingle = new Howl({
+                src: [url],
+                ext: ['mp3'],
+                html5: true
+            });
+
+            return jingle;
         },
 
         // TODO to be improved

@@ -94,6 +94,7 @@
         border-radius: 5px;
         padding: 10px 10px 30px 10px;
         width: 250px;
+        position: relative;
 
         &:first-child {
           margin-right: auto;
@@ -111,6 +112,14 @@
             height: calc(250px - 20px);
             background-color: red;
             margin-bottom: 30px;
+          }
+
+          &__like {
+            width: 25px;
+            height: 25px;
+            position: absolute;
+            left: 15px;
+            bottom: 50px;
           }
 
           &__name, &__description {

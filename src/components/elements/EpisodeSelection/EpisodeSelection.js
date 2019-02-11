@@ -7,6 +7,8 @@ import "./style.scss";
 import { Link } from 'react-router-dom';
 import Loader from '../../elements/Loader/Loader'
 import ErrorScreen from '../../elements/ErrorScreen/ErrorScreen'
+import Lottie from 'react-lottie';
+import serpentin from '../../../assets/animation/text_1_2_episode3.json';
 
 // episode selection either select thank to the form, or thank to the catalog
 
@@ -21,6 +23,14 @@ class EpisodeSelection extends Component {
             render:'',
             episode:''
         };
+        this.defaultOptions = {
+            loop: true,
+            autoplay: true,
+            animationData: serpentin,
+            propsrendererSettings: {
+                preserveAspectRatio: 'xMidYMid slice'
+            }
+        }
     }
     onContinueClicked (callbackSetEpisode, params, callbackSetSounds, registerPlaceSound) {
         // for real project --> replace params.allEpisodes[0] by params.allEpisodes[params.allEpisodes.length-1]
@@ -48,7 +58,7 @@ class EpisodeSelection extends Component {
                                         {({setEpisodeSounds, registerPlaceSound}) => (
                                             <div className="EpisodeSelection__container">
                                                 <div className="EpisodeSelection__background">
-                                                    <img src={data.allEpisodes[0].serpentin ? 'fonts/'+data.allEpisodes[0].serpentin+'.svg'  : null} alt="Episode serpentin" />
+                                                    <Lottie options={this.defaultOptions} />
                                                 </div>
                                                 <div className="EpisodeSelection__content">
                                                     <div className="EpisodeSelection__episode episode">
