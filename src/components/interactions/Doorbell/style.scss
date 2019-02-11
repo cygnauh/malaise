@@ -178,29 +178,13 @@
   }
 
   &__label {
-    color: $color__xp--dark;
-    font-family: $font__happy-times;
-    font-size: 25px;
-    line-height: 30px;
-    width: 100%;
-    text-align: center;
     position: absolute;
     top: 30%;
     left: 50%;
     transform: translateX(-50%);
-    font-weight: normal;
-    opacity: 1;
-    transition: all 0.5s ease;
 
-    &:after {
-      content: "";
-      width: 60%;
-      height: 1px;
-      background-color: $color__xp--dark;
-      position: absolute;
-      bottom: 6px;
-      left: 50%;
-      transform: translateX(-50%);
+    span {
+      @include underlineLabel($color__xp--dark, $font__happy-times);
     }
 
   }
@@ -251,6 +235,8 @@
     transition: all 0.5s ease;
     background: none;
     color: $color__xp--dark;
+
+
   }
 
   &__input::placeholder {
@@ -282,7 +268,11 @@
   @include border-button($color__white, $color__xp--dark, $font__archivo--black, 35px);
 
   &:hover, &:focus, &:active {
-    color: $color__xp--dark;
+    opacity: 1;
+  }
+
+  &.btn__bell {
+    opacity: 1;
   }
 
 }

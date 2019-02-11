@@ -24,7 +24,7 @@ class PresentationInput extends Component {
                                    placeholder={this.props.form.answerLabel}
                                    onKeyPress={this.props.handleKeyPress}
                                    onChange={this.props.handleChange}/>
-                            <button className={this.props.currentInput ? 'form__btn form__next border-white': 'form__btn form__next border-white empty'}
+                            <button className={this.props.currentInput ? 'form__btn form__next': 'form__btn form__next empty'}
                                     onClick={this.props.currentInput ? (e)=>this.props.validateInput(e):null}>
                                 <span>ok</span>
                             </button>
