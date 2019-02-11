@@ -16,6 +16,7 @@ import Timer from "../../elements/Timer/Timer";
 import Selection from "../../elements/EpisodeSelection/EpisodeSelection";
 import Anecdotes from "../../pages/Anecdotes/Anecdotes";
 import About from "../../pages/About/About";
+import Error404 from "../../pages/Error404/Error404";
 import Credits from "../../pages/Credits/Credits";
 import TakingPosition from "../../interactions/TakingPosition/TakingPosition";
 import UserQuestion from "../../interactions/UserQuestion/UserQuestion";
@@ -59,6 +60,7 @@ class Main extends Component {
                                 <Route path="/talk" component={Talk} />
                                 <Route path="/formAnecdote" component={AnecdoteForm} />
                                 <Route path="/loader" component={Loader} />
+                                <Route path="/404" component={Error404} />
                             </Switch>
                         </main>
                     );

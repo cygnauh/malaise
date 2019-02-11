@@ -3,9 +3,9 @@
 /* XP 1 */
 /*@font-face {
   font-family: 'Happy Times';
-  src: url('../fonts/happy-times/happy-times.woff2') format('woff2'),
-  url('../fonts/happy-times/happy-times.woff') format('woff'),
-  url('../fonts/happy-times/happy-times.ttf')  format('truetype');
+  src: url('../../fonts/happy-times/happy-times.woff2') format('woff2'),
+  url('../../fonts/happy-times/happy-times.woff') format('woff'),
+  url('../../fonts/happy-times/happy-times.ttf')  format('truetype');
 }*/
 @-webkit-keyframes horizontallyScroll {
   0%, 100% {

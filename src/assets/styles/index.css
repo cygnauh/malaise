@@ -3,18 +3,18 @@
 /* XP 1 */
 /*@font-face {
   font-family: 'Happy Times';
-  src: url('../fonts/happy-times/happy-times.woff2') format('woff2'),
-  url('../fonts/happy-times/happy-times.woff') format('woff'),
-  url('../fonts/happy-times/happy-times.ttf')  format('truetype');
+  src: url('../../fonts/happy-times/happy-times.woff2') format('woff2'),
+  url('../../fonts/happy-times/happy-times.woff') format('woff'),
+  url('../../fonts/happy-times/happy-times.ttf')  format('truetype');
 }*/
 /* GLOBAL */
 /* INTERFACE */
 /* XP 1 */
 /*@font-face {
   font-family: 'Happy Times';
-  src: url('../fonts/happy-times/happy-times.woff2') format('woff2'),
-  url('../fonts/happy-times/happy-times.woff') format('woff'),
-  url('../fonts/happy-times/happy-times.ttf')  format('truetype');
+  src: url('../../fonts/happy-times/happy-times.woff2') format('woff2'),
+  url('../../fonts/happy-times/happy-times.woff') format('woff'),
+  url('../../fonts/happy-times/happy-times.ttf')  format('truetype');
 }*/
 * {
   box-sizing: border-box; }
@@ -70,9 +70,12 @@ input:focus, textarea:focus, button:focus, button:active {
 /* XP 1 */
 /*@font-face {
   font-family: 'Happy Times';
-  src: url('../fonts/happy-times/happy-times.woff2') format('woff2'),
-  url('../fonts/happy-times/happy-times.woff') format('woff'),
-  url('../fonts/happy-times/happy-times.ttf')  format('truetype');
+  src: url('../../fonts/happy-times/happy-times.woff2') format('woff2'),
+  url('../../fonts/happy-times/happy-times.woff') format('woff'),
+  url('../../fonts/happy-times/happy-times.ttf')  format('truetype');
 }*/
+@font-face {
+  font-family: 'Happy Times';
+  src: url("../fonts/happy-times/happy-times.woff2") format("woff2"), url("../fonts/happy-times/happy-times.woff") format("woff"), url("../fonts/happy-times/happy-times.ttf") format("truetype"); }
 
 /*# sourceMappingURL=index.css.map */

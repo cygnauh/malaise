@@ -72,14 +72,22 @@ class TakingPosition extends Component {
         let x = this.state.x;
 
         let p1Pourcent = 100 - x / 10;
-        let p2Pourcent = x / 10
+        let p2Pourcent = x / 10;
+        console.log(p1Pourcent);
+        console.log(p2Pourcent);
         p1.style.width = p1Pourcent + '%';
         p2.style.width = p2Pourcent + '%';
-        
 
         var inverseX = (e.currentTarget.offsetWidth / 2) - x;
         p1.querySelector('.TakingPosition__name').style.transform = `scale(${1 + inverseX/500})`;
         p2.querySelector('.TakingPosition__name').style.transform = `scale(${1 - inverseX/500})`;
+
+        if(p1Pourcent > 80) {
+            console.log("max width");
+        } else {
+            p1.querySelector('.TakingPosition__name').style.transform = `scale(${1 + inverseX/500})`;
+            p2.querySelector('.TakingPosition__name').style.transform = `scale(${1 - inverseX/500})`;
+        }
 
         if (x < e.currentTarget.offsetWidth / 2) {
             if(!p1.classList.contains("TakingPosition__winner")) {
