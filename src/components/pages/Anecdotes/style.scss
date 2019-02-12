@@ -2,6 +2,59 @@
 @import '../../../assets/styles/mixins/index.scss';
 
 .Anecdotes {
+  width: 100%;
+  height: 100%;
+  position: relative;
+
+  &__messageSubmit {
+    z-index: 0;
+    opacity: 0;
+
+    &:before {
+      content: "";
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      background: rgba(11, 22, 46, 0.7);
+      z-index: 9;
+    }
+
+    &--show {
+      z-index: 1;
+      opacity: 1;
+    }
+
+    .messageSubmit {
+      border: 1px solid $color__white;
+      background: $color__bg;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+      padding: 40px 80px;
+      z-index: 10;
+      font-family: $font__happy-times;
+      font-weight: normal;
+      font-size: 16px;
+      line-height: 22px;
+
+      &__icon {
+        width: 40px;
+        height: 40px;
+        margin: 0 auto 30px auto;
+      }
+
+      &__title {
+        font-family: $font__archivo--black;
+        font-weight: normal;
+        margin-bottom: 10px;
+      }
+
+    }
+  }
 
     &__container {
       display: flex;

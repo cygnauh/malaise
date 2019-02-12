@@ -33,6 +33,19 @@
     font-family: $font__archivo--black;
 }
 
+.clock__hours, .clock__minutes {
+    margin-bottom: -5px;
+}
+
+.clock__hours {
+    margin-right: 10px;
+}
+
+.clock__minutes {
+    margin-left: 10px;
+}
+
+
 .odometer-value {
     font-family: $font__archivo--black;
     font-size: 80px;

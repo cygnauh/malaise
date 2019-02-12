@@ -107,7 +107,7 @@ class SoundProvider extends Component {
                 src: [place.url],
                 ext: ['mp3'],
                 html5: true,
-                volume:0.2,
+                volume:0.1,
                 loop: true
             });
             // console.log(this.state.placeSoundtrack);
@@ -132,13 +132,13 @@ class SoundProvider extends Component {
                 src: [doorbell],
                 ext: ['mp3'],
                 html5: true,
-                volume:0.5
+                volume:0.4
             });
             streamOpendoor = new Howl({
                 src: [opendoor],
                 ext: ['mp3'],
                 html5: true,
-                volume:0.5
+                volume:0.4
             });
             streamDoorbell.play();
             setTimeout( () => {
@@ -146,7 +146,7 @@ class SoundProvider extends Component {
             }, 1500);
             setTimeout( () => {
                 if(this.state.placeSoundtrack){
-                    this.state.placeSoundtrack.volume(0.7)
+                    this.state.placeSoundtrack.volume(0.3)
                 }
             }, 1800)
         },
@@ -196,7 +196,7 @@ class SoundProvider extends Component {
                     src: [sounds[i].url],
                     ext: ['mp3'],
                     html5: true,
-                    volume:0.2
+                    volume:0.1
                 });
                 soundtab.push(sound)
             }
