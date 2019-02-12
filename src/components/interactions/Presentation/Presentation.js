@@ -113,10 +113,10 @@ class Presentation extends Component {
         let host = this.state.greetedGuests;
         host.push({
             name:this.state.hote,
-            // top:500,
-            top:this.state.positions[this.state.positions.length-1].top,
-            left:this.state.positions[this.state.positions.length-1].left,
-            // left:500,
+            top:500,
+            // top:this.state.positions[this.state.positions.length-1].top,
+            // left:this.state.positions[this.state.positions.length-1].left,
+            left:500,
             randomLetters:[]
         });
         this.setState({
