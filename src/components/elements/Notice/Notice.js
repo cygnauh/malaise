@@ -12,14 +12,14 @@ class Notice extends Component {
         if(this.props.notice){
             this.setState({
                 notice : this.props.notice
-            }, console.log(this.state.notice, 'componentDidMount'))
+            })
         }
     }
     componentWillReceiveProps(){
         if(this.props.notice){
             this.setState({
                 notice : this.props.notice
-            }, console.log(this.state.notice, 'componentWillReceiveProps'))
+            })
         }
     }
     render() {

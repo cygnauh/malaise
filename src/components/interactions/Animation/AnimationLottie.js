@@ -29,8 +29,7 @@ class AnimationLottie extends Component {
         this.setAnim()
     }
     setAnim(){
-        let anim = this.state.animations[this.props.name]
-        // console.log(anim_3_3_regles)
+        let anim = this.state.animations[this.props.name];
         this.defaultOptions = {
             loop: false,
             autoplay: true,
@@ -49,9 +48,7 @@ class AnimationLottie extends Component {
         clearTimeout(this.timer);
         this.timer = setTimeout(()=>{
             if(this.props.onEnd) {this.props.onEnd(this.props.animationType)}
-            console.log(this.props.animationType)
         }, this.props.timer)
-        console.log('HELLO THIS IS THE ANIM' + this.props.name)
     }
     render() {
         return (

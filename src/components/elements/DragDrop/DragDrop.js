@@ -14,7 +14,6 @@ class DragDrop extends Component {
 
     }
     componentWillReceiveProps(){
-        // console.log(this.props.disableDrag)
         this.setState({
             disabled: this.props.disableDrag
         })
@@ -46,7 +45,6 @@ class DragDrop extends Component {
             $('.Drag-drop__dragEnd').addClass('Drag-drop__dragEnd--full');
             $('.Drag-drop__draggable').removeClass('Drag-drop__draggable--onDrag').addClass('Drag-drop__draggable--dragged');
             $('.Drag-drop__dragStart').addClass('Drag-drop__dragStart--dragged');
-            // console.log("hello stop")
             this.props.onDrink()
         } else {
             $('.Drag-drop__draggable').removeClass('Drag-drop__draggable--onDrag');

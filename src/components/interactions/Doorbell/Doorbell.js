@@ -6,8 +6,6 @@ import './style.scss';
 import { SoundContext } from "../../../store/SoundProvider";
 import $ from 'jquery';
 
-// doorbell, boum
-
 class Doorbell extends Component {
 
     constructor(props) {
@@ -43,17 +41,17 @@ class Doorbell extends Component {
         this.setState({
             activeBell:true,
             indication:'Clique sur la sonnette.'
-        }, ()=>{this.setState({fix:''});console.log('indication', this.state.indication)});
+        }, ()=>{this.setState({fix:''})});
         if(e.target.classList.contains(this.btnBell)) {
             e.preventDefault();
             this.setState({
                 clickedBell:true,
                 show: false
-            }, console.log("A"));
+            });
             setTimeout(function(){
                 this.setState({
                     clickedBell:false,
-                }, console.log("B"));
+                });
             }.bind(this), 200);
         }
         if(this.state.activeBell){
@@ -89,10 +87,8 @@ class Doorbell extends Component {
     handleChange = (e) => {
 
         if($(e.currentTarget).val() === '') {
-            console.log('empty')
             $('.btn__input').addClass('empty');
         } else {
-            console.log('not empty')
             $('.btn__input').removeClass('empty');
         }
 
