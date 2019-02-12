@@ -57,19 +57,33 @@
       text-align: center;
       flex: 1;
 
-      &__voice {
-        display: flex;
+      &__voices {
 
-        ul {
+        .voices {
 
-          &:first-child {
-            text-align: right;
-            margin-right: 20px;
+          &__list {
+
           }
 
-          &:last-child {
-            text-align: left;
-            margin-left: 20px;
+          &__voice {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            line-height: 30px;
+
+            &__name {
+              text-align: right;
+              font-weight: bold;
+              flex: 1;
+              margin-right: 15px;
+            }
+
+            &__actor {
+              text-align: left;
+              flex: 1;
+              margin-left: 15px;
+            }
+
           }
 
         }

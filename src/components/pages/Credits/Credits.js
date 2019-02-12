@@ -6,6 +6,7 @@ import Loader from '../../elements/Loader/Loader'
 import ErrorScreen from '../../elements/ErrorScreen/ErrorScreen'
 import Lottie from 'react-lottie';
 import lottieCredit from '../../../assets/animation/text_3_7_ending.json';
+import {UserContext} from '../../../store/UserProvider';
 
 
 class Credits extends Component {
@@ -26,8 +27,12 @@ class Credits extends Component {
         }
     }
 
+    componentDidMount() {
+        this.names = this.context.personalizations;
+        console.log('names', this.names);
+    }
+
     displayDirectors = (data) => {
-        console.log(data);
         let directors = [];
 
         for(let i = 0; i < data.length; i++) {
@@ -46,12 +51,17 @@ class Credits extends Component {
         let voices = [];
 
         for(let i = 0; i < data.length; i++) {
-            voices.push(
-                <li key={i.toString()}
-                    className="thanks__person">
-                    {data[i].name}
-                </li>
-            )
+            for(let j = 0; j < this.names.length; j++) {
+                if(data[i].role === this.names[j].role) {
+                    voices.push(
+                        <li key={i.toString()}
+                            className="voices__voice">
+                            <span className="voices__voice__name">{this.names[j].name}</span>
+                            <span className="voices__voice__actor">{data[i].name}</span>
+                        </li>
+                    )
+                }
+            }
         }
 
         return voices
@@ -87,15 +97,8 @@ class Credits extends Component {
                                                 </div>
                                                 <div className="thanks">
                                                     <h2 className="thanks__title">avec les voix de :</h2>
-                                                    <div className="thanks__voice">
-                                                        <ul className="thanks__roles">
-                                                            <li className="thanks__role">Inconnu</li>
-                                                            <li className="thanks__role">Inconnu</li>
-                                                            <li className="thanks__role">Inconnu</li>
-                                                            <li className="thanks__role">Inconnu</li>
-                                                            <li className="thanks__role">Inconnu</li>
-                                                        </ul>
-                                                        <ul className="thanks__persons">
+                                                    <div className="thanks__voices">
+                                                        <ul className="voices__list">
                                                             {this.displayVoices(data.Episode.voices)}
                                                         </ul>
                                                     </div>
@@ -116,4 +119,5 @@ class Credits extends Component {
 
 }
 
+Credits.contextType = UserContext;
 export default Credits;

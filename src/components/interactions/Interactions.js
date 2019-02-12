@@ -10,9 +10,12 @@ import AnimationLottie from './Animation/AnimationLottie'
 import Notice from './../elements/Notice/Notice'
 import Loader from './../elements/Loader/Loader'
 import ErrorScreen from './../elements/ErrorScreen/ErrorScreen'
+import Credits from './../pages/Credits/Credits'
+
 // QUERY
 import {Query} from "react-apollo";
 import {getMusics} from '../../graphql/queries'
+
 // API CONTEXT
 import {SoundContext} from "../../store/SoundProvider";
 import './interactions.scss'
@@ -23,7 +26,7 @@ class Interactions extends Component {
         super(props);
         this.state = {
             render: '',
-            interactionPosition: 1,
+            interactionPosition: 29,
             interaction: null,
             show: false,
             soundSequence: '',
@@ -38,7 +41,6 @@ class Interactions extends Component {
     };
 
     handleInteraction = (newPos, origin) => {
-        // console.log('handleInteraction', this.state.interactionPosition)
         let inte = this.interactions.find(setting => setting.position === newPos);
         let indication = false
         if (inte && this.interactions) {
@@ -199,6 +201,10 @@ class Interactions extends Component {
                 {this.state.show && this.state.interaction && (this.state.interaction.interactionType === "animation" || this.state.interaction.interactionType === "animation-bis") ?
                     <AnimationLottie name={this.state.interaction.content} timer={this.state.soundSequence[1]}
                                      onEnd={this.handleAnswer} animationType={this.state.interaction.interactionType}/>
+                    : null}
+
+                {this.state.show && this.state.interaction && this.state.interaction.interactionType === "credits" ?
+                    <Credits />
                     : null}
 
                 {/*<Notice notice={"this is the first notice"} show={this.state.indication}/>*/}
