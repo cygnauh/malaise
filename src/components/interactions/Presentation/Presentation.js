@@ -267,6 +267,7 @@ class Presentation extends Component {
             this.setState({currentQuestion: "copain"});
             let bf = null;
             console.log(this.state.dotClicked[0])
+            console.log(this.dotRefs)
             if(this.state.dotClicked[0] < 4){
                 bf = this.dotRefs[this.state.dotClicked[0]+1];
             }else{
