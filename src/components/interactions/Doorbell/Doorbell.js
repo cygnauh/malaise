@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Lottie from 'react-lottie';
 import boumboum from '../../../assets/animation/boumboum'
+import Notice from '../../elements/Notice/Notice'
 import './style.scss';
 import { SoundContext } from "../../../store/SoundProvider";
 import $ from 'jquery';
@@ -17,7 +18,9 @@ class Doorbell extends Component {
             clickedBell: false,
             displayAnim:false,
             host: '',
-            emptyInput: true
+            emptyInput: true,
+            indication:'Entre le prénom de ton amie.',
+            show: false
         };
         this.defaultOptions = {
             loop: true,
@@ -31,19 +34,26 @@ class Doorbell extends Component {
         this.handleClick = this.handleClick.bind(this);
     }
 
+    componentDidMount(){
+        this.setState({
+            show: true
+        });
+    }
     handleClick(e) {
         this.setState({
-            activeBell:true
-        });
+            activeBell:true,
+            indication:'Clique sur la sonnette.'
+        }, ()=>{this.setState({fix:''});console.log('indication', this.state.indication)});
         if(e.target.classList.contains(this.btnBell)) {
             e.preventDefault();
             this.setState({
                 clickedBell:true,
-            });
+                show: false
+            }, console.log("A"));
             setTimeout(function(){
                 this.setState({
                     clickedBell:false,
-                });
+                }, console.log("B"));
             }.bind(this), 200);
         }
         if(this.state.activeBell){
@@ -147,6 +157,11 @@ class Doorbell extends Component {
                         </div>
                     </div>
                 </div> : <Lottie options={this.defaultOptions}/> }
+                <div
+                    className={this.state.show && this.state.indication ? 'Notice__wrapper' : 'Notice__wrapper hide'}>
+                    <Notice
+                        notice={this.state.indication ? this.state.indication : null}/>
+                </div>
             </div>
         )
     }
