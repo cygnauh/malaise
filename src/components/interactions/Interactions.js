@@ -26,7 +26,7 @@ class Interactions extends Component {
         super(props);
         this.state = {
             render: '',
-            interactionPosition: 29,
+            interactionPosition: 1,
             interaction: null,
             show: false,
             soundSequence: '',
@@ -144,8 +144,8 @@ class Interactions extends Component {
                         <Query query={getMusics} notifyOnNetworkStatusChange>
                             {({loading, error, data, refetch, networkStatus}) => {
                                 if (networkStatus === 4) return "Refetching!";
-                                if (loading) return <div><Loader/></div>;
-                                if (error) return (<div><ErrorScreen/></div>);
+                                if (loading) return <Loader/>;
+                                if (error) return (<ErrorScreen/>);
                                 return (
                                     <MusicChoice musics={data.allSounds} onMusicClicked={this.handleAnswer}/>
                                 )

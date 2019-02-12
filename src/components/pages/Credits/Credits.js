@@ -29,7 +29,7 @@ class Credits extends Component {
 
     componentDidMount() {
         this.names = this.context.personalizations;
-        console.log('names', this.names);
+        console.log('context', this.context);
     }
 
     displayDirectors = (data) => {
@@ -77,8 +77,8 @@ class Credits extends Component {
                     this.state.episode?
                         (<Query query={getCredits} variables={{ id : this.state.episode }}>
                                 {({ loading, error, data }) => {
-                                    if (loading) return (<div><Loader/></div>);
-                                    if (error) return (<div><ErrorScreen/></div>);
+                                    if (loading) return (<Loader/>);
+                                    if (error) return (<ErrorScreen/>);
                                     return (
                                         <div className="Credits__container">
                                             <div className="Credits__episode">

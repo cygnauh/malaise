@@ -99,6 +99,12 @@
     display: flex;
     justify-content:center;
     align-items:center;
+
+    svg {
+      height: 70px;
+      width: 100%;
+    }
+
   }
 
   &__description {

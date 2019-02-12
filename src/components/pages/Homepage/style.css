@@ -79,6 +79,9 @@
     display: flex;
     justify-content: center;
     align-items: center; }
+    .Home__logo svg {
+      height: 70px;
+      width: 100%; }
   .Home__description {
     font-size: 18px;
     max-width: 400px;

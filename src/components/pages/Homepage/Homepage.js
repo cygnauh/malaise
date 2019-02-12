@@ -98,7 +98,7 @@ class Homepage extends Component {
                     <div className="Home__center">
                         <div className={this.state.instructions ? "Home__content Home__hide" : "Home__content"}>
                             <div className="Home__logo">
-                                <AnimLogo />
+                                <Logo />
                             </div>
                             <p className="Home__description">La plateforme de podcasts interactifs qui vous plonge au coeur d'histoires et d'anecdotes du quotidien.</p>
                             <div className="Home__sound">

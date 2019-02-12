@@ -31,7 +31,6 @@ class StartProcess extends Component {
     }
 
     render () {
-        console.log(this.state);
         return (
             <div className="Start-process">
                 <div className="wrapper-container">

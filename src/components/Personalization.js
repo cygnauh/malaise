@@ -62,8 +62,8 @@ class Personalization extends Component {
                     this.state.episode?
                         (<Query query={getEpisode} variables={{ id : this.state.episode }}>
                             {({ loading, error, data }) => {
-                                if (loading) return (<div><Loader/></div>);
-                                if (error) return (<div><ErrorScreen/></div>);
+                                if (loading) return (<Loader/>);
+                                if (error) return (<ErrorScreen/>);
                                 return (
                                     <div className="Personalization__container">
                                         <div className={this.state.componentIndex === 1?'Personalization__doorbell':'Personalization__doorbell hide'}>

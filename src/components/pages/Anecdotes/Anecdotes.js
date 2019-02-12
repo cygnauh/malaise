@@ -74,8 +74,8 @@ class Anecdotes extends Component {
                 </div>
                 <Query query={getAnecdotes} variables={{ id : this.state.episode }}>
                     {({ loading, error, data }) => {
-                        if (loading) return (<div><Loader/></div>);
-                        if (error) return (<div><ErrorScreen/></div>);
+                        if (loading) return (<Loader/>);
+                        if (error) return (<ErrorScreen/>);
                         return (
                             <div className="Anecdotes__container">
                                 <div className={this.state.open ? 'Anecdote-toShare Anecdote-toShare--open': 'Anecdote-toShare'}>
