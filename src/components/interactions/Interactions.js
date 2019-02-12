@@ -10,6 +10,7 @@ import AnimationLottie from './Animation/AnimationLottie'
 import Notice from './../elements/Notice/Notice'
 import Loader from './../elements/Loader/Loader'
 import ErrorScreen from './../elements/ErrorScreen/ErrorScreen'
+import { Howl } from 'howler';
 // QUERY
 import {Query} from "react-apollo";
 import {getMusics} from '../../graphql/queries'
@@ -17,6 +18,8 @@ import {getMusics} from '../../graphql/queries'
 import {SoundContext} from "../../store/SoundProvider";
 import './interactions.scss'
 import UserContext from '../../store/UserProvider'
+import Sound from "./../../assets/sounds/final-voice2.mp3"
+
 
 class Interactions extends Component {
     constructor(props) {
@@ -27,18 +30,75 @@ class Interactions extends Component {
             interaction: null,
             show: false,
             soundSequence: '',
-            origin: ''
+            origin: '',
+            episodeSounds: null
         };
         this.answers = this.props.anwsers.allAnswers;
     }
 
     componentDidMount() {
         this.interactions = this.context.interactions;
-        this.handleInteraction(this.state.interactionPosition, '');
+        this.episodeSoundtrack = this.context.episodeSoundtrack
+        this.handleSound()
+    };
+
+    handleSound = () => {
+        let tab = {};
+        // setTimeout(()=>{
+        for(let i = 0; i<this.interactions.length; i++){
+            if(this.interactions[i].soundSequences.length !== 0){
+                let sq = [ this.interactions[i].soundSequences[0].beginAt, this.interactions[i].soundSequences[0].duration]
+                tab[this.interactions[i].name] = sq;
+            }
+        }
+        // }, 0);
+        let sound = new Howl({
+            src: [Sound],
+            sprite: tab // TODO Uncomment
+        });
+        sound.once('load', ()=>{
+            // console.log('episode sound is loaded')
+            // this.props.onButtonPressed();
+            console.log('load')
+            this.handleInteraction(this.state.interactionPosition, '');
+        });
+        this.setState({
+            episodeSounds : sound
+        }, ()=>{
+            console.log(this.state.episodeSounds)
+        })
+        // this.state.episodeSounds.on('load', ()=>{
+        //     console.log('load')
+        //     this.handleInteraction(this.state.interactionPosition, '');
+        // })
+    }
+    playInteractionSound = (value) => {
+        console.log(this.state.episodeSounds)
+        this.update(this.state.episodeSounds._sprite[value][0] + this.state.episodeSounds._sprite[value][1], value);
+        // console.log(this.state.episodeSounds.seek())
+        if (this.state.episodeSounds && this.state.episodeSounds._sprite[value]
+            && this.state.episodeSounds._sprite[value][1]) {
+            return [this.state.episodeSounds, this.state.episodeSounds._sprite[value][1]]
+        } // TODO Uncomment all
+        console.log('hello from interaction')
+    }
+    update = (time, value) => {
+        if(this.state.episodeSounds) {
+            this.currentTime = this.state.episodeSounds.seek()
+            // this.currentTime = this.state.soundSequence.seek()
+            if (this.currentTime < time) {
+                this.state.episodeSounds.play(value);
+            }else{
+                requestAnimationFrame(this.update.bind(this))
+            }
+            // console.log(this.state.soundSequence)
+            console.log(this.currentTime)
+        }
     };
 
     handleInteraction = (newPos, origin) => {
         // console.log('handleInteraction', this.state.interactionPosition)
+        // console.log('HANDLE INTERACTION')
         let inte = this.interactions.find(setting => setting.position === newPos);
         let indication = false
         if (inte && this.interactions) {
@@ -50,47 +110,58 @@ class Interactions extends Component {
                 origin: origin,
                 show: !this.state.show,
                 interaction: inte,
-                soundSequence: this.context.playInteractionSound(inte.name)
+                soundSequence: this.playInteractionSound(inte.name)
             }, () => {
+                // console.log(inte.name)
                 let now = new Date();
                 let new_now = null;
                 let new_time = null;
                 let isEnded = false;
-                console.log(this.state.interaction.position)
-                console.log(this.state.interaction)
-                if (this.state.interaction && this.state.interaction.timer) console.log(this.state.interaction.timer)
-
+                // console.log(this.state.interaction.position)
+                // console.log(this.state.interaction)
+                // if (this.state.interaction && this.state.interaction.timer) console.log(this.state.interaction.timer)
+                // this.update()
+                // if()
+                console.log(this.state.soundSequence)
                 this.state.soundSequence[0].on('end', () => {
+                    // console.log('ONEND', this.state.soundSequence[0])
                     new_now = new Date()
                     new_time = new_now - now
-                    console.log(new_time, 'new_time', this.state.soundSequence[1], 'duration')
+                    // console.log(new_time, 'new_time', this.state.soundSequence[1], 'duration')
                     isEnded = true
-                    console.log(isEnded, 'isEnded')
-                    if (newPos <= 15 && this.state.interaction.interactionType === "none") {
+                    // console.log(isEnded, 'isEnded')
+                    // if (newPos <= 15 && this.state.interaction.interactionType === "none") {
+                    if (this.state.interaction.interactionType === "none") {
                         this.handleAnswer('nothing')
                     }
                 });
-                if (this.state.interaction.interactionType === "none") {
-                    console.log('a')
-                    if (newPos > 15) {
-                        console.log('b')
-                        setTimeout(() => {
-                            console.log(isEnded, 'isEnded')
-                            if (isEnded) {
-                                console.log('c')
-                                this.handleAnswer('nothing')
-                            } else {
-                                setTimeout(() => {
-                                    if (isEnded) {
-                                        console.log('d')
-                                        this.handleAnswer('nothing')
-                                    }
-                                }, 500)
-                            }
-                            console.log('time')
-                        }, this.state.soundSequence[1])
+                setTimeout(() => {
+                    if (isEnded && this.state.interaction.interactionType === "none") {
+                        console.log('d')
+                        this.handleAnswer('nothing')
                     }
-                }
+                }, this.state.soundSequence[1])
+                // if (this.state.interaction.interactionType === "none") {
+                //     console.log('a')
+                //     if (newPos > 15) {
+                //         console.log('b')
+                //         setTimeout(() => {
+                //             console.log(isEnded, 'isEnded')
+                //             if (isEnded) {
+                //                 console.log('c')
+                //                 this.handleAnswer('nothing')
+                //             } else {
+                //                 setTimeout(() => {
+                //                     if (isEnded) {
+                //                         console.log('d')
+                //                         this.handleAnswer('nothing')
+                //                     }
+                //                 }, 500)
+                //             }
+                //             console.log('time')
+                //         }, this.state.soundSequence[1])
+                //     }
+                // }
 
                 if (this.state.interaction && this.state.interaction.interactionType === 'drag and drop' && (this.state.interaction.position === 20 || this.state.interaction.position === 28)) {
                     setTimeout(() => {
@@ -108,12 +179,12 @@ class Interactions extends Component {
         }
     };
     handleAnswer = (origin, value) => {
-        console.log(origin, value)
+        // console.log(origin, value)
         let answer = (value) ? value : null;
         let destinationFound = false;
         if (this.state.origin !== origin) {
             if (this.answers && this.state.interaction) {
-                console.log(this.answers)
+                // console.log(this.answers)
                 for (let i = 0; i < this.answers.length; i++) {
                     if (this.answers[i].originInteraction &&
                         this.answers[i].originInteraction.id === this.state.interaction.id &&
