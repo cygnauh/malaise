@@ -131,7 +131,7 @@ class About extends Component {
                         </div>
                     </div>
                     <div className="About__footer">
-                        <Link to="/">aller aux épisodes</Link>
+                        <Link to="/catalogue">aller aux épisodes</Link>
                     </div>
                 </div>
             </div>
