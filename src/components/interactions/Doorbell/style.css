@@ -146,28 +146,27 @@
     width: 100%;
     height: 100%; }
   .Doorbell__label {
-    color: #002c36;
-    font-family: "Happy times";
-    font-size: 25px;
-    line-height: 30px;
-    width: 100%;
-    text-align: center;
     position: absolute;
     top: 30%;
     left: 50%;
-    transform: translateX(-50%);
-    font-weight: normal;
-    opacity: 1;
-    transition: all 0.5s ease; }
-    .Doorbell__label:after {
-      content: "";
-      width: 60%;
-      height: 1px;
-      background-color: #002c36;
-      position: absolute;
-      bottom: 6px;
-      left: 50%;
-      transform: translateX(-50%); }
+    transform: translateX(-50%); }
+    .Doorbell__label span {
+      color: #002c36;
+      font-family: "Happy times";
+      font-size: 25px;
+      line-height: 30px;
+      width: 100%;
+      text-align: center;
+      font-weight: normal; }
+      .Doorbell__label span:after {
+        content: "";
+        width: 110%;
+        height: 1px;
+        background-color: #002c36;
+        position: absolute;
+        bottom: 6px;
+        left: 50%;
+        transform: translateX(-50%); }
 
 .bell {
   position: relative;
@@ -230,15 +229,17 @@
   text-transform: lowercase;
   font-family: "Archivo Black", sans-serif;
   font-weight: normal;
-  letter-spacing: 2px;
   font-size: 35px;
   background: none;
   border: none;
-  text-shadow: -1px 0 #002c36, 0 1px #002c36, 1px 0 #002c36, 0 -1px #002c36;
-  color: #EAEAEA;
-  cursor: pointer; }
+  color: #002c36;
+  opacity: 0.2;
+  cursor: pointer;
+  transition: opacity 0.5s ease-in; }
   .btn__input:hover, .btn__input:focus, .btn__input:active {
-    color: #002c36; }
+    opacity: 1; }
+  .btn__input.btn__bell {
+    opacity: 1; }
 
 .btn__input span {
   transition: opacity 0.5s ease; }

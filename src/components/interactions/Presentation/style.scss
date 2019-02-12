@@ -77,21 +77,23 @@
     height: 100%;
     color: white;
     position:relative;
-    .form__btn{
+
+    .form__btn {
         height: 50px;
-        background: none;
-        border: none;
-        color: $color__episode_01;
-        text-shadow: -1px 0 $color__white, 0 1px $color__white, 1px 0 $color__white, 0 -1px $color__white;
-        font-size: 30px;
-        font-family: $font__archivo--black;
+        @include border-button($color__white, $color__white, $font__archivo--black, 30px);
         position: absolute;
         top: 0;
         right: 20px;
         cursor: pointer;
-        -webkit-transition: color 0.5s ease;
-        transition: color 0.5s ease;
-        letter-spacing: 2px;
+        opacity: 1;
+
+        &.empty {
+            opacity: 0.2;
+
+            span {
+                color: $color__white;
+            }
+        }
     }
 }
 .Presentation_person{

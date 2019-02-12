@@ -16,7 +16,8 @@ class Doorbell extends Component {
             activeBell: false,
             clickedBell: false,
             displayAnim:false,
-            host: ''
+            host: '',
+            emptyInput: true
         };
         this.defaultOptions = {
             loop: true,
@@ -66,6 +67,15 @@ class Doorbell extends Component {
         }
     };
 
+    onKeyPressed = (e) => {
+        if (e.keyCode === 13) {
+            $(e.currentTarget).attr({
+                'disabled': 'disabled'
+            });
+            this.handleClick(e);
+        }
+    }
+
     handleChange = (e) => {
 
         this.setState({
@@ -100,12 +110,13 @@ class Doorbell extends Component {
                             </div>
                         </div>
                         <div className="bell__box">
-                            <div className="bell__container">
+                            <div className={this.state.emptyInput ? "bell__container empty__input" : "bell__container"}>
                                 <div className="bell__input-border">
                                     <input className="bell__input"
                                            type="text"
                                            value={this.state.host}
                                            onChange={this.handleChange}
+                                           onKeyDown={this.onKeyPressed}
                                            placeholder="son prénom" />
                                 </div>
                                 <div className={this.state.clickedBell ? 'bell__btn bell__btn--clicked': 'bell__btn'}>

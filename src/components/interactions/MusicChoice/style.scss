@@ -18,6 +18,19 @@
 
   &__content {
     height: 200px;
+
+    &:nth-child(2) {
+
+      .Music__item {
+        margin-top: 50px;
+
+        &--selected {
+          margin: 0;
+        }
+
+      }
+
+    }
   }
 
   &__item {
@@ -40,15 +53,16 @@
 
     &--selected {
       position: absolute;
-      top: 50%;
+      top: 40%;
       transform: scale(3);
       z-index: 3;
+
       .Music__name--toLeft, .Music__name--toRight {
         span, &:after {
           animation-play-state: running!important;
           transition-timing-function: ease-in;
-          animation-duration: 15s;
-          color: $color__white;
+          animation-duration: 5s;
+          color: $color__xp--light;
         }
       }
     }

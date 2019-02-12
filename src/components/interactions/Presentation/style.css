@@ -67,19 +67,25 @@
   position: relative; }
   .Presentation .form__btn {
     height: 50px;
+    text-transform: lowercase;
+    font-family: "Archivo Black", sans-serif;
+    font-weight: normal;
+    font-size: 30px;
     background: none;
     border: none;
-    color: #002c36;
-    text-shadow: -1px 0 #EAEAEA, 0 1px #EAEAEA, 1px 0 #EAEAEA, 0 -1px #EAEAEA;
-    font-size: 30px;
-    font-family: "Archivo Black", sans-serif;
+    color: #EAEAEA;
+    opacity: 0.2;
+    cursor: pointer;
+    transition: opacity 0.5s ease-in;
     position: absolute;
     top: 0;
     right: 20px;
     cursor: pointer;
-    -webkit-transition: color 0.5s ease;
-    transition: color 0.5s ease;
-    letter-spacing: 2px; }
+    opacity: 1; }
+    .Presentation .form__btn.empty {
+      opacity: 0.2; }
+      .Presentation .form__btn.empty span {
+        color: #EAEAEA; }
 
 .Presentation_person {
   background: white;
