@@ -35,7 +35,7 @@ class Instructions extends Component {
                 this.setState({
                     show: true
                 })
-            }, 1000);
+            }, 600);
         } else {
             this.setState({
                 show: false
@@ -50,7 +50,7 @@ class Instructions extends Component {
         } else {
             setTimeout(() => {
                 this.playInstruction(stepNextStep);
-            }, 1200);
+            }, 600);
         }
 
     }
@@ -60,7 +60,7 @@ class Instructions extends Component {
         instruction.on('end', () => {
             setTimeout(() => {
                 this.nextInstruction();
-            }, 1000);
+            }, 500);
         });
     }
 
