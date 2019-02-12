@@ -77,19 +77,17 @@ class Homepage extends Component {
                         <div className="Home__onMobile__logo">
                             <Logo />
                         </div>
-                        <p className="Home__onMobile__description">Le podcast interactif qui revient sur les mots qui font débat.</p>
+                        <p className="Home__onMobile__description"></p>
                         <div className="Home__onMobile__box">
-                            <h2 className="box__title">Salut</h2>
-                            <p className="box__description">Pour vivre l'expérience, rendez-vous sur ton ordinateur, à tout de suite !</p>
+                            <p className="box__description">Le podcast interactif qui revient sur les mots qui dérangent.<br /><br />Pour vivre l'expérience, rendez-vous sur ton ordinateur.</p>
                             <div className="box__icon">
                                 <EmojiSmile />
                             </div>
-
                         </div>
                     </div>
-                    <div className="Home__alert">
+                    {/*<div className="Home__alert">
                         <p className="Home__alert-text" data-text="Malaise se lance sur ordinateur ! Malaise se lance sur ordinateur ! Malaise se lance sur ordinateur ! Malaise se lance sur ordinateur ! Malaise se lance sur ordinateur ! "> Malaise se lance sur ordinateur ! Malaise se lance sur ordinateur ! Malaise se lance sur ordinateur ! Malaise se lance sur ordinateur ! Malaise se lance sur ordinateur !</p>
-                    </div>
+                    </div>*/}
                 </div>
                 <div className={this.state.instructions ? "Home__background-animation Home__hide" : "Home__background-animation"} >
                     <Lottie options={this.defaultOptions} />

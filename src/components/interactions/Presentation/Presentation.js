@@ -250,14 +250,17 @@ class Presentation extends Component {
                 }
         return questionInput
     };
+
     handleKeyPress = (event) => {
         if(event.key === 'Enter'){
             this.validateInput(event)
         }
     };
+
     handleChange = (event) => { // TODO should check on the input value : letter only
         this.setState({currentInput: event.target.value});
     };
+
     validateInput = (event) => {
         // TODO display first letter
         let newGreetedGuest = this.state.greetedGuests;
@@ -286,9 +289,6 @@ class Presentation extends Component {
                         console.log(this.dotRefs[i], 'for')
                     }
                 }
-            //     bf = this.dotRefs[this.state.dotClicked[0]+1];
-            // }else{
-            //     bf = this.dotRefs[this.state.dotClicked[0]-1];
             }
             console.log(this.state.dotClicked, 'this.state.dotClicked')
             setTimeout(()=>{
@@ -388,9 +388,15 @@ class Presentation extends Component {
         }
         return guests
     };
+
+    handlePassNames = () => {
+        this.props.onPresentationEnd();
+    }
+
     render () {
         return(
             <div className="Presentation">
+                <button className="Presentation__action" onClick={this.handlePassNames}>Passer la saisie des prénoms</button>
                 {this.state.positions ? this.displayGuest() : null}
                 <div>
                     {this.state.displayInput && this.state.dotPositions ? this.displayPersonalizationInput() : null}

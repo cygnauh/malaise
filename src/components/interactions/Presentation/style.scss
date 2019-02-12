@@ -78,6 +78,18 @@
     color: white;
     position:relative;
 
+    &__action {
+        @include default-button($color__white);
+        position: absolute;
+        right: 50px;
+        top: 40px;
+        z-index: 2;
+        &:hover, &:focus, &:active {
+            background: $color__white;
+            color: $color__xp--dark;
+        }
+    }
+
     .form__btn {
         height: 50px;
         @include border-button($color__white, $color__white, $font__archivo--black, 30px);
