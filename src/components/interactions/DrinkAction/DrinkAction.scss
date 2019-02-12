@@ -11,6 +11,14 @@
     opacity: 0;
     transition: opacity 0.1s ease-in-out;
   }
+  .DrinkAction__timer{
+    width: 70px;
+    height: 70px;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    z-index: 20;
+  }
   .wrapper{
     display: flex;
     flex-direction: column;
