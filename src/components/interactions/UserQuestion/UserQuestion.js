@@ -1,12 +1,14 @@
 import React, { Component } from 'react';
 import "./UserQuestion.scss";
+import $ from 'jquery';
 
 class UserQuestion extends Component {
     constructor(){
         super();
         this.state = {
             render:'',
-            proposition: ''
+            proposition: '',
+            emptyInput: true
         };
         this.propositions =[
             "été en dehors de la France",
@@ -29,10 +31,24 @@ class UserQuestion extends Component {
         }
         return propositions
     };
+
     propositionSelected = (value) => {
+
         this.setState({
             proposition : value
+        }, () => {
+            if($('.userQuestion__input').val() === '') {
+                this.setState({
+                    emptyInput: true
+                })
+            } else {
+                $('.userQuestion__input').focus();
+                this.setState({
+                    emptyInput: false
+                })
+            }
         })
+
     };
 
     onKeyPressed = (e) => {
@@ -42,12 +58,23 @@ class UserQuestion extends Component {
     }
 
     inputChange = (e) => {
+
+        if($(e.currentTarget).val() === '') {
+            this.setState({
+                emptyInput: true
+            })
+        } else {
+            this.setState({
+                emptyInput: false
+            })
+        }
+
         this.setState({
             proposition : e.target.value
         })
     };
+
     validateProposition = () => {
-        console.log(this.state.proposition);
         if(this.state.proposition !== ''){
             this.props.drinkActionEnd('user question')
         }
@@ -66,7 +93,7 @@ class UserQuestion extends Component {
                             onChange={this.inputChange}
                             onKeyDown={this.onKeyPressed}
                             placeholder={'entre ta proposition'}/>
-                        <button className="userQuestion__valid" onClick={this.validateProposition}>ok</button>
+                        <button className={this.state.emptyInput ? "userQuestion__valid empty" : "userQuestion__valid"} onClick={this.validateProposition}>ok</button>
                     </div>
                     <div className="wrapper-proposition">
                         <div className="propositions">

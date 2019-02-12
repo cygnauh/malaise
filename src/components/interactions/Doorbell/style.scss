@@ -266,6 +266,11 @@
   font-weight: bold;
   position: relative;
   @include border-button($color__white, $color__xp--dark, $font__archivo--black, 35px);
+  opacity: 1;
+
+  &.empty {
+    opacity: 0.2;
+  }
 
   &:hover, &:focus, &:active {
     opacity: 1;

@@ -235,7 +235,10 @@
   color: #002c36;
   opacity: 0.2;
   cursor: pointer;
-  transition: opacity 0.5s ease-in; }
+  transition: opacity 0.5s ease-in;
+  opacity: 1; }
+  .btn__input.empty {
+    opacity: 0.2; }
   .btn__input:hover, .btn__input:focus, .btn__input:active {
     opacity: 1; }
   .btn__input.btn__bell {
