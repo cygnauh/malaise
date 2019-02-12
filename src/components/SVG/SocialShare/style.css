@@ -1,0 +1,28 @@
+/* GLOBAL */
+/* INTERFACE */
+/* XP 1 */
+/*@font-face {
+  font-family: 'Happy Times';
+  src: url('../../fonts/happy-times/happy-times.woff2') format('woff2'),
+  url('../../fonts/happy-times/happy-times.woff') format('woff'),
+  url('../../fonts/happy-times/happy-times.ttf')  format('truetype');
+}*/
+.SocialShare {
+  display: flex;
+  justify-content: center;
+  align-items: center; }
+  .SocialShare__item {
+    margin: 0 20px; }
+  .SocialShare svg {
+    width: 20px; }
+
+.interface .SocialShare svg {
+  fill: #EAEAEA; }
+
+.interface-inverse .SocialShare svg {
+  fill: #002c36; }
+
+.episode .SocialShare svg {
+  fill: #EAEAEA; }
+
+/*# sourceMappingURL=style.css.map */

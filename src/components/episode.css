@@ -1,0 +1,29 @@
+/* GLOBAL */
+/* INTERFACE */
+/* XP 1 */
+/*@font-face {
+  font-family: 'Happy Times';
+  src: url('../../fonts/happy-times/happy-times.woff2') format('woff2'),
+  url('../../fonts/happy-times/happy-times.woff') format('woff'),
+  url('../../fonts/happy-times/happy-times.ttf')  format('truetype');
+}*/
+.Episode {
+  width: 100%;
+  height: 100%;
+  position: relative; }
+  .Episode__hours, .Episode__personalization, .Episode__interactions {
+    width: 100%;
+    height: 100%;
+    opacity: 1;
+    overflow: hidden;
+    transition: all 0.5s ease-in-out;
+    position: relative;
+    z-index: 1; }
+    .Episode__hours.hide, .Episode__personalization.hide, .Episode__interactions.hide {
+      position: absolute;
+      opacity: 0;
+      z-index: 0; }
+  .Episode__interactions.hide {
+    display: none; }
+
+/*# sourceMappingURL=episode.css.map */

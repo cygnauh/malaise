@@ -1,0 +1,306 @@
+/* GLOBAL */
+/* INTERFACE */
+/* XP 1 */
+/*@font-face {
+  font-family: 'Happy Times';
+  src: url('../../fonts/happy-times/happy-times.woff2') format('woff2'),
+  url('../../fonts/happy-times/happy-times.woff') format('woff'),
+  url('../../fonts/happy-times/happy-times.ttf')  format('truetype');
+}*/
+@-webkit-keyframes rotation {
+  from {
+    -webkit-transform: rotate(0deg); }
+  to {
+    -webkit-transform: rotate(-360deg); } }
+.SoundAlert {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  position: relative;
+  width: 120px;
+  height: 120px;
+  margin: 0 auto 50px auto; }
+  .SoundAlert img {
+    width: 45px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    margin-top: -5px; }
+  .SoundAlert__rotation {
+    -webkit-animation: rotation 12s infinite linear; }
+  .SoundAlert__letters {
+    position: relative;
+    width: 60px;
+    height: 60px;
+    font-size: 10px;
+    margin-left: -10px; }
+    .SoundAlert__letters .char1 {
+      transform: rotate(6deg); }
+    .SoundAlert__letters .char2 {
+      transform: rotate(12deg); }
+    .SoundAlert__letters .char3 {
+      transform: rotate(18deg); }
+    .SoundAlert__letters .char4 {
+      transform: rotate(24deg); }
+    .SoundAlert__letters .char5 {
+      transform: rotate(30deg); }
+    .SoundAlert__letters .char6 {
+      transform: rotate(36deg); }
+    .SoundAlert__letters .char7 {
+      transform: rotate(42deg); }
+    .SoundAlert__letters .char8 {
+      transform: rotate(48deg); }
+    .SoundAlert__letters .char9 {
+      transform: rotate(54deg); }
+    .SoundAlert__letters .char10 {
+      transform: rotate(60deg); }
+    .SoundAlert__letters .char11 {
+      transform: rotate(66deg); }
+    .SoundAlert__letters .char12 {
+      transform: rotate(72deg); }
+    .SoundAlert__letters .char13 {
+      transform: rotate(78deg); }
+    .SoundAlert__letters .char14 {
+      transform: rotate(84deg); }
+    .SoundAlert__letters .char15 {
+      transform: rotate(90deg); }
+    .SoundAlert__letters .char16 {
+      transform: rotate(96deg); }
+    .SoundAlert__letters .char17 {
+      transform: rotate(102deg); }
+    .SoundAlert__letters .char18 {
+      transform: rotate(108deg); }
+    .SoundAlert__letters .char19 {
+      transform: rotate(114deg); }
+    .SoundAlert__letters .char20 {
+      transform: rotate(120deg); }
+    .SoundAlert__letters .char21 {
+      transform: rotate(126deg); }
+    .SoundAlert__letters .char22 {
+      transform: rotate(132deg); }
+    .SoundAlert__letters .char23 {
+      transform: rotate(138deg); }
+    .SoundAlert__letters .char24 {
+      transform: rotate(144deg); }
+    .SoundAlert__letters .char25 {
+      transform: rotate(150deg); }
+    .SoundAlert__letters .char26 {
+      transform: rotate(156deg); }
+    .SoundAlert__letters .char27 {
+      transform: rotate(162deg); }
+    .SoundAlert__letters .char28 {
+      transform: rotate(168deg); }
+    .SoundAlert__letters .char29 {
+      transform: rotate(174deg); }
+    .SoundAlert__letters .char30 {
+      transform: rotate(180deg); }
+    .SoundAlert__letters .char31 {
+      transform: rotate(186deg); }
+    .SoundAlert__letters .char32 {
+      transform: rotate(192deg); }
+    .SoundAlert__letters .char33 {
+      transform: rotate(198deg); }
+    .SoundAlert__letters .char34 {
+      transform: rotate(204deg); }
+    .SoundAlert__letters .char35 {
+      transform: rotate(210deg); }
+    .SoundAlert__letters .char36 {
+      transform: rotate(216deg); }
+    .SoundAlert__letters .char37 {
+      transform: rotate(222deg); }
+    .SoundAlert__letters .char38 {
+      transform: rotate(228deg); }
+    .SoundAlert__letters .char39 {
+      transform: rotate(234deg); }
+    .SoundAlert__letters .char40 {
+      transform: rotate(240deg); }
+    .SoundAlert__letters .char41 {
+      transform: rotate(246deg); }
+    .SoundAlert__letters .char42 {
+      transform: rotate(252deg); }
+    .SoundAlert__letters .char43 {
+      transform: rotate(258deg); }
+    .SoundAlert__letters .char44 {
+      transform: rotate(264deg); }
+    .SoundAlert__letters .char45 {
+      transform: rotate(270deg); }
+    .SoundAlert__letters .char46 {
+      transform: rotate(276deg); }
+    .SoundAlert__letters .char47 {
+      transform: rotate(282deg); }
+    .SoundAlert__letters .char48 {
+      transform: rotate(288deg); }
+    .SoundAlert__letters .char49 {
+      transform: rotate(294deg); }
+    .SoundAlert__letters .char50 {
+      transform: rotate(300deg); }
+    .SoundAlert__letters .char51 {
+      transform: rotate(306deg); }
+    .SoundAlert__letters .char52 {
+      transform: rotate(312deg); }
+    .SoundAlert__letters .char53 {
+      transform: rotate(318deg); }
+    .SoundAlert__letters .char54 {
+      transform: rotate(324deg); }
+    .SoundAlert__letters .char55 {
+      transform: rotate(330deg); }
+    .SoundAlert__letters .char56 {
+      transform: rotate(336deg); }
+    .SoundAlert__letters .char57 {
+      transform: rotate(342deg); }
+    .SoundAlert__letters .char58 {
+      transform: rotate(348deg); }
+    .SoundAlert__letters .char59 {
+      transform: rotate(354deg); }
+    .SoundAlert__letters .char60 {
+      transform: rotate(360deg); }
+    .SoundAlert__letters div {
+      position: absolute;
+      transform-origin: bottom center;
+      bottom: 0;
+      left: 50%;
+      width: 10px;
+      height: 60px;
+      text-align: center; }
+
+.instructions .SoundAlert {
+  width: 200px;
+  height: 200px; }
+  .instructions .SoundAlert img {
+    width: 70px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    margin-top: -5px; }
+  .instructions .SoundAlert__rotation {
+    -webkit-animation: rotation 20s infinite linear; }
+  .instructions .SoundAlert__letters {
+    width: 100px;
+    height: 100px;
+    font-size: 15px; }
+    .instructions .SoundAlert__letters .char1 {
+      transform: rotate(6deg); }
+    .instructions .SoundAlert__letters .char2 {
+      transform: rotate(12deg); }
+    .instructions .SoundAlert__letters .char3 {
+      transform: rotate(18deg); }
+    .instructions .SoundAlert__letters .char4 {
+      transform: rotate(24deg); }
+    .instructions .SoundAlert__letters .char5 {
+      transform: rotate(30deg); }
+    .instructions .SoundAlert__letters .char6 {
+      transform: rotate(36deg); }
+    .instructions .SoundAlert__letters .char7 {
+      transform: rotate(42deg); }
+    .instructions .SoundAlert__letters .char8 {
+      transform: rotate(48deg); }
+    .instructions .SoundAlert__letters .char9 {
+      transform: rotate(54deg); }
+    .instructions .SoundAlert__letters .char10 {
+      transform: rotate(60deg); }
+    .instructions .SoundAlert__letters .char11 {
+      transform: rotate(66deg); }
+    .instructions .SoundAlert__letters .char12 {
+      transform: rotate(72deg); }
+    .instructions .SoundAlert__letters .char13 {
+      transform: rotate(78deg); }
+    .instructions .SoundAlert__letters .char14 {
+      transform: rotate(84deg); }
+    .instructions .SoundAlert__letters .char15 {
+      transform: rotate(90deg); }
+    .instructions .SoundAlert__letters .char16 {
+      transform: rotate(96deg); }
+    .instructions .SoundAlert__letters .char17 {
+      transform: rotate(102deg); }
+    .instructions .SoundAlert__letters .char18 {
+      transform: rotate(108deg); }
+    .instructions .SoundAlert__letters .char19 {
+      transform: rotate(114deg); }
+    .instructions .SoundAlert__letters .char20 {
+      transform: rotate(120deg); }
+    .instructions .SoundAlert__letters .char21 {
+      transform: rotate(126deg); }
+    .instructions .SoundAlert__letters .char22 {
+      transform: rotate(132deg); }
+    .instructions .SoundAlert__letters .char23 {
+      transform: rotate(138deg); }
+    .instructions .SoundAlert__letters .char24 {
+      transform: rotate(144deg); }
+    .instructions .SoundAlert__letters .char25 {
+      transform: rotate(150deg); }
+    .instructions .SoundAlert__letters .char26 {
+      transform: rotate(156deg); }
+    .instructions .SoundAlert__letters .char27 {
+      transform: rotate(162deg); }
+    .instructions .SoundAlert__letters .char28 {
+      transform: rotate(168deg); }
+    .instructions .SoundAlert__letters .char29 {
+      transform: rotate(174deg); }
+    .instructions .SoundAlert__letters .char30 {
+      transform: rotate(180deg); }
+    .instructions .SoundAlert__letters .char31 {
+      transform: rotate(186deg); }
+    .instructions .SoundAlert__letters .char32 {
+      transform: rotate(192deg); }
+    .instructions .SoundAlert__letters .char33 {
+      transform: rotate(198deg); }
+    .instructions .SoundAlert__letters .char34 {
+      transform: rotate(204deg); }
+    .instructions .SoundAlert__letters .char35 {
+      transform: rotate(210deg); }
+    .instructions .SoundAlert__letters .char36 {
+      transform: rotate(216deg); }
+    .instructions .SoundAlert__letters .char37 {
+      transform: rotate(222deg); }
+    .instructions .SoundAlert__letters .char38 {
+      transform: rotate(228deg); }
+    .instructions .SoundAlert__letters .char39 {
+      transform: rotate(234deg); }
+    .instructions .SoundAlert__letters .char40 {
+      transform: rotate(240deg); }
+    .instructions .SoundAlert__letters .char41 {
+      transform: rotate(246deg); }
+    .instructions .SoundAlert__letters .char42 {
+      transform: rotate(252deg); }
+    .instructions .SoundAlert__letters .char43 {
+      transform: rotate(258deg); }
+    .instructions .SoundAlert__letters .char44 {
+      transform: rotate(264deg); }
+    .instructions .SoundAlert__letters .char45 {
+      transform: rotate(270deg); }
+    .instructions .SoundAlert__letters .char46 {
+      transform: rotate(276deg); }
+    .instructions .SoundAlert__letters .char47 {
+      transform: rotate(282deg); }
+    .instructions .SoundAlert__letters .char48 {
+      transform: rotate(288deg); }
+    .instructions .SoundAlert__letters .char49 {
+      transform: rotate(294deg); }
+    .instructions .SoundAlert__letters .char50 {
+      transform: rotate(300deg); }
+    .instructions .SoundAlert__letters .char51 {
+      transform: rotate(306deg); }
+    .instructions .SoundAlert__letters .char52 {
+      transform: rotate(312deg); }
+    .instructions .SoundAlert__letters .char53 {
+      transform: rotate(318deg); }
+    .instructions .SoundAlert__letters .char54 {
+      transform: rotate(324deg); }
+    .instructions .SoundAlert__letters .char55 {
+      transform: rotate(330deg); }
+    .instructions .SoundAlert__letters .char56 {
+      transform: rotate(336deg); }
+    .instructions .SoundAlert__letters .char57 {
+      transform: rotate(342deg); }
+    .instructions .SoundAlert__letters .char58 {
+      transform: rotate(348deg); }
+    .instructions .SoundAlert__letters .char59 {
+      transform: rotate(354deg); }
+    .instructions .SoundAlert__letters .char60 {
+      transform: rotate(360deg); }
+    .instructions .SoundAlert__letters div {
+      height: 100px; }
+
+/*# sourceMappingURL=style.css.map */

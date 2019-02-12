@@ -1,0 +1,25 @@
+@import '../../../assets/styles/variables/index.scss';
+@import '../../../assets/styles/mixins/index.scss';
+
+.Logo {
+  width: 80px;
+  height: 15px;
+}
+
+.interface {
+  .Logo {
+    fill: $color__white;
+  }
+}
+
+.interface-reverse {
+  .Logo {
+    fill: $color__xp--dark;
+  }
+}
+
+.episode {
+  .Logo {
+    fill: $color__white;
+  }
+}

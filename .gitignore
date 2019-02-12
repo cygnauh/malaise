@@ -1,9 +1,18 @@
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
+# global
+/ressources
+
+# css + css map files
+/src/*.css
+/src/*.css.map
+
 # dependencies
 /node_modules
 /.pnp
 .pnp.js
+.idea/workspace.xml
+package-lock.json
 
 # testing
 /coverage

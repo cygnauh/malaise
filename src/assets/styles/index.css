@@ -1,0 +1,81 @@
+/* GLOBAL */
+/* INTERFACE */
+/* XP 1 */
+/*@font-face {
+  font-family: 'Happy Times';
+  src: url('../../fonts/happy-times/happy-times.woff2') format('woff2'),
+  url('../../fonts/happy-times/happy-times.woff') format('woff'),
+  url('../../fonts/happy-times/happy-times.ttf')  format('truetype');
+}*/
+/* GLOBAL */
+/* INTERFACE */
+/* XP 1 */
+/*@font-face {
+  font-family: 'Happy Times';
+  src: url('../../fonts/happy-times/happy-times.woff2') format('woff2'),
+  url('../../fonts/happy-times/happy-times.woff') format('woff'),
+  url('../../fonts/happy-times/happy-times.ttf')  format('truetype');
+}*/
+* {
+  box-sizing: border-box; }
+
+body, html {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  font-family: "Archivo", sans-serif;
+  font-size: 15px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale; }
+  body.interface, html.interface {
+    background-color: #0B162E;
+    color: #EAEAEA; }
+  body.interface-reverse, html.interface-reverse {
+    background-color: #EAEAEA;
+    color: #002c36; }
+  body.episode, html.episode {
+    background-color: #002c36;
+    color: #EAEAEA; }
+
+h1, h2, h3, h4, h5, h6, ul, ol, li, a, p {
+  margin: 0;
+  padding: 0; }
+
+ul, ol, li {
+  list-style: none; }
+
+a {
+  text-decoration: none; }
+
+.interface a {
+  color: #EAEAEA; }
+
+.interface-reverse a {
+  color: #002c36; }
+
+input:focus, textarea:focus, button:focus, button:active {
+  outline: none; }
+
+#root, .wrapper-container {
+  width: 100%;
+  height: 100%; }
+
+.Start-process {
+  width: 100%;
+  height: 100%; }
+
+/* GLOBAL */
+/* INTERFACE */
+/* XP 1 */
+/*@font-face {
+  font-family: 'Happy Times';
+  src: url('../../fonts/happy-times/happy-times.woff2') format('woff2'),
+  url('../../fonts/happy-times/happy-times.woff') format('woff'),
+  url('../../fonts/happy-times/happy-times.ttf')  format('truetype');
+}*/
+@font-face {
+  font-family: 'Happy Times';
+  src: url("../fonts/happy-times/happy-times.woff2") format("woff2"), url("../fonts/happy-times/happy-times.woff") format("woff"), url("../fonts/happy-times/happy-times.ttf") format("truetype"); }
+
+/*# sourceMappingURL=index.css.map */

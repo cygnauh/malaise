@@ -1,0 +1,137 @@
+# The following types define the data model of the example service
+# based on which the GraphQL API is generated
+
+type Episode @model {
+  id: ID! @isUnique
+  title: String!
+  summary: String!
+  sounds: [Sound!]! @relation(name: "EpisodeSounds")
+  testimonies: [Testimony!]! @relation(name: "EpisodeTestimonies")
+  blocks: [Block!]! @relation(name: "EpisodeBlocks")
+  personalizations: [Personalization!]! @relation(name: "EpisodePersonalizations")
+  interactions: [Interaction!]! @relation(name: "EpisodeInteractions")
+  place: String!
+  entourage: String!
+  darkColor: String
+  lightColor: String
+  createdAt: DateTime!
+  definitions: [Definition!]! @relation(name: "EpisodeDefinitions")
+  theme: String
+  voices: [Voice!]! @relation(name: "EpisodeVoices")
+  directors: [Director!]! @relation(name: "EpisodeDirectors")
+  anecdotes: [Anecdote!]! @relation(name: "EpisodeAnecdotes")
+  thanks: String
+  serpentin: String
+}
+
+type Voice @model {
+  id: ID! @isUnique
+  name: String!
+  role: String!
+  episode: Episode! @relation(name:"EpisodeVoices")
+}
+
+type Director @model {
+  id: ID! @isUnique
+  name: String!
+  episode: Episode! @relation(name:"EpisodeDirectors")
+}
+
+type Anecdote @model {
+  id: ID! @isUnique
+  author: String!
+  content: String!
+  createdAt: DateTime!
+  episode: Episode @relation(name:"EpisodeAnecdotes")
+}
+
+type Definition @model {
+  id: ID! @isUnique
+  name: String!
+  description: String!
+  episode: Episode! @relation(name:"EpisodeDefinitions")
+}
+
+type Personalization @model {
+  id: ID! @isUnique
+  type: String!
+  name: String!
+  question: String!
+  answerLabel: String!
+#  default:String!
+  episode: Episode! @relation(name:"EpisodePersonalizations")
+}
+
+type Interaction @model {
+  id: ID! @isUnique
+  name:String!
+  position: Int!
+  interactionType: String!
+  timer: Int
+  question:String
+  content: String
+  soundSequences: [SoundSequence!]! @relation(name: "InteractionSoundSequences")
+  episode: Episode! @relation(name:"EpisodeInteractions")
+  originInteraction: Answer @relation(name: "AnswersOriginInteractions")
+  destinationInteraction: Answer @relation(name: "AnswersDestinationInteractions")
+  indication: String
+  goNext: Boolean
+  animation: String
+}
+
+type Answer @model {
+  id: ID! @isUnique
+  content: String
+  originInteraction: Interaction @relation(name:"AnswersOriginInteractions")
+  destinationInteraction: Interaction @relation(name:"AnswersDestinationInteractions")
+  name: String
+}
+
+type SoundSequence @model {
+  id: ID! @isUnique
+  name: String!
+  beginAt: Int!
+  duration: Int!
+  sound: Sound! @relation(name: "SoundSoundSequences")
+  interactions: Interaction! @relation(name: "InteractionSoundSequences")
+}
+
+type Sound @model {
+  id: ID! @isUnique
+  name: String!
+  type: String!
+  url: String!
+  episode: Episode @relation(name: "EpisodeSounds")
+  soundSequences: [SoundSequence!]! @relation(name: "SoundSoundSequences")
+}
+
+type Testimony @model {
+  id: ID! @isUnique
+  episode: Episode! @relation(name: "EpisodeTestimonies")
+  content: String!
+  date: DateTime!
+  email: String!
+}
+
+type Block @model {
+  id: ID! @isUnique
+  title: String!
+  content: String!
+  episode: Episode! @relation(name: "EpisodeBlocks")
+  images: [Image!]! @relation(name: "BlockImages")
+  videos: [Video!]! @relation(name: "BlockVideos")
+}
+
+type Image @model {
+  id: ID! @isUnique
+  name: String!
+  url: String!
+  block: Block! @relation(name: "BlockImages")
+}
+
+type Video @model {
+  id: ID! @isUnique
+  name: String!
+  url: String!
+  block: Block! @relation(name: "BlockVideos")
+}

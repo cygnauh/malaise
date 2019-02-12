@@ -1,0 +1,31 @@
+/* GLOBAL */
+/* INTERFACE */
+/* XP 1 */
+/*@font-face {
+  font-family: 'Happy Times';
+  src: url('../../fonts/happy-times/happy-times.woff2') format('woff2'),
+  url('../../fonts/happy-times/happy-times.woff') format('woff'),
+  url('../../fonts/happy-times/happy-times.ttf')  format('truetype');
+}*/
+.Header {
+  width: calc(100% - 48px);
+  margin-left: 48px;
+  height: 45px;
+  z-index: 10;
+  display: none; }
+  .Header__logo {
+    width: 150px;
+    height: 45px;
+    display: flex;
+    justify-content: center;
+    align-items: center; }
+  .Header__icon {
+    height: 15px; }
+
+.interface .Header {
+  border-bottom: 1px solid #EAEAEA; }
+
+.interface-reverse .Header {
+  border-bottom: 1px solid #002c36; }
+
+/*# sourceMappingURL=style.css.map */

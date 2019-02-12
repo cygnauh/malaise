@@ -1,0 +1,292 @@
+@import '../../../assets/styles/variables/index.scss';
+@import '../../../assets/styles/mixins/index.scss';
+
+@keyframes bottomrightTest {
+    0% {
+        width: 0;
+        height: 0;
+        padding-top: 0;
+        visibility: visible;
+    }
+    25% {
+        width: 400px;
+        height: 0;
+        padding-top: 0;
+        visibility: visible;
+    }
+    50% {
+        height: 50px;
+        width: 400px;
+        visibility: visible;
+    }
+    75% {
+        visibility: visible;
+
+    }
+    100% {
+        visibility: visible;
+    }
+}
+@keyframes topleftTest {
+    0% {
+        width: 0;
+        height: 0;
+        padding-bottom: 0;
+        visibility: hidden;
+    }
+    25% {
+        width: 0;
+        height: 0;
+        padding-bottom: 0;
+        visibility: hidden;
+    }
+    50% {
+        width: 0;
+        height: 0;
+        padding-bottom: 0;
+        visibility: hidden;
+    }
+    75% {
+        width: 400px;
+        height: 0;
+        padding-bottom: 0;
+        visibility: visible;
+    }
+    100% {
+        width: 400px;
+        height: 50px;
+        opacity: 1;
+        visibility: visible;
+    }
+}
+@keyframes scaleRound {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(0.8);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+.Presentation{
+    background: $color__episode_01;
+    width: 100%;
+    height: 100%;
+    color: white;
+    position:relative;
+
+    &__action {
+        @include default-button($color__white);
+        position: absolute;
+        right: 50px;
+        top: 40px;
+        z-index: 2;
+        &:hover, &:focus, &:active {
+            background: $color__white;
+            color: $color__xp--dark;
+        }
+    }
+
+    .form__btn {
+        height: 50px;
+        @include border-button($color__white, $color__white, $font__archivo--black, 30px);
+        position: absolute;
+        top: 0;
+        right: 20px;
+        cursor: pointer;
+        opacity: 1;
+
+        &.empty {
+            opacity: 0.2;
+
+            span {
+                color: $color__white;
+            }
+        }
+    }
+}
+.Presentation_person{
+    background: white;
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    border: none;
+    transition: all 1s ease-in-out;
+    /*animation: wave 1.3s linear infinite;*/
+    &.greeted__guests{
+        background-color: transparent;
+        .firstName{
+            position: absolute;
+            z-index: 2;
+            transition: all 2s ease-in-out;
+            //text-transform: uppercase;
+            color: white;
+            font-weight: bold;
+            background: none;
+            font-size: 16px;
+
+            .nameLetter{
+                &.removeOpacity{
+                    opacity: 0;
+                    transition: all 1s ease-in-out;
+                }
+            }
+            .firstLetter{
+                text-transform: uppercase;
+                &.displayed{
+                    transition-delay: 1s;
+                    font-size: 50px;
+                    transition: all 1s ease-in-out;
+                    color: $color__episode_01;
+                    text-shadow: -1px 0 $color__white, 0 1px $color__white, 1px 0 $color__white, 0 -1px $color__white;
+                }
+            }
+        }
+    }
+    &.hide{
+        opacity: 0;
+        //display: none; // or opacity 0
+    }
+    &.clickable{
+        z-index: 2;
+        &:after {
+            content: "";
+            width: 34px;
+            height: 34px;
+            border-radius: 50%;
+            background-color: transparent;
+            border: 2px solid $color__white;
+            opacity: 0.3;
+            position: absolute;
+            top: -9px;
+            left: -9px;
+            transform-origin: center;
+            transform: translate(-50%, -50%);
+            animation: scaleRound 2s linear infinite;
+        }
+    }
+    &.clickable:not(.hote):hover{
+        cursor: pointer;
+        transform: scale(1.5);
+      }
+}
+
+.questionInput__container{
+    position: absolute;
+    z-index: 4;
+    transform: translateY(-80%);
+    .questionInput__label{
+        font-size: 16px;
+        padding-bottom: 10px;
+        display: flex;
+    }
+}
+
+.input__container {
+    position: relative;
+    width: 400px;
+    height: 50px;
+    &:before{
+        content: '';
+        position: absolute;
+        width: 400px;
+        height: 50px;
+        top: -2px;
+        right: 0;
+        border-top: 2px solid $color__white;
+        border-left: 2px solid $color__white;
+        visibility: hidden;
+        //background-color: black; // TODO check what's best
+    }
+    &:after{
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 400px;
+        height: 50px;
+        border-bottom: 2px solid $color__white;
+        border-right: 2px solid $color__white;
+        visibility: hidden;
+    }
+    .input__box{
+        position: absolute;
+        z-index: 2;
+    }
+    .input-border {
+        position: relative;
+        width: 400px;
+        height: 50px;
+        display: flex;
+        justify-content: left;
+        align-items: center;
+        float: left;
+        .nameInput {
+            width: 100%;
+            height: 50px;
+            padding: 10px 0 10px 20px;
+            background-color: transparent;
+            color: white;
+            font-size: 16px;
+            text-transform: capitalize;
+            text-align: left;
+            font-weight: bold;
+            border: none;
+            transition: all 0.5s ease;
+        }
+        input::first-letter{
+            color: red;
+        }
+        .nameInput::placeholder {
+            color: rgba(255,255,255,0.8);
+            text-transform: lowercase;
+            //font-weight: bold;
+            //font-size: 30px;
+            text-align: left;
+            //opacity: 0.3;
+            transition: opacity 0.8s ease;
+        }
+    }
+    &.animate-input{
+        &:before{
+            animation: topleftTest 1s ease-in-out forwards;
+        }
+        &:after{
+            animation: bottomrightTest 1s ease-in-out forwards;
+        }
+    }
+}
+
+.border-white{
+    span{
+        text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;
+        color: white;
+        transition: color 0.4s ease-in-out;
+        cursor: pointer;
+        &:hover{
+            cursor: pointer;
+        }
+    }
+
+}
+
+.empty{
+    //transition: all 0.3s ease-in-out;
+    span{
+        cursor: default;
+        color: $color__episode_01;
+    }
+}
+
+@keyframes wave {
+    0%, 60%, 100% {
+        transform: translateY(15px);
+    }
+    30% {
+        transform: translateY(-15px);
+    }
+}

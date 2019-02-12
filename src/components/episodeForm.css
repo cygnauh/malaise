@@ -1,0 +1,184 @@
+/* GLOBAL */
+/* INTERFACE */
+/* XP 1 */
+/*@font-face {
+  font-family: 'Happy Times';
+  src: url('../../fonts/happy-times/happy-times.woff2') format('woff2'),
+  url('../../fonts/happy-times/happy-times.woff') format('woff'),
+  url('../../fonts/happy-times/happy-times.ttf')  format('truetype');
+}*/
+.episodeForm__hide {
+  opacity: 0 !important; }
+.episodeForm__container {
+  margin-top: 80px; }
+.episodeForm__content {
+  position: relative;
+  height: 400px;
+  min-height: 400px; }
+.episodeForm__form {
+  position: absolute;
+  width: 100%;
+  opacity: 0;
+  z-index: 1;
+  transform: translateX(-20px);
+  transition: opacity 1s 0s, transform 1s ease; }
+  .episodeForm__form--current {
+    opacity: 1;
+    transform: translateX(0);
+    transition: opacity 1s 1s;
+    z-index: 2; }
+  .episodeForm__form .form__label {
+    font-family: "Archivo Black", sans-serif;
+    font-size: 50px;
+    line-height: 55px;
+    margin-left: 100px; }
+  .episodeForm__form .form__container {
+    position: relative;
+    margin-top: 80px;
+    width: 100%; }
+  .episodeForm__form .form__column {
+    width: 500px;
+    position: relative; }
+  .episodeForm__form .form__margin {
+    margin-left: 100px; }
+  .episodeForm__form .form__input {
+    border: 1px solid #EAEAEA;
+    background: none;
+    height: 50px;
+    width: 100%;
+    font-size: 20px;
+    padding: 10px 25px;
+    color: #EAEAEA;
+    max-width: 500px;
+    opacity: 1;
+    transition: opacity 0.5s ease; }
+    .episodeForm__form .form__input::placeholder {
+      font-size: 20px;
+      color: #EAEAEA; }
+    .episodeForm__form .form__input:active, .episodeForm__form .form__input:focus {
+      opacity: 1; }
+      .episodeForm__form .form__input:active::placeholder, .episodeForm__form .form__input:focus::placeholder {
+        opacity: 0.5; }
+    .episodeForm__form .form__input--empty {
+      opacity: 0.3; }
+  .episodeForm__form .form__range {
+    position: relative;
+    width: 700px; }
+    .episodeForm__form .form__range span {
+      position: absolute;
+      height: 50px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 0 20px; }
+      .episodeForm__form .form__range span:last-child {
+        top: 0;
+        right: 0; }
+    .episodeForm__form .form__range input[type=range] {
+      -webkit-appearance: none;
+      width: 700px; }
+      .episodeForm__form .form__range input[type=range]::-webkit-slider-thumb {
+        -webkit-appearance: none;
+        height: 45px;
+        width: 45px;
+        border-radius: 50%;
+        border: none;
+        background: #EAEAEA;
+        cursor: pointer; }
+      .episodeForm__form .form__range input[type=range]::-webkit-slider-runnable-track {
+        width: 100%;
+        height: 50px;
+        cursor: pointer;
+        background: #0B162E;
+        border-radius: 0;
+        border: 1px solid #EAEAEA;
+        padding: 0 150px 0 100px; }
+  .episodeForm__form .form__select {
+    margin-bottom: 50px; }
+    .episodeForm__form .form__select-item {
+      cursor: pointer;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+      margin-bottom: 30px; }
+      .episodeForm__form .form__select-item div {
+        margin-bottom: -4px;
+        margin-left: 100px;
+        font-size: 18px;
+        transition: transform 0.5s ease; }
+        .episodeForm__form .form__select-item div.selected {
+          font-weight: bold; }
+        .episodeForm__form .form__select-item div:hover {
+          opacity: 1;
+          transform: translateX(30px); }
+  .episodeForm__form .form__btn {
+    height: 50px;
+    background: none;
+    border: none;
+    color: #0B162E;
+    text-shadow: -1px 0 #EAEAEA, 0 1px #EAEAEA, 1px 0 #EAEAEA, 0 -1px #EAEAEA;
+    font-size: 30px;
+    font-family: "Archivo Black", sans-serif;
+    position: absolute;
+    top: 0;
+    right: 25px;
+    cursor: pointer;
+    transition: color 0.5s ease;
+    letter-spacing: 2px; }
+    .episodeForm__form .form__btn:hover {
+      color: #EAEAEA; }
+  .episodeForm__form .form__validation {
+    margin: 100px 0 0 100px;
+    border: 1px solid #EAEAEA;
+    background: none;
+    color: #EAEAEA;
+    font-size: 12px;
+    padding: 15px 30px;
+    cursor: pointer;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    transition: all 0.5s ease-in-out; }
+    .episodeForm__form .form__validation:hover, .episodeForm__form .form__validation:focus, .episodeForm__form .form__validation:active {
+      background: #EAEAEA;
+      color: #0B162E; }
+.episodeForm__pagination {
+  margin-left: 100px; }
+  .episodeForm__pagination .pagination {
+    display: flex;
+    margin-bottom: 20px; }
+    .episodeForm__pagination .pagination__currentPage, .episodeForm__pagination .pagination__pagesLength {
+      font-size: 30px;
+      text-shadow: -1px 0 #EAEAEA, 0 1px #EAEAEA, 1px 0 #EAEAEA, 0 -1px #EAEAEA;
+      color: #0B162E;
+      font-family: "Archivo Black", sans-serif;
+      position: relative; }
+    .episodeForm__pagination .pagination__pagesLength {
+      margin-left: 50px; }
+      .episodeForm__pagination .pagination__pagesLength:before {
+        content: "";
+        width: 30px;
+        height: 1px;
+        background-color: #EAEAEA;
+        position: absolute;
+        left: -40px;
+        bottom: 5px; }
+.episodeForm__action {
+  position: relative;
+  transition: opacity 2s ease;
+  z-index: 10; }
+  .episodeForm__action button {
+    background: none;
+    border: none;
+    position: absolute;
+    right: 100px;
+    cursor: pointer; }
+.episodeForm__empty {
+  position: absolute;
+  right: 140px;
+  top: 17px;
+  font-size: 14px;
+  letter-spacing: 1px;
+  opacity: 1;
+  transition: opacity 0.2s ease; }
+  .episodeForm__empty--hide {
+    opacity: 0; }
+
+/*# sourceMappingURL=episodeForm.css.map */

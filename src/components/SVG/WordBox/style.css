@@ -1,0 +1,27 @@
+/* GLOBAL */
+/* INTERFACE */
+/* XP 1 */
+/*@font-face {
+  font-family: 'Happy Times';
+  src: url('../../fonts/happy-times/happy-times.woff2') format('woff2'),
+  url('../../fonts/happy-times/happy-times.woff') format('woff'),
+  url('../../fonts/happy-times/happy-times.ttf')  format('truetype');
+}*/
+.WordBox {
+  width: 40px;
+  height: auto; }
+
+.interface .WordBox {
+  stroke: #EAEAEA;
+  fill: #0B162E; }
+
+.interface-reverse .WordBox {
+  fill: #EAEAEA; }
+  .interface-reverse .WordBox g {
+    stroke: #002c36; }
+
+.episode .WordBox {
+  stroke: #EAEAEA;
+  fill: #002c36; }
+
+/*# sourceMappingURL=style.css.map */

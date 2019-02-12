@@ -1,0 +1,18 @@
+.Main {
+  height: 100%;
+  width: calc(100% - 48px);
+  margin-left: 48px;
+  position: relative;
+  overflow: hidden; }
+
+.interface-reverse .Main, .episode .Main {
+  width: calc(100% - 18px);
+  margin-left: 18px; }
+
+/* mobile et tablet */
+@media screen and (max-width: 768px) {
+  .Main {
+    width: 100%;
+    margin-left: 0; } }
+
+/*# sourceMappingURL=style.css.map */

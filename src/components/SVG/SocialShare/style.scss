@@ -1,0 +1,38 @@
+@import '../../../assets/styles/variables/index.scss';
+@import '../../../assets/styles/mixins/index.scss';
+
+.SocialShare {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  &__item {
+    margin: 0 20px;
+  }
+  svg {
+    width: 20px;
+  }
+}
+
+.interface {
+  .SocialShare {
+    svg {
+      fill: $color__white;
+    }
+  }
+}
+
+.interface-inverse {
+  .SocialShare {
+    svg {
+      fill: $color__xp--dark;
+    }
+  }
+}
+
+.episode {
+  .SocialShare {
+    svg {
+      fill: $color__white;
+    }
+  }
+}

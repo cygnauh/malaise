@@ -1,0 +1,36 @@
+@import '../assets/styles/variables/index.scss';
+@import '../assets/styles/mixins/index.scss';
+
+.Episode {
+  width: 100%;
+  height: 100%;
+  position: relative;
+
+  &__hours, &__personalization, &__interactions {
+    width: 100%;
+    height: 100%;
+    opacity: 1;
+    overflow: hidden;
+    transition: all 0.5s ease-in-out;
+    position: relative;
+    z-index: 1;
+
+    &.hide{
+      position: absolute;
+      opacity: 0;
+      z-index: 0;
+    }
+
+  }
+
+  &__interactions{
+
+    &.hide{
+      display: none;
+    }
+    
+  }
+
+
+}
+

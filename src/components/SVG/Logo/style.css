@@ -1,0 +1,23 @@
+/* GLOBAL */
+/* INTERFACE */
+/* XP 1 */
+/*@font-face {
+  font-family: 'Happy Times';
+  src: url('../../fonts/happy-times/happy-times.woff2') format('woff2'),
+  url('../../fonts/happy-times/happy-times.woff') format('woff'),
+  url('../../fonts/happy-times/happy-times.ttf')  format('truetype');
+}*/
+.Logo {
+  width: 80px;
+  height: 15px; }
+
+.interface .Logo {
+  fill: #EAEAEA; }
+
+.interface-reverse .Logo {
+  fill: #002c36; }
+
+.episode .Logo {
+  fill: #EAEAEA; }
+
+/*# sourceMappingURL=style.css.map */

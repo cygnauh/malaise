@@ -1,0 +1,54 @@
+/* GLOBAL */
+/* INTERFACE */
+/* XP 1 */
+/*@font-face {
+  font-family: 'Happy Times';
+  src: url('../../fonts/happy-times/happy-times.woff2') format('woff2'),
+  url('../../fonts/happy-times/happy-times.woff') format('woff'),
+  url('../../fonts/happy-times/happy-times.ttf')  format('truetype');
+}*/
+.eclipse {
+  text-align: center;
+  font-weight: bold;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center; }
+
+.eclipse__date {
+  font-size: 30px;
+  font-family: "Archivo Black", sans-serif;
+  font-weight: normal;
+  text-transform: lowercase;
+  margin-bottom: 30px; }
+  .eclipse__date--hide {
+    display: none; }
+
+.eclipse__date span {
+  margin: 0 6px; }
+
+.eclipse__clock {
+  font-size: 80px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: "Archivo Black", sans-serif; }
+
+.clock__hours, .clock__minutes {
+  margin-bottom: -5px; }
+
+.clock__hours {
+  margin-right: 10px; }
+
+.clock__minutes {
+  margin-left: 10px; }
+
+.odometer-value {
+  font-family: "Archivo Black", sans-serif;
+  font-size: 80px; }
+
+.odometer-digit {
+  width: 55px; }
+
+/*# sourceMappingURL=style.css.map */

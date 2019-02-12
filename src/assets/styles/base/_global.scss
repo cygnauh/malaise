@@ -1,0 +1,65 @@
+@import '../variables/index.scss';
+
+* {
+  box-sizing: border-box;
+}
+body, html {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  font-family: $font__archivo;
+  font-size: 15px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  &.interface {
+    background-color: $color__bg;
+    color: $color__white;
+  }
+
+  &.interface-reverse {
+    background-color: $color__white;
+    color: $color__xp--dark;
+  }
+
+  &.episode {
+    background-color: $color__xp--dark;
+    color: $color__white;
+  }
+
+}
+h1, h2, h3, h4, h5, h6, ul, ol, li, a, p {
+  margin:0;
+  padding:0;
+}
+ul, ol, li {
+  list-style: none;
+}
+a {
+  text-decoration: none;
+}
+.interface {
+  a {
+    color: $color__white;
+  }
+}
+
+.interface-reverse {
+  a {
+    color: $color__xp--dark;
+  }
+}
+
+
+input:focus, textarea:focus, button:focus, button:active {
+  outline: none;
+}
+#root, .wrapper-container {
+  width: 100%;
+  height: 100%;
+}
+.Start-process {
+  width: 100%;
+  height: 100%;
+}

@@ -1,0 +1,246 @@
+/* GLOBAL */
+/* INTERFACE */
+/* XP 1 */
+/*@font-face {
+  font-family: 'Happy Times';
+  src: url('../../fonts/happy-times/happy-times.woff2') format('woff2'),
+  url('../../fonts/happy-times/happy-times.woff') format('woff'),
+  url('../../fonts/happy-times/happy-times.ttf')  format('truetype');
+}*/
+@keyframes bottomrightTest {
+  0% {
+    width: 0;
+    height: 0;
+    padding-top: 0;
+    visibility: visible; }
+  25% {
+    width: 400px;
+    height: 0;
+    padding-top: 0;
+    visibility: visible; }
+  50% {
+    height: 50px;
+    width: 400px;
+    visibility: visible; }
+  75% {
+    visibility: visible; }
+  100% {
+    visibility: visible; } }
+@keyframes topleftTest {
+  0% {
+    width: 0;
+    height: 0;
+    padding-bottom: 0;
+    visibility: hidden; }
+  25% {
+    width: 0;
+    height: 0;
+    padding-bottom: 0;
+    visibility: hidden; }
+  50% {
+    width: 0;
+    height: 0;
+    padding-bottom: 0;
+    visibility: hidden; }
+  75% {
+    width: 400px;
+    height: 0;
+    padding-bottom: 0;
+    visibility: visible; }
+  100% {
+    width: 400px;
+    height: 50px;
+    opacity: 1;
+    visibility: visible; } }
+@keyframes scaleRound {
+  0% {
+    transform: scale(1); }
+  50% {
+    transform: scale(0.8); }
+  100% {
+    transform: scale(1); } }
+.Presentation {
+  background: #002c36;
+  width: 100%;
+  height: 100%;
+  color: white;
+  position: relative; }
+  .Presentation__action {
+    font-size: 10px;
+    color: #EAEAEA;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    background: none;
+    padding: 15px 30px;
+    letter-spacing: 2px;
+    line-height: 14px;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: color 0.5s ease-in, background-color 0.5s ease-in;
+    position: absolute;
+    right: 50px;
+    top: 40px;
+    z-index: 2; }
+    .Presentation__action:hover, .Presentation__action:focus, .Presentation__action:active {
+      background: #EAEAEA;
+      color: #002c36; }
+  .Presentation .form__btn {
+    height: 50px;
+    text-transform: lowercase;
+    font-family: "Archivo Black", sans-serif;
+    font-weight: normal;
+    font-size: 30px;
+    background: none;
+    border: none;
+    color: #EAEAEA;
+    opacity: 0.2;
+    cursor: pointer;
+    transition: opacity 0.5s ease-in;
+    position: absolute;
+    top: 0;
+    right: 20px;
+    cursor: pointer;
+    opacity: 1; }
+    .Presentation .form__btn.empty {
+      opacity: 0.2; }
+      .Presentation .form__btn.empty span {
+        color: #EAEAEA; }
+
+.Presentation_person {
+  background: white;
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: none;
+  transition: all 1s ease-in-out;
+  /*animation: wave 1.3s linear infinite;*/ }
+  .Presentation_person.greeted__guests {
+    background-color: transparent; }
+    .Presentation_person.greeted__guests .firstName {
+      position: absolute;
+      z-index: 2;
+      transition: all 2s ease-in-out;
+      color: white;
+      font-weight: bold;
+      background: none;
+      font-size: 16px; }
+      .Presentation_person.greeted__guests .firstName .nameLetter.removeOpacity {
+        opacity: 0;
+        transition: all 1s ease-in-out; }
+      .Presentation_person.greeted__guests .firstName .firstLetter {
+        text-transform: uppercase; }
+        .Presentation_person.greeted__guests .firstName .firstLetter.displayed {
+          transition-delay: 1s;
+          font-size: 50px;
+          transition: all 1s ease-in-out;
+          color: #002c36;
+          text-shadow: -1px 0 #EAEAEA, 0 1px #EAEAEA, 1px 0 #EAEAEA, 0 -1px #EAEAEA; }
+  .Presentation_person.hide {
+    opacity: 0; }
+  .Presentation_person.clickable {
+    z-index: 2; }
+    .Presentation_person.clickable:after {
+      content: "";
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      background-color: transparent;
+      border: 2px solid #EAEAEA;
+      opacity: 0.3;
+      position: absolute;
+      top: -9px;
+      left: -9px;
+      transform-origin: center;
+      transform: translate(-50%, -50%);
+      animation: scaleRound 2s linear infinite; }
+  .Presentation_person.clickable:not(.hote):hover {
+    cursor: pointer;
+    transform: scale(1.5); }
+
+.questionInput__container {
+  position: absolute;
+  z-index: 4;
+  transform: translateY(-80%); }
+  .questionInput__container .questionInput__label {
+    font-size: 16px;
+    padding-bottom: 10px;
+    display: flex; }
+
+.input__container {
+  position: relative;
+  width: 400px;
+  height: 50px; }
+  .input__container:before {
+    content: '';
+    position: absolute;
+    width: 400px;
+    height: 50px;
+    top: -2px;
+    right: 0;
+    border-top: 2px solid #EAEAEA;
+    border-left: 2px solid #EAEAEA;
+    visibility: hidden; }
+  .input__container:after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 400px;
+    height: 50px;
+    border-bottom: 2px solid #EAEAEA;
+    border-right: 2px solid #EAEAEA;
+    visibility: hidden; }
+  .input__container .input__box {
+    position: absolute;
+    z-index: 2; }
+  .input__container .input-border {
+    position: relative;
+    width: 400px;
+    height: 50px;
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    float: left; }
+    .input__container .input-border .nameInput {
+      width: 100%;
+      height: 50px;
+      padding: 10px 0 10px 20px;
+      background-color: transparent;
+      color: white;
+      font-size: 16px;
+      text-transform: capitalize;
+      text-align: left;
+      font-weight: bold;
+      border: none;
+      transition: all 0.5s ease; }
+    .input__container .input-border input::first-letter {
+      color: red; }
+    .input__container .input-border .nameInput::placeholder {
+      color: rgba(255, 255, 255, 0.8);
+      text-transform: lowercase;
+      text-align: left;
+      transition: opacity 0.8s ease; }
+  .input__container.animate-input:before {
+    animation: topleftTest 1s ease-in-out forwards; }
+  .input__container.animate-input:after {
+    animation: bottomrightTest 1s ease-in-out forwards; }
+
+.border-white span {
+  text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;
+  color: white;
+  transition: color 0.4s ease-in-out;
+  cursor: pointer; }
+  .border-white span:hover {
+    cursor: pointer; }
+
+.empty span {
+  cursor: default;
+  color: #002c36; }
+
+@keyframes wave {
+  0%, 60%, 100% {
+    transform: translateY(15px); }
+  30% {
+    transform: translateY(-15px); } }
+
+/*# sourceMappingURL=style.css.map */
