@@ -34,13 +34,20 @@ class UserQuestion extends Component {
             proposition : value
         })
     };
+
+    onKeyPressed = (e) => {
+        if (e.keyCode === 13) {
+            this.validateProposition();
+        }
+    }
+
     inputChange = (e) => {
         this.setState({
             proposition : e.target.value
         })
     };
     validateProposition = () => {
-        console.log(this.state.proposition)
+        console.log(this.state.proposition);
         if(this.state.proposition !== ''){
             this.props.drinkActionEnd('user question')
         }
@@ -52,7 +59,13 @@ class UserQuestion extends Component {
                 <div className="userQuestion__wrapper">
                     <div className="userQuestion__input_wrapper">
                         <label className="userQuestion__label">Je n'ai jamais...</label>
-                        <input className="userQuestion__input" type="text" value={this.state.proposition} onChange={this.inputChange} placeholder={'entre ta proposition'}/>
+                        <input
+                            className="userQuestion__input"
+                            type="text"
+                            value={this.state.proposition}
+                            onChange={this.inputChange}
+                            onKeyDown={this.onKeyPressed}
+                            placeholder={'entre ta proposition'}/>
                         <button className="userQuestion__valid" onClick={this.validateProposition}>ok</button>
                     </div>
                     <div className="wrapper-proposition">

@@ -209,14 +209,14 @@ class SoundProvider extends Component {
         // handle the play and pause of the music
         handleMusic:(url, mode) => {
             if(mode === "pause" && this.state.musicSelected){
-                // this.state.musicSelected.pause(); // TODO Uncomment
+                 this.state.musicSelected.pause(); // TODO Uncomment
                 return
             }
             if(mode === "play"){
                 this.setState({
                     musicSelected:this.state.musics.find(setting => setting._src === url)
                 }, ()=>{
-                    // this.state.musicSelected.play(); // TODO Uncomment
+                     this.state.musicSelected.play(); // TODO Uncomment
                 });
             }
         },

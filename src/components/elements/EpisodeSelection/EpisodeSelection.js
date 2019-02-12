@@ -37,7 +37,7 @@ class EpisodeSelection extends Component {
         let placeSound = params.allSounds.find(setting => setting.name === params.allEpisodes[0].place);
         callbackSetEpisode(params.allEpisodes[0]);
         callbackSetSounds(params.allEpisodes[0].sounds[0].url, params.allEpisodes[0].interactions);
-        // registerPlaceSound(placeSound) // TODO uncomment
+         registerPlaceSound(placeSound) // TODO uncomment
         this.props.onButtonPressed();
     }
     render () {

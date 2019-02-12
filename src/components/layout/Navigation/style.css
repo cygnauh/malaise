@@ -158,7 +158,8 @@
 
 .episode .Navigation {
   background: #002c36;
-  color: #EAEAEA; }
+  color: #EAEAEA;
+  transform: translateX(calc(18px - 100%)); }
   .episode .Navigation__action {
     border-left: 1px solid #EAEAEA;
     border-right: 1px solid #EAEAEA; }
