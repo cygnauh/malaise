@@ -7,6 +7,8 @@ import anim_3_1_jeu_jamais from '../../../assets/animation/anim_3_1_jeu-jamais'
 import anim_3_3_verres from '../../../assets/animation/anim_3_3_verres'
 import text_3_7_ending from '../../../assets/animation/text_3_7_ending'
 
+import './AnimationLottie.scss'
+
 class AnimationLottie extends Component {
     constructor(props){
         super(props);
@@ -47,12 +49,12 @@ class AnimationLottie extends Component {
             if(this.props.onEnd) {this.props.onEnd(this.props.animationType)}
             console.log(this.props.animationType)
         }, this.props.timer)
+        console.log('HELLO THIS IS THE ANIM' + this.props.name)
     }
     render() {
         return (
             <div className="AnimationLottie">
-                <div className="wrapper" style={{color:"red"}}>
-                    HELLO THIS IS THE ANIM {this.props.name ? this.props.name : null}
+                <div className="wrapper">
                     <Lottie options={this.defaultOptions}/>
                 </div>
             </div>

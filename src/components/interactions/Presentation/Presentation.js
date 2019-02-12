@@ -2,14 +2,16 @@ import React, { Component } from 'react';
 import PresentationInput from './PresentationInput'
 import './style.scss';
 import {SoundContext} from "../../../store/SoundProvider";
+import Lottie from 'react-lottie';
+import anim from '../../../assets/animation/anim_2_2_points'
 // characters introduction to users
-
+// TODO remove every uncessary
 class Presentation extends Component {
     constructor(props) {
         super(props);
 
         this.dotRefs = {};
-        this.guestsNb=15;
+        this.guestsNb=6;
         this.state = {
             render:'',
             positions:null, // dots positions
@@ -26,6 +28,14 @@ class Presentation extends Component {
             randomLetters:[],
             guestLetters:[],
 
+        };
+        this.defaultOptions = {
+            loop: true,
+            autoplay: true,
+            animationData: anim,
+            rendererSettings: {
+                preserveAspectRatio: 'xMidYMid slice'
+            }
         };
     }
     componentDidMount(){
@@ -103,8 +113,10 @@ class Presentation extends Component {
         let host = this.state.greetedGuests;
         host.push({
             name:this.state.hote,
-            top:this.state.positions[this.state.positions.length-1].top,
-            left:this.state.positions[this.state.positions.length-1].left,
+            top:500,
+            // top:this.state.positions[this.state.positions.length-1].top,
+            // left:this.state.positions[this.state.positions.length-1].left,
+            left:500,
             randomLetters:[]
         });
         this.setState({
@@ -161,7 +173,8 @@ class Presentation extends Component {
                              left:leftPos+'px'}}
                          onClick={!this.state.displayInput ? (ref, e)=>this.onDotClicked(i, topPos, leftPos, ref, e):null} // send the refs
                     />)
-            }else{
+            }
+            else{
                 guest.push(
                     <div key={i.toString()}
                          className="Presentation_person"
@@ -253,6 +266,7 @@ class Presentation extends Component {
         if (this.state.currentQuestion === "pote"){
             this.setState({currentQuestion: "copain"});
             let bf = null;
+            console.log(this.state.dotClicked[0])
             if(this.state.dotClicked[0] < 4){
                 bf = this.dotRefs[this.state.dotClicked[0]+1];
             }else{
@@ -260,14 +274,32 @@ class Presentation extends Component {
             }
             setTimeout(()=>{
                 bf.click()
-            },3000);
+            },1000);
             setTimeout(()=>this.context.playGreeting("pote"), 1000)
         }else if (this.state.currentQuestion === "copain"){
             this.setState({currentQuestion: "reloue"});
+            let bf = null;
+            if(this.state.dotClicked[0] < 4){
+                bf = this.dotRefs[this.state.dotClicked[0]+2];
+            }else{
+                bf = this.dotRefs[this.state.dotClicked[0]-2];
+            }
+            setTimeout(()=>{
+                bf.click()
+            },1000);
             setTimeout(()=>this.context.playGreeting("copain"), 1000)
         }else{
             if(this.state.currentQuestion === "reloue"){
                 this.setState({currentQuestion: "reserve"});
+                let bf = null;
+                if(this.state.dotClicked[0] < 4){
+                    bf = this.dotRefs[this.state.dotClicked[0]+3];
+                }else{
+                    bf = this.dotRefs[this.state.dotClicked[0]-3];
+                }
+                setTimeout(()=>{
+                    bf.click()
+                },1000);
                 setTimeout(()=>this.context.playGreeting("reloue"), 1000)
             }else{
                 setTimeout(()=>this.context.playGreeting("reserve"), 1000);
@@ -289,7 +321,7 @@ class Presentation extends Component {
                         });
                     }
                 this.setState({randomLetters:letterPosition})
-            }, 2000);
+            }, 500);
         setTimeout(()=>{
             letterPosition = [];
             this.setState({randomLetters:letterPosition})
@@ -340,6 +372,9 @@ class Presentation extends Component {
                 </div>
                 <div className="guest">
                     {this.state.greetedGuests ? this.displayGreetingGuests() : null}
+                </div>
+                <div>
+                    <Lottie options={this.defaultOptions}/>
                 </div>
             </div>
         )
