@@ -280,38 +280,51 @@ class Presentation extends Component {
             console.log(this.state.dotClicked[0])
             console.log(this.dotRefs)
             if(this.state.dotClicked[0] < 4){
-                bf = this.dotRefs[this.state.dotClicked[0]+1];
-            }else{
-                bf = this.dotRefs[this.state.dotClicked[0]-1];
+                for(let i = 0; i<4; i++){
+                    if (this.state.dotClicked.indexOf(i)===-1){
+                        bf = this.dotRefs[i];
+                        console.log(this.dotRefs[i], 'for')
+                    }
+                }
+            //     bf = this.dotRefs[this.state.dotClicked[0]+1];
+            // }else{
+            //     bf = this.dotRefs[this.state.dotClicked[0]-1];
             }
+            console.log(this.state.dotClicked, 'this.state.dotClicked')
             setTimeout(()=>{
                 bf.click()
             },1000);
             setTimeout(()=>this.context.playGreeting("pote"), 1000)
         }else if (this.state.currentQuestion === "copain"){
             this.setState({currentQuestion: "reloue"});
-            // let bf = null;
-            // if(this.state.dotClicked[0] < 4){
-            //     bf = this.dotRefs[this.state.dotClicked[0]+2];
-            // }else{
-            //     bf = this.dotRefs[this.state.dotClicked[0]-2];
-            // }
-            // setTimeout(()=>{
-            //     bf.click()
-            // },1000);
+            let bf = null;
+            if(this.state.dotClicked[0] < 4){
+                for(let i = 0; i<4; i++){
+                    if (this.state.dotClicked.indexOf(i)===-1){
+                        bf = this.dotRefs[i];
+                        console.log(this.dotRefs[i], 'for')
+                    }
+                }
+            }
+            setTimeout(()=>{
+                bf.click()
+            },1000);
             setTimeout(()=>this.context.playGreeting("copain"), 1000)
         }else{
             if(this.state.currentQuestion === "reloue"){
                 this.setState({currentQuestion: "reserve"});
-                // let bf = null;
-                // if(this.state.dotClicked[0] < 4){
-                //     bf = this.dotRefs[this.state.dotClicked[0]+3];
-                // }else{
-                //     bf = this.dotRefs[this.state.dotClicked[0]-3];
-                // }
-                // setTimeout(()=>{
-                //     bf.click()
-                // },1000);
+                let bf = null;
+                if(this.state.dotClicked[0] < 4){
+                    for(let i = 0; i<4; i++){
+                        if (this.state.dotClicked.indexOf(i)===-1){
+                            bf = this.dotRefs[i];
+                            console.log(this.dotRefs[i], 'for')
+                        }
+                    }
+                }
+                setTimeout(()=>{
+                    bf.click()
+                },1000);
                 setTimeout(()=>this.context.playGreeting("reloue"), 1000)
             }else{
                 setTimeout(()=>this.context.playGreeting("reserve"), 1000);
