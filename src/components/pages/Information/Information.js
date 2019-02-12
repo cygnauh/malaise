@@ -3,6 +3,9 @@ import $ from 'jquery';
 import './style.scss';
 import { Link } from 'react-router-dom';
 import Heart from "../../SVG/Heart/Heart";
+import tasjoui from '../../../assets/img/tasjoui.jpg';
+import tubandes from '../../../assets/img/tubandes.jpg';
+import lescouillessurlatable from '../../../assets/img/lescouillessurlatable.jpg';
 
 class Information extends Component {
 
@@ -228,7 +231,7 @@ class Information extends Component {
                                 <li className="account">
                                     <Link to="https://www.instagram.com/tubandes/" target="_blank">
                                         <div className="account__illustration">
-                                            <img src="" alt="Photo de profil"/>
+                                            <img src={tubandes} alt="Photo de profil"/>
                                         </div>
                                         <div className="account__like">
                                             <Heart />
@@ -239,7 +242,7 @@ class Information extends Component {
                                 <li className="account">
                                     <Link to="https://www.binge.audio/category/les-couilles-sur-la-table/" target="_blank">
                                         <div className="account__illustration">
-                                            <img src="" alt="Photo de profil"/>
+                                            <img src={lescouillessurlatable} alt="Photo de profil"/>
                                         </div>
                                         <div className="account__like">
                                             <Heart />
@@ -250,7 +253,7 @@ class Information extends Component {
                                 <li className="account">
                                     <Link to="https://www.instagram.com/tasjoui/"  target="_blank">
                                         <div className="account__illustration">
-                                            <img src="" alt="Photo de profil"/>
+                                            <img src={tasjoui} alt="Photo de profil"/>
                                         </div>
                                         <div className="account__like">
                                             <Heart />
@@ -260,8 +263,45 @@ class Information extends Component {
                                 </li>
                             </ul>
                         </div>
+                        <button className="toFollow__action">Afficher plus</button>
                     </section>
-                    <section className="Information__sources"></section>
+                    <section className="Information__sources">
+                        <h2 className="sources__title"><span>sources</span></h2>
+                        <ul className="sources__list">
+                            <li className="sources__source">
+                                <Link to="/" target="_blank"><h3 className="source__name">France culture</h3></Link>
+                                <p className="source__description">Lorem ipsum dolor sit amet la vista baby u know. Vernesh gudli koil juik lop.</p>
+                            </li>
+                            <li className="sources__source">
+                                <Link to="/" target="_blank"><h3 className="source__name">France culture</h3></Link>
+                                <p className="source__description">Lorem ipsum dolor sit amet la vista baby u know. Vernesh gudli koil juik lop.</p>
+                            </li>
+                            <li className="sources__source">
+                                <Link to="/" target="_blank"><h3 className="source__name">France culture</h3></Link>
+                                <p className="source__description">Lorem ipsum dolor sit amet la vista baby u know. Vernesh gudli koil juik lop.</p>
+                            </li>
+                            <li className="sources__source">
+                                <Link to="/" target="_blank"><h3 className="source__name">France culture</h3></Link>
+                                <p className="source__description">Lorem ipsum dolor sit amet la vista baby u know. Vernesh gudli koil juik lop.</p>
+                            </li>
+                            <li className="sources__source">
+                                <Link to="/" target="_blank"><h3 className="source__name">France culture</h3></Link>
+                                <p className="source__description">Lorem ipsum dolor sit amet la vista baby u know. Vernesh gudli koil juik lop.</p>
+                            </li>
+                            <li className="sources__source">
+                                <Link to="/" target="_blank"><h3 className="source__name">France culture</h3></Link>
+                                <p className="source__description">Lorem ipsum dolor sit amet la vista baby u know. Vernesh gudli koil juik lop.</p>
+                            </li>
+                            <li className="sources__source">
+                                <Link to="/" target="_blank"><h3 className="source__name">France culture</h3></Link>
+                                <p className="source__description">Lorem ipsum dolor sit amet la vista baby u know. Vernesh gudli koil juik lop.</p>
+                            </li>
+                            <li className="sources__source">
+                                <Link to="/" target="_blank"><h3 className="source__name">France culture</h3></Link>
+                                <p className="source__description">Lorem ipsum dolor sit amet la vista baby u know. Vernesh gudli koil juik lop.</p>
+                            </li>
+                        </ul>
+                    </section>
                     <section className="Information__footer">
                         <Link to="/">épisode suivant</Link>
                     </section>

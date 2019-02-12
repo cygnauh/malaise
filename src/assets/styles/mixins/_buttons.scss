@@ -23,3 +23,16 @@
   cursor: pointer;
   transition: opacity 0.5s ease-in;
 }
+
+@mixin more-button($color, $font) {
+  text-transform: uppercase;
+  border: 1px solid $color;
+  background: none;
+  color: $color;
+  font-family: $font;
+  border-radius: 35px;
+  padding: 30px 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

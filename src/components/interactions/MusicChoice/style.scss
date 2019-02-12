@@ -2,6 +2,8 @@
 @import '../../../assets/styles/mixins/index.scss';
 
 .Music {
+  width: 100%;
+  margin-top: -100px;
 
   &__list {
     position: relative;
