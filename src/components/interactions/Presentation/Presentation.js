@@ -203,6 +203,9 @@ class Presentation extends Component {
 
         let dots = this.state.dotClicked;
         dots.push(i);
+        if(dots.length === 1 ){
+            this.context.playGreeting("offPote")
+        }
         let pos = [{
             top:posTop,
             left:posLeft
@@ -294,7 +297,7 @@ class Presentation extends Component {
             setTimeout(()=>{
                 bf.click()
             },1000);
-            setTimeout(()=>this.context.playGreeting("pote"), 1000)
+            setTimeout(()=>this.context.playGreeting("pote"), 500)
         }else if (this.state.currentQuestion === "copain"){
             this.setState({currentQuestion: "reloue"});
             let bf = null;
@@ -308,8 +311,9 @@ class Presentation extends Component {
             }
             setTimeout(()=>{
                 bf.click()
+                this.context.playGreeting("offReloue")
             },1000);
-            setTimeout(()=>this.context.playGreeting("copain"), 1000)
+            setTimeout(()=>this.context.playGreeting("copain"), 500)
         }else{
             if(this.state.currentQuestion === "reloue"){
                 this.setState({currentQuestion: "reserve"});
@@ -324,10 +328,11 @@ class Presentation extends Component {
                 }
                 setTimeout(()=>{
                     bf.click()
+                    this.context.playGreeting("offReserve")
                 },1000);
-                setTimeout(()=>this.context.playGreeting("reloue"), 1000)
+                setTimeout(()=>this.context.playGreeting("reloue"), 500)
             }else{
-                setTimeout(()=>this.context.playGreeting("reserve"), 1000);
+                setTimeout(()=>this.context.playGreeting("reserve"), 500);
                 setTimeout(()=>this.props.onPresentationEnd(), 3000)
             }
         }

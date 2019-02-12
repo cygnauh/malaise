@@ -51,6 +51,11 @@
 
     .userQuestion__valid{
       @include border-button($color__xp--dark, $color__white, $font__archivo--black, 25px);
+      opacity: 1;
+
+      &.empty {
+        opacity: 0.2;
+      }
 
       &:hover, &:focus, &:active {
         color: $color__white;

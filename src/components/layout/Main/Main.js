@@ -18,6 +18,7 @@ import Anecdotes from "../../pages/Anecdotes/Anecdotes";
 import About from "../../pages/About/About";
 import Error404 from "../../pages/Error404/Error404";
 import Credits from "../../pages/Credits/Credits";
+import Info from "../../pages/Information/Information";
 import TakingPosition from "../../interactions/TakingPosition/TakingPosition";
 import UserQuestion from "../../interactions/UserQuestion/UserQuestion";
 import Talk from "../../interactions/Talk/Talk";
@@ -61,6 +62,7 @@ class Main extends Component {
                                 <Route path="/formAnecdote" component={AnecdoteForm} />
                                 <Route path="/loader" component={Loader} />
                                 <Route path="/404" component={Error404} />
+                                <Route path="/info" component={Info} />
                             </Switch>
                         </main>
                     );

@@ -65,6 +65,13 @@
     height: 100%;
   }
 
+  &__items {
+    position: absolute;
+    top: calc(50% - 40px);
+    transform: translateY(-50%);
+    width: 100%;
+  }
+
   &__item {
     font-size: 70px;
     font-family: $font__archivo--black;
@@ -160,7 +167,10 @@
 
   &__footer {
     width: 100%;
-    height: calc(100% - 560px);
+    height: 100px;
+    position: absolute;
+    bottom: 0;
+    right: 20px;
     display: flex;
     align-items: center;
     justify-content: flex-end;
@@ -277,6 +287,7 @@
   .Navigation {
     background: $color__xp--dark;
     color: $color__white;
+    @include slide(100%, 18px);
 
     &__action {
       border-left: 1px solid $color__white;

@@ -35,6 +35,15 @@
   align-items: center;
   font-family: "Archivo Black", sans-serif; }
 
+.clock__hours, .clock__minutes {
+  margin-bottom: -5px; }
+
+.clock__hours {
+  margin-right: 10px; }
+
+.clock__minutes {
+  margin-left: 10px; }
+
 .odometer-value {
   font-family: "Archivo Black", sans-serif;
   font-size: 80px; }

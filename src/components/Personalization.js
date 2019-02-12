@@ -36,7 +36,6 @@ class Personalization extends Component {
             values: [ ...this.state.values, {role:params[i].name, name:value, glass:0}]
         },()=>{
              this.context.setPersonalization(this.state.values);
-             console.log(this.state.values)
         });
     };
     presentationQuestions = (data) => {

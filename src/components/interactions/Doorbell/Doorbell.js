@@ -38,6 +38,7 @@ class Doorbell extends Component {
         this.setState({
             show: true
         });
+        this.context.playGreeting('offHote')
     }
     handleClick(e) {
         this.setState({
@@ -88,10 +89,18 @@ class Doorbell extends Component {
 
     handleChange = (e) => {
 
+        if($(e.currentTarget).val() === '') {
+            console.log('empty')
+            $('.btn__input').addClass('empty');
+        } else {
+            console.log('not empty')
+            $('.btn__input').removeClass('empty');
+        }
+
         this.setState({
             host: e.target.value
         })
-        //
+
     };
 
     render() {
@@ -120,7 +129,7 @@ class Doorbell extends Component {
                             </div>
                         </div>
                         <div className="bell__box">
-                            <div className={this.state.emptyInput ? "bell__container empty__input" : "bell__container"}>
+                            <div className={this.state.emptyInput ? "bell__container" : "bell__container"}>
                                 <div className="bell__input-border">
                                     <input className="bell__input"
                                            type="text"
@@ -130,7 +139,7 @@ class Doorbell extends Component {
                                            placeholder="son prénom" />
                                 </div>
                                 <div className={this.state.clickedBell ? 'bell__btn bell__btn--clicked': 'bell__btn'}>
-                                    <button className={this.state.activeBell ? 'btn btn__input btn__bell': 'btn btn__input'}
+                                    <button className={this.state.activeBell ? 'btn btn__input btn__bell': 'btn btn__input empty'}
                                             onClick={this.handleClick}>
                                         <span>ok</span>
                                     </button>

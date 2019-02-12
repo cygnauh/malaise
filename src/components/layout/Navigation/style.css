@@ -48,6 +48,11 @@
     position: relative;
     width: calc(100% - 50px);
     height: 100%; }
+  .Navigation__items {
+    position: absolute;
+    top: calc(50% - 40px);
+    transform: translateY(-50%);
+    width: 100%; }
   .Navigation__item {
     font-size: 70px;
     font-family: "Archivo Black", sans-serif;
@@ -100,7 +105,10 @@
       transition: transform 0.8s ease; }
   .Navigation__footer {
     width: 100%;
-    height: calc(100% - 560px);
+    height: 100px;
+    position: absolute;
+    bottom: 0;
+    right: 20px;
     display: flex;
     align-items: center;
     justify-content: flex-end; }
@@ -150,7 +158,8 @@
 
 .episode .Navigation {
   background: #002c36;
-  color: #EAEAEA; }
+  color: #EAEAEA;
+  transform: translateX(calc(18px - 100%)); }
   .episode .Navigation__action {
     border-left: 1px solid #EAEAEA;
     border-right: 1px solid #EAEAEA; }
