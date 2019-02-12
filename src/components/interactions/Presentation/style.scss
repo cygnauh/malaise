@@ -106,6 +106,8 @@
     &.greeted__guests{
         background-color: transparent;
         .firstName{
+            position: absolute;
+            z-index: 2;
             transition: all 2s ease-in-out;
             //text-transform: uppercase;
             color: white;

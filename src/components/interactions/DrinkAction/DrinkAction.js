@@ -56,6 +56,7 @@ class DrinkAction extends Component {
                 let name = this.state.persons[i].name;
                 let glassLevel = this.state.persons[i].glass;
                 let toDrink = this.state.canDrink && this.drinkers.indexOf(this.state.persons[i].role)!==-1;
+                console.log(this.asker, this.state.persons[i].role)
                 glasses.push(
                     <div key={i} className="Person_list">
                         <Glass name={name}

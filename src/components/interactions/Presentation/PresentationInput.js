@@ -6,6 +6,10 @@ class PresentationInput extends Component {
         this.state = {
             render:''
         };
+        this.textInput = React.createRef();
+    }
+    componentDidMount() {
+        this.textInput.current.focus();
     }
 
     render () {
@@ -19,6 +23,7 @@ class PresentationInput extends Component {
                     <div className="input__box">
                         <div className="input-border">
                             <input type="text"
+                                   ref={this.textInput}
                                    className="nameInput"
                                    value={this.props.currentInput}
                                    placeholder={this.props.form.answerLabel}
