@@ -5,7 +5,8 @@
 
   .glass_name {
     text-transform: capitalize;
-    font: 700 4em/1 "Oswald", sans-serif;
+    font-family: $font__archivo--black;
+    font-size:  5em;
     -webkit-text-stroke: 1px white;
     background: url(../../../assets/img/drink_medium4.svg) repeat-y;
     background-position-x: -45px;
