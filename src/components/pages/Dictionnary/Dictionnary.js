@@ -165,8 +165,8 @@ class Dictionnary extends Component {
             >
                 {({ loading, error, data, refetch, networkStatus }) => {
                     if (networkStatus === 4) return "Refetching!";
-                    if (loading) return (<div><Loader/></div>);
-                    if (error) return (<div><ErrorScreen/></div>);
+                    if (loading) return (<Loader/>);
+                    if (error) return (<ErrorScreen/>);
                     return (
                         <div className="Dictionnary" ref={this.dictionnary}>
                            <div className="Dictionnary__header">

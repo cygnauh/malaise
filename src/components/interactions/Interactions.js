@@ -10,6 +10,7 @@ import AnimationLottie from './Animation/AnimationLottie'
 import Notice from './../elements/Notice/Notice'
 import Loader from './../elements/Loader/Loader'
 import ErrorScreen from './../elements/ErrorScreen/ErrorScreen'
+import Credits from './../pages/Credits/Credits'
 import { Howl } from 'howler';
 // QUERY
 import {Query} from "react-apollo";
@@ -213,8 +214,8 @@ class Interactions extends Component {
                         <Query query={getMusics} notifyOnNetworkStatusChange>
                             {({loading, error, data, refetch, networkStatus}) => {
                                 if (networkStatus === 4) return "Refetching!";
-                                if (loading) return <div><Loader/></div>;
-                                if (error) return (<div><ErrorScreen/></div>);
+                                if (loading) return <Loader/>;
+                                if (error) return (<ErrorScreen/>);
                                 return (
                                     <MusicChoice musics={data.allSounds} onMusicClicked={this.handleAnswer}/>
                                 )
@@ -270,6 +271,10 @@ class Interactions extends Component {
                 {this.state.show && this.state.interaction && (this.state.interaction.interactionType === "animation" || this.state.interaction.interactionType === "animation-bis") ?
                     <AnimationLottie name={this.state.interaction.content} timer={this.state.soundSequence[1]}
                                      onEnd={this.handleAnswer} animationType={this.state.interaction.interactionType}/>
+                    : null}
+
+                {this.state.show && this.state.interaction && this.state.interaction.interactionType === "credits" ?
+                    <Credits />
                     : null}
 
                 {/*<Notice notice={"this is the first notice"} show={this.state.indication}/>*/}
