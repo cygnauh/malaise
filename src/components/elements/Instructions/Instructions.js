@@ -2,11 +2,16 @@ import React, { Component } from 'react';
 import "./style.scss";
 import $ from 'jquery';
 import { SoundContext } from "../../../store/SoundProvider";
+import Notice from '../../elements/Notice/Notice';
 
 class Instructions extends Component {
 
     constructor(props){
         super(props);
+        this.state = {
+            indication:'Les indications seront ici ;)',
+            show: false
+        }
     }
 
     componentWillReceiveProps() {
@@ -24,6 +29,18 @@ class Instructions extends Component {
         let $nextInstructionStep = $currentInstructionStep.next();
 
         let stepNextStep = $nextInstructionStep.data('step');
+
+        if(stepNextStep === 2) {
+            setTimeout(() => {
+                this.setState({
+                    show: true
+                })
+            }, 1000);
+        } else {
+            this.setState({
+                show: false
+            })
+        }
 
         $currentInstructionStep.toggleClass('Instruction--current');
         $nextInstructionStep.toggleClass('Instruction--current');
@@ -52,8 +69,11 @@ class Instructions extends Component {
             <div className="Instructions">
                 <div className="Instructions__container">
                     <div className="Instruction Instruction--current" data-step="1">Bienvenue dans un nouvel épisode de malaise.</div>
-                    <div className="Instruction" data-step="2" data-notice="Les indications seront affichées ici !">Laisse toi guider et suis les indications en bas de l'écran.</div>
+                    <div className="Instruction" data-step="2">Laisse toi guider et suis les indications en bas de l'écran.</div>
                     <div className="Instruction" data-step="3">Pour une meilleure expérience, il est préférable de brancher ton casque.</div>
+                </div>
+                <div className={this.state.show && this.state.indication ? 'Notice__wrapper' : 'Notice__wrapper hide'}>
+                    <Notice notice={this.state.indication ? this.state.indication : null} />
                 </div>
             </div>
         )
