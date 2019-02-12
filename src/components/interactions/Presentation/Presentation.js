@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PresentationInput from './PresentationInput'
+import Notice from '../../elements/Notice/Notice'
 import './style.scss';
 import {SoundContext} from "../../../store/SoundProvider";
 import Lottie from 'react-lottie';
@@ -27,7 +28,8 @@ class Presentation extends Component {
             greetedGuests:[],
             randomLetters:[],
             guestLetters:[],
-
+            indication:'Clique sur les points pour saluer les invités.',
+            show: false
         };
         this.defaultOptions = {
             loop: true,
@@ -39,6 +41,9 @@ class Presentation extends Component {
         };
     }
     componentDidMount(){
+        this.setState({
+            show:true
+        })
         setTimeout(() => {
             // console.log("dots",this.dotRefs)
 
@@ -190,6 +195,12 @@ class Presentation extends Component {
     };
 
     onDotClicked=(i, posTop, posLeft, refs, e)=>{
+        if(this.state.show){
+            this.setState({
+                show:true
+            })
+        }
+
         let dots = this.state.dotClicked;
         dots.push(i);
         let pos = [{
@@ -279,28 +290,28 @@ class Presentation extends Component {
             setTimeout(()=>this.context.playGreeting("pote"), 1000)
         }else if (this.state.currentQuestion === "copain"){
             this.setState({currentQuestion: "reloue"});
-            let bf = null;
-            if(this.state.dotClicked[0] < 4){
-                bf = this.dotRefs[this.state.dotClicked[0]+2];
-            }else{
-                bf = this.dotRefs[this.state.dotClicked[0]-2];
-            }
-            setTimeout(()=>{
-                bf.click()
-            },1000);
+            // let bf = null;
+            // if(this.state.dotClicked[0] < 4){
+            //     bf = this.dotRefs[this.state.dotClicked[0]+2];
+            // }else{
+            //     bf = this.dotRefs[this.state.dotClicked[0]-2];
+            // }
+            // setTimeout(()=>{
+            //     bf.click()
+            // },1000);
             setTimeout(()=>this.context.playGreeting("copain"), 1000)
         }else{
             if(this.state.currentQuestion === "reloue"){
                 this.setState({currentQuestion: "reserve"});
-                let bf = null;
-                if(this.state.dotClicked[0] < 4){
-                    bf = this.dotRefs[this.state.dotClicked[0]+3];
-                }else{
-                    bf = this.dotRefs[this.state.dotClicked[0]-3];
-                }
-                setTimeout(()=>{
-                    bf.click()
-                },1000);
+                // let bf = null;
+                // if(this.state.dotClicked[0] < 4){
+                //     bf = this.dotRefs[this.state.dotClicked[0]+3];
+                // }else{
+                //     bf = this.dotRefs[this.state.dotClicked[0]-3];
+                // }
+                // setTimeout(()=>{
+                //     bf.click()
+                // },1000);
                 setTimeout(()=>this.context.playGreeting("reloue"), 1000)
             }else{
                 setTimeout(()=>this.context.playGreeting("reserve"), 1000);
@@ -376,6 +387,11 @@ class Presentation extends Component {
                 </div>
                 <div>
                     <Lottie options={this.defaultOptions}/>
+                </div>
+                <div
+                    className={this.state.show && this.state.indication ? 'Notice__wrapper' : 'Notice__wrapper hide'}>
+                    <Notice
+                        notice={this.state.indication ? this.state.indication : null}/>
                 </div>
             </div>
         )
