@@ -14,7 +14,8 @@ class DrinkAction extends Component {
             canDrink: false,
             toDrink: false,
             hide:false,
-            started: false
+            started: false,
+            showTimer:true
         };
         this.drinkers = this.props.drinkers; // persons who drinks at the question
         this.userDrank = this.userDrank.bind(this);
@@ -102,6 +103,9 @@ class DrinkAction extends Component {
                 }else{
                     this.props.drinkActionEnd('drink action')
                 }
+                this.setState({
+                    showTimer:false
+                })
             // }, 2000)
         }else{
             setTimeout( () => {
@@ -118,7 +122,7 @@ class DrinkAction extends Component {
     render() {
         return (
             <div className={!this.state.hide ? "DrinkAction" : "DrinkAction hide"}>
-                {this.props.mode === 'action' ?
+                {this.props.mode === 'action' && this.state.showTimer?
                     <div className="DrinkAction__timer">
                         <Timer activeTimer={this.state.started} />
                     </div> :

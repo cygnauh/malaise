@@ -143,13 +143,13 @@ class SoundProvider extends Component {
                 src: [doorbell],
                 ext: ['mp3'],
                 html5: true,
-                volume:0.4
+                volume:0.3
             });
             streamOpendoor = new Howl({
                 src: [opendoor],
                 ext: ['mp3'],
                 html5: true,
-                volume:0.4
+                volume:0.3
             });
             streamDoorbell.play();
             setTimeout( () => {
@@ -169,7 +169,8 @@ class SoundProvider extends Component {
             instruction = new Howl({
                 src: [url],
                 ext: ['mp3'],
-                html5: true
+                html5: true,
+                volume:0.7
             });
             instruction.play();
 
@@ -183,7 +184,8 @@ class SoundProvider extends Component {
             jingle = new Howl({
                 src: [url],
                 ext: ['mp3'],
-                html5: true
+                html5: true,
+                volume:0.2
             });
 
             return jingle;
@@ -198,7 +200,11 @@ class SoundProvider extends Component {
                 html5: true,
                 volume:1
             });
+            if(value === 'offHote' || value === 'offPote' || value === 'offReloue' || value === 'offReserve'){
+                stream.volume(0.7)
+            }
             stream.play()
+
         },
         // load the musics
         handleMusicChoices:(sounds) => {
