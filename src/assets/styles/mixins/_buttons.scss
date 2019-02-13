@@ -27,12 +27,26 @@
 @mixin more-button($color, $font) {
   text-transform: uppercase;
   border: 1px solid $color;
+  letter-spacing: 1px;
   background: none;
   color: $color;
+  font-size: 10px;
   font-family: $font;
   border-radius: 35px;
-  padding: 30px 20px;
+  padding: 15px 20px;
   display: flex;
   justify-content: center;
   align-items: center;
+  cursor: pointer;
+  transition: all 0.5s ease-in;
+
+  svg {
+    width: 15px;
+    height: 15px;
+    margin-right: 20px;
+    g {
+      fill: $color__xp--light;
+    }
+  }
+
 }

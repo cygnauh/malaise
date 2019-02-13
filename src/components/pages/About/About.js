@@ -7,11 +7,57 @@ import advice1 from '../../../assets/img/advice-1.png';
 import advice2 from '../../../assets/img/advice-2.png';
 import advice3 from '../../../assets/img/advice-3.png';
 import Heart from "../../SVG/Heart/Heart";
+import Lottie from 'react-lottie';
+import animationCirce from '../../../assets/animation/_circe.json';
+import animationJustine from '../../../assets/animation/_justine.json';
+import animationClara from '../../../assets/animation/_clara.json';
+import animationChristine from '../../../assets/animation/_christine.json';
+import animationNoemie from '../../../assets/animation/_noemie.json';
 
 
 class About extends Component {
     constructor(props){
         super(props);
+        this.lottieNoemie = {
+            loop: true,
+            autoplay: true,
+            animationData: animationNoemie,
+            propsrendererSettings: {
+                preserveAspectRatio: 'xMidYMid slice'
+            }
+        };
+        this.lottieChristine = {
+            loop: true,
+            autoplay: true,
+            animationData: animationChristine,
+            propsrendererSettings: {
+                preserveAspectRatio: 'xMidYMid slice'
+            }
+        };
+        this.lottieJustine = {
+            loop: true,
+            autoplay: true,
+            animationData: animationJustine,
+            propsrendererSettings: {
+                preserveAspectRatio: 'xMidYMid slice'
+            }
+        };
+        this.lottieCirce = {
+            loop: true,
+            autoplay: true,
+            animationData: animationCirce,
+            propsrendererSettings: {
+                preserveAspectRatio: 'xMidYMid slice'
+            }
+        };
+        this.lottieClara = {
+            loop: true,
+            autoplay: true,
+            animationData: animationClara,
+            propsrendererSettings: {
+                preserveAspectRatio: 'xMidYMid slice'
+            }
+        };
     }
 
     render() {
@@ -70,7 +116,9 @@ class About extends Component {
                         <div className="team__worker">
                             <div className="worker">
                                 <h3 className="worker__name">Noémie<br/>Eyoum</h3>
-                                <div className="worker__illustration"></div>
+                                <div className="worker__illustration">
+                                    <Lottie options={this.lottieNoemie} />
+                                </div>
                                 <div className="worker__description">
                                     Designer graphique vorace de podcast. Elle est douée d’un sens hors norme de l’organisation et de justesse, avec Noémie vous ne serez jamais perdu.
                                     <ul className="worker__socials-share">
@@ -82,7 +130,9 @@ class About extends Component {
                             </div>
                             <div className="worker">
                                 <h3 className="worker__name">Christine<br />Huang</h3>
-                                <div className="worker__illustration"></div>
+                                <div className="worker__illustration">
+                                    <Lottie options={this.lottieChristine} />
+                                </div>
                                 <div className="worker__description">
                                     Développeuse full-stack, nouvelle pro de GraphQL. En apparence calme et douce,  Christine est toujours prête à placer une punchline bien sentie. Accrochez-vous.
                                     <ul className="worker__socials-share">
@@ -94,7 +144,9 @@ class About extends Component {
                             </div>
                             <div className="worker">
                                 <h3 className="worker__name">Justine<br />Lenouvel</h3>
-                                <div className="worker__illustration"></div>
+                                <div className="worker__illustration">
+                                    <Lottie options={this.lottieJustine} />
+                                </div>
                                 <div className="worker__description">
                                     Designer graphique, pro du motion, elle affronte les bugs d’After Effects, telle une guerrière, elle s’arme de patience.
                                     <ul className="worker__socials-share">
@@ -106,7 +158,9 @@ class About extends Component {
                             </div>
                             <div className="worker">
                                 <h3 className="worker__name">Circé<br />Grand</h3>
-                                <div className="worker__illustration"></div>
+                                <div className="worker__illustration">
+                                    <Lottie options={this.lottieCirce} />
+                                </div>
                                 <div className="worker__description">
                                     Développeuse front-end, et actrice à ses heures perdues. Caractérisée par un rire éclatant, pas besoin de la voir, tendez l’oreille, vous ne l'entendez pas ?
                                     <ul className="worker__socials-share">
@@ -118,7 +172,9 @@ class About extends Component {
                             </div>
                             <div className="worker">
                                 <h3 className="worker__name">Clara<br />Vigourous</h3>
-                                <div className="worker__illustration"></div>
+                                <div className="worker__illustration">
+                                    <Lottie options={this.lottieClara} />
+                                </div>
                                 <div className="worker__description">
                                     Designer graphique, chargée de la direction artistique elle s’assure que le projet conserve une cohérence sur tous les supports.
                                     <ul className="worker__socials-share">

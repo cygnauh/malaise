@@ -2,10 +2,13 @@ import React, { Component } from 'react';
 import $ from 'jquery';
 import './style.scss';
 import { Link } from 'react-router-dom';
+import More from "../../SVG/More/More";
 import Heart from "../../SVG/Heart/Heart";
 import tasjoui from '../../../assets/img/tasjoui.jpg';
 import tubandes from '../../../assets/img/tubandes.jpg';
 import lescouillessurlatable from '../../../assets/img/lescouillessurlatable.jpg';
+import arrowDownIcon from '../../../assets/icons/arrows/arrow_down.svg';
+import plusIcon from '../../../assets/icons/plus.svg';
 
 class Information extends Component {
 
@@ -18,10 +21,34 @@ class Information extends Component {
             <div className="Information">
                 <div className="Information__container">
                     <section className="Information__firstScreen">
-                        <h1 className="firstScreen__title">Malaise</h1>
+                        <div className="firstScreen__container">
+                            <h1 className="firstScreen__title">malaise<br />autour de la sexualité<br /><span>être vierge au XXIe<br />siècle en France</span></h1>
+                            <p className="firstScreen__description">Discussion courante de la pause du lycée au bureau, mais encore sujet phare des soirées , nous sommes tous passé par la question : « et toi tu l’as fais ? ». Passé un certain âge on considère même qu’il va de soit que tout le monde est passé le cap. Alors que les mouvements féministes ont largement contribué à faire évoluer les mentalités sur la sexualité des femmes, quand est-il pour les hommes ?</p>
+                        </div>
+                        <button className="firstScreen__action">
+                            <img src={arrowDownIcon} alt="Flèche du bas" />
+                        </button>
                     </section>
-                    <section className="Information__statistics">
-                        <h2 className="statistics__title"><span>en savoir plus</span></h2>
+                    <section className="Information__dictionnary">
+                        <div className="dictionnary__container">
+                            <div className="dictionnary__column">
+                                <div className="dictionnary__actions">
+                                    <div className="dictionnary__illustration"></div>
+                                    <button className="dictionnary__action">
+                                        <More />
+                                        Tous les mots de l'épisode</button>
+                                </div>
+                            </div>
+                            <div className="dictionnary__column">
+                                <div className="dictionnary__word">
+                                    <h3 className="word__name">Puceau, nom masculin, familier</h3>
+                                    <p className="word__description">Au sens propre, il s’agit d’un homme vierge.
+                                        Au sens figuré, c’est un homme inexpérimenté, naïf ou novice.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    {/*<section className="Information__statistics">
                         <h2 className="statistics__title">Statistiques de l'épisode</h2>
                         <ul className="statistics__list">
                             <li className="statistics__answer">
@@ -40,7 +67,7 @@ class Information extends Component {
                                         <span className="answer__rate">60%</span>
                                     </div>
                                     <div className="answer__name">
-                                        Autre
+                                        Jus de fruit
                                         <span className="answer__rate">10%</span>
                                     </div>
                                 </div>
@@ -73,7 +100,7 @@ class Information extends Component {
                             </li>
                         </ul>
                         <button className="statistics__action">Toutes les statistiques</button>
-                    </section>
+                    </section>*/}
                     <section className="Information__questionsExamples">
                         <ul className="questionsExamples__list">
                             <li className="questionsExamples__answer">

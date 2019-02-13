@@ -5,4 +5,191 @@
   overflow-Y: scroll;
   width: 100%;
   height: 100%;
+
+  &__container {
+    width: 100%;
+    height: 100%;
+  }
+
+  &__firstScreen {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+
+    .firstScreen {
+
+
+      &__container {
+        width: 80%;
+        max-width: 800px;
+      }
+
+      &__title {
+        font-family: $font__archivo--black;
+        font-weight: normal;
+        font-size: 40px;
+        line-height: 45px;
+        margin-bottom: 70px;
+
+         span {
+           color: $color__xp--light;
+         }
+
+      }
+
+      &__description {
+        font-family: $font__happy-times;
+        font-size: 18px;
+        line-height: 25px;
+        column-count: 2;
+        column-gap: 100px;
+      }
+
+      &__action {
+        position: absolute;
+        bottom: 50px;
+        left: 50%;
+        transform: translateX(-50%);
+        background: none;
+        border: none;
+      }
+
+    }
+
+  }
+
+  &__dictionnary {
+    width: 100%;
+    height: 400px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    border-top: 1px solid $color__white;
+    border-bottom: 1px solid $color__white;
+
+    .dictionnary {
+
+      &__container {
+        width: 80%;
+        max-width: 800px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      &__column {
+        flex: 1;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        &:first-child {
+          margin-right: 50px;
+        }
+        &:last-child {
+          margin-left: 50px;
+        }
+      }
+
+      &__illustration {
+        background: yellow;
+        width: 150px;
+        height: 150px;
+        border-radius: 50%;
+        margin: 0 auto 60px auto;
+      }
+
+      &__action {
+        @include more-button($color__white, $font__archivo);
+
+        &:hover, &:focus, &:active {
+          background: $color__white;
+          color: $color__xp--dark;
+        }
+
+      }
+
+      &__word {
+        font-family: $font__happy-times;
+
+        .word {
+
+          &__name {
+            font-weight: normal;
+            color: $color__xp--light;
+            font-size: 25px;
+            line-height: 30px;
+            margin-bottom: 20px;
+          }
+
+          &_description {
+            font-weight: normal;
+            font-size: 18px;
+            line-height: 22px;
+          }
+
+        }
+
+      }
+
+    }
+
+  }
+
+  &__questionsExamples {
+    border-bottom: 1px solid $color__white;
+
+    .questionsExamples {
+
+      &__list {
+        display: flex;
+        overflow-x: scroll;
+      }
+
+      &__answer {
+        font-family: $font__happy-times;
+        font-size: 20px;
+        line-height: 25px;
+        float: left;
+        border-right: 1px solid $color__white;
+        display: flex;
+        justify-content: center;
+        align-items:center;
+        width: 300px;
+        height: 300px;
+        flex-shrink: 0;
+        padding: 50px;
+        text-align: center;
+        position: relative;
+
+        span {
+          font-size: 16px;
+          font-family: $font__archivo;
+          display: block;
+          position: absolute;
+          top: 20px;
+          right: 20px;
+
+          &:before {
+            content: '';
+            width: 30px;
+            height: 1px;
+            background: $color__white;
+            position: absolute;
+            bottom: 5px;
+            left: -50px;
+          }
+
+        }
+
+      }
+
+    }
+
+  }
+
 }
