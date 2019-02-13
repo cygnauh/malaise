@@ -141,11 +141,55 @@
   }
 
   &__questionsExamples {
+    border-bottom: 1px solid $color__white;
 
     .questionsExamples {
 
+      &__list {
+        display: flex;
+        overflow-x: scroll;
+      }
+
+      &__answer {
+        font-family: $font__happy-times;
+        font-size: 20px;
+        line-height: 25px;
+        float: left;
+        border-right: 1px solid $color__white;
+        display: flex;
+        justify-content: center;
+        align-items:center;
+        width: 300px;
+        height: 300px;
+        flex-shrink: 0;
+        padding: 50px;
+        text-align: center;
+        position: relative;
+
+        span {
+          font-size: 16px;
+          font-family: $font__archivo;
+          display: block;
+          position: absolute;
+          top: 20px;
+          right: 20px;
+
+          &:before {
+            content: '';
+            width: 30px;
+            height: 1px;
+            background: $color__white;
+            position: absolute;
+            bottom: 5px;
+            left: -50px;
+          }
+
+        }
+
+      }
+
     }
-    
+
   }
 
 }

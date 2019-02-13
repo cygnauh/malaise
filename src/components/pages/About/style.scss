@@ -227,14 +227,6 @@
 
           &__illustration {
             width: 100%;
-            border-bottom: 1px solid $color__white;
-
-            &:after {
-              content: "";
-              display: block;
-              padding-bottom: 100%;
-            }
-
           }
 
           &__description {
@@ -244,7 +236,8 @@
             line-height: 20px;
             height: 300px;
             position: relative;
-
+            border-top: 1px solid $color__white;
+            margin-top: -4px;
           }
 
           &__socials-share {
