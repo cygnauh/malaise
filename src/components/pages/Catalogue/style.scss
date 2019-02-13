@@ -6,6 +6,7 @@
     height: 100%;
 
     &__container {
+        padding-top: 50px;
         height: calc(100% - 100px);
         display: flex;
         overflow-x: scroll;

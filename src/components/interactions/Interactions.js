@@ -166,7 +166,7 @@ class Interactions extends Component {
                         }
                     }
                 });
-                if (newPos > 15 && this.state.interaction.position !== 18) {
+                if (newPos > 15) {
                     setTimeout(() => {
                         if (isEnded && this.state.interaction.interactionType === "none") {
                             console.log('d')
@@ -174,14 +174,14 @@ class Interactions extends Component {
                         }
                     }, this.state.soundSequence[1])
                 }
-                if (this.state.interaction.position === 18) {
+                /*if (this.state.interaction.position === 18) {
                     setTimeout(() => {
                         if (isEnded && this.state.interaction.interactionType === "none") {
                             console.log('d');
                             this.handleAnswer('nothing')
                         }
                     },  12600)
-                }
+                }*/
 
                 if (this.state.interaction && this.state.interaction.interactionType === 'drag and drop' && (this.state.interaction.position === 20 || this.state.interaction.position === 28)) {
                     setTimeout(() => {
