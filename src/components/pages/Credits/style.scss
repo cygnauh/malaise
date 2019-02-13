@@ -72,6 +72,7 @@
             line-height: 30px;
 
             &__name {
+              text-transform: capitalize;
               text-align: right;
               font-weight: bold;
               flex: 1;

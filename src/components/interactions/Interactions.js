@@ -32,7 +32,9 @@ class Interactions extends Component {
             show: false,
             soundSequence: '',
             origin: '',
-            episodeSounds: null
+            episodeSounds: null,
+            soundLoaded:false,
+            goNextAuthorized:false
         };
         this.answers = this.props.anwsers.allAnswers;
     }
@@ -61,6 +63,9 @@ class Interactions extends Component {
             // console.log('episode sound is loaded')
             // this.props.onButtonPressed();
             console.log('load')
+            this.setState({
+                soundLoaded : true
+            })
             this.handleInteraction(this.state.interactionPosition, '');
         });
         this.setState({
@@ -68,102 +73,61 @@ class Interactions extends Component {
         }, ()=>{
             console.log(this.state.episodeSounds)
         })
-        // this.state.episodeSounds.on('load', ()=>{
-        //     console.log('load')
-        //     this.handleInteraction(this.state.interactionPosition, '');
-        // })
-    }
+    };
     playInteractionSound = (value) => {
-        console.log(this.state.episodeSounds)
-        this.update(this.state.episodeSounds._sprite[value][0] + this.state.episodeSounds._sprite[value][1], value);
-        // console.log(this.state.episodeSounds.seek())
+        this.update();
+        this.state.episodeSounds.play(value);
         if (this.state.episodeSounds && this.state.episodeSounds._sprite[value]
             && this.state.episodeSounds._sprite[value][1]) {
             return [this.state.episodeSounds, this.state.episodeSounds._sprite[value][1]]
-        } // TODO Uncomment all
-        console.log('hello from interaction')
-    }
-    update = (time, value) => {
-        if(this.state.episodeSounds) {
-            this.currentTime = this.state.episodeSounds.seek()
-            // this.currentTime = this.state.soundSequence.seek()
-            if (this.currentTime < time) {
-                this.state.episodeSounds.play(value);
-            }else{
-                requestAnimationFrame(this.update.bind(this))
-            }
-            // console.log(this.state.soundSequence)
-            console.log(this.currentTime)
         }
+    };
+    update = () => {
+        // console.log(time)
+        if(this.state.episodeSounds && this.state.interaction) {
+            // let inte = this.interactions.find(setting => setting.name === value);
+            let soundTime = Math.floor(((this.state.interaction.soundSequences[0].beginAt + this.state.interaction.soundSequences[0].duration)/1000)*10)/10
+            this.currentTime = Math.round(this.state.episodeSounds.seek()*10)/10
+            if (!this.state.goNextAuthorized && this.currentTime >= soundTime && this.state.interaction.interactionType === "none") {
+                this.setState({
+                    goNextAuthorized : true
+                }, ()=>{
+                    this.handleAnswer('nothing')
+                })
+                return
+            }
+        }
+        requestAnimationFrame(this.update.bind(this))
+
     };
 
     handleInteraction = (newPos, origin) => {
-        // console.log('handleInteraction', this.state.interactionPosition)
-        // console.log('HANDLE INTERACTION')
+
         let inte = this.interactions.find(setting => setting.position === newPos);
         let indication = false
         if (inte && this.interactions) {
             if (inte.indication) {
                 indication = true;
             }
+            if(this.state.interaction && this.state.interaction.interactionType === 'drag and drop'){
+                setTimeout(()=>{
+                    this.setState({
+                        show: !this.state.show,
+                        interaction: inte,
+                    })
+                }, 2000)
+            }else{
+                this.setState({
+                    show: !this.state.show,
+                    interaction: inte,
+                })
+            }
             this.setState({
                 indication: indication,
                 origin: origin,
-                show: !this.state.show,
-                interaction: inte,
+                goNextAuthorized : false,
                 soundSequence: this.playInteractionSound(inte.name)
             }, () => {
-                // console.log(inte.name)
-                let now = new Date();
-                let new_now = null;
-                let new_time = null;
-                let isEnded = false;
-                // console.log(this.state.interaction.position)
-                // console.log(this.state.interaction)
-                // if (this.state.interaction && this.state.interaction.timer) console.log(this.state.interaction.timer)
-                // this.update()
-                // if()
-                console.log(this.state.soundSequence)
-                this.state.soundSequence[0].on('end', () => {
-                    // console.log('ONEND', this.state.soundSequence[0])
-                    new_now = new Date()
-                    new_time = new_now - now
-                    // console.log(new_time, 'new_time', this.state.soundSequence[1], 'duration')
-                    isEnded = true
-                    // console.log(isEnded, 'isEnded')
-                    // if (newPos <= 15 && this.state.interaction.interactionType === "none") {
-                    if (this.state.interaction.interactionType === "none") {
-                        this.handleAnswer('nothing')
-                    }
-                });
-                setTimeout(() => {
-                    if (isEnded && this.state.interaction.interactionType === "none") {
-                        console.log('d')
-                        this.handleAnswer('nothing')
-                    }
-                }, this.state.soundSequence[1])
-                // if (this.state.interaction.interactionType === "none") {
-                //     console.log('a')
-                //     if (newPos > 15) {
-                //         console.log('b')
-                //         setTimeout(() => {
-                //             console.log(isEnded, 'isEnded')
-                //             if (isEnded) {
-                //                 console.log('c')
-                //                 this.handleAnswer('nothing')
-                //             } else {
-                //                 setTimeout(() => {
-                //                     if (isEnded) {
-                //                         console.log('d')
-                //                         this.handleAnswer('nothing')
-                //                     }
-                //                 }, 500)
-                //             }
-                //             console.log('time')
-                //         }, this.state.soundSequence[1])
-                //     }
-                // }
-
                 if (this.state.interaction && this.state.interaction.interactionType === 'drag and drop' && (this.state.interaction.position === 20 || this.state.interaction.position === 28)) {
                     setTimeout(() => {
                         this.setState({
@@ -175,7 +139,6 @@ class Interactions extends Component {
                         show: true
                     });
                 }
-                // }
             })
         }
     };
@@ -207,7 +170,7 @@ class Interactions extends Component {
     render() {
         return (
             <div className="Interactions">
-
+                {!this.state.soundLoaded? <Loader/> : null}
                 {this.state.show && this.state.interaction && this.state.interaction.interactionType === "music" ?
                     // getMusics
                     <div className="Interactions__music">
@@ -277,7 +240,6 @@ class Interactions extends Component {
                     <Credits />
                     : null}
 
-                {/*<Notice notice={"this is the first notice"} show={this.state.indication}/>*/}
                 <div
                     className={this.state.show && this.state.interaction && this.state.interaction.indication ? 'Notice__wrapper' : 'Notice__wrapper hide'}>
                     <Notice

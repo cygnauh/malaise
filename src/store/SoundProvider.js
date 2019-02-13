@@ -8,6 +8,7 @@ export const SoundContext = createContext({
     episodeSounds:null,
     interactions:[],
     beginingMusic:null,
+    musicSelected:null,
     setPlaceSounds: () => {},
     setEpisodeSounds: () => {},
     loadSound:() => {},
@@ -50,15 +51,7 @@ class SoundProvider extends Component {
         setEpisodeSounds: (sounds, interactions) => {
             this.setState({ episodeSoundtrack:sounds, interactions: interactions},
                 console.log(this.state.episodeSoundtrack));
-            // let tab = {};
-            // setTimeout(()=>{
-            //     for(let i = 0; i<interactions.length; i++){
-            //         if(interactions[i].soundSequences.length !== 0){
-            //             let sq = [ interactions[i].soundSequences[0].beginAt, interactions[i].soundSequences[0].duration]
-            //             tab[interactions[i].name] = sq;
-            //         }
-            //     }
-            // }, 0);
+
             // let sound = new Howl({
             //     src: [Sound],
                 // sprite:{
@@ -109,12 +102,6 @@ class SoundProvider extends Component {
             // });
             // return sound
         },
-        // update: () => {
-            // this.currentTime = this.state.episodeSounds.seek()
-            // if (this.currentTime >)
-            // console.log(this.currentTime)
-            // requestAnimationFrame(this.update.bind(this))
-        // },
         registerPlaceSound: (place) =>{ // load place selected
             let firstSound, secondSound;
             firstSound = new Howl({
@@ -246,17 +233,6 @@ class SoundProvider extends Component {
                 });
             }
         },
-        // voices interaction
-        // playInteractionSound:(value) => {
-        //     this.state.episodeSounds.play(value);
-        //     this.update();
-        //     console.log(this.state.episodeSounds.seek())
-        //     if(this.state.episodeSounds && this.state.episodeSounds._sprite[value]
-        //         && this.state.episodeSounds._sprite[value][1]){
-        //         return [this.state.episodeSounds, this.state.episodeSounds._sprite[value][1]]
-        //     } // TODO Uncomment all
-        //
-        // }
     };
 
     render() {

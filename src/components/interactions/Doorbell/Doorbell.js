@@ -44,7 +44,7 @@ class Doorbell extends Component {
         this.setState({
             activeBell:true,
             indication:'Clique sur la sonnette.'
-        }, ()=>{this.setState({fix:''});console.log('indication', this.state.indication)});
+        }, ()=>{this.setState({fix:''})});
         if(e.target.classList.contains(this.btnBell)) {
             e.preventDefault();
             this.setState({

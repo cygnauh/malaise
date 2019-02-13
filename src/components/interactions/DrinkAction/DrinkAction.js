@@ -96,14 +96,14 @@ class DrinkAction extends Component {
         });
         if(this.props.mode ==='action'){
             clearTimeout(this.handleTimer);
-            setTimeout( () => {
-                console.log(this.props.hasAnwser)
+            // setTimeout( () => {
+            //     console.log(this.props.hasAnwser)
                 if(this.props.hasAnwser && value){
                     this.props.drinkActionEnd('drink action', 'drink')
                 }else{
                     this.props.drinkActionEnd('drink action')
                 }
-            }, 2000)
+            // }, 2000)
         }else{
             setTimeout( () => {
                 this.setState({hide:true})
@@ -119,9 +119,11 @@ class DrinkAction extends Component {
     render() {
         return (
             <div className={!this.state.hide ? "DrinkAction" : "DrinkAction hide"}>
-                <div className="DrinkAction__timer">
-                    <Timer activeTimer={this.state.started} />
-                </div>
+                {this.props.mode === 'action' ?
+                    <div className="DrinkAction__timer">
+                        <Timer activeTimer={this.state.started} />
+                    </div> :
+                    null }
                 <div className="wrapper">
                     {this.state.persons ? this.handleDrink() : null}
                 </div>
