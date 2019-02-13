@@ -1,13 +1,12 @@
 import React, { Component } from 'react';
 import './style.scss';
+import $ from 'jquery';
 import { Query } from "react-apollo";
 import { getAnecdotes} from '../../../graphql/queries';
 import AnecdoteForm from "../../elements/AnecdoteForm/AnecdoteForm";
 import Loader from "../../elements/Loader/Loader";
 import ErrorScreen from "../../elements/ErrorScreen/ErrorScreen";
 import EmojiSmile from "../../SVG/EmojiSmile/EmojiSmile";
-import EmojiSad from "../../SVG/EmojiSad/EmojiSad";
-
 
 class Anecdotes extends Component {
     constructor(props){
@@ -18,6 +17,7 @@ class Anecdotes extends Component {
             episode:'cjqwfe1kj1j2x0122tixfvb5i',
             submitForm: false
         };
+        $('.Header').css('display', 'block');
     }
 
     handleClickToOpen = () => {

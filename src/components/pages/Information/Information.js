@@ -8,12 +8,27 @@ import tasjoui from '../../../assets/img/tasjoui.jpg';
 import tubandes from '../../../assets/img/tubandes.jpg';
 import lescouillessurlatable from '../../../assets/img/lescouillessurlatable.jpg';
 import arrowDownIcon from '../../../assets/icons/arrows/arrow_down.svg';
-import plusIcon from '../../../assets/icons/plus.svg';
 
 class Information extends Component {
 
     constructor(props) {
         super(props);
+        $('.Header').css('display', 'block');
+        this.state = {
+            hoverNumber: false
+        }
+    }
+
+    onHoverNumber = () => {
+        this.setState({
+            hoverNumber: true
+        })
+    }
+
+    onLeaveNumber = () => {
+        this.setState({
+            hoverNumber: false
+        })
     }
 
     render() {
@@ -138,37 +153,51 @@ class Information extends Component {
                         </ul>
                     </section>
                     <section className="Information__diagram">
-                        <div className="diagram__column">
-                            <h2 className="diagram__title"><span>chiffres clés</span></h2>
-                            <h3 className="diagram__subtitle">Age de la première fois en France</h3>
-                            <div className="diagram__number">15 ans en 2018</div>
-                        </div>
-                        <div className="diagram__column">
-                            <img className="diagram__illustration" src="" alt="Diagramme"/>
-                            <p className="diagram__description">Au cours des années, l’écart d’âge de dépucelage entre les hommes et les femmes à fortement diminué. En 1939, les femmes perdaient leurs virginité à 22 ans,contre 18 ans pour les hommes. Aujourd’hui les statistiques sont de 17,6 pour les femmes et de 17,2 pour les hommes*. </p>
-                            <button className="diagram__action">Toutes les statistiques</button>
+                        <div className="diagram__container">
+                            <div className="diagram__column">
+                                <h3 className="diagram__title">Age de la <br />première fois <br />en France</h3>
+                                <div className="diagram__number" onMouseEnter={this.onHoverNumber} onMouseLeave={this.onLeaveNumber}>
+                                    <div className={this.state.hoverNumber ? "diagram__number__1 hide" : "diagram__number__1"}><span>15</span> ans<br /> en 2008</div>
+                                    <div className={this.state.hoverNumber ? "diagram__number__2" : "diagram__number__2 hide"}><span>17,5</span> ans<br /> en 1990</div>
+                                </div>
+                            </div>
+                            <div className="diagram__column">
+                                <img className="diagram__illustration" src="" alt="Diagramme"/>
+                                <p className="diagram__description">Au cours des années, l’écart d’âge de dépucelage entre les hommes et les femmes à fortement diminué. En 1939, les femmes perdaient leurs virginité à 22 ans,contre 18 ans pour les hommes. Aujourd’hui les statistiques sont de 17,6 pour les femmes et de 17,2 pour les hommes*. </p>
+                                <button className="diagram__action">
+                                    <More />
+                                    Toutes les statistiques
+                                </button>
+                            </div>
                         </div>
                     </section>
-                    <section className="Information__video">
-                        <h2 className="video__title"><span>histoires</span></h2>
-                        <div className="video__source"></div>
-                        <button className="video__action">Plus de vidéos</button>
+                    <section className="Information__videos">
+                        <div className="videos__container">
+                            <h2 className="videos__title">vidéos</h2>
+                            <div className="videos__source"></div>
+                            <button className="videos__action">
+                                <More />
+                                Plus de vidéos
+                            </button>
+                        </div>
                     </section>
                     <section className="Information__anecdotes">
-                        <h2 className="anecdotes__title"><span>anecdotes</span></h2>
+                        <h2 className="anecdotes__title">anecdotes</h2>
                         <ul className="anecdotes__list">
                             <li className="anecdotes__anecdote">
-                                <div className="anecdote__top">
-                                    <div className="anecdote__author">anonyme</div>
-                                    <div className="anecdote__line"></div>
-                                    <div className="anecdote__date">23/08/2018</div>
+                                <div className="anecdote__content">
+                                    <div className="anecdote__top">
+                                        <div className="anecdote__author">anonyme</div>
+                                        <div className="anecdote__line"></div>
+                                        <div className="anecdote__date">23/08/2018</div>
+                                    </div>
+                                    <p className="anecdote__story">
+                                        In hac habitasse platea dictumst.
+                                        Vivamus adipiscing fermentum quam volutpat aliquam. In hac habitasse platea dictumst.
+                                        Vivamus adipiscing fermentum quam volutpat aliquam. In hac habitasse platea dictumst. Vivamus adipiscing fermentum quam volutpat aliquam. In hac habitasse platea dictumst.
+                                        Vivamus adipiscing fermentum quam volutpat aliquam.Hinc ille commotus ut iniusta perferens et indigna praefecti custodiam protectoribus mandaverat fidis. quo conperto Montius tunc quaestor acer quidem se
+                                    </p>
                                 </div>
-                                <p className="anecdote__story">
-                                    In hac habitasse platea dictumst.
-                                    Vivamus adipiscing fermentum quam volutpat aliquam. In hac habitasse platea dictumst.
-                                    Vivamus adipiscing fermentum quam volutpat aliquam. In hac habitasse platea dictumst. Vivamus adipiscing fermentum quam volutpat aliquam. In hac habitasse platea dictumst.
-                                    Vivamus adipiscing fermentum quam volutpat aliquam.Hinc ille commotus ut iniusta perferens et indigna praefecti custodiam protectoribus mandaverat fidis. quo conperto Montius tunc quaestor acer quidem se
-                                </p>
                             </li>
                             <li className="anecdotes__anecdote">
                                 <div className="anecdote__top">

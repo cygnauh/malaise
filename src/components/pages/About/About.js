@@ -13,11 +13,13 @@ import animationJustine from '../../../assets/animation/_justine.json';
 import animationClara from '../../../assets/animation/_clara.json';
 import animationChristine from '../../../assets/animation/_christine.json';
 import animationNoemie from '../../../assets/animation/_noemie.json';
+import $ from 'jquery';
 
 
 class About extends Component {
     constructor(props){
         super(props);
+        $('.Header').css('display', 'block');
         this.lottieNoemie = {
             loop: true,
             autoplay: true,

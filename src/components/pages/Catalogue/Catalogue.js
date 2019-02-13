@@ -1,11 +1,6 @@
 import React, { Component } from 'react';
 import './style.scss';
-
-
-// this component help to display all episodes
-
-// 1) waiting for props Data ( getEpisodes : allEpisodes )
-
+import $ from 'jquery';
 
 class Catalogue extends Component {
     constructor(props){
@@ -15,6 +10,11 @@ class Catalogue extends Component {
             data:this.props.episodes,
             episodeSelected:null
         };
+        $('.Header').css('display', 'block');
+    }
+
+    componentDidMount() {
+
     }
 
     handleHoverItem = (e) => {

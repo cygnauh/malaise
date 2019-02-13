@@ -14,6 +14,7 @@ class Homepage extends Component {
 
     constructor(props) {
         super(props);
+        $('.Header').css('display', 'none');
         this.state = {
             instructions: false,
             currentPage : '1'

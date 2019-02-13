@@ -57,6 +57,7 @@
   }
 
     &__container {
+      height: calc(100% - 50px);
       display: flex;
       overflow-x: scroll;
       border-bottom: 1px solid $color__white;
@@ -64,7 +65,7 @@
 
     .Anecdote-toShare {
       width: 350px;
-      height: 600px;
+      height: 100%;
       background: none;
       border-right: 1px solid $color__white;
       flex-shrink: 0;
@@ -73,6 +74,7 @@
 
       &__container {
         width: 700px;
+        height: 100%;
         display: flex;
       }
 
@@ -215,7 +217,7 @@
 
     .Anecdote {
       width: 350px;
-      height: 600px;
+      height: 100%;
       background: none;
       border-right: 1px solid $color__white;
       flex-shrink: 0;

@@ -2,8 +2,11 @@
 @import '../../../assets/styles/mixins/index.scss';
 
 .Catalogue {
+    width: 100%;
+    height: 100%;
 
     &__container {
+        height: calc(100% - 50px);
         display: flex;
         overflow-x: scroll;
         border-bottom: 1px solid $color__white;
@@ -11,7 +14,7 @@
 
     .Episode-item {
         width: 350px;
-        height: 600px;
+        height: 100%;
         background: none;
         border-right: 1px solid $color__white;
         flex-shrink: 0;
