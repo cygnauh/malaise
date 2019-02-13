@@ -7,6 +7,7 @@ export const SoundContext = createContext({
     placeSounds: [],
     episodeSounds:null,
     interactions:[],
+    beginingMusic:null,
     setPlaceSounds: () => {},
     setEpisodeSounds: () => {},
     loadSound:() => {},
@@ -28,6 +29,7 @@ class SoundProvider extends Component {
         placeSoundtrack:null,
         episodeSoundtrack:null, // episode soundtrack obj
         musicSelected:null, // music selected by the user
+        beginingMusic:null,
         url : [{
             'pote': 'https://circegrand.fr/etude/gobelins/malaise/media/sounds/salut-pote.mp3',
             'copain': 'https://circegrand.fr/etude/gobelins/malaise/media/sounds/salut-copain.mp3',
@@ -114,23 +116,33 @@ class SoundProvider extends Component {
             // requestAnimationFrame(this.update.bind(this))
         // },
         registerPlaceSound: (place) =>{ // load place selected
-            let stream;
-            stream = new Howl({
+            let firstSound, secondSound;
+            firstSound = new Howl({
                 src: [place.url],
                 ext: ['mp3'],
                 html5: true,
-                volume:0.1,
+                volume:0.05,
+                loop: true
+            });
+            secondSound = new Howl({
+                src: [' https://circegrand.fr/etude/gobelins/malaise/media/sounds/musique_2.1_debut'],
+                ext: ['mp3'],
+                html5: true,
+                volume:0.01,
                 loop: true
             });
             // console.log(this.state.placeSoundtrack);
-            if(this.state.placeSoundtrack){
-                this.state.placeSoundtrack.pause();
-            }
+            // if(this.state.placeSoundtrack){
+            //     this.state.placeSoundtrack.pause();
+            // }
             this.setState({
-                    placeSoundtrack:stream
+                    placeSoundtrack:firstSound,
+                    beginingMusic:secondSound
+
                 }, ()=>{
                     // console.log(this.state.placeSoundtrack);
                     this.state.placeSoundtrack.play();
+                    this.state.beginingMusic.play();
                 }
             );
         },
@@ -159,6 +171,7 @@ class SoundProvider extends Component {
             setTimeout( () => {
                 if(this.state.placeSoundtrack){
                     this.state.placeSoundtrack.volume(0.3)
+                    this.state.beginingMusic.volume(0.1)
                 }
             }, 1800)
         },
@@ -220,6 +233,7 @@ class SoundProvider extends Component {
         },
         // handle the play and pause of the music
         handleMusic:(url, mode) => {
+            this.state.beginingMusic.pause();
             if(mode === "pause" && this.state.musicSelected){
                  this.state.musicSelected.pause(); // TODO Uncomment
                 return

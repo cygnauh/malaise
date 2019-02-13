@@ -30,7 +30,7 @@ class Introduction extends Component {
                 start:true
             });
             if(this.state.start && this.props.startedJingle){
-                this.state.jingleSound.play();
+                this.state.jingleSound.play(); // TODO uncomment
             }
         }, 1500);
     }

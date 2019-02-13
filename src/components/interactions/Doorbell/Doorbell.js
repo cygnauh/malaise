@@ -50,11 +50,11 @@ class Doorbell extends Component {
             this.setState({
                 clickedBell:true,
                 show: false
-            }, console.log("A"));
+            });
             setTimeout(function(){
                 this.setState({
                     clickedBell:false,
-                }, console.log("B"));
+                });
             }.bind(this), 200);
         }
         if(this.state.activeBell){

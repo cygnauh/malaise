@@ -38,7 +38,7 @@ class EpisodeSelection extends Component {
         callbackSetEpisode(params.allEpisodes[0]);
         let episodeSound = callbackSetSounds(params.allEpisodes[0].sounds[0].url, params.allEpisodes[0].interactions);
 
-        // registerPlaceSound(placeSound) // TODO uncomment
+        registerPlaceSound(placeSound) // TODO uncomment
         // episodeSound.once('load', ()=>{
         //     console.log('episode sound is loaded')
             this.props.onButtonPressed();
