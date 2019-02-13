@@ -36,6 +36,7 @@ class Doorbell extends Component {
         this.setState({
             show: true
         });
+        this.context.playGreeting('offHote')
     }
     handleClick(e) {
         this.setState({

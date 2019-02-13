@@ -41,10 +41,10 @@ class Episode extends Component {
                 <div className={this.state.componentIndex !== 0?'Episode__hours hide':'Episode__hours'}>
                     <Hours />
                 </div>
-
+                {this.state.componentIndex === 1?
                 <div className={this.state.componentIndex === 1?'Episode__personalization':'Episode__personalization hide'}>
                     <Personalization nextComponent={this.goToWhatever}/>
-                </div>
+                </div> : null }
 
                 {this.state.componentIndex === 2 ?
                     <div className={this.state.componentIndex === 2?'Episode__interactions':'Episode__interactions hide'}>

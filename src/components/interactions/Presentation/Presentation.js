@@ -43,11 +43,7 @@ class Presentation extends Component {
     componentDidMount(){
         this.setState({
             show:true
-        })
-        setTimeout(() => {
-            // console.log("dots",this.dotRefs)
-
-        }, 1000)
+        });
         this.calculateIntervalPositions(100,200, 3, 3);
     }
     calculateIntervalPositions=(margeW, margeH, dispersionX, dispersionY)=>{
@@ -197,12 +193,15 @@ class Presentation extends Component {
     onDotClicked=(i, posTop, posLeft, refs, e)=>{
         if(this.state.show){
             this.setState({
-                show:true
+                show:false
             })
         }
 
         let dots = this.state.dotClicked;
         dots.push(i);
+        if(dots.length === 1 ){
+            this.context.playGreeting("offPote")
+        }
         let pos = [{
             top:posTop,
             left:posLeft
@@ -280,21 +279,17 @@ class Presentation extends Component {
         if (this.state.currentQuestion === "pote"){
             this.setState({currentQuestion: "copain"});
             let bf = null;
-            console.log(this.state.dotClicked[0])
-            console.log(this.dotRefs)
             if(this.state.dotClicked[0] < 4){
                 for(let i = 0; i<4; i++){
                     if (this.state.dotClicked.indexOf(i)===-1){
                         bf = this.dotRefs[i];
-                        console.log(this.dotRefs[i], 'for')
                     }
                 }
             }
-            console.log(this.state.dotClicked, 'this.state.dotClicked')
             setTimeout(()=>{
                 bf.click()
             },1000);
-            setTimeout(()=>this.context.playGreeting("pote"), 1000)
+            setTimeout(()=>this.context.playGreeting("pote"), 500)
         }else if (this.state.currentQuestion === "copain"){
             this.setState({currentQuestion: "reloue"});
             let bf = null;
@@ -302,14 +297,14 @@ class Presentation extends Component {
                 for(let i = 0; i<4; i++){
                     if (this.state.dotClicked.indexOf(i)===-1){
                         bf = this.dotRefs[i];
-                        console.log(this.dotRefs[i], 'for')
                     }
                 }
             }
             setTimeout(()=>{
                 bf.click()
+                this.context.playGreeting("offReloue")
             },1000);
-            setTimeout(()=>this.context.playGreeting("copain"), 1000)
+            setTimeout(()=>this.context.playGreeting("copain"), 500)
         }else{
             if(this.state.currentQuestion === "reloue"){
                 this.setState({currentQuestion: "reserve"});
@@ -318,16 +313,16 @@ class Presentation extends Component {
                     for(let i = 0; i<4; i++){
                         if (this.state.dotClicked.indexOf(i)===-1){
                             bf = this.dotRefs[i];
-                            console.log(this.dotRefs[i], 'for')
                         }
                     }
                 }
                 setTimeout(()=>{
                     bf.click()
+                    this.context.playGreeting("offReserve")
                 },1000);
-                setTimeout(()=>this.context.playGreeting("reloue"), 1000)
+                setTimeout(()=>this.context.playGreeting("reloue"), 500)
             }else{
-                setTimeout(()=>this.context.playGreeting("reserve"), 1000);
+                setTimeout(()=>this.context.playGreeting("reserve"), 500);
                 setTimeout(()=>this.props.onPresentationEnd(), 3000)
             }
         }
@@ -407,8 +402,7 @@ class Presentation extends Component {
                 <div>
                     <Lottie options={this.defaultOptions}/>
                 </div>
-                <div
-                    className={this.state.show && this.state.indication ? 'Notice__wrapper' : 'Notice__wrapper hide'}>
+                <div className={this.state.show && this.state.indication ? 'Notice__wrapper' : 'Notice__wrapper hide'}>
                     <Notice
                         notice={this.state.indication ? this.state.indication : null}/>
                 </div>
