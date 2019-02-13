@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './style.scss';
-import $ from 'jquery';
+import Header from "../../layout/Header/Header";
 
 class Catalogue extends Component {
     constructor(props){
@@ -10,7 +10,6 @@ class Catalogue extends Component {
             data:this.props.episodes,
             episodeSelected:null
         };
-        $('.Header').css('display', 'block');
     }
 
     componentDidMount() {
@@ -77,6 +76,7 @@ class Catalogue extends Component {
     render() {
         return (
             <div className="Catalogue">
+                <Header />
                 {!this.state.data? <p>data is loading, please make a loader</p> : null}
                 {this.state.data?
 

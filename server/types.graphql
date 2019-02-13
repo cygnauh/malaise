@@ -22,6 +22,7 @@ type Episode @model {
   anecdotes: [Anecdote!]! @relation(name: "EpisodeAnecdotes")
   thanks: String
   serpentin: String
+  status: String
 }
 
 type Voice @model {

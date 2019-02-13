@@ -13,13 +13,11 @@ import animationJustine from '../../../assets/animation/_justine.json';
 import animationClara from '../../../assets/animation/_clara.json';
 import animationChristine from '../../../assets/animation/_christine.json';
 import animationNoemie from '../../../assets/animation/_noemie.json';
-import $ from 'jquery';
-
+import Header from "../../layout/Header/Header";
 
 class About extends Component {
     constructor(props){
         super(props);
-        $('.Header').css('display', 'block');
         this.lottieNoemie = {
             loop: true,
             autoplay: true,
@@ -65,6 +63,7 @@ class About extends Component {
     render() {
         return (
             <div className="About">
+                <Header />
                 <div className="About__grid">
                     <div className="About__grid--full About__title">
                         <img src={MalaiseLogo} alt="Logo de Malaise."/>

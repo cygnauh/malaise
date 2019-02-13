@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import $ from 'jquery';
 import './style.scss';
 import { Link } from 'react-router-dom';
 import More from "../../SVG/More/More";
@@ -8,12 +7,12 @@ import tasjoui from '../../../assets/img/tasjoui.jpg';
 import tubandes from '../../../assets/img/tubandes.jpg';
 import lescouillessurlatable from '../../../assets/img/lescouillessurlatable.jpg';
 import arrowDownIcon from '../../../assets/icons/arrows/arrow_down.svg';
+import Header from "../../layout/Header/Header";
 
 class Information extends Component {
 
     constructor(props) {
         super(props);
-        $('.Header').css('display', 'block');
         this.state = {
             hoverNumber: false
         }
@@ -34,6 +33,7 @@ class Information extends Component {
     render() {
         return (
             <div className="Information">
+                <Header />
                 <div className="Information__container">
                     <section className="Information__firstScreen">
                         <div className="firstScreen__container">

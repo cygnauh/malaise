@@ -17,7 +17,6 @@ const App = () => (
     <ApolloProvider client={client}>
         <UserProvider>
             <SoundProvider>
-                <Header />
                 <Navigation />
                 <Main />
             </SoundProvider>
