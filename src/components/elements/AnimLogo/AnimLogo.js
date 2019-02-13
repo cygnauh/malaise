@@ -68,8 +68,6 @@ class AnimLogo extends Component {
         var $chars = this.$el.querySelectorAll('span');
         $chars =  Array.from($chars);
 
-        console.log($chars);
-
         $chars.forEach(function(el) {
             if(el.dataset.letter === '2'){
                 self.initChar(el, -20);

@@ -32,8 +32,6 @@ class MusicChoice extends Component {
     handleClickMusic = (e) => {
         this.setState({
             selected: !this.state.selected
-        }, ()=>{
-            console.log(this.state.selected)
         })
         var $el = e.currentTarget;
         $el.setAttribute("class", "Music__item Music__item--selected");

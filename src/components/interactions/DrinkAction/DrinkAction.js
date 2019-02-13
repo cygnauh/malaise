@@ -3,7 +3,6 @@ import Glass from '../../elements/Glass/Glass'
 import DragDrop from '../../elements/DragDrop/DragDrop'
 import { UserContext } from "./../../../store/UserProvider";
 import Timer from "../../elements/Timer/Timer";
-import {SoundContext} from "../../../store/SoundProvider";
 import "./DrinkAction.scss";
 
 class DrinkAction extends Component {

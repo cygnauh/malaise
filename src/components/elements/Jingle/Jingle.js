@@ -21,12 +21,6 @@ class Jingle extends Component {
 
     }
 
-  /*  componentDidMount(){
-        this.setState({
-            jingleSound: this.context.playJingle()
-        })
-    }*/
-
     componentWillReceiveProps() {
         this.setState({
             start:true

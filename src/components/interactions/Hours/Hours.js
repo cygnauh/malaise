@@ -24,7 +24,6 @@ class Hours extends Component {
     }
 
     componentDidMount() {
-        console.log(this.props.duration);
         if(this.props.hours && this.props.minutes){
             this.setState({
                 hours: this.props.hours,

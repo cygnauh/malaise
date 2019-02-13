@@ -6,8 +6,6 @@ import './style.scss';
 import { SoundContext } from "../../../store/SoundProvider";
 import $ from 'jquery';
 
-// doorbell, boum
-
 class Doorbell extends Component {
 
     constructor(props) {
@@ -90,10 +88,8 @@ class Doorbell extends Component {
     handleChange = (e) => {
 
         if($(e.currentTarget).val() === '') {
-            console.log('empty')
             $('.btn__input').addClass('empty');
         } else {
-            console.log('not empty')
             $('.btn__input').removeClass('empty');
         }
 

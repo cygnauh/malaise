@@ -60,7 +60,6 @@ class Introduction extends Component {
         if(!$currentIntroStep.is(':last-child')) {
             $currentIntroStep.toggleClass('Introduction__step--current');
             $nextIntroStep.toggleClass('Introduction__step--current');
-            console.log('disappear step');
         }
 
     }

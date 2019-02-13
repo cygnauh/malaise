@@ -1,5 +1,5 @@
 @import '../../../assets/styles/variables/index.scss';
-@import '../../../assets/styles/mixins/index.scss';
+@import '../../../assets/styles/mixins/buttons';
 
 @keyframes bottomrightTest {
     0% {
@@ -77,6 +77,18 @@
     height: 100%;
     color: white;
     position:relative;
+
+    &__action {
+        @include default-button($color__white);
+        position: absolute;
+        right: 50px;
+        top: 40px;
+        z-index: 2;
+        &:hover, &:focus, &:active {
+            background: $color__white;
+            color: $color__xp--dark;
+        }
+    }
 
     .form__btn {
         height: 50px;

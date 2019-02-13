@@ -249,14 +249,17 @@ class Presentation extends Component {
                 }
         return questionInput
     };
+
     handleKeyPress = (event) => {
         if(event.key === 'Enter'){
             this.validateInput(event)
         }
     };
+
     handleChange = (event) => { // TODO should check on the input value : letter only
         this.setState({currentInput: event.target.value});
     };
+
     validateInput = (event) => {
         // TODO display first letter
         let newGreetedGuest = this.state.greetedGuests;
@@ -380,9 +383,15 @@ class Presentation extends Component {
         }
         return guests
     };
+
+    handlePassNames = () => {
+        this.props.onPresentationEnd();
+    }
+
     render () {
         return(
             <div className="Presentation">
+                <button className="Presentation__action" onClick={this.handlePassNames}>Passer la saisie des prénoms</button>
                 {this.state.positions ? this.displayGuest() : null}
                 <div>
                     {this.state.displayInput && this.state.dotPositions ? this.displayPersonalizationInput() : null}
