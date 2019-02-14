@@ -49,58 +49,7 @@ class SoundProvider extends Component {
 
         // episode soundtrack and set interactions
         setEpisodeSounds: (sounds, interactions) => {
-            this.setState({ episodeSoundtrack:sounds, interactions: interactions},
-                console.log(this.state.episodeSoundtrack));
-
-            // let sound = new Howl({
-            //     src: [Sound],
-                // sprite:{
-                //     proposition_jeu: [11980, 7390], // ok
-                //     question_regles: [19475, 3635], // ok
-                //     explication_regles: [23220, 4830], //ok
-                //     choix_boisson:[28110, 2480], //ok
-                //     choix_boisson_a:[30590, 910], // ok
-                //     je_n_ai_jamais1:[32000, 3000], // ok
-                //     je_n_ai_jamais1_r:[35000, 4450], // ok
-                //     je_n_ai_jamais1_a:[39450, 930], //ok
-                //     reaction1:[41600, 3390], // ok
-                //     anecdote1:[45090, 18005], // ok
-                //     anecdote1bis:[63095, 24605], //ok
-                //     je_n_ai_jamais_user:[87700, 2800], // ok
-                //     reaction2:[94420, 2175], // ok
-                //     heure2:[0, 0],
-                //     je_n_ai_jamais3_r:[97900, 4500], // ok
-                //     je_n_ai_jamais3:[102400, 1600], // ok
-                //     je_n_ai_jamais3_p:[104000, 26400], //ok
-                //     je_n_ai_jamais3_a:[0, 0],
-                //     reaction3:[132105, 15695], // ok
-                //     anecdote2:[147800, 46200], // ok
-                //     je_n_ai_jamais4_r:[194000, 3730], //ok
-                //     je_n_ai_jamais4:[197730, 2270], // ok
-                //     reaction4:[200820, 53400], // ok
-                //     recherche_google:[254220, 58290], // ok
-                //     reaction4_c:[312510, 5120], // ok
-                //     je_n_ai_jamais5:[317630, 14370], //ok
-                //     reaction5:[333000, 2890],//ok
-                //     fin:[335890, 20610] //ok
-                // ----- udaapte value
-                //     je_n_ai_jamais3_r:[97900, 4500], // ok
-                //     je_n_ai_jamais3:[102400, 12600], // ok
-                //     je_n_ai_jamais3_p: [115000, 10300], // ok for taking position
-                //     je_n_ai_jamais3_a: [125300, 6805], // ok --> maybe drag and drop display later : maybe add another interaaction or setTimeOut or playing at the end
-                //     reaction3:[132105, 15695],
-                //     // je_n_ai_jamais3_a: [125300, 10000], // ok
-                //     recherche_google:[254220, 58290], // ok
-                //     fin:[335890, 20610] //ok,
-                //     reaction4_c:[312510, 5120], // ok
-                //     je_n_ai_jamais5:[317630, 14370], //ok
-                // },
-                // sprite: tab // TODO Uncomment
-            // });
-            // this.setState({ episodeSounds: sound }, ()=>{
-            //     // this.state.episodeSounds.play('je_n_ai_jamais3_r')
-            // });
-            // return sound
+            this.setState({ episodeSoundtrack:sounds, interactions: interactions})
         },
         registerPlaceSound: (place) =>{ // load place selected
             let firstSound, secondSound;
@@ -118,10 +67,6 @@ class SoundProvider extends Component {
                 volume:0.01,
                 loop: true
             });
-            // console.log(this.state.placeSoundtrack);
-            // if(this.state.placeSoundtrack){
-            //     this.state.placeSoundtrack.pause();
-            // }
             this.setState({
                     placeSoundtrack:firstSound,
                     beginingMusic:secondSound
