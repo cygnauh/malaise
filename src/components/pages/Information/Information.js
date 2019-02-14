@@ -104,7 +104,6 @@ class Information extends Component {
     }
 
     handleClickCatalogue = () => {
-        console.log('click to next catalogue');
         $('body').removeClass('episode').addClass('interface');
     }
 
@@ -276,6 +275,17 @@ class Information extends Component {
                                                             <p>People guess who's a virgin <span>CUT</span></p>
                                                         </div>
                                                     </div>
+                                                    {this.state.openVideos ?
+                                                        <button className="videos__action" onClick={this.handleClickCloseVideos}>
+                                                            <Less />
+                                                            Moins de vidéos
+                                                        </button>
+                                                        :
+                                                        <button className="videos__action" onClick={this.handleClickOpenVideos}>
+                                                            <More />
+                                                            Plus de vidéos
+                                                        </button>
+                                                    }
                                                     <button className="videos__action" onClick={this.handleClickOpenVideos}>
                                                         <More />
                                                         Plus de vidéos
