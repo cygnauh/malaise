@@ -110,10 +110,10 @@ class DrinkAction extends Component {
         }else{
             setTimeout( () => {
                 this.setState({hide:true})
-            }, 2000)
+            }, 5000)
             setTimeout( () => {
                 this.props.drinkActionEnd('drink action')
-            }, 2800)
+            }, 5800)
         }
 
         //TODO register user alcohol level

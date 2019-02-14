@@ -67,6 +67,10 @@ class Credits extends Component {
 
         return voices
     }
+    // displayMusicName = (value) =>{
+    //     console.log(value)
+    //     return (<div>{value}</div>)
+    // }
 
     render() {
         return(
@@ -105,15 +109,15 @@ class Credits extends Component {
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div className="Credits__music">
-                                                <SoundContext.Consumer>
-                                                    {({musicSelected}) => (
-                                                        <div className="form__column">
-                                                            {musicSelected}
-                                                        </div>
-                                                    )}
-                                                </SoundContext.Consumer>
-                                            </div>
+                                            {/*<div className="Credits__music">*/}
+                                                {/*<SoundContext.Consumer>*/}
+                                                    {/*{({musicSelected}) => (*/}
+                                                        {/*<div className="form__column">*/}
+                                                            {/*{musicSelected ? this.displayMusicName(musicSelected) : <div/>}*/}
+                                                        {/*</div>*/}
+                                                    {/*)}*/}
+                                                {/*</SoundContext.Consumer>*/}
+                                            {/*</div>*/}
                                             <div className="Credits__actions">
                                                 <button className="Credits__action">Continuer</button>
                                             </div>

@@ -37,8 +37,6 @@ class Interactions extends Component {
             goNextAuthorized:false
         };
         this.answers = this.props.anwsers.allAnswers;
-        this.time = 0;
-        this.currentTime=0
     }
 
     componentDidMount() {
@@ -104,69 +102,22 @@ class Interactions extends Component {
             sprite: tab // TODO Uncomment
         });
         sound.once('load', ()=>{
-            // console.log('episode sound is loaded')
-            // this.props.onButtonPressed();
-            console.log('load')
             this.setState({
                 soundLoaded : true
             })
             this.handleInteraction(this.state.interactionPosition, '');
         });
+        // sound.play('je_n_ai_jamais5')
         this.setState({
             episodeSounds : sound
-        }, ()=>{
-            console.log(this.state.episodeSounds)
-            // sound.play('fin')
         })
     };
     playInteractionSound = (value) => {
-        // this.update();
         this.state.episodeSounds.play(value);
         if (this.state.episodeSounds && this.state.episodeSounds._sprite[value]
             && this.state.episodeSounds._sprite[value][1]) {
             return [this.state.episodeSounds, this.state.episodeSounds._sprite[value][1]]
         }
-    };
-    update = () => {
-        // console.log(time)
-
-        if(this.state.episodeSounds && this.state.interaction && this.state.interaction.interactionType === "none") {
-            // let inte = this.interactions.find(setting => setting.name === value);
-            // console.log(this.currentTime)
-            let old =  this.currentTime
-            let soundTime = Math.floor(((this.state.interaction.soundSequences[0].beginAt + this.state.interaction.soundSequences[0].duration)/1000)*10)/10
-            // this.currentTime = Math.round(this.state.episodeSounds.seek()*10)/10
-            this.currentTime = this.state.episodeSounds.seek()
-            let currentTimeFormat =Number.parseFloat(this.currentTime).toFixed(2);
-            // let currentTimeFormat = Math.floor(this.currentTime*10)/10
-            // let currentSoundTime = Math.floor(soundTime*10)/10
-            let currentSoundTime = Number.parseFloat(soundTime).toFixed(2);
-            if (!this.state.goNextAuthorized && currentTimeFormat >= currentSoundTime ) {
-                // console.log(this.state.goNextAuthorized, this.currentTime, soundTime, "B")
-                // console.log("helo")
-                this.setState({
-                    goNextAuthorized : true
-                }, ()=>{
-                    // console.log('ok')
-                    // console.log(this.state.interaction.position)
-                    this.handleAnswer('nothing')
-                })
-            }
-            else{
-                if(old !== this.state.episodeSounds.seek()){
-                    this.currentTime = this.state.episodeSounds.seek()
-            //         console.log('no same', this.currentTime, this.state.episodeSounds.seek())
-                }else{
-                    console.log(this.state.interaction.position)
-                    console.log('is the same', this.currentTime, this.state.episodeSounds.seek())
-            //
-                }
-            }
-            console.log(soundTime, this.currentTime)
-
-        }
-        requestAnimationFrame(this.update.bind(this))
-
     };
 
     handleInteraction = (newPos, origin) => {
@@ -184,7 +135,7 @@ class Interactions extends Component {
                         show: !this.state.show,
                         interaction: inte,
                     })
-                }, 2000)
+                }, 4000)
             }else{
                 this.setState({
                     show: !this.state.show,
@@ -205,12 +156,14 @@ class Interactions extends Component {
                     console.log(isEnded, 'isEnded')
                     if (newPos <= 15 && this.state.interaction.interactionType === "none") {
                     // if (this.state.interaction.interactionType === "none") {
-                        if (this.state.interaction.interactionType === "none") {
+                    //     if (this.state.interaction.interactionType === "none") {
+                        if (inte.interactionType === "none") {
                             this.handleAnswer('nothing')
                         }
                     }
                 });
-                if (this.state.interaction.interactionType === "none") {
+                // if (this.state.interaction.interactionType === "none") {
+                if (inte.interactionType === "none") {
                     console.log('a')
                     if (newPos > 15) {
                         console.log('b')
@@ -232,7 +185,13 @@ class Interactions extends Component {
                     }
                 }
 
-                if (this.state.interaction && this.state.interaction.interactionType === 'drag and drop' && (this.state.interaction.position === 20 || this.state.interaction.position === 28)) {
+                if (this.state.interaction &&
+                    (
+                        (this.state.interaction.interactionType === 'drag and drop' &&
+                        (this.state.interaction.position === 20 || this.state.interaction.position === 28)) ||
+                        this.state.interaction.interactionType === 'credits')
+                ) {
+                    console.log("jjjj")
                     setTimeout(() => {
                         this.setState({
                             show: true
