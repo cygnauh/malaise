@@ -151,10 +151,11 @@ class SoundProvider extends Component {
             stream.play()
 
         },
+
         // load the musics
         handleMusicChoices:(sounds) => {
             let soundtab = [];
-            for(let i = 0; i< sounds .length; i++){
+            for(let i = 0; i< sounds.length; i++){
                 let sound = new Howl({
                     src: [sounds[i].url],
                     ext: ['mp3'],
@@ -165,10 +166,11 @@ class SoundProvider extends Component {
             }
             this.setState({
                 musics: soundtab
-            },
+            }, () => {
                 console.log(this.state.musics)
-            );
+            });
         },
+
         // handle the play and pause of the music
         handleMusic:(url, mode) => {
             this.state.beginingMusic.pause();
@@ -177,9 +179,10 @@ class SoundProvider extends Component {
                 return
             }
             if(mode === "play"){
+                console.log('state musics', this.state.musics.find(setting => setting._src === url));
                 this.setState({
                     musicSelected:this.state.musics.find(setting => setting._src === url)
-                }, ()=>{
+                }, () => {
                      this.state.musicSelected.play(); // TODO Uncomment
                 });
             }

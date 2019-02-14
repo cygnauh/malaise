@@ -43,9 +43,10 @@ class MusicChoice extends Component {
     handleMouseEnter = (e) => {
         var $el = $(e.currentTarget);
         var style = $el.find('.Music__name').data('name');
+
         this.setState({
             hover: true
-        },()=>{
+        },() => {
             let sound = this.musics.find(setting => setting.name === style);
             if(!this.state.selected){
                 this.context.handleMusic(sound.url, "play");

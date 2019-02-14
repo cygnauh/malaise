@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './style.scss';
 import { Link } from 'react-router-dom';
 import More from "../../SVG/More/More";
+import Less from "../../SVG/Less/Less";
 import Heart from "../../SVG/Heart/Heart";
 import graphic from '../../../assets/img/virginity_graphic.svg';
 import tasjoui from '../../../assets/img/tasjoui.jpg';
@@ -286,10 +287,6 @@ class Information extends Component {
                                                             Plus de vidéos
                                                         </button>
                                                     }
-                                                    <button className="videos__action" onClick={this.handleClickOpenVideos}>
-                                                        <More />
-                                                        Plus de vidéos
-                                                    </button>
                                                     <ul className="videos__secondary">
                                                         <li>
                                                             <div className="video__content">
