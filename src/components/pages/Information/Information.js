@@ -8,7 +8,7 @@ import tasjoui from '../../../assets/img/tasjoui.jpg';
 import tubandes from '../../../assets/img/tubandes.jpg';
 import lescouillessurlatable from '../../../assets/img/lescouillessurlatable.jpg';
 import arrowDownIcon from '../../../assets/icons/arrows/arrow_down.svg';
-import plusIcon from '../../../assets/icons/plus.svg';
+// import plusIcon from '../../../assets/icons/plus.svg';
 
 class Information extends Component {
 

@@ -19,7 +19,7 @@ import {getMusics} from '../../graphql/queries'
 import {SoundContext} from "../../store/SoundProvider";
 import './interactions.scss'
 import UserContext from '../../store/UserProvider'
-import Sound from "./../../assets/sounds/final-voice2.mp3"
+import Sound from "./../../assets/sounds/voix_3_1_dialogue.mp3"
 
 
 class Interactions extends Component {
@@ -59,6 +59,48 @@ class Interactions extends Component {
         // }, 0);
         let sound = new Howl({
             src: [Sound],
+        //     sprite:{
+        //     proposition_jeu: [11980, 7390], // ok
+        //     question_regles: [19475, 3635], // ok
+        //     explication_regles: [23190, 5210], //ok
+        //     choix_boisson:[28400, 2690], //ok
+        //     choix_boisson_a:[31090, 910], // ok
+        //     je_n_ai_jamais1:[32300, 3200], // ok
+        //     je_n_ai_jamais1_r:[35500, 4450], // ok
+        //     je_n_ai_jamais1_a:[39950, 930], //ok
+        //     reaction1:[42100, 5300], // ok
+        //     anecdote1:[47400, 40800], // ok ----> CHECK OUT
+        //     // anecdote1bis:[63095, 24605], //ok
+        //     je_n_ai_jamais_user:[88200, 2800], // ok
+        //     reaction2:[94920, 2175], // ok
+        //     heure2:[97095, 1000],
+        //     // je_n_ai_jamais3_r:[98400, 4500], // ok
+        //         // --
+        //     je_n_ai_jamais3:[102900, 12600], // ok
+        //     // je_n_ai_jamais3_p:[104000, 26400], //ok
+        //     // je_n_ai_jamais3_a:[0, 0],
+        //     // reaction3:[132105, 15695], // ok
+        //     anecdote2:[148300, 46200], // ok
+        //     je_n_ai_jamais4_r:[194500, 3730], //ok
+        //     je_n_ai_jamais4:[198230, 2270], // ok
+        //     reaction4:[201320, 53400], // ok
+        //     recherche_google:[254720, 58290], // ok
+        //     // reaction4_c:[312510, 5120], // ok
+        //     je_n_ai_jamais5:[317630, 14370], //ok
+        //     reaction5:[333500, 2890],//ok
+        //     fin:[335890, 20610], //ok
+        // // ----- udaapte value
+        //     je_n_ai_jamais3_r:[97900, 4500], // ok
+        //     je_n_ai_jamais3:[102900, 12600], // ok
+        //     je_n_ai_jamais3_p: [115500, 10300], // ok for taking position
+        //     je_n_ai_jamais3_a: [125800, 6805], // ok --> maybe drag and drop display later : maybe add another interaaction or setTimeOut or playing at the end
+        //     reaction3:[132605, 15695],
+        //     // je_n_ai_jamais3_a: [125300, 10000], // ok
+        //     recherche_google:[254220, 58290], // ok
+        //     fin:[336390, 20610], //ok,
+        //     reaction4_c:[313010, 16220], // ok
+        //     je_n_ai_jamais5:[318130, 14370], //ok
+        // },
             sprite: tab // TODO Uncomment
         });
         sound.once('load', ()=>{
@@ -74,7 +116,7 @@ class Interactions extends Component {
             episodeSounds : sound
         }, ()=>{
             console.log(this.state.episodeSounds)
-            // sound.play('reaction3')
+            // sound.play('fin')
         })
     };
     playInteractionSound = (value) => {
@@ -130,6 +172,7 @@ class Interactions extends Component {
     handleInteraction = (newPos, origin) => {
 
         let inte = this.interactions.find(setting => setting.position === newPos);
+        console.log(inte)
         let indication = false
         if (inte && this.interactions) {
             if (inte.indication) {
@@ -161,26 +204,32 @@ class Interactions extends Component {
                     isEnded = true
                     console.log(isEnded, 'isEnded')
                     if (newPos <= 15 && this.state.interaction.interactionType === "none") {
+                    // if (this.state.interaction.interactionType === "none") {
                         if (this.state.interaction.interactionType === "none") {
                             this.handleAnswer('nothing')
                         }
                     }
                 });
-                if (newPos > 15 && this.state.interaction.position !== 18) {
-                    setTimeout(() => {
-                        if (isEnded && this.state.interaction.interactionType === "none") {
-                            console.log('d')
-                            this.handleAnswer('nothing')
-                        }
-                    }, this.state.soundSequence[1])
-                }
-                if (this.state.interaction.position === 18) {
-                    setTimeout(() => {
-                        if (isEnded && this.state.interaction.interactionType === "none") {
-                            console.log('d');
-                            this.handleAnswer('nothing')
-                        }
-                    },  12600)
+                if (this.state.interaction.interactionType === "none") {
+                    console.log('a')
+                    if (newPos > 15) {
+                        console.log('b')
+                        setTimeout(() => {
+                            console.log(isEnded, 'isEnded')
+                            if (isEnded) {
+                                console.log('c')
+                                this.handleAnswer('nothing')
+                            } else {
+                                setTimeout(() => {
+                                    if (isEnded) {
+                                        console.log('d')
+                                        this.handleAnswer('nothing')
+                                    }
+                                }, 500)
+                            }
+                            console.log('time')
+                        }, this.state.soundSequence[1])
+                    }
                 }
 
                 if (this.state.interaction && this.state.interaction.interactionType === 'drag and drop' && (this.state.interaction.position === 20 || this.state.interaction.position === 28)) {
