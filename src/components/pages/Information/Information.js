@@ -13,8 +13,8 @@ import Header from "../../layout/Header/Header";
 import DictionnaryAlert from "../../elements/DictionnaryAlert/DictionnaryAlert";
 import { Query } from "react-apollo";
 import { getEpisode } from '../../../graphql/queries';
-import Loader from '../../elements/Loader/Loader'
-import ErrorScreen from '../../elements/ErrorScreen/ErrorScreen'
+import Loader from '../../elements/Loader/Loader';
+import ErrorScreen from '../../elements/ErrorScreen/ErrorScreen';
 
 class Information extends Component {
 
@@ -23,6 +23,7 @@ class Information extends Component {
         this.state = {
             hoverNumber: false,
             openDictionnary: false,
+            openVideos: false,
             episode:'cjqwfe1kj1j2x0122tixfvb5i'
         }
     }
@@ -40,7 +41,6 @@ class Information extends Component {
     }
 
     displayWords = (data) => {
-        console.log('display words');
         let definitions = [];
 
         for(let i = 0; i < data.length; i++) {
@@ -56,7 +56,6 @@ class Information extends Component {
     }
 
     displayAnecdotes = (data) => {
-        console.log('display anecdotes');
         let anecdotes = [];
 
         for(let i = 0; i < data.length; i++) {
@@ -91,6 +90,18 @@ class Information extends Component {
         })
     }
 
+    handleClickOpenVideos = () => {
+        this.setState({
+            openVideos: true
+        })
+    }
+
+    handleClickCloseVideos = () => {
+        this.setState({
+            openVideos: false
+        })
+    }
+
     render() {
         return (
             <div className="Information">
@@ -101,7 +112,6 @@ class Information extends Component {
                                 {({ loading, error, data }) => {
                                     if (loading) return (<Loader />);
                                     if (error) return (<ErrorScreen />);
-                                    console.log('data', data.Episode.anecdotes);
                                     return (
                                         <div className="Information__container">
                                             <section className="Information__firstScreen">
@@ -235,8 +245,8 @@ class Information extends Component {
                                                     <div className="diagram__column">
                                                         <h3 className="diagram__title">Age de la première fois en France</h3>
                                                         <div className="diagram__number" onMouseEnter={this.onHoverNumber} onMouseLeave={this.onLeaveNumber}>
-                                                            <div className={this.state.hoverNumber ? "diagram__number__1 hide" : "diagram__number__1"}><span>15</span> ans<br /> en 2008</div>
-                                                            <div className={this.state.hoverNumber ? "diagram__number__2" : "diagram__number__2 hide"}><span>17,5</span> ans<br /> en 1990</div>
+                                                            <div className={this.state.hoverNumber ? "diagram__number__1 hide" : "diagram__number__1"}><span>17,2</span><br />pour les garçons</div>
+                                                            <div className={this.state.hoverNumber ? "diagram__number__2" : "diagram__number__2 hide"}><span>17,6</span><br />pour les filles</div>
                                                         </div>
                                                     </div>
                                                     <div className="diagram__column">
@@ -249,14 +259,47 @@ class Information extends Component {
                                                     </div>
                                                 </div>
                                             </section>
-                                            <section className="Information__videos">
+                                            <section className={this.state.openVideos ? "Information__videos Information__videos--open" : "Information__videos"}>
                                                 <div className="videos__container">
                                                     <h2 className="videos__title">vidéos</h2>
-                                                    <div className="videos__source"></div>
-                                                    <button className="videos__action">
+                                                    <div className="video__primary">
+                                                        <div className="video__content">
+                                                            <iframe className="video__youtube" src="https://www.youtube.com/embed/o87SsbCZwFM" frameBorder="0"></iframe>
+                                                        </div>
+                                                        <div className="video__description">
+                                                            <p>People guess who's a virgin <span>CUT</span></p>
+                                                        </div>
+                                                    </div>
+                                                    <button className="videos__action" onClick={this.handleClickOpenVideos}>
                                                         <More />
                                                         Plus de vidéos
                                                     </button>
+                                                    <ul className="videos__secondary">
+                                                        <li>
+                                                            <div className="video__content">
+                                                                <iframe className="video__vimeo" src="https://player.vimeo.com/video/100411749" frameBorder="0"></iframe>
+                                                            </div>
+                                                            <div className="video__description">
+                                                                <p>La sexualité des ados  <br /><span>ARTE</span></p>
+                                                            </div>
+                                                        </li>
+                                                        <li>
+                                                            <div className="video__content">
+                                                                <iframe className="video__other" src="https://www.arte.tv/player/v3/index.php?json_url=https%3A%2F%2Fapi.arte.tv%2Fapi%2Fplayer%2Fv1%2Fconfig%2Ffr%2F084432-001-A%3FlifeCycle%3D1&lang=fr_FR" frameBorder="0"></iframe>
+                                                            </div>
+                                                            <div className="video__description">
+                                                                <p>Education, sexualité, consentement <br /><span>ARTE</span></p>
+                                                            </div>
+                                                        </li>
+                                                        <li>
+                                                            <div className="video__content">
+                                                                <iframe className="video__facebook" src="https://www.youtube.com/embed/tYyB-BiWlWw" frameBorder="0"></iframe>
+                                                            </div>
+                                                            <div className="video__description">
+                                                                <p>Sex Education  <br /><span>France Inter</span></p>
+                                                            </div>
+                                                        </li>
+                                                    </ul>
                                                 </div>
                                             </section>
                                             <section className="Information__anecdotes">

@@ -1,5 +1,6 @@
 @import '../../../assets/styles/variables/index';
 @import '../../../assets/styles/mixins/index';
+@import "~video-react/styles/scss/video-react";
 
 .Information {
   overflow-Y: scroll;
@@ -336,17 +337,73 @@
 
   &__videos {
     width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
     padding: 50px 0;
     border-bottom: 1px solid $color__white;
+    transition: all 1s ease-in;
+    overflow: hidden;
+    height: 740px;
+
+    &--open {
+      height: 1000px;
+    }
+
+    iframe {
+      width: 100%;
+      height: 100%;
+    }
+
+    .video {
+
+      &__primary {
+        margin-bottom: 50px;
+      }
+
+      &__content {
+        width: 100%;
+        height: 400px;
+      }
+
+      &__description {
+        margin-top: 10px;
+
+        p {
+          text-align: right;
+          font-family: $font__archivo;
+          font-weight: normal;
+          font-size: 16px;
+          line-height: 22px;
+
+          span {
+            font-family: $font__archivo--black;
+            font-size: 18px;
+            line-height: 22px;
+            position: relative;
+            margin-left: 50px;
+
+            &:before {
+              content: '';
+              width: 30px;
+              height: 1px;
+              background: $color__white;
+              position: absolute;
+              left: -40px;
+              bottom: 4px;
+            }
+
+          }
+
+        }
+
+      }
+
+    }
 
     .videos {
 
       &__container {
         width: 80%;
         max-width: 800px;
+        margin: 0 auto;
       }
 
       &__title {
@@ -357,8 +414,57 @@
         margin-bottom: 50px;
       }
 
+      &__secondary {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+
+        li {
+          flex: 1;
+          margin: 0 10px;
+
+          .video__content {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            height: auto;
+          }
+
+          .video__description {
+
+            p {
+              text-align: left;
+              font-size: 14px;
+              line-height: 18px;
+
+              span {
+                display: block;
+                font-size: 14px;
+                line-height: 20px;
+
+              }
+
+            }
+
+          }
+
+          &:first-child {
+            margin-left: 0;
+          }
+
+          &:last-child {
+            margin-right: 0;
+          }
+
+        }
+
+      }
+
       &__action {
         @include more-button($color__white, $font__archivo);
+        margin: 50px auto 80px auto;
 
         &:hover, &:focus, &:active {
           background: $color__white;
