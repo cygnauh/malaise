@@ -20,6 +20,7 @@ import {SoundContext} from "../../store/SoundProvider";
 import './interactions.scss'
 import UserContext from '../../store/UserProvider'
 import Sound from "./../../assets/sounds/voix_3_1_dialogue.mp3"
+import Information from "../pages/Information/Information";
 
 
 class Interactions extends Component {
@@ -34,7 +35,8 @@ class Interactions extends Component {
             origin: '',
             episodeSounds: null,
             soundLoaded:false,
-            goNextAuthorized:false
+            goNextAuthorized:false,
+            info: false
         };
         this.answers = this.props.anwsers.allAnswers;
     }
@@ -230,6 +232,13 @@ class Interactions extends Component {
 
     };
 
+    showInfo = () => {
+        this.setState({
+            info: true,
+            show: false
+        })
+    }
+
     render() {
         return (
             <div className="Interactions">
@@ -299,9 +308,13 @@ class Interactions extends Component {
                                      onEnd={this.handleAnswer} animationType={this.state.interaction.interactionType}/>
                     : null}
 
-                {this.state.show && this.state.interaction && this.state.interaction.interactionType === "credits" ?
-                    <Credits />
+                {this.state.show && this.state.interaction && this.state.interaction.interactionType === "credits" && this.state.info === false ?
+                    <Credits info={this.showInfo} />
                     : null}
+
+                {this.state.info ?
+                    <Information />
+                : null }
 
                 <div
                     className={this.state.show && this.state.interaction && this.state.interaction.indication ? 'Notice__wrapper' : 'Notice__wrapper hide'}>

@@ -6,6 +6,7 @@
   z-index: 10;
   position: fixed;
   background: $color__bg;
+  border-bottom: 1px solid $color__white;
 
   &__logo {
     width: 150px;
@@ -21,14 +22,18 @@
 
 }
 
-.interface {
-  .Header {
-    border-bottom: 1px solid $color__white;
-  }
-}
 
 .interface-reverse {
   .Header {
     border-bottom: 1px solid $color__xp--dark;
+    background: $color__white;
+  }
+}
+
+
+.episode {
+  .Header {
+    border-bottom: 1px solid $color__white;
+    background: $color__xp--dark;
   }
 }
