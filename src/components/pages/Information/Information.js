@@ -108,6 +108,14 @@ class Information extends Component {
         $('body').removeClass('episode').addClass('interface');
     }
 
+    handleClickScroll = (e) => {
+        var id = $(e.currentTarget).data('id');
+        console.log(id);
+        $('.Information').animate({
+            scrollTop: $('#' + id).offset().top - 50
+        }, 2000);
+    }
+
     render() {
         return (
             <div className="Information">
@@ -120,6 +128,14 @@ class Information extends Component {
                                     if (error) return (<ErrorScreen />);
                                     return (
                                         <div className="Information__container">
+                                            <div className="Information__anchors">
+                                                <ul className="anchors__list">
+                                                    <li className="anchors__item" data-id="dictionnary" onClick={this.handleClickScroll}>Boîte à mots</li>
+                                                    <li className="anchors__item" data-id="videos" onClick={this.handleClickScroll}>Vidéos</li>
+                                                    <li className="anchors__item" data-id="anecdotes" onClick={this.handleClickScroll}>Anecdotes</li>
+                                                    <li className="anchors__item" data-id="accounts" onClick={this.handleClickScroll}>Comptes à suivre</li>
+                                                </ul>
+                                            </div>
                                             <section className="Information__firstScreen">
                                                 <div className="firstScreen__container">
                                                     <h1 className="firstScreen__title">malaise<br />autour de la sexualité<br /><span>être vierge au XXIe<br />siècle en France</span></h1><p className="firstScreen__description">Discussion courante de la pause du lycée au bureau, mais encore sujet phare des soirées , nous sommes tous passé par la question : « et toi tu l’as fais ? ». Passé un certain âge on considère même qu’il va de soit que tout le monde est passé le cap. Alors que les mouvements féministes ont largement contribué à faire évoluer les mentalités sur la sexualité des femmes, quand est-il pour les hommes ?</p>
@@ -128,7 +144,7 @@ class Information extends Component {
                                                     <img src={arrowDownIcon} alt="Flèche du bas" />
                                                 </button>
                                             </section>
-                                            <section className={this.state.openDictionnary ? "Information__dictionnary Information__dictionnary--open" : "Information__dictionnary"}>
+                                            <section className={this.state.openDictionnary ? "Information__dictionnary Information__dictionnary--open" : "Information__dictionnary"} id="dictionnary">
                                                 <div className="dictionnary__container">
                                                     <div className="dictionnary__head">
                                                         <div className="dictionnary__column">
@@ -265,7 +281,7 @@ class Information extends Component {
                                                     </div>
                                                 </div>
                                             </section>
-                                            <section className={this.state.openVideos ? "Information__videos Information__videos--open" : "Information__videos"}>
+                                            <section className={this.state.openVideos ? "Information__videos Information__videos--open" : "Information__videos"} id="videos">
                                                 <div className="videos__container">
                                                     <h2 className="videos__title">vidéos</h2>
                                                     <div className="video__primary">
@@ -315,14 +331,14 @@ class Information extends Component {
                                                     </ul>
                                                 </div>
                                             </section>
-                                            <section className="Information__anecdotes">
+                                            <section className="Information__anecdotes" id="anecdotes">
                                                 <h2 className="anecdotes__title">anecdotes</h2>
                                                 <ul className="anecdotes__list">
                                                     {this.displayAnecdotes(data.Episode.anecdotes)}
                                                 </ul>
                                                 <button className="anecdotes__action"><Link to="/anecdotes"><More /> Partage ton anecote</Link></button>
                                             </section>
-                                            <section className="Information__toFollow">
+                                            <section className="Information__toFollow" id="accounts">
                                                 <div className="toFollow__container">
                                                     <h2 className="toFollow__title"><span>comptes à suivre</span></h2>
                                                     <ul className="toFollow__list">
