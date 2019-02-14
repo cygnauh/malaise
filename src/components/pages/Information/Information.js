@@ -264,7 +264,7 @@ class Information extends Component {
                                                 <ul className="anecdotes__list">
                                                     {this.displayAnecdotes(data.Episode.anecdotes)}
                                                 </ul>
-                                                <button className="anecdotes__action"><More /> Partage ton anecote</button>
+                                                <button className="anecdotes__action"><Link to="/anecdotes"><More /> Partage ton anecote</Link></button>
                                             </section>
                                             <section className="Information__toFollow">
                                                 <div className="toFollow__container">
