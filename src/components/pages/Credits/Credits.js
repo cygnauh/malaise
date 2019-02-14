@@ -52,15 +52,17 @@ class Credits extends Component {
         let voices = [];
 
         for(let i = 0; i < data.length; i++) {
-            for(let j = 0; j < this.names.length; j++) {
-                if(data[i].role === this.names[j].role) {
-                    voices.push(
-                        <li key={i.toString()}
-                            className="voices__voice">
-                            <span className="voices__voice__name">{this.names[j].name}</span>
-                            <span className="voices__voice__actor">{data[i].name}</span>
-                        </li>
-                    )
+            if(this.names) {
+                for(let j = 0; j < this.names.length; j++) {
+                    if(data[i].role === this.names[j].role) {
+                        voices.push(
+                            <li key={i.toString()}
+                                className="voices__voice">
+                                <span className="voices__voice__name">{this.names[j].name}</span>
+                                <span className="voices__voice__actor">{data[i].name}</span>
+                            </li>
+                        )
+                    }
                 }
             }
         }
@@ -119,7 +121,7 @@ class Credits extends Component {
                                                 {/*</SoundContext.Consumer>*/}
                                             {/*</div>*/}
                                             <div className="Credits__actions">
-                                                <button className="Credits__action">Continuer</button>
+                                                <button className="Credits__action" onClick={this.props.info}>Continuer</button>
                                             </div>
                                         </div>
                                     );

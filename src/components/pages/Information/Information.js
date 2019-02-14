@@ -15,6 +15,7 @@ import { Query } from "react-apollo";
 import { getEpisode } from '../../../graphql/queries';
 import Loader from '../../elements/Loader/Loader';
 import ErrorScreen from '../../elements/ErrorScreen/ErrorScreen';
+import $ from 'jquery';
 
 class Information extends Component {
 
@@ -100,6 +101,11 @@ class Information extends Component {
         this.setState({
             openVideos: false
         })
+    }
+
+    handleClickCatalogue = () => {
+        console.log('click to next catalogue');
+        $('body').removeClass('episode').addClass('interface');
     }
 
     render() {
@@ -394,7 +400,7 @@ class Information extends Component {
                                                 </div>
                                             </section>*/}
                                             <section className="Information__footer">
-                                                <Link to="/catalogue">les épisodes</Link>
+                                                <Link to="/catalogue" onClick={this.handleClickCatalogue}>les épisodes</Link>
                                             </section>
                                         </div>
                                     );
