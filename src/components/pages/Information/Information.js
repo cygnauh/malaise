@@ -9,6 +9,10 @@ import tasjoui from '../../../assets/img/tasjoui.jpg';
 import tubandes from '../../../assets/img/tubandes.jpg';
 import lescouillessurlatable from '../../../assets/img/lescouillessurlatable.jpg';
 import arrowDownIcon from '../../../assets/icons/arrows/arrow_down.svg';
+import statPecho from '../../../assets/img/stat_pecho.svg';
+import statDrink from '../../../assets/img/stat_drink.svg';
+import statLiar from '../../../assets/img/stat_liar.svg';
+import serpentin from '../../../assets/img/serpentin_game.svg';
 import arrowUpIcon from '../../../assets/icons/arrows/arrow_up.svg';
 import Header from "../../layout/Header/Header";
 import DictionnaryAlert from "../../elements/DictionnaryAlert/DictionnaryAlert";
@@ -105,16 +109,25 @@ class Information extends Component {
     }
 
     handleClickCatalogue = () => {
-        this.location.reload();
-        $('body').removeClass('episode').addClass('interface');
+        let getUrl = window.location;
+        let baseUrl = getUrl.protocol + "//" + getUrl.host;
+        window.location.href = baseUrl + '/catalogue';
     }
 
     handleClickScroll = (e) => {
-        var id = $(e.currentTarget).data('id');
-        console.log(id);
+        var top = $('html').offset().top;
+        console.log(top);
+        let id = $(e.currentTarget).data('id');
+        let sectionPosition = $('#' + id).offset().top;
         $('.Information').animate({
-            scrollTop: $('#' + id).offset().top - 50
+            scrollTop: sectionPosition - 50
         }, 2000);
+    }
+
+    handleClickAnecdotes = () => {
+        var getUrl = window.location;
+        var baseUrl = getUrl.protocol + "//" + getUrl.host;
+        window.location.href = baseUrl + '/anecdotes';
     }
 
     render() {
@@ -174,59 +187,26 @@ class Information extends Component {
                                                     </div>
                                                 </div>
                                             </section>
-                                            {/*<section className="Information__statistics">
-                        <h2 className="statistics__title">Statistiques de l'épisode</h2>
-                        <ul className="statistics__list">
-                            <li className="statistics__answer">
-                                <label className="answer__question">Tu bois quoi ?</label>
-                                <div className="answer__diagram">
-                                    <div className="answer__name">
-                                        Vodka
-                                        <span className="answer__rate">20%</span>
-                                    </div>
-                                    <div className="answer__name">
-                                        Rhum
-                                        <span className="answer__rate">10%</span>
-                                    </div>
-                                    <div className="answer__name">
-                                        Bière
-                                        <span className="answer__rate">60%</span>
-                                    </div>
-                                    <div className="answer__name">
-                                        Jus de fruit
-                                        <span className="answer__rate">10%</span>
-                                    </div>
-                                </div>
-                            </li>
-                            <li className="statistics__answer">
-                                <label className="answer__question">"Pécho" c'est coucher</label>
-                                <div className="answer__diagram">
-                                    <div className="answer__name">
-                                        Oui
-                                        <span className="answer__rate">30%</span>
-                                    </div>
-                                    <div className="answer__name">
-                                        Non
-                                        <span className="answer__rate">70%</span>
-                                    </div>
-                                </div>
-                            </li>
-                            <li className="statistics__answer">
-                                <label className="answer__question">Je n'ai jamais menti</label>
-                                <div className="answer__diagram">
-                                    <div className="answer__name">
-                                        Oui
-                                        <span className="answer__rate">10%</span>
-                                    </div>
-                                    <div className="answer__name">
-                                        Non
-                                        <span className="answer__rate">90%</span>
-                                    </div>
-                                </div>
-                            </li>
-                        </ul>
-                        <button className="statistics__action">Toutes les statistiques</button>
-                    </section>*/}
+                                            <section className="Information__statistics">
+                                                <div className="statistics__container">
+                                                    <h2 className="statistics__title">statistiques de l'épisode</h2>
+                                                    <ul className="statistics__list">
+                                                        <li className="statistics__answer">
+                                                            <img src={statDrink} alt="Représentation des statistiques"/>
+                                                        </li>
+                                                        <li className="statistics__answer">
+                                                            <img src={statPecho} alt="Représentation des statistiques"/>
+                                                        </li>
+                                                        <li className="statistics__answer">
+                                                            <img src={statLiar} alt="Représentation des statistiques"/>
+                                                        </li>
+                                                    </ul>
+                                                    <button className="statistics__action"><More /> Toutes les statistiques</button>
+                                                </div>
+                                                <div className="statistics__background">
+                                                    <img src={serpentin} alt="Serpentin"/>
+                                                </div>
+                                            </section>
                                             <section className="Information__questionsExamples">
                                                 <ul className="questionsExamples__list">
                                                     <li className="questionsExamples__answer">
@@ -337,14 +317,14 @@ class Information extends Component {
                                                 <ul className="anecdotes__list">
                                                     {this.displayAnecdotes(data.Episode.anecdotes)}
                                                 </ul>
-                                                <button className="anecdotes__action"><Link to="/anecdotes"><More /> Partage ton anecote</Link></button>
+                                                <button className="anecdotes__action" onClick={this.handleClickAnecdotes}><More /> Partage ton anecote</button>
                                             </section>
                                             <section className="Information__toFollow" id="accounts">
                                                 <div className="toFollow__container">
                                                     <h2 className="toFollow__title"><span>comptes à suivre</span></h2>
                                                     <ul className="toFollow__list">
                                                         <li className="account">
-                                                            <Link to="https://www.instagram.com/tubandes/" target="_blank">
+                                                            <a href="https://www.instagram.com/tubandes/" target="_blank">
                                                                 <div className="account__illustration">
                                                                     <img src={tubandes} alt="Photo de profil"/>
                                                                 </div>
@@ -352,10 +332,10 @@ class Information extends Component {
                                                                     <Heart />
                                                                 </div>
                                                                 <h3 className="account__name">@tubandes</h3>
-                                                            </Link>
+                                                            </a>
                                                         </li>
                                                         <li className="account">
-                                                            <Link to="https://www.binge.audio/category/les-couilles-sur-la-table/" target="_blank">
+                                                            <a href="https://www.binge.audio/category/les-couilles-sur-la-table/" target="_blank">
                                                                 <div className="account__illustration">
                                                                     <img src={lescouillessurlatable} alt="Photo de profil"/>
                                                                 </div>
@@ -363,10 +343,10 @@ class Information extends Component {
                                                                     <Heart />
                                                                 </div>
                                                                 <h3 className="account__name">Les couilles sur la table</h3>
-                                                            </Link>
+                                                            </a>
                                                         </li>
                                                         <li className="account">
-                                                            <Link to="https://www.instagram.com/tasjoui/"  target="_blank">
+                                                            <a href="https://www.instagram.com/tasjoui/"  target="_blank">
                                                                 <div className="account__illustration">
                                                                     <img src={tasjoui} alt="Photo de profil"/>
                                                                 </div>
@@ -374,7 +354,7 @@ class Information extends Component {
                                                                     <Heart />
                                                                 </div>
                                                                 <h3 className="account__name">@t'as joui</h3>
-                                                            </Link>
+                                                            </a>
                                                         </li>
                                                     </ul>
                                                     <button className="toFollow__action"><More />Afficher plus</button>
@@ -423,8 +403,8 @@ class Information extends Component {
                                                     </ul>
                                                 </div>
                                             </section>*/}
-                                            <section className="Information__footer">
-                                                <Link to="/catalogue" onClick={this.handleClickCatalogue}>les épisodes</Link>
+                                            <section className="Information__footer" onClick={this.handleClickCatalogue}>
+                                                <div className="footer__action">les épisodes</div>
                                             </section>
                                         </div>
                                     );
