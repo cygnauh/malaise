@@ -106,7 +106,7 @@ class TakingPosition extends Component {
 
         return (
             <div className={this.state.timeIsOver ? 'TakingPosition TakingPosition__done' : 'TakingPosition'}
-                style={this.state.hide ? {opacity:0}:null}>
+                style={this.state.hide ? {opacity:1}:null}>
                 <div className="TakingPosition__timer">
                     <Timer activeTimer={this.state.started} />
                 </div>
