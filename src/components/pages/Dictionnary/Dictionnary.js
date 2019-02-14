@@ -6,6 +6,7 @@ import { getEpisodesAndDefinitions } from '../../../graphql/queries';
 import $ from 'jquery';
 import Loader from '../../elements/Loader/Loader'
 import ErrorScreen from '../../elements/ErrorScreen/ErrorScreen'
+import Header from "../../layout/Header/Header";
 
 class Dictionnary extends Component {
 
@@ -169,6 +170,7 @@ class Dictionnary extends Component {
                     if (error) return (<ErrorScreen/>);
                     return (
                         <div className="Dictionnary" ref={this.dictionnary}>
+                            <Header />
                            <div className="Dictionnary__header">
                                <div className="Dictionnary__header__icon"><WordBox /></div>
                                <div className="Dictionnary__header__filterActions">

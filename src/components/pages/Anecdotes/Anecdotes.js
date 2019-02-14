@@ -6,8 +6,7 @@ import AnecdoteForm from "../../elements/AnecdoteForm/AnecdoteForm";
 import Loader from "../../elements/Loader/Loader";
 import ErrorScreen from "../../elements/ErrorScreen/ErrorScreen";
 import EmojiSmile from "../../SVG/EmojiSmile/EmojiSmile";
-import EmojiSad from "../../SVG/EmojiSad/EmojiSad";
-
+import Header from "../../layout/Header/Header";
 
 class Anecdotes extends Component {
     constructor(props){
@@ -65,6 +64,7 @@ class Anecdotes extends Component {
     render() {
         return (
             <div className="Anecdotes">
+                <Header />
                 <div className={this.state.submitForm ? "Anecdotes__messageSubmit Anecdotes__messageSubmit--show" : "Anecdotes__messageSubmit"}>
                     <div className="messageSubmit">
                         <div className="messageSubmit__icon"><EmojiSmile /></div>

@@ -142,6 +142,17 @@ export const getEpisode = gql`
                     duration
                 }
             },
+            anecdotes{
+                author, 
+                content,
+                createdAt
+            },
+            definitions (
+                orderBy: name_ASC
+            ) {
+                name,
+                description
+            }
         }
     }
 `;
