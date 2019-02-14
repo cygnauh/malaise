@@ -64,21 +64,67 @@
   &__dictionnary {
     width: 100%;
     height: 400px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    overflow: hidden;
+    padding: 50px 0;
     position: relative;
     border-top: 1px solid $color__white;
     border-bottom: 1px solid $color__white;
+    transition: all 1s ease-in;
+
+    &--open {
+      height: 1600px;
+    }
 
     .dictionnary {
 
       &__container {
         width: 80%;
         max-width: 800px;
+        margin: 0 auto;
+      }
+
+      &__head {
         display: flex;
         justify-content: center;
         align-items: center;
+      }
+
+      &__body {
+        padding-top: 100px;
+        transition: all 0.5s ease-in;
+      }
+
+      &__definitions {
+        column-count: 2;
+        column-gap: 100px;
+      }
+
+      &__definition {
+        margin-bottom: 30px;
+
+        .definition {
+
+          &__name {
+            font-family: $font__archivo;
+            font-size: 22px;
+            line-height: 27px;
+            margin-bottom: 5px;
+          }
+
+          &__description {
+            font-family: $font__happy-times;
+            font-size: 16px;
+            line-height: 22px;
+          }
+
+        }
+
+      }
+
+      &__closeBody {
+        float: right;
+        background: none;
+        border: none;
       }
 
       &__column {
@@ -96,7 +142,6 @@
       }
 
       &__illustration {
-        background: yellow;
         width: 150px;
         height: 150px;
         border-radius: 50%;
@@ -193,8 +238,9 @@
   }
 
   &__diagram {
+    padding: 50px 0;
     width: 100%;
-    height: 600px;
+    height: auto;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -212,6 +258,15 @@
 
       &__column {
         flex:1;
+
+        &:first-child {
+          margin-right: 50px;
+        }
+
+        &:last-child {
+          margin-left: 50px;
+        }
+
       }
 
       &__title {
@@ -285,7 +340,7 @@
     justify-content: center;
     align-items: center;
     padding: 50px 0;
-    border: 1px solid $color__white;
+    border-bottom: 1px solid $color__white;
 
     .videos {
 
@@ -317,6 +372,7 @@
   }
 
   &__anecdotes {
+    border-bottom: 1px solid $color__white;
     padding: 50px 0;
 
     .anecdotes {
@@ -332,10 +388,21 @@
       }
 
       &__list {
-
+        display: flex;
+        overflow-x: scroll;
+        margin-bottom:  50px;
       }
 
       &__anecdote {
+        flex-shrink: 0;
+        width: 400px;
+        padding: 50px;
+        margin: 0 20px;
+        border: 1px solid $color__white;
+
+        &:first-child {
+          margin-left: 0;
+        }
 
         .anecdote {
 
@@ -357,18 +424,19 @@
             width: 30px;
             height: 1px;
             background: $color__white;
+            margin-bottom:  4px;
           }
 
           &__date {
             font-family: $font__archivo;
-            font-size: 18px;
+            font-size: 16px;
             line-height: 20px;
             margin-left: auto;
           }
 
           &__story {
             font-family: $font__happy-times;
-            font-size: 18px;
+            font-size: 16px;
             line-height: 22px;
           }
 
@@ -376,6 +444,219 @@
 
       }
 
+      &__action {
+        @include more-button($color__white, $font__archivo);
+        margin: 0 auto;
+
+        &:hover, &:focus, &:active {
+          background: $color__white;
+          color: $color__xp--dark;
+        }
+      }
+
+    }
+
+  }
+
+  &__toFollow {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 50px 0;
+    border-bottom: 1px solid $color__white;
+
+    .toFollow {
+
+      &__container {
+        width: 80%;
+        max-width: 800px;
+      }
+
+      &__title {
+        font-family: $font__happy-times;
+        font-size: 40px;
+        line-height: 45px;
+        font-weight: normal;
+        margin-bottom: 50px;
+      }
+
+      &__list {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 50px;
+
+        .account {
+          margin: 0 20px;
+          border: 1px solid $color__white;
+          border-radius: 5px;
+          padding: 10px 10px 0 10px;
+          width: 250px;
+          position: relative;
+
+          &:first-child {
+            margin-right: auto;
+
+          }
+
+          &:last-child {
+            margin-left: auto;
+          }
+
+          &__illustration {
+            width: calc(250px - 20px);
+            height: calc(250px - 20px);
+            overflow: hidden;
+            position: relative;
+
+            img {
+              width: 100%;
+            }
+
+          }
+
+          &__like {
+            width: 25px;
+            height: 25px;
+            position: absolute;
+            left: 15px;
+            bottom: 25px;
+          }
+
+          &__name, &__description {
+            padding-left: 50px;
+          }
+
+          &__name {
+            font-size: 16px;
+            height: 70px;
+            display: flex;
+            align-items: center;
+          }
+
+        }
+
+      }
+
+      &__action {
+        @include more-button($color__white, $font__archivo);
+        margin: 0 auto;
+
+        &:hover, &:focus, &:active {
+          background: $color__white;
+          color: $color__xp--dark;
+        }
+      }
+
+    }
+
+  }
+
+  &__sources {
+    padding: 50px 0;
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-bottom: 1px solid $color__white;
+
+    .sources {
+
+      &__container {
+        width: 80%;
+        max-width: 800px;
+      }
+
+      &__column {
+        flex:1;
+
+        &:first-child {
+          margin-right: 50px;
+        }
+
+        &:last-child {
+          margin-left: 50px;
+        }
+
+      }
+
+      &__title {
+        font-family: $font__happy-times;
+        font-size: 40px;
+        line-height: 45px;
+        font-weight: normal;
+        margin-bottom: 50px;
+      }
+
+      &__list {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      &__source {
+        margin-bottom: 30px;
+
+        .source {
+
+          &__name {
+            font-family: $font__archivo;
+            font-size: 22px;
+            line-height: 27px;
+            margin-bottom: 5px;
+          }
+
+          &__description {
+            font-family: $font__happy-times;
+            font-size: 16px;
+            line-height: 22px;
+          }
+
+        }
+
+      }
+
+    }
+
+  }
+
+  &__footer {
+    height: 150px;
+    font-size:  50px;
+    font-family: $font__archivo--black;
+    font-weight: normal;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 80%;
+    letter-spacing: 2px;
+    position: relative;
+    border-right: 1px solid $color__white;
+
+    &:after, &:before {
+      left: 100%;
+      top: 50%;
+      border: solid transparent;
+      content: " ";
+      height: 0;
+      width: 0;
+      position: absolute;
+      pointer-events: none;
+    }
+
+    &:after {
+      border-color: rgba(136, 183, 213, 0);
+      border-left-color: $color__bg;
+      border-width: 50px;
+      margin-top: -50px;
+    }
+    &:before {
+      border-color: rgba(194, 225, 245, 0);
+      border-left-color: $color__white;
+      border-width: 51px;
+      margin-top: -51px;
     }
 
   }
