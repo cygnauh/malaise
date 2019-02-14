@@ -188,10 +188,10 @@ class Interactions extends Component {
                 if (this.state.interaction &&
                     (
                         (this.state.interaction.interactionType === 'drag and drop' &&
-                        (this.state.interaction.position === 20 || this.state.interaction.position === 28)) ||
+                        (this.state.interaction.position === 20 || this.state.interaction.position === 27)) ||
                         this.state.interaction.interactionType === 'credits')
                 ) {
-                    console.log("jjjj")
+                    console.log("jjjj",this.state.interaction.position)
                     setTimeout(() => {
                         this.setState({
                             show: true
