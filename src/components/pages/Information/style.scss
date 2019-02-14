@@ -319,6 +319,11 @@
         font-size: 18px;
         line-height: 25px;
         margin-bottom: 50px;
+
+        span {
+          color: $color__xp--light;
+        }
+
       }
 
       &__action {

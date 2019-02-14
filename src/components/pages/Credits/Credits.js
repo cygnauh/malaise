@@ -83,8 +83,8 @@ class Credits extends Component {
                                     return (
                                         <div className="Credits__container">
                                             <div className="Credits__episode">
-                                                <span className="Credits__episode__number">épisode #01</span>
-                                                <h1 className="Credits__episode__title">{data.Episode.title}</h1>
+                                                <span className="Credits__episode__number">épisode #03</span>
+                                                <h1 className="Credits__episode__title">{data.Episode.slug}</h1>
                                             </div>
                                             <p className="Credits__particularThanks">
                                                 {data.Episode.thanks}

@@ -20,6 +20,7 @@ export const getCredits = gql`
             id,
             title,
             thanks,
+            slug,
             voices {
                 name,
                 role

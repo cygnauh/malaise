@@ -23,6 +23,7 @@ type Episode @model {
   thanks: String
   serpentin: String
   status: String
+  slug: String
 }
 
 type Voice @model {

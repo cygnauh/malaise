@@ -245,13 +245,13 @@ class Information extends Component {
                                                     <div className="diagram__column">
                                                         <h3 className="diagram__title">Age de la première fois en France</h3>
                                                         <div className="diagram__number" onMouseEnter={this.onHoverNumber} onMouseLeave={this.onLeaveNumber}>
-                                                            <div className={this.state.hoverNumber ? "diagram__number__1 hide" : "diagram__number__1"}><span>17,2</span><br />pour les garçons</div>
-                                                            <div className={this.state.hoverNumber ? "diagram__number__2" : "diagram__number__2 hide"}><span>17,6</span><br />pour les filles</div>
+                                                            <div className={this.state.hoverNumber ? "diagram__number__1 hide" : "diagram__number__1"}><span>20</span>ans<br />en 1939</div>
+                                                            <div className={this.state.hoverNumber ? "diagram__number__2" : "diagram__number__2 hide"}><span>17,4</span>ans<br />en 2007</div>
                                                         </div>
                                                     </div>
                                                     <div className="diagram__column">
                                                         <img className="diagram__illustration" src={graphic} alt="Diagramme"/>
-                                                        <p className="diagram__description">Au cours des années, l’écart d’âge de dépucelage entre les hommes et les femmes à fortement diminué. En 1939, les femmes perdaient leurs virginité à 22 ans,contre 18 ans pour les hommes. Aujourd’hui les statistiques sont de 17,6 pour les femmes et de 17,2 pour les hommes*. </p>
+                                                        <p className="diagram__description">Au cours des années, l’écart d’âge de dépucelage entre les hommes et les femmes à fortement diminué. En 1939, les <span>femmes</span> perdaient leurs virginité à 22 ans,contre 18 ans pour les hommes. Aujourd’hui les statistiques sont de 17,6 pour les <span>femmes</span> et de 17,2 pour les hommes*. </p>
                                                         <button className="diagram__action">
                                                             <More />
                                                             Toutes les statistiques
@@ -350,7 +350,7 @@ class Information extends Component {
                                                     <button className="toFollow__action"><More />Afficher plus</button>
                                                 </div>
                                             </section>
-                                            <section className="Information__sources">
+                                            {/*<section className="Information__sources">
                                                 <div className="sources__container">
                                                     <h2 className="sources__title">sources</h2>
                                                     <ul className="sources__list">
@@ -392,7 +392,7 @@ class Information extends Component {
                                                         </div>
                                                     </ul>
                                                 </div>
-                                            </section>
+                                            </section>*/}
                                             <section className="Information__footer">
                                                 <Link to="/catalogue">les épisodes</Link>
                                             </section>
