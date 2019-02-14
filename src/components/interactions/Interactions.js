@@ -131,7 +131,7 @@ class Interactions extends Component {
             if (inte.indication) {
                 indication = true;
             }
-            if(this.state.interaction && this.state.interaction.interactionType === 'drag and drop'){
+            if(this.state.interaction && this.state.interaction.interactionType === 'drag and drop' ){
                 setTimeout(()=>{
                     this.setState({
                         show: !this.state.show,
@@ -151,6 +151,7 @@ class Interactions extends Component {
                 soundSequence: this.playInteractionSound(inte.name)
             }, () => {
                 let isEnded = false
+                console.log(inte.interactionType, this.state.show, )
                 this.state.soundSequence[0].on('end', () => {
                     // console.log('ONEND', this.state.soundSequence[0])
                     // console.log(new_time, 'new_time', this.state.soundSequence[1], 'duration')
@@ -166,18 +167,13 @@ class Interactions extends Component {
                 });
                 // if (this.state.interaction.interactionType === "none") {
                 if (inte.interactionType === "none") {
-                    console.log('a')
                     if (newPos > 15) {
-                        console.log('b')
                         setTimeout(() => {
-                            console.log(isEnded, 'isEnded')
                             if (isEnded) {
-                                console.log('c')
                                 this.handleAnswer('nothing')
                             } else {
                                 setTimeout(() => {
                                     if (isEnded) {
-                                        console.log('d')
                                         this.handleAnswer('nothing')
                                     }
                                 }, 500)
@@ -281,7 +277,7 @@ class Interactions extends Component {
                     />
                     : null}
 
-                {this.state.show && this.state.interaction && this.state.interaction.interactionType === "drag and drop" && this.state.interaction.position === 28 ?
+                {this.state.show && this.state.interaction && this.state.interaction.interactionType === "drag and drop" && this.state.interaction.position === 27 ?
                     <DrinkAction drinkers={this.state.interaction.content.split('@')}
                                  timer={this.state.interaction.timer}
                                  question={this.state.interaction.question.split('@')}
