@@ -176,7 +176,7 @@ class Interactions extends Component {
                                     if (isEnded) {
                                         this.handleAnswer('nothing')
                                     }
-                                }, 500)
+                                }, 1)
                             }
                             console.log('time')
                         }, this.state.soundSequence[1])
@@ -196,6 +196,7 @@ class Interactions extends Component {
                         });
                     }, this.state.soundSequence[1] - 1000)
                 } else {
+                    console.log('ZZ')
                     this.setState({
                         show: true
                     });
