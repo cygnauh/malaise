@@ -28,7 +28,7 @@ class Interactions extends Component {
         super(props);
         this.state = {
             render: '',
-            interactionPosition: 1,
+            interactionPosition: 30,
             interaction: null,
             show: false,
             soundSequence: '',

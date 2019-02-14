@@ -105,6 +105,7 @@ class Information extends Component {
     }
 
     handleClickCatalogue = () => {
+        this.location.reload();
         $('body').removeClass('episode').addClass('interface');
     }
 
