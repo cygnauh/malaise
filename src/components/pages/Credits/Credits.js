@@ -7,6 +7,7 @@ import ErrorScreen from '../../elements/ErrorScreen/ErrorScreen'
 import Lottie from 'react-lottie';
 import lottieCredit from '../../../assets/animation/text_3_7_ending.json';
 import {UserContext} from '../../../store/UserProvider';
+import {SoundContext} from '../../../store/SoundProvider';
 
 
 class Credits extends Component {
@@ -51,21 +52,27 @@ class Credits extends Component {
         let voices = [];
 
         for(let i = 0; i < data.length; i++) {
-            for(let j = 0; j < this.names.length; j++) {
-                if(data[i].role === this.names[j].role) {
-                    voices.push(
-                        <li key={i.toString()}
-                            className="voices__voice">
-                            <span className="voices__voice__name">{this.names[j].name}</span>
-                            <span className="voices__voice__actor">{data[i].name}</span>
-                        </li>
-                    )
+            if(this.names) {
+                for(let j = 0; j < this.names.length; j++) {
+                    if(data[i].role === this.names[j].role) {
+                        voices.push(
+                            <li key={i.toString()}
+                                className="voices__voice">
+                                <span className="voices__voice__name">{this.names[j].name}</span>
+                                <span className="voices__voice__actor">{data[i].name}</span>
+                            </li>
+                        )
+                    }
                 }
             }
         }
 
         return voices
     }
+    // displayMusicName = (value) =>{
+    //     console.log(value)
+    //     return (<div>{value}</div>)
+    // }
 
     render() {
         return(
@@ -82,8 +89,8 @@ class Credits extends Component {
                                     return (
                                         <div className="Credits__container">
                                             <div className="Credits__episode">
-                                                <span className="Credits__episode__number">épisode #01</span>
-                                                <h1 className="Credits__episode__title">{data.Episode.title}</h1>
+                                                <span className="Credits__episode__number">épisode #03</span>
+                                                <h1 className="Credits__episode__title">{data.Episode.slug}</h1>
                                             </div>
                                             <p className="Credits__particularThanks">
                                                 {data.Episode.thanks}
@@ -104,8 +111,17 @@ class Credits extends Component {
                                                     </div>
                                                 </div>
                                             </div>
+                                            {/*<div className="Credits__music">*/}
+                                                {/*<SoundContext.Consumer>*/}
+                                                    {/*{({musicSelected}) => (*/}
+                                                        {/*<div className="form__column">*/}
+                                                            {/*{musicSelected ? this.displayMusicName(musicSelected) : <div/>}*/}
+                                                        {/*</div>*/}
+                                                    {/*)}*/}
+                                                {/*</SoundContext.Consumer>*/}
+                                            {/*</div>*/}
                                             <div className="Credits__actions">
-                                                <button className="Credits__action">Continuer</button>
+                                                <button className="Credits__action" onClick={this.props.info}>Continuer</button>
                                             </div>
                                         </div>
                                     );

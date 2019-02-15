@@ -15,6 +15,7 @@
   }
 
   &__title {
+    margin-top: 50px;
     height: 200px;
     border-bottom: 1px solid $color__white;
     overflow: hidden;
@@ -227,14 +228,6 @@
 
           &__illustration {
             width: 100%;
-            border-bottom: 1px solid $color__white;
-
-            &:after {
-              content: "";
-              display: block;
-              padding-bottom: 100%;
-            }
-
           }
 
           &__description {
@@ -244,16 +237,31 @@
             line-height: 20px;
             height: 300px;
             position: relative;
-
+            border-top: 1px solid $color__white;
+            margin-top: -4px;
           }
 
           &__socials-share {
             display: grid;
-            grid-template-columns: repeat(3, auto);
+            grid-template-columns: repeat(4, auto);
             column-gap: 10px;
             position: absolute;
             bottom: 30px;
             left: 30px;
+
+            svg {
+              height: 12px;
+              fill: $color__white;
+              opacity: 0.5;
+              transition: opacity 0.5s ease-in;
+              margin: 0 2px;
+
+              &:hover {
+                opacity: 1;
+              }
+
+            }
+
           }
 
         }

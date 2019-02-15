@@ -73,8 +73,8 @@ class TakingPosition extends Component {
 
         let p1Pourcent = 100 - x / 10;
         let p2Pourcent = x / 10;
-        console.log(p1Pourcent);
-        console.log(p2Pourcent);
+        // console.log(p1Pourcent);
+        // console.log(p2Pourcent);
         p1.style.width = p1Pourcent + '%';
         p2.style.width = p2Pourcent + '%';
 

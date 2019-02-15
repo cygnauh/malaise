@@ -7,6 +7,7 @@ import anim_3_1_jeu_jamais from '../../../assets/animation/anim_3_1_jeu-jamais'
 import anim_3_3_verres from '../../../assets/animation/anim_3_3_verres'
 import text_3_7_ending from '../../../assets/animation/text_3_7_ending'
 import anim_3_4_boite from '../../../assets/animation/anim_3_4_boite'
+import anim_3_4_puceau from '../../../assets/animation/anim_3_4_puceau'
 
 import './AnimationLottie.scss'
 
@@ -22,15 +23,14 @@ class AnimationLottie extends Component {
                 'anim_3_3_verres':anim_3_3_verres,
                 'anim_3_6_google':anim_3_6_google,
                 'text_3_7_ending':text_3_7_ending,
-                'anim_3_4_boite':anim_3_4_boite
-
+                'anim_3_4_boite':anim_3_4_boite,
+                'anim_3_4_puceau':anim_3_4_puceau
             }
         };
         this.setAnim()
     }
     setAnim(){
-        let anim = this.state.animations[this.props.name]
-        // console.log(anim_3_3_regles)
+        let anim = this.state.animations[this.props.name];
         this.defaultOptions = {
             loop: false,
             autoplay: true,
@@ -49,9 +49,7 @@ class AnimationLottie extends Component {
         clearTimeout(this.timer);
         this.timer = setTimeout(()=>{
             if(this.props.onEnd) {this.props.onEnd(this.props.animationType)}
-            console.log(this.props.animationType)
         }, this.props.timer)
-        console.log('HELLO THIS IS THE ANIM' + this.props.name)
     }
     render() {
         return (

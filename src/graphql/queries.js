@@ -20,6 +20,7 @@ export const getCredits = gql`
             id,
             title,
             thanks,
+            slug,
             voices {
                 name,
                 role
@@ -142,6 +143,17 @@ export const getEpisode = gql`
                     duration
                 }
             },
+            anecdotes{
+                author, 
+                content,
+                createdAt
+            },
+            definitions (
+                orderBy: name_ASC
+            ) {
+                name,
+                description
+            }
         }
     }
 `;

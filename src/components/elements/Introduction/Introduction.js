@@ -30,7 +30,7 @@ class Introduction extends Component {
                 start:true
             });
             if(this.state.start && this.props.startedJingle){
-                this.state.jingleSound.play();
+                this.state.jingleSound.play(); // TODO uncomment
             }
         }, 1500);
     }
@@ -60,7 +60,6 @@ class Introduction extends Component {
         if(!$currentIntroStep.is(':last-child')) {
             $currentIntroStep.toggleClass('Introduction__step--current');
             $nextIntroStep.toggleClass('Introduction__step--current');
-            console.log('disappear step');
         }
 
     }

@@ -14,6 +14,7 @@ class Homepage extends Component {
 
     constructor(props) {
         super(props);
+        $('.Header').css('display', 'none');
         this.state = {
             instructions: false,
             currentPage : '1'
@@ -98,7 +99,7 @@ class Homepage extends Component {
                             <div className="Home__logo">
                                 <Logo />
                             </div>
-                            <p className="Home__description">La plateforme de podcasts interactifs qui vous plonge au coeur d'histoires et d'anecdotes du quotidien.</p>
+                            <p className="Home__description">Le podcast qui revient sur les mots qui dérangent</p>
                             <div className="Home__sound">
                                 <SoundAlert />
                             </div>

@@ -3,7 +3,6 @@ import Glass from '../../elements/Glass/Glass'
 import DragDrop from '../../elements/DragDrop/DragDrop'
 import { UserContext } from "./../../../store/UserProvider";
 import Timer from "../../elements/Timer/Timer";
-import {SoundContext} from "../../../store/SoundProvider";
 import "./DrinkAction.scss";
 
 class DrinkAction extends Component {
@@ -15,13 +14,14 @@ class DrinkAction extends Component {
             canDrink: false,
             toDrink: false,
             hide:false,
-            started: false
+            started: false,
+            showTimer:true
         };
         this.drinkers = this.props.drinkers; // persons who drinks at the question
         this.userDrank = this.userDrank.bind(this);
         if (this.props.mode === 'action') {
             this.asker = this.props.question[0]; // who is asking the question
-            console.log(this.asker, 'componentDidMount')
+            // console.log(this.asker, 'componentDidMount')
             this.question = this.props.question[1];
             this.timer = this.props.timer;
             this.hasAnswer = this.props.hasAnswer;
@@ -33,7 +33,7 @@ class DrinkAction extends Component {
             started: true,
             persons: this.context.personalizations
         }, ()=>{
-            console.log(this.state.persons);
+            // console.log(this.state.persons);
             if(this.props.mode === 'drink') this.userDrank(false);
             if (this.props.mode === 'action') {
                 // this.asker = this.props.question[0]; // who is asking the question
@@ -43,8 +43,8 @@ class DrinkAction extends Component {
                 // this.hasAnswer = this.props.hasAnswer;
                 this.handleTimer = setTimeout( () => {
                     this.userDrank(false);
-                    console.log("time up");
-                    console.log(this.timer)
+                    // console.log("time up");
+                    // console.log(this.timer)
                 }, this.timer);
             }
         })
@@ -56,7 +56,7 @@ class DrinkAction extends Component {
                 let name = this.state.persons[i].name;
                 let glassLevel = this.state.persons[i].glass;
                 let toDrink = this.state.canDrink && this.drinkers.indexOf(this.state.persons[i].role)!==-1;
-                console.log(this.asker, this.state.persons[i].role)
+                // console.log(this.asker, this.state.persons[i].role)
                 glasses.push(
                     <div key={i} className="Person_list">
                         <Glass name={name}
@@ -96,21 +96,24 @@ class DrinkAction extends Component {
         });
         if(this.props.mode ==='action'){
             clearTimeout(this.handleTimer);
-            setTimeout( () => {
-                console.log(this.props.hasAnwser)
+            // setTimeout( () => {
+            //     console.log(this.props.hasAnwser)
                 if(this.props.hasAnwser && value){
                     this.props.drinkActionEnd('drink action', 'drink')
                 }else{
                     this.props.drinkActionEnd('drink action')
                 }
-            }, 2000)
+                this.setState({
+                    showTimer:false
+                })
+            // }, 2000)
         }else{
             setTimeout( () => {
                 this.setState({hide:true})
-            }, 2000)
+            }, 5000)
             setTimeout( () => {
                 this.props.drinkActionEnd('drink action')
-            }, 2800)
+            }, 5800)
         }
 
         //TODO register user alcohol level
@@ -119,9 +122,11 @@ class DrinkAction extends Component {
     render() {
         return (
             <div className={!this.state.hide ? "DrinkAction" : "DrinkAction hide"}>
-                <div className="DrinkAction__timer">
-                    <Timer activeTimer={this.state.started} />
-                </div>
+                {this.props.mode === 'action' && this.state.showTimer?
+                    <div className="DrinkAction__timer">
+                        <Timer activeTimer={this.state.started} />
+                    </div> :
+                    null }
                 <div className="wrapper">
                     {this.state.persons ? this.handleDrink() : null}
                 </div>

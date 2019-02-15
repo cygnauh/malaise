@@ -1,11 +1,7 @@
 import React, { Component } from 'react';
 import './style.scss';
-
-
-// this component help to display all episodes
-
-// 1) waiting for props Data ( getEpisodes : allEpisodes )
-
+import Header from "../../layout/Header/Header";
+import $ from 'jquery';
 
 class Catalogue extends Component {
     constructor(props){
@@ -15,6 +11,11 @@ class Catalogue extends Component {
             data:this.props.episodes,
             episodeSelected:null
         };
+
+    }
+
+    componentDidMount() {
+
     }
 
     handleHoverItem = (e) => {
@@ -44,9 +45,6 @@ class Catalogue extends Component {
                      onMouseEnter={this.handleHoverItem}
                      onMouseLeave={this.handleLeaveHoverItem}
                      data-bgcolor={this.state.data[i].lightColor} >
-                    <div className="Episode-item__background">
-                        <img src={this.state.data[i].serpentin ? 'fonts/'+this.state.data[i].serpentin+'.svg'  : null} alt="Episode serpentin" />
-                    </div>
                     <div className="Episode-item__container">
                         <div className="Episode-item__top">
                             <div className="Episode-item__number">0{i + 1}</div>
@@ -77,6 +75,7 @@ class Catalogue extends Component {
     render() {
         return (
             <div className="Catalogue">
+                <Header />
                 {!this.state.data? <p>data is loading, please make a loader</p> : null}
                 {this.state.data?
 

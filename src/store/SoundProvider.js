@@ -7,6 +7,8 @@ export const SoundContext = createContext({
     placeSounds: [],
     episodeSounds:null,
     interactions:[],
+    beginingMusic:null,
+    musicSelected:null,
     setPlaceSounds: () => {},
     setEpisodeSounds: () => {},
     loadSound:() => {},
@@ -16,7 +18,8 @@ export const SoundContext = createContext({
     handleMusicChoices:() => {},
     handleMusic:() => {},
     playInteractionSound:() =>{},
-    playJingle:() =>{}
+    playJingle:() =>{},
+    update:() =>{}
 
 });
 class SoundProvider extends Component {
@@ -27,11 +30,16 @@ class SoundProvider extends Component {
         placeSoundtrack:null,
         episodeSoundtrack:null, // episode soundtrack obj
         musicSelected:null, // music selected by the user
+        beginingMusic:null,
         url : [{
             'pote': 'https://circegrand.fr/etude/gobelins/malaise/media/sounds/salut-pote.mp3',
             'copain': 'https://circegrand.fr/etude/gobelins/malaise/media/sounds/salut-copain.mp3',
             'reloue': 'https://circegrand.fr/etude/gobelins/malaise/media/sounds/salut-reloue.mp3',
             'reserve': 'https://circegrand.fr/etude/gobelins/malaise/media/sounds/salut-reserve.mp3',
+            'offHote': 'https://circegrand.fr/etude/gobelins/malaise/media/sounds/voix_2_hote.mp3',
+            'offPote': 'https://circegrand.fr/etude/gobelins/malaise/media/sounds/voix_2_pote.mp3',
+            'offReloue': 'https://circegrand.fr/etude/gobelins/malaise/media/sounds/voix_2_reloue.mp3',
+            'offReserve': 'https://circegrand.fr/etude/gobelins/malaise/media/sounds/voix_2_reseve.mp3',
         }],
 
         setPlaceSounds: sounds => {
@@ -41,84 +49,32 @@ class SoundProvider extends Component {
 
         // episode soundtrack and set interactions
         setEpisodeSounds: (sounds, interactions) => {
-            this.setState({ episodeSoundtrack:sounds, interactions: interactions},
-                console.log(this.state.episodeSoundtrack));
-            let tab = {};
-            setTimeout(()=>{
-                for(let i = 0; i<interactions.length; i++){
-                    if(interactions[i].soundSequences.length !== 0){
-                        let sq = [ interactions[i].soundSequences[0].beginAt, interactions[i].soundSequences[0].duration]
-                        tab[interactions[i].name] = sq;
-                    }
-                }
-            }, 0);
-            let sound = new Howl({
-                src: [Sound],
-                // sprite:{
-                //     proposition_jeu: [11980, 7390], // ok
-                //     question_regles: [19475, 3635], // ok
-                //     explication_regles: [23220, 4830], //ok
-                //     choix_boisson:[28110, 2480], //ok
-                //     choix_boisson_a:[30590, 910], // ok
-                //     je_n_ai_jamais1:[32000, 3000], // ok
-                //     je_n_ai_jamais1_r:[35000, 4450], // ok
-                //     je_n_ai_jamais1_a:[39450, 930], //ok
-                //     reaction1:[41600, 3390], // ok
-                //     anecdote1:[45090, 18005], // ok
-                //     anecdote1bis:[63095, 24605], //ok
-                //     je_n_ai_jamais_user:[87700, 2800], // ok
-                //     reaction2:[94420, 2175], // ok
-                //     heure2:[0, 0],
-                //     je_n_ai_jamais3_r:[97900, 4500], // ok
-                //     je_n_ai_jamais3:[102400, 1600], // ok
-                //     je_n_ai_jamais3_p:[104000, 26400], //ok
-                //     je_n_ai_jamais3_a:[0, 0],
-                //     reaction3:[132105, 15695], // ok
-                //     anecdote2:[147800, 46200], // ok
-                //     je_n_ai_jamais4_r:[194000, 3730], //ok
-                //     je_n_ai_jamais4:[197730, 2270], // ok
-                //     reaction4:[200820, 53400], // ok
-                //     recherche_google:[254220, 58290], // ok
-                //     reaction4_c:[312510, 5120], // ok
-                //     je_n_ai_jamais5:[317630, 14370], //ok
-                //     reaction5:[333000, 2890],//ok
-                //     fin:[335890, 20610] //ok
-                // ----- udaapte value
-                //     je_n_ai_jamais3_r:[97900, 4500], // ok
-                //     je_n_ai_jamais3:[102400, 12600], // ok
-                //     je_n_ai_jamais3_p: [115000, 10300], // ok for taking position
-                //     je_n_ai_jamais3_a: [125300, 6805], // ok --> maybe drag and drop display later : maybe add another interaaction or setTimeOut or playing at the end
-                //     reaction3:[132105, 15695],
-                //     // je_n_ai_jamais3_a: [125300, 10000], // ok
-                //     recherche_google:[254220, 58290], // ok
-                //     fin:[335890, 20610] //ok,
-                //     reaction4_c:[312510, 5120], // ok
-                //     je_n_ai_jamais5:[317630, 14370], //ok
-                // },
-                sprite: tab // TODO Uncomment
-            });
-            this.setState({ episodeSounds: sound }, ()=>{
-                // this.state.episodeSounds.play('anecdote1fusion')
-            });
+            this.setState({ episodeSoundtrack:sounds, interactions: interactions})
         },
         registerPlaceSound: (place) =>{ // load place selected
-            let stream;
-            stream = new Howl({
+            let firstSound, secondSound;
+            firstSound = new Howl({
                 src: [place.url],
                 ext: ['mp3'],
                 html5: true,
-                volume:0.1,
+                volume:0.05,
                 loop: true
             });
-            // console.log(this.state.placeSoundtrack);
-            if(this.state.placeSoundtrack){
-                this.state.placeSoundtrack.pause();
-            }
+            secondSound = new Howl({
+                src: [' https://circegrand.fr/etude/gobelins/malaise/media/sounds/musique_2.1_debut'],
+                ext: ['mp3'],
+                html5: true,
+                volume:0.01,
+                loop: true
+            });
             this.setState({
-                    placeSoundtrack:stream
+                    placeSoundtrack:firstSound,
+                    beginingMusic:secondSound
+
                 }, ()=>{
                     // console.log(this.state.placeSoundtrack);
                     this.state.placeSoundtrack.play();
+                    this.state.beginingMusic.play();
                 }
             );
         },
@@ -132,13 +88,13 @@ class SoundProvider extends Component {
                 src: [doorbell],
                 ext: ['mp3'],
                 html5: true,
-                volume:0.4
+                volume:0.3
             });
             streamOpendoor = new Howl({
                 src: [opendoor],
                 ext: ['mp3'],
                 html5: true,
-                volume:0.4
+                volume:0.3
             });
             streamDoorbell.play();
             setTimeout( () => {
@@ -147,6 +103,7 @@ class SoundProvider extends Component {
             setTimeout( () => {
                 if(this.state.placeSoundtrack){
                     this.state.placeSoundtrack.volume(0.3)
+                    this.state.beginingMusic.volume(0.1)
                 }
             }, 1800)
         },
@@ -157,7 +114,8 @@ class SoundProvider extends Component {
             instruction = new Howl({
                 src: [url],
                 ext: ['mp3'],
-                html5: true
+                html5: true,
+                volume:0.7
             });
             instruction.play();
 
@@ -171,7 +129,8 @@ class SoundProvider extends Component {
             jingle = new Howl({
                 src: [url],
                 ext: ['mp3'],
-                html5: true
+                html5: true,
+                volume:0.2
             });
 
             return jingle;
@@ -186,49 +145,48 @@ class SoundProvider extends Component {
                 html5: true,
                 volume:1
             });
+            if(value === 'offHote' || value === 'offPote' || value === 'offReloue' || value === 'offReserve'){
+                stream.volume(0.7)
+            }
             stream.play()
+
         },
+
         // load the musics
         handleMusicChoices:(sounds) => {
             let soundtab = [];
-            for(let i = 0; i< sounds .length; i++){
+            for(let i = 0; i< sounds.length; i++){
                 let sound = new Howl({
                     src: [sounds[i].url],
                     ext: ['mp3'],
                     html5: true,
-                    volume:0.1
+                    volume:1
                 });
                 soundtab.push(sound)
             }
             this.setState({
                 musics: soundtab
-            },
+            }, () => {
                 console.log(this.state.musics)
-            );
+            });
         },
+
         // handle the play and pause of the music
         handleMusic:(url, mode) => {
+            this.state.beginingMusic.pause();
             if(mode === "pause" && this.state.musicSelected){
                  this.state.musicSelected.pause(); // TODO Uncomment
                 return
             }
             if(mode === "play"){
+                console.log('state musics', this.state.musics.find(setting => setting._src === url));
                 this.setState({
                     musicSelected:this.state.musics.find(setting => setting._src === url)
-                }, ()=>{
+                }, () => {
                      this.state.musicSelected.play(); // TODO Uncomment
                 });
             }
         },
-        // voices interaction
-        playInteractionSound:(value) => {
-            this.state.episodeSounds.play(value);
-            if(this.state.episodeSounds && this.state.episodeSounds._sprite[value]
-                && this.state.episodeSounds._sprite[value][1]){
-                return [this.state.episodeSounds, this.state.episodeSounds._sprite[value][1]]
-            } // TODO Uncomment all
-
-        }
     };
 
     render() {
