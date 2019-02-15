@@ -160,7 +160,7 @@ class SoundProvider extends Component {
                     src: [sounds[i].url],
                     ext: ['mp3'],
                     html5: true,
-                    volume:1
+                    volume:0.5
                 });
                 soundtab.push(sound)
             }

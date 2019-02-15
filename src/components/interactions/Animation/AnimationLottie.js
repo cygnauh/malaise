@@ -7,7 +7,7 @@ import anim_3_1_jeu_jamais from '../../../assets/animation/anim_3_1_jeu-jamais'
 import anim_3_3_verres from '../../../assets/animation/anim_3_3_verres'
 import text_3_7_ending from '../../../assets/animation/text_3_7_ending'
 import anim_3_4_boite from '../../../assets/animation/anim_3_4_boite'
-import anim_3_4_5_puceau_google from '../../../assets/animation/anim_3_4_5_puceau_google'
+import anim_3_4_5_puceau_google from '../../../assets/animation/anim_3_4_5_puceau_google_2'
 
 import './AnimationLottie.scss'
 

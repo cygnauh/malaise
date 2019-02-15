@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Lottie from 'react-lottie';
-import boumboum from '../../../assets/animation/boumboum'
+import boumboum from '../../../assets/animation/anim_2_1_boumboum-medium'
+// import boumboum from '../../../assets/animation/boumboum'
 import Notice from '../../elements/Notice/Notice'
 import './style.scss';
 import { SoundContext } from "../../../store/SoundProvider";
