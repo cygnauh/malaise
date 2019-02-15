@@ -7,7 +7,7 @@ import anim_3_1_jeu_jamais from '../../../assets/animation/anim_3_1_jeu-jamais'
 import anim_3_3_verres from '../../../assets/animation/anim_3_3_verres'
 import text_3_7_ending from '../../../assets/animation/text_3_7_ending'
 import anim_3_4_boite from '../../../assets/animation/anim_3_4_boite'
-import anim_3_4_puceau from '../../../assets/animation/anim_3_4_puceau'
+import anim_3_4_5_puceau_google from '../../../assets/animation/anim_3_4_5_puceau_google'
 
 import './AnimationLottie.scss'
 
@@ -24,7 +24,7 @@ class AnimationLottie extends Component {
                 'anim_3_6_google':anim_3_6_google,
                 'text_3_7_ending':text_3_7_ending,
                 'anim_3_4_boite':anim_3_4_boite,
-                'anim_3_4_puceau':anim_3_4_puceau
+                'anim_3_4_5_puceau_google':anim_3_4_5_puceau_google
             }
         };
         this.setAnim()
