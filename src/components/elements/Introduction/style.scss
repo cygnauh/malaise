@@ -1,0 +1,60 @@
+@import '../../../assets/styles/variables/index.scss';
+@import '../../../assets/styles/mixins/buttons';
+
+.Introduction {
+  width: 100%;
+  height: 100%;
+
+  &__container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+  }
+
+  &__step {
+    z-index: 1;
+    opacity: 0;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+    width: 100%;
+    height: 100%;
+    transition: opacity 1s 0s;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &--current {
+      z-index: 5;
+      opacity: 1;
+      transition: opacity 1s 1s;
+    }
+
+  }
+
+  &__jingle {
+
+    .Introduction__step__container {
+      width: 100%;
+      height: 100%;
+    }
+
+    &__cta {
+      @include default-button($color__white);
+      margin-top: 100px;
+      position: absolute;
+      bottom: 50px;
+      right: 100px;
+      background-color: $color__bg;
+
+      &:hover, &:focus, &:active {
+        background-color: $color__white;
+        color: $color__bg;
+      }
+
+    }
+
+  }
+
+}

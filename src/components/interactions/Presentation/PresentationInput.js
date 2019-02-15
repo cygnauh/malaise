@@ -6,6 +6,10 @@ class PresentationInput extends Component {
         this.state = {
             render:''
         };
+        this.textInput = React.createRef();
+    }
+    componentDidMount() {
+        this.textInput.current.focus();
     }
 
     render () {
@@ -19,12 +23,13 @@ class PresentationInput extends Component {
                     <div className="input__box">
                         <div className="input-border">
                             <input type="text"
+                                   ref={this.textInput}
                                    className="nameInput"
                                    value={this.props.currentInput}
                                    placeholder={this.props.form.answerLabel}
                                    onKeyPress={this.props.handleKeyPress}
                                    onChange={this.props.handleChange}/>
-                            <button className={this.props.currentInput ? 'form__btn form__next border-white': 'form__btn form__next border-white empty'}
+                            <button className={this.props.currentInput ? 'form__btn form__next': 'form__btn form__next empty'}
                                     onClick={this.props.currentInput ? (e)=>this.props.validateInput(e):null}>
                                 <span>ok</span>
                             </button>

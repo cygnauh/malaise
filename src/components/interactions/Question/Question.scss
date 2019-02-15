@@ -1,0 +1,48 @@
+@import '../../../assets/styles/variables/index.scss';
+@import '../../../assets/styles/mixins/index.scss';
+
+.Question {
+  color: $color__white;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &__container {
+    text-align: center;
+  }
+
+  &__label {
+    margin-bottom: 70px;
+
+    span {
+      @include underlineLabel($color__white, $font__happy-times);
+      position: relative;
+
+      &:after {
+        width: 120%;
+      }
+
+    }
+
+  }
+
+  &__choices {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &__choice {
+    @include default-button($color__white);
+    margin: 0 10px;
+
+    &:hover, &:focus, &:active {
+      background-color: $color__white;
+      color: $color__xp--dark;
+    }
+
+  }
+
+}

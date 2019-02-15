@@ -1,11 +1,12 @@
 import './style.scss';
-import React from 'react';
+import React, { Component } from 'react';
+import $ from 'jquery';
 import { Link } from 'react-router-dom';
 import Logo from "../../SVG/Logo/Logo";
 import WordBox from "../../SVG/WordBox/WordBox";
 import SocialShare from "../../SVG/SocialShare/SocialShare";
 
-class Navigation extends React.Component {
+class Navigation extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -30,7 +31,23 @@ class Navigation extends React.Component {
     handleClickLink = () => {
         this.setState ({
             nav:false
+        }, () => {
+            $('body').removeClass('episode').removeClass('interface-reverse').addClass('interface');
+            $('.Navigation').css('transform', 'translateX(calc(48px - 100%))');
         });
+    }
+
+    handleActionHover = () => {
+        if(!$('body').hasClass('interface')) {
+            $('.Navigation').css('transform', 'translateX(calc(48px - 100%))');
+        }
+    }
+
+    handleActionHoverLeaver = () => {
+        if(!$('body').hasClass('interface')) {
+            console.log('xp');
+            $('.Navigation').css('transform', 'translateX(calc(18px - 100%))');
+        }
     }
 
     render() {
@@ -68,7 +85,7 @@ class Navigation extends React.Component {
                                 </Link>
                             </li>
                             <li className="Navigation__item">
-                                <Link onClick={this.handleClickLink} to='/dictionnary' className="item__link">
+                                <Link onClick={this.handleClickLink} to='/anecdotes' className="item__link">
                                     <div className="item__content">
                                         <div className="item__name">
                                             <span>03</span>
@@ -78,7 +95,7 @@ class Navigation extends React.Component {
                                 </Link>
                             </li>
                             <li className="Navigation__item">
-                                <Link onClick={this.handleClickLink} to='/hours' className="item__link">
+                                <Link onClick={this.handleClickLink} to='/about' className="item__link">
                                     <div className="item__content">
                                         <div className="item__name">
                                             <span>04</span>
@@ -92,7 +109,10 @@ class Navigation extends React.Component {
                             <SocialShare />
                         </div>
                     </div>
-                    <div className={this.state.nav ? this.closeNav : this.openNav} onClick={this.handleClick}>
+                    <div className={this.state.nav ? this.closeNav : this.openNav}
+                         onClick={this.handleClick}
+                         onMouseEnter={this.handleActionHover}
+                         onMouseLeave={this.handleActionHoverLeaver} >
                         <div className="Navigation__action-cta">+</div>
                     </div>
                 </div>

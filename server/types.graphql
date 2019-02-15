@@ -12,6 +12,46 @@ type Episode @model {
   interactions: [Interaction!]! @relation(name: "EpisodeInteractions")
   place: String!
   entourage: String!
+  darkColor: String
+  lightColor: String
+  createdAt: DateTime!
+  definitions: [Definition!]! @relation(name: "EpisodeDefinitions")
+  theme: String
+  voices: [Voice!]! @relation(name: "EpisodeVoices")
+  directors: [Director!]! @relation(name: "EpisodeDirectors")
+  anecdotes: [Anecdote!]! @relation(name: "EpisodeAnecdotes")
+  thanks: String
+  serpentin: String
+  status: String
+  slug: String
+}
+
+type Voice @model {
+  id: ID! @isUnique
+  name: String!
+  role: String!
+  episode: Episode! @relation(name:"EpisodeVoices")
+}
+
+type Director @model {
+  id: ID! @isUnique
+  name: String!
+  episode: Episode! @relation(name:"EpisodeDirectors")
+}
+
+type Anecdote @model {
+  id: ID! @isUnique
+  author: String!
+  content: String!
+  createdAt: DateTime!
+  episode: Episode @relation(name:"EpisodeAnecdotes")
+}
+
+type Definition @model {
+  id: ID! @isUnique
+  name: String!
+  description: String!
+  episode: Episode! @relation(name:"EpisodeDefinitions")
 }
 
 type Personalization @model {
@@ -26,26 +66,34 @@ type Personalization @model {
 
 type Interaction @model {
   id: ID! @isUnique
+  name:String!
   position: Int!
   interactionType: String!
-  timer: Boolean!
+  timer: Int
+  question:String
   content: String
   soundSequences: [SoundSequence!]! @relation(name: "InteractionSoundSequences")
   episode: Episode! @relation(name:"EpisodeInteractions")
-  anwsers: Answer @relation(name: "AnswersInteractions")
+  originInteraction: Answer @relation(name: "AnswersOriginInteractions")
+  destinationInteraction: Answer @relation(name: "AnswersDestinationInteractions")
+  indication: String
+  goNext: Boolean
+  animation: String
 }
 
 type Answer @model {
   id: ID! @isUnique
-  content: String!
-  interactionsSegment: [Interaction!]! @relation(name:"AnswersInteractions")
+  content: String
+  originInteraction: Interaction @relation(name:"AnswersOriginInteractions")
+  destinationInteraction: Interaction @relation(name:"AnswersDestinationInteractions")
+  name: String
 }
 
 type SoundSequence @model {
   id: ID! @isUnique
   name: String!
   beginAt: Int!
-  endAt: Int!
+  duration: Int!
   sound: Sound! @relation(name: "SoundSoundSequences")
   interactions: Interaction! @relation(name: "InteractionSoundSequences")
 }
@@ -56,7 +104,7 @@ type Sound @model {
   type: String!
   url: String!
   episode: Episode @relation(name: "EpisodeSounds")
-  soundSequences: SoundSequence! @relation(name: "SoundSoundSequences")
+  soundSequences: [SoundSequence!]! @relation(name: "SoundSoundSequences")
 }
 
 type Testimony @model {
@@ -89,13 +137,3 @@ type Video @model {
   url: String!
   block: Block! @relation(name: "BlockVideos")
 }
-
-# Uncomment the model below as well
-
-# type Post @model {
-#   id: ID! @isUnique
-#   title: String!
-#
-#   # Every relation also required a back-relation (to determine 1:1, 1:n or n:m)
-#   author: User! @relation(name: "UserPosts")
-# }

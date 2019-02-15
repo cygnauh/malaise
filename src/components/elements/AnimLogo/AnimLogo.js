@@ -68,8 +68,6 @@ class AnimLogo extends Component {
         var $chars = this.$el.querySelectorAll('span');
         $chars =  Array.from($chars);
 
-        console.log($chars);
-
         $chars.forEach(function(el) {
             if(el.dataset.letter === '2'){
                 self.initChar(el, -20);
@@ -128,7 +126,7 @@ class AnimLogo extends Component {
             var x0 = $el.offsetLeft;
             var y0 = $el.offsetTop;
             var x1 = this.mouseX;
-            var y1 = this.mouseY - 100;
+            var y1 = this.mouseY - 200;
 
             var distanceX = x1 - x0;
             var distanceY = y1 - y0;
@@ -163,13 +161,13 @@ class AnimLogo extends Component {
         return (
             <div className="AnimLogo">
                 <div className="AnimLogo__container" ref={this.animWrapper}>
-                    <span data-letter="1"><img  src={require('../../../assets/icons/logo/logo_m.svg')}/></span>
-                    <span data-letter="2"><img src={require('../../../assets/icons/logo/logo_a.svg')}/></span>
-                    <span data-letter="3"><img className="AnimLogo__specialLetter" src={require('../../../assets/icons/logo/logo_l.svg')}/></span>
-                    <span data-letter="4"><img src={require('../../../assets/icons/logo/logo_a.svg')}/></span>
-                    <span data-letter="5"><img className="AnimLogo__specialLetter" src={require('../../../assets/icons/logo/logo_i.svg')}/></span>
-                    <span data-letter="6"><img src={require('../../../assets/icons/logo/logo_s.svg')}/></span>
-                    <span data-letter="7"><img src={require('../../../assets/icons/logo/logo_e.svg')}/></span>
+                    <span data-letter="1"><img src={require('../../../assets/icons/logo/logo_m.svg')} alt='' /></span>
+                    <span data-letter="2"><img src={require('../../../assets/icons/logo/logo_a.svg')} alt=''/></span>
+                    <span data-letter="3"><img className="AnimLogo__specialLetter" src={require('../../../assets/icons/logo/logo_l.svg')} alt=''/></span>
+                    <span data-letter="4"><img src={require('../../../assets/icons/logo/logo_a.svg')} alt=''/></span>
+                    <span data-letter="5"><img className="AnimLogo__specialLetter" src={require('../../../assets/icons/logo/logo_i.svg')} alt=''/></span>
+                    <span data-letter="6"><img src={require('../../../assets/icons/logo/logo_s.svg')} alt=''/></span>
+                    <span data-letter="7"><img src={require('../../../assets/icons/logo/logo_e.svg')} alt=''/></span>
                 </div>
             </div>
         );

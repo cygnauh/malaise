@@ -1,4 +1,5 @@
-@import '../../../assets/styles/index.scss';
+@import '../../../assets/styles/variables/index.scss';
+@import '../../../assets/styles/mixins/index.scss';
 
 @keyframes bottomright {
   0% {
@@ -142,8 +143,8 @@
   left: 0;
   width: 300px;
   height: 70px;
-  border-bottom: 2px solid $color__black;
-  border-right: 2px solid $color__black;
+  border-bottom: 2px solid $color__xp--dark;
+  border-right: 2px solid $color__xp--dark;
   visibility: hidden;
 }
 .bell__input-border:before {
@@ -153,8 +154,8 @@
   right: 0;
   width: 300px;
   height: 70px;
-  border-top: 2px solid $color__black;
-  border-left: 2px solid $color__black;
+  border-top: 2px solid $color__xp--dark;
+  border-left: 2px solid $color__xp--dark;
   visibility: hidden;
 }
 .Doorbell__animation .bell__input-border:before {
@@ -177,20 +178,14 @@
   }
 
   &__label {
-    color: $color__black;
-    font-family: $font__archivo--black;
-    font-size: 40px;
-    width: 600px;
     position: absolute;
-    top: 100px;
-    left: 100px;
-    font-weight: normal;
-    line-height: 50px;
-    opacity: 1;
-    transition: all 0.5s ease;
-  }
+    top: 30%;
+    left: 50%;
+    transform: translateX(-50%);
 
-  &__animation {
+    span {
+      @include underlineLabel($color__xp--dark, $font__happy-times);
+    }
 
   }
 
@@ -203,7 +198,7 @@
   transition: all 0.5s ease;
 
   &__box {
-    border: 2px solid black;
+    border: 1px solid $color__xp--dark;
     margin-top: 40px;
     width: 400px;
     height: 75px;
@@ -231,20 +226,27 @@
   &__input {
     width: 70%;
     height: 50px;
-    font-size: 30px;
+    font-size: 20px;
+    font-family: $font__archivo--black;
     border: none;
     padding: 10px 0 10px 0;
     text-align: center;
-    font-weight: bold;
+    font-weight: normal;
     transition: all 0.5s ease;
     background: none;
+    color: $color__xp--dark;
+
+
   }
 
   &__input::placeholder {
-    font-weight: bold;
-    font-size: 30px;
+    font-family: $font__archivo;
+    font-weight: normal;
+    font-size: 15px;
+    color: $color__xp--dark;
     text-align: center;
-    opacity: 0.3;
+    letter-spacing: 1px;
+    opacity: 0.5;
     transition: opacity 0.3s ease;
   }
 
@@ -261,14 +263,23 @@
   margin: 0 0 0 20px;
   padding: 0;
   border-radius: 50%;
-  border: none;
-  background: none;
   font-weight: bold;
-  font-size: 35px;
-  text-shadow: -1px 0 $color__black, 0 1px $color__black, 1px 0 $color__black, 0 -1px $color__black;
-  color: $color__white;
-  letter-spacing: 2px;
   position: relative;
+  @include border-button($color__white, $color__xp--dark, $font__archivo--black, 35px);
+  opacity: 1;
+
+  &.empty {
+    opacity: 0.2;
+  }
+
+  &:hover, &:focus, &:active {
+    opacity: 1;
+  }
+
+  &.btn__bell {
+    opacity: 1;
+  }
+
 }
 .btn__input span {
   transition: opacity 0.5s ease;
@@ -278,8 +289,7 @@
 }
 .Doorbell__animation .bell__input {
   height: 50px;
-  font-size: 40px;
-  padding: 0 0 10px 0;
+  font-size: 35px;
   flex: 1;
 }
 .Doorbell__animation .btn__input span {
@@ -291,6 +301,7 @@
 .Doorbell__animation .bell__box {
   width: 460px;
   height: 130px;
+  border-width: 2px;
 }
 
 .btn__input:before,
@@ -311,9 +322,9 @@
   border: 2px solid transparent;
 }
 .Doorbell__animation .btn__input:before {
-  border-top-color: $color__black;
-  border-right-color: $color__black;
-  border-bottom-color: $color__black;
+  border-top-color: $color__xp--dark;
+  border-right-color: $color__xp--dark;
+  border-bottom-color: $color__xp--dark;
   transition:
           border-top-color 0.15s linear,
           border-right-color 0.15s linear 0.10s,
@@ -329,7 +340,7 @@
   border: 0 solid transparent;
 }
 .Doorbell__animation .btn__input:after {
-  border-top: 2px solid $color__black;
+  border-top: 2px solid $color__xp--dark;
   border-left-width: 2px;
   border-right-width: 2px;
   transform: rotate(270deg);
@@ -358,7 +369,7 @@
     opacity: 0;
     width: 460px;
     height: 130px;
-    border: 2px solid $color__black;
+    border: 2px solid $color__xp--dark;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -377,14 +388,14 @@
   &__input {
     width: 300px;
     height: 100%;
-    border: 2px solid $color__black;
+    border: 2px solid $color__xp--dark;
   }
 
   &__btn {
     width: 70px;
     height: 70px;
     border-radius: 50%;
-    border: 2px solid $color__black;
+    border: 2px solid $color__xp--dark;
     margin-left: 20px;
   }
 

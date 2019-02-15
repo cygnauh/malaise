@@ -1,0 +1,75 @@
+@import '../../../assets/styles/variables/index.scss';
+@import '../../../assets/styles/mixins/buttons';
+
+.Talk {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &__timer {
+    width: 70px;
+    height: 70px;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    z-index: 20;
+  }
+
+  &__label {
+    color: $color__xp--light;
+    font-family: $font__happy-times;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 20px;
+    border: 1px solid $color__white;
+    padding: 25px 40px;
+    text-align: center;
+    max-width: 300px;
+    margin: 0 auto 80px auto;
+    position: relative;
+
+    &:after, &:before {
+      right: 100%;
+      top: 50%;
+      border: solid transparent;
+      content: " ";
+      height: 0;
+      width: 0;
+      position: absolute;
+      pointer-events: none;
+    }
+
+    &:after {
+      border-color: rgba(136, 183, 213, 0);
+      border-right-color: $color__xp--dark;
+      border-width: 25px;
+      margin-top: -25px;
+    }
+    &:before {
+      border-color: rgba(194, 225, 245, 0);
+      border-right-color: $color__white;
+      border-width: 26px;
+      margin-top: -26px;
+    }
+  }
+
+  &__choices {
+    display: flex;
+    justify-content:center;
+    align-items: center;
+  }
+
+  &__choice {
+    @include default-button($color__white);
+    margin: 0 10px;
+
+    &:hover, &:focus, &:active {
+      background: $color__white;
+      color: $color__xp--dark;
+    }
+
+  }
+
+}

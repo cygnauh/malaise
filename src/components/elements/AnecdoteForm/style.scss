@@ -1,0 +1,75 @@
+@import '../../../assets/styles/variables/index.scss';
+@import '../../../assets/styles/mixins/index.scss';
+
+.AnecdoteForm {
+
+  &__field {
+    margin-bottom: 25px;
+
+    span {
+      display: block;
+      font-family: $font__archivo;
+      font-size: 10px;
+      line-height: 12px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: $color__white;
+      text-align: right;
+      margin-top: 5px;
+      opacity: 0.5;
+    }
+
+  }
+
+  &__input {
+    height: 50px;
+    padding: 0 20px;
+
+    &::placeholder {
+      font-family: $font__archivo;
+      font-size: 10px;
+      line-height: 12px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: $color__white;
+    }
+
+  }
+
+  &__input, &__textarea {
+    border: 1px solid $color__white;
+    opacity: 0.5;
+    transition: opacity 0.5s ease-in;
+    background: none;
+    width: 100%;
+    resize: none;
+    font-family: $font__archivo;
+    color: $color__white;
+
+    &:active, &:focus {
+      opacity: 1;
+    }
+
+  }
+
+  &__textarea {
+    height: 300px;
+  }
+
+  &__cta {
+    @include default-button($color__white);
+    font-family: $font__archivo;
+    font-size: 10px;
+    background: none;
+    width: 100%;
+    height: 50px;
+    cursor: pointer;
+
+    &:hover, &:focus, &:active {
+      background: $color__white;
+      color: $color__bg;
+    }
+
+  }
+
+}

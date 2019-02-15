@@ -1,3 +1,5 @@
+@import '../../../assets/styles/variables/index.scss';
+
 .eclipse {
     text-align: center;
     font-weight: bold;
@@ -8,16 +10,45 @@
     align-items:center;
 }
 .eclipse__date {
-    font-size: 40px;
+    font-size: 30px;
+    font-family: $font__archivo--black;
+    font-weight: normal;
     text-transform: lowercase;
     margin-bottom: 30px;
+
+    &--hide {
+        display: none;
+    }
+
 }
 .eclipse__date span {
     margin: 0 6px;
 }
 .eclipse__clock {
-    font-size: 70px;
+    font-size: 80px;
     display: flex;
     justify-content: center;
     align-items:center;
+    font-family: $font__archivo--black;
+}
+
+.clock__hours, .clock__minutes {
+    margin-bottom: -5px;
+}
+
+.clock__hours {
+    margin-right: 10px;
+}
+
+.clock__minutes {
+    margin-left: 10px;
+}
+
+
+.odometer-value {
+    font-family: $font__archivo--black;
+    font-size: 80px;
+}
+.odometer-digit {
+    width: 55px;
 }

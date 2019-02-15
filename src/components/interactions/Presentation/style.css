@@ -1,66 +1,11 @@
+/* GLOBAL */
+/* INTERFACE */
+/* XP 1 */
 /*@font-face {
   font-family: 'Happy Times';
-  src: url('../fonts/happy-times/happy-times.woff2') format('woff2'),
-  url('../fonts/happy-times/happy-times.woff') format('woff'),
-  url('../fonts/happy-times/happy-times.ttf')  format('truetype');
-}*/
-/*@font-face {
-  font-family: 'Happy Times';
-  src: url('../fonts/happy-times/happy-times.woff2') format('woff2'),
-  url('../fonts/happy-times/happy-times.woff') format('woff'),
-  url('../fonts/happy-times/happy-times.ttf')  format('truetype');
-}*/
-* {
-  box-sizing: border-box; }
-
-body, html {
-  margin: 0;
-  padding: 0;
-  width: 100%;
-  height: 100%;
-  font-family: "Archivo", sans-serif;
-  font-size: 16px;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale; }
-  body.interface, html.interface {
-    background-color: #0B162E;
-    color: #ffffff; }
-  body.interface-reverse, html.interface-reverse {
-    background-color: #ffffff;
-    color: #000000; }
-
-h1, h2, h3, h4, h5, h6, ul, ol, li, a, p {
-  margin: 0;
-  padding: 0; }
-
-ul, ol, li {
-  list-style: none; }
-
-a {
-  text-decoration: none; }
-
-.interface a {
-  color: #ffffff; }
-
-.interface-reverse a {
-  color: #000000; }
-
-input:focus, textarea:focus, button:focus, button:active {
-  outline: none; }
-
-#root, .wrapper-container {
-  width: 100%;
-  height: 100%; }
-
-.Start-process {
-  width: 100%;
-  height: calc(100% - 45px); }
-
-/*@font-face {
-  font-family: 'Happy Times';
-  src: url('../fonts/happy-times/happy-times.woff2') format('woff2'),
-  url('../fonts/happy-times/happy-times.woff') format('woff'),
-  url('../fonts/happy-times/happy-times.ttf')  format('truetype');
+  src: url('../../fonts/happy-times/happy-times.woff2') format('woff2'),
+  url('../../fonts/happy-times/happy-times.woff') format('woff'),
+  url('../../fonts/happy-times/happy-times.ttf')  format('truetype');
 }*/
 @keyframes bottomrightTest {
   0% {
@@ -107,27 +52,58 @@ input:focus, textarea:focus, button:focus, button:active {
     height: 50px;
     opacity: 1;
     visibility: visible; } }
+@keyframes scaleRound {
+  0% {
+    transform: scale(1); }
+  50% {
+    transform: scale(0.8); }
+  100% {
+    transform: scale(1); } }
 .Presentation {
-  background: #002982;
+  background: #002c36;
   width: 100%;
-  height: 95vh;
+  height: 100%;
   color: white;
   position: relative; }
+  .Presentation__action {
+    font-size: 10px;
+    color: #EAEAEA;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    background: none;
+    padding: 15px 30px;
+    letter-spacing: 2px;
+    line-height: 14px;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: color 0.5s ease-in, background-color 0.5s ease-in;
+    position: absolute;
+    right: 50px;
+    top: 40px;
+    z-index: 2; }
+    .Presentation__action:hover, .Presentation__action:focus, .Presentation__action:active {
+      background: #EAEAEA;
+      color: #002c36; }
   .Presentation .form__btn {
     height: 50px;
+    text-transform: lowercase;
+    font-family: "Archivo Black", sans-serif;
+    font-weight: normal;
+    font-size: 30px;
     background: none;
     border: none;
-    color: #002982;
-    text-shadow: -1px 0 #ffffff, 0 1px #ffffff, 1px 0 #ffffff, 0 -1px #ffffff;
-    font-size: 30px;
-    font-family: "Archivo Black", sans-serif;
+    color: #EAEAEA;
+    opacity: 0.2;
+    cursor: pointer;
+    transition: opacity 0.5s ease-in;
     position: absolute;
     top: 0;
     right: 20px;
     cursor: pointer;
-    -webkit-transition: color 0.5s ease;
-    transition: color 0.5s ease;
-    letter-spacing: 2px; }
+    opacity: 1; }
+    .Presentation .form__btn.empty {
+      opacity: 0.2; }
+      .Presentation .form__btn.empty span {
+        color: #EAEAEA; }
 
 .Presentation_person {
   background: white;
@@ -141,6 +117,8 @@ input:focus, textarea:focus, button:focus, button:active {
   .Presentation_person.greeted__guests {
     background-color: transparent; }
     .Presentation_person.greeted__guests .firstName {
+      position: absolute;
+      z-index: 2;
       transition: all 2s ease-in-out;
       color: white;
       font-weight: bold;
@@ -155,12 +133,26 @@ input:focus, textarea:focus, button:focus, button:active {
           transition-delay: 1s;
           font-size: 50px;
           transition: all 1s ease-in-out;
-          color: #002982;
-          text-shadow: -1px 0 #ffffff, 0 1px #ffffff, 1px 0 #ffffff, 0 -1px #ffffff; }
+          color: #002c36;
+          text-shadow: -1px 0 #EAEAEA, 0 1px #EAEAEA, 1px 0 #EAEAEA, 0 -1px #EAEAEA; }
   .Presentation_person.hide {
     opacity: 0; }
   .Presentation_person.clickable {
     z-index: 2; }
+    .Presentation_person.clickable:after {
+      content: "";
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      background-color: transparent;
+      border: 2px solid #EAEAEA;
+      opacity: 0.3;
+      position: absolute;
+      top: -9px;
+      left: -9px;
+      transform-origin: center;
+      transform: translate(-50%, -50%);
+      animation: scaleRound 2s linear infinite; }
   .Presentation_person.clickable:not(.hote):hover {
     cursor: pointer;
     transform: scale(1.5); }
@@ -185,8 +177,8 @@ input:focus, textarea:focus, button:focus, button:active {
     height: 50px;
     top: -2px;
     right: 0;
-    border-top: 2px solid #ffffff;
-    border-left: 2px solid #ffffff;
+    border-top: 2px solid #EAEAEA;
+    border-left: 2px solid #EAEAEA;
     visibility: hidden; }
   .input__container:after {
     content: '';
@@ -195,8 +187,8 @@ input:focus, textarea:focus, button:focus, button:active {
     left: 0;
     width: 400px;
     height: 50px;
-    border-bottom: 2px solid #ffffff;
-    border-right: 2px solid #ffffff;
+    border-bottom: 2px solid #EAEAEA;
+    border-right: 2px solid #EAEAEA;
     visibility: hidden; }
   .input__container .input__box {
     position: absolute;
@@ -243,7 +235,7 @@ input:focus, textarea:focus, button:focus, button:active {
 
 .empty span {
   cursor: default;
-  color: #002982; }
+  color: #002c36; }
 
 @keyframes wave {
   0%, 60%, 100% {

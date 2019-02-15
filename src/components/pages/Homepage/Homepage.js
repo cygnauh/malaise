@@ -6,13 +6,18 @@ import AnimLogo from "../../elements/AnimLogo/AnimLogo";
 import Lottie from 'react-lottie';
 import animationHome from '../../../assets/animation/03';
 import { SoundContext } from "../../../store/SoundProvider";
+import Introduction from "../../elements/Introduction/Introduction";
+import Logo from "../../SVG/Logo/Logo";
+import EmojiSmile from "../../SVG/EmojiSmile/EmojiSmile";
 
 class Homepage extends Component {
 
     constructor(props) {
         super(props);
+        $('.Header').css('display', 'none');
         this.state = {
-            instructions: false
+            instructions: false,
+            currentPage : '1'
         };
         this.defaultOptions = {
             loop: true,
@@ -21,24 +26,18 @@ class Homepage extends Component {
             propsrendererSettings: {
                 preserveAspectRatio: 'xMidYMid slice'
             }
-        };
-        this.state = {
-            currentPage : '1'
         }
     }
 
-    handleClickStart = (e) => {
+    handleClickStart = () => {
         this.setState ({
             instructions:true
         });
-        setTimeout(() => {
-            this.context.playInstructions(1);
-        }, 1500)
-    }
+    };
 
     handleClickNext = () => {
         this.toggleInstruction();
-    }
+    };
 
     handleKeyDown = (e) => {
         if (e.key === 'Enter') {
@@ -47,17 +46,13 @@ class Homepage extends Component {
         if(e.keyCode === 40) {
             this.toggleInstruction();
         }
-    }
+    };
 
     toggleInstruction = () => {
-        var $currentInstruction = $('.instructions__content').find('.instructions__text--current');
-        var $nextInstruction = $currentInstruction.next();
+        let $currentInstruction = $('.instructions__content').find('.instructions__text--current');
+        let $nextInstruction = $currentInstruction.next();
 
-        var nextPage = $nextInstruction.data('step');
-
-        setTimeout(() => {
-            this.context.playInstructions(nextPage);
-        }, 1200);
+        let nextPage = $nextInstruction.data('step');
 
         $currentInstruction.toggleClass('instructions__text--current');
         $nextInstruction.toggleClass('instructions__text--current');
@@ -72,58 +67,51 @@ class Homepage extends Component {
         if($currentInstruction.is(':last-child')) {
             $('.instructions__process').toggleClass('instructions__hide');
             $('.instructions__end').toggleClass('instructions__hide');
-            setTimeout(() => {
-                this.context.playInstructions(4);
-            }, 1200);
         }
     }
 
     render() {
         return (
             <div className="Home" onKeyDown={this.handleKeyDown}>
+                <div className="Home__onMobile">
+                    <div className="Home__onMobile__container">
+                        <div className="Home__onMobile__logo">
+                            <Logo />
+                        </div>
+                        <p className="Home__onMobile__description"></p>
+                        <div className="Home__onMobile__box">
+                            <p className="box__description">Le podcast interactif qui revient sur les mots qui dérangent.<br /><br />Pour vivre l'expérience, rendez-vous sur ton ordinateur.</p>
+                            <div className="box__icon">
+                                <EmojiSmile />
+                            </div>
+                        </div>
+                    </div>
+                    {/*<div className="Home__alert">
+                        <p className="Home__alert-text" data-text="Malaise se lance sur ordinateur ! Malaise se lance sur ordinateur ! Malaise se lance sur ordinateur ! Malaise se lance sur ordinateur ! Malaise se lance sur ordinateur ! "> Malaise se lance sur ordinateur ! Malaise se lance sur ordinateur ! Malaise se lance sur ordinateur ! Malaise se lance sur ordinateur ! Malaise se lance sur ordinateur !</p>
+                    </div>*/}
+                </div>
                 <div className={this.state.instructions ? "Home__background-animation Home__hide" : "Home__background-animation"} >
                     <Lottie options={this.defaultOptions} />
                 </div>
                 <div className="Home__container">
-                    {/*<div className="Home__alert">
-                        <p className="Home__alert-text" data-text="nouvel épisode ! nouvel épisode ! nouvel épisode ! nouvel épisode ! nouvel épisode ! nouvel épisode ! nouvel épisode ! nouvel épisode ! "> nouvel épisode ! nouvel épisode ! nouvel épisode ! nouvel épisode ! nouvel épisode ! nouvel épisode ! nouvel épisode !</p>
-                    </div>*/}
                     <div className="Home__center">
                         <div className={this.state.instructions ? "Home__content Home__hide" : "Home__content"}>
                             <div className="Home__logo">
-                                <AnimLogo />
+                                <Logo />
                             </div>
-                            <p className="Home__description">Une websérie immersive sonore qui vous plonge au coeur d'histoires et d'anecdotes du quotidien.</p>
+                            <p className="Home__description">Le podcast qui revient sur les mots qui dérangent</p>
                             <div className="Home__sound">
                                 <SoundAlert />
                             </div>
                             <button className="Home__start" onClick={this.handleClickStart}>démarrer l'expérience</button>
                         </div>
                         <div className={this.state.instructions ? "Home__instructions" : "Home__instructions  Home__hide"}>
-                            <div className="instructions">
-                                <div className="instructions__container">
-                                    <div className="instructions__process">
-                                        <div className="instructions__pagination">
-                                            <div className="pagination">
-                                                <div className="pagination__currentPage">{this.state.currentPage }</div>
-                                                <div className="pagination__pagesLength">3</div>
-                                            </div>
-                                        </div>
-                                        <div className="instructions__content" ref={this.instructions}>
-                                            <div className="instructions__text instructions__text--current" data-step="1">Malaise t'invite à vivre une expérience immersive à travers différents épisodes interactifs.</div>
-                                            <div className="instructions__text" data-step="2">Laisse toi guider et suis les indications en bas de l'écran.</div>
-                                            <div className="instructions__text" data-step="3">Au fil de l'expérience, tu rencontreras des termes spécifiques à l'épisode qui se glisseront dans la boîte à mots.</div>
-                                        </div>
-                                        <button className="instructions__arrow" onClick={this.handleClickNext}><img alt="Instruction suivante" src={require('../../../assets/icons/arrows/arrow_down.svg')}/></button>
-                                    </div>
-                                    <div className="instructions__end instructions__hide">
-                                        <SoundAlert />
-                                        <button className="instructions__next" onClick={this.props.onButtonPressed}>continuer</button>
-                                    </div>
-                                </div>
-                            </div>
+                            <Introduction onClickStartEpisode={this.props.onButtonPressed} startedJingle = {this.state.instructions}/>
                         </div>
                     </div>
+                    {/*<div className="Home__alert">
+                        <p className="Home__alert-text" data-text="nouvel épisode ! nouvel épisode ! nouvel épisode ! nouvel épisode ! nouvel épisode ! nouvel épisode ! nouvel épisode ! nouvel épisode ! "> nouvel épisode ! nouvel épisode ! nouvel épisode ! nouvel épisode ! nouvel épisode ! nouvel épisode ! nouvel épisode !</p>
+                    </div>*/}
                 </div>
             </div>
         );

@@ -1,0 +1,55 @@
+@import '../../../assets/styles/variables/index.scss';
+@import '../../../assets/styles/mixins/rotate-text';
+
+@-webkit-keyframes rotation {
+  from {
+    -webkit-transform: rotate(0deg);
+  }
+  to {
+    -webkit-transform: rotate(-360deg);
+  }
+}
+
+.DictionnaryAlert {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  position: relative;
+  width: 160px;
+  height: 160px;
+  margin: 0 auto 50px auto;
+
+  svg {
+    width: 70px;
+    position: absolute;
+    top:50%;
+    left:50%;
+    transform: translate(-50%, -50%);
+    margin-top: -5px;
+  }
+
+  &__rotation {
+    -webkit-animation: rotation 12s infinite linear;
+  }
+
+  &__letters {
+    @include rotated-text-bis();
+    position: relative;
+    width: 80px;
+    height: 80px;
+    font-size: 12px;
+    margin-left: -10px;
+
+    div {
+      position: absolute;
+      transform-origin: bottom center;
+      bottom: 0;
+      left: 50%;
+      width: 12px;
+      height: 80px;
+      text-align: center;
+    }
+
+  }
+
+}

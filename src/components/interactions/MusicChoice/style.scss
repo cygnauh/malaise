@@ -1,0 +1,149 @@
+@import '../../../assets/styles/variables/index.scss';
+
+.Music {
+  width: 100%;
+  margin-top: -100px;
+
+  &__list {
+    position: relative;
+
+    &--select {
+      .Music__item {
+        opacity: 0;
+        &--selected {
+          opacity: 1;
+        }
+      }
+    }
+  }
+
+  &__content {
+    height: 200px;
+
+    &:nth-child(2) {
+
+      .Music__item {
+        margin-top: 50px;
+
+        &--selected {
+          margin: 0;
+        }
+
+      }
+
+    }
+  }
+
+  &__item {
+    display: block;
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+    height: 200px;
+    cursor: pointer;
+    transition: transform 1s ease, opacity 1s ease;
+
+    &:hover {
+      .Music__name--toLeft, .Music__name--toRight {
+        span, &:after {
+          animation-play-state: paused;
+          color: $color__xp--light;
+        }
+      }
+    }
+
+    &--selected {
+      position: absolute;
+      top: 40%;
+      transform: scale(3);
+      z-index: 3;
+
+      .Music__name--toLeft, .Music__name--toRight {
+        span, &:after {
+          animation-play-state: running!important;
+          transition-timing-function: ease-in;
+          animation-duration: 5s;
+          color: $color__xp--light;
+        }
+      }
+    }
+
+  }
+
+
+
+  &__name {
+    position: absolute;
+    min-width: 100%;
+    &--toLeft {
+      span, &:after {
+        position: relative;
+        display: inline-block;
+        white-space: nowrap;
+        top:0;
+        font-size: 180px;
+        font-family: $font__archivo--black;
+        text-transform: lowercase;
+        color: $color__xp--dark;
+        text-shadow: $color__white 1px 1px, $color__white -1px 1px, $color__white -1px -1px, $color__white 1px -1px;
+        transition: color 0.5s ease;
+      }
+      span {
+        animation: toTheLeft1 30s infinite linear;
+      }
+      &:after {
+        position: absolute;
+        top:0;
+        left: -40px;
+        margin-right: 30px;
+        content:attr(data-after);
+        animation: toTheLeft2 30s infinite linear;
+      }
+    }
+    &--toRight {
+      span, &:after {
+        position: relative;
+        display: inline-block;
+        white-space: nowrap;
+        top:0;
+        font-size: 180px;
+        font-family: $font__archivo--black;
+        text-transform: lowercase;
+        color: $color__xp--dark;
+        text-shadow: $color__white 1px 1px, $color__white -1px 1px, $color__white -1px -1px, $color__white 1px -1px;
+        transition: color 0.5s ease;
+      }
+      span {
+        animation: toTheRight1 50s infinite linear;
+      }
+      &:after {
+        position: absolute;
+        top:0;
+        left: 40px;
+        content:attr(data-after);
+        animation: toTheRight2 50s infinite linear;
+      }
+    }
+  }
+
+}
+
+@keyframes toTheRight1 {
+   0% { margin-left: 0; }
+   100% { margin-left: -100%; }
+ }
+
+@keyframes toTheRight2 {
+  0% { margin-left: 100%; }
+  100% { margin-left: 0%; }
+}
+
+@keyframes toTheLeft1 {
+  0% { margin-left: 0; }
+  100% { margin-left: 100%; }
+}
+
+@keyframes toTheLeft2 {
+  0% { margin-left: -100%; }
+  100% { margin-left: 0%; }
+}

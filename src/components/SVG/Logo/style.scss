@@ -1,4 +1,4 @@
-@import '../../../assets/styles/index';
+@import '../../../assets/styles/variables/index.scss';
 
 .Logo {
   width: 80px;
@@ -13,6 +13,12 @@
 
 .interface-reverse {
   .Logo {
-    fill: $color__black
+    fill: $color__xp--dark;
+  }
+}
+
+.episode {
+  .Logo {
+    fill: $color__white;
   }
 }

@@ -1,66 +1,11 @@
+/* GLOBAL */
+/* INTERFACE */
+/* XP 1 */
 /*@font-face {
   font-family: 'Happy Times';
-  src: url('../fonts/happy-times/happy-times.woff2') format('woff2'),
-  url('../fonts/happy-times/happy-times.woff') format('woff'),
-  url('../fonts/happy-times/happy-times.ttf')  format('truetype');
-}*/
-/*@font-face {
-  font-family: 'Happy Times';
-  src: url('../fonts/happy-times/happy-times.woff2') format('woff2'),
-  url('../fonts/happy-times/happy-times.woff') format('woff'),
-  url('../fonts/happy-times/happy-times.ttf')  format('truetype');
-}*/
-* {
-  box-sizing: border-box; }
-
-body, html {
-  margin: 0;
-  padding: 0;
-  width: 100%;
-  height: 100%;
-  font-family: "Archivo", sans-serif;
-  font-size: 16px;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale; }
-  body.interface, html.interface {
-    background-color: #0B162E;
-    color: #ffffff; }
-  body.interface-reverse, html.interface-reverse {
-    background-color: #ffffff;
-    color: #000000; }
-
-h1, h2, h3, h4, h5, h6, ul, ol, li, a, p {
-  margin: 0;
-  padding: 0; }
-
-ul, ol, li {
-  list-style: none; }
-
-a {
-  text-decoration: none; }
-
-.interface a {
-  color: #ffffff; }
-
-.interface-reverse a {
-  color: #000000; }
-
-input:focus, textarea:focus, button:focus, button:active {
-  outline: none; }
-
-#root, .wrapper-container {
-  width: 100%;
-  height: 100%; }
-
-.Start-process {
-  width: 100%;
-  height: calc(100% - 45px); }
-
-/*@font-face {
-  font-family: 'Happy Times';
-  src: url('../fonts/happy-times/happy-times.woff2') format('woff2'),
-  url('../fonts/happy-times/happy-times.woff') format('woff'),
-  url('../fonts/happy-times/happy-times.ttf')  format('truetype');
+  src: url('../../fonts/happy-times/happy-times.woff2') format('woff2'),
+  url('../../fonts/happy-times/happy-times.woff') format('woff'),
+  url('../../fonts/happy-times/happy-times.ttf')  format('truetype');
 }*/
 @keyframes bottomright {
   0% {
@@ -170,8 +115,8 @@ input:focus, textarea:focus, button:focus, button:active {
   left: 0;
   width: 300px;
   height: 70px;
-  border-bottom: 2px solid #000000;
-  border-right: 2px solid #000000;
+  border-bottom: 2px solid #002c36;
+  border-right: 2px solid #002c36;
   visibility: hidden; }
 
 .bell__input-border:before {
@@ -181,8 +126,8 @@ input:focus, textarea:focus, button:focus, button:active {
   right: 0;
   width: 300px;
   height: 70px;
-  border-top: 2px solid #000000;
-  border-left: 2px solid #000000;
+  border-top: 2px solid #002c36;
+  border-left: 2px solid #002c36;
   visibility: hidden; }
 
 .Doorbell__animation .bell__input-border:before {
@@ -193,7 +138,7 @@ input:focus, textarea:focus, button:focus, button:active {
 
 .Doorbell {
   height: 100%;
-  background: #ffffff; }
+  background: #EAEAEA; }
   .Doorbell__container {
     display: flex;
     justify-content: center;
@@ -201,17 +146,27 @@ input:focus, textarea:focus, button:focus, button:active {
     width: 100%;
     height: 100%; }
   .Doorbell__label {
-    color: #000000;
-    font-family: "Archivo Black", sans-serif;
-    font-size: 40px;
-    width: 600px;
     position: absolute;
-    top: 100px;
-    left: 100px;
-    font-weight: normal;
-    line-height: 50px;
-    opacity: 1;
-    transition: all 0.5s ease; }
+    top: 30%;
+    left: 50%;
+    transform: translateX(-50%); }
+    .Doorbell__label span {
+      color: #002c36;
+      font-family: "Happy times";
+      font-size: 25px;
+      line-height: 30px;
+      width: 100%;
+      text-align: center;
+      font-weight: normal; }
+      .Doorbell__label span:after {
+        content: "";
+        width: 110%;
+        height: 1px;
+        background-color: #002c36;
+        position: absolute;
+        bottom: 6px;
+        left: 50%;
+        transform: translateX(-50%); }
 
 .bell {
   position: relative;
@@ -219,7 +174,7 @@ input:focus, textarea:focus, button:focus, button:active {
   text-align: center;
   transition: all 0.5s ease; }
   .bell__box {
-    border: 2px solid black;
+    border: 1px solid #002c36;
     margin-top: 40px;
     width: 400px;
     height: 75px;
@@ -241,18 +196,23 @@ input:focus, textarea:focus, button:focus, button:active {
   .bell__input {
     width: 70%;
     height: 50px;
-    font-size: 30px;
+    font-size: 20px;
+    font-family: "Archivo Black", sans-serif;
     border: none;
     padding: 10px 0 10px 0;
     text-align: center;
-    font-weight: bold;
+    font-weight: normal;
     transition: all 0.5s ease;
-    background: none; }
+    background: none;
+    color: #002c36; }
   .bell__input::placeholder {
-    font-weight: bold;
-    font-size: 30px;
+    font-family: "Archivo", sans-serif;
+    font-weight: normal;
+    font-size: 15px;
+    color: #002c36;
     text-align: center;
-    opacity: 0.3;
+    letter-spacing: 1px;
+    opacity: 0.5;
     transition: opacity 0.3s ease; }
   .bell__input:active::placeholder, .bell__input:focus::placeholder {
     opacity: 0; }
@@ -264,14 +224,25 @@ input:focus, textarea:focus, button:focus, button:active {
   margin: 0 0 0 20px;
   padding: 0;
   border-radius: 50%;
-  border: none;
-  background: none;
   font-weight: bold;
+  position: relative;
+  text-transform: lowercase;
+  font-family: "Archivo Black", sans-serif;
+  font-weight: normal;
   font-size: 35px;
-  text-shadow: -1px 0 #000000, 0 1px #000000, 1px 0 #000000, 0 -1px #000000;
-  color: #ffffff;
-  letter-spacing: 2px;
-  position: relative; }
+  background: none;
+  border: none;
+  color: #002c36;
+  opacity: 0.2;
+  cursor: pointer;
+  transition: opacity 0.5s ease-in;
+  opacity: 1; }
+  .btn__input.empty {
+    opacity: 0.2; }
+  .btn__input:hover, .btn__input:focus, .btn__input:active {
+    opacity: 1; }
+  .btn__input.btn__bell {
+    opacity: 1; }
 
 .btn__input span {
   transition: opacity 0.5s ease; }
@@ -281,8 +252,7 @@ input:focus, textarea:focus, button:focus, button:active {
 
 .Doorbell__animation .bell__input {
   height: 50px;
-  font-size: 40px;
-  padding: 0 0 10px 0;
+  font-size: 35px;
   flex: 1; }
 
 .Doorbell__animation .btn__input span {
@@ -293,7 +263,8 @@ input:focus, textarea:focus, button:focus, button:active {
 
 .Doorbell__animation .bell__box {
   width: 460px;
-  height: 130px; }
+  height: 130px;
+  border-width: 2px; }
 
 .btn__input:before,
 .btn__input:after {
@@ -312,9 +283,9 @@ input:focus, textarea:focus, button:focus, button:active {
   border: 2px solid transparent; }
 
 .Doorbell__animation .btn__input:before {
-  border-top-color: #000000;
-  border-right-color: #000000;
-  border-bottom-color: #000000;
+  border-top-color: #002c36;
+  border-right-color: #002c36;
+  border-bottom-color: #002c36;
   transition: border-top-color 0.15s linear, border-right-color 0.15s linear 0.10s, border-bottom-color 0.15s linear 0.20s; }
 
 .Doorbell__animation .Doorbell__label {
@@ -324,7 +295,7 @@ input:focus, textarea:focus, button:focus, button:active {
   border: 0 solid transparent; }
 
 .Doorbell__animation .btn__input:after {
-  border-top: 2px solid #000000;
+  border-top: 2px solid #002c36;
   border-left-width: 2px;
   border-right-width: 2px;
   transform: rotate(270deg);
@@ -348,7 +319,7 @@ input:focus, textarea:focus, button:focus, button:active {
   opacity: 0;
   width: 460px;
   height: 130px;
-  border: 2px solid #000000;
+  border: 2px solid #002c36;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -362,12 +333,12 @@ input:focus, textarea:focus, button:focus, button:active {
 .repeat-bell__input {
   width: 300px;
   height: 100%;
-  border: 2px solid #000000; }
+  border: 2px solid #002c36; }
 .repeat-bell__btn {
   width: 70px;
   height: 70px;
   border-radius: 50%;
-  border: 2px solid #000000;
+  border: 2px solid #002c36;
   margin-left: 20px; }
 
 /*# sourceMappingURL=style.css.map */

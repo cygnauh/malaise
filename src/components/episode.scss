@@ -1,36 +1,35 @@
-@import '../assets/styles/index.scss';
+@import '../assets/styles/variables/index.scss';
 
 .Episode {
   width: 100%;
   height: 100%;
   position: relative;
-  background: $color__white;
 
-  &__hours {
+  &__hours, &__personalization, &__interactions {
     width: 100%;
     height: 100%;
     opacity: 1;
     overflow: hidden;
     transition: all 0.5s ease-in-out;
     position: relative;
+    z-index: 1;
+
     &.hide{
+      position: absolute;
       opacity: 0;
-      height: 0;
+      z-index: 0;
     }
+
   }
 
-  &__personalization {
-    width: 100%;
-    height: 100%;
-    opacity: 1;
-    overflow: hidden;
-    transition: all 0.5s ease-in-out;
-    position: relative;
+  &__interactions{
+
     &.hide{
-      opacity: 0;
-      height: 0;
+      display: none;
     }
+    
   }
+
 
 }
 

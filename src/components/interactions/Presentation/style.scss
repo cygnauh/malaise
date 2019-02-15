@@ -1,5 +1,6 @@
-// temporary
-@import '../../../assets/styles/index.scss';
+@import '../../../assets/styles/variables/index.scss';
+@import '../../../assets/styles/mixins/buttons';
+
 @keyframes bottomrightTest {
     0% {
         width: 0;
@@ -58,28 +59,53 @@
         visibility: visible;
     }
 }
+@keyframes scaleRound {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(0.8);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
 
 .Presentation{
     background: $color__episode_01;
     width: 100%;
-    height: 95vh;
+    height: 100%;
     color: white;
     position:relative;
-    .form__btn{
+
+    &__action {
+        @include default-button($color__white);
+        position: absolute;
+        right: 50px;
+        top: 40px;
+        z-index: 2;
+        &:hover, &:focus, &:active {
+            background: $color__white;
+            color: $color__xp--dark;
+        }
+    }
+
+    .form__btn {
         height: 50px;
-        background: none;
-        border: none;
-        color: $color__episode_01;
-        text-shadow: -1px 0 $color__white, 0 1px $color__white, 1px 0 $color__white, 0 -1px $color__white;
-        font-size: 30px;
-        font-family: $font__archivo--black;
+        @include border-button($color__white, $color__white, $font__archivo--black, 30px);
         position: absolute;
         top: 0;
         right: 20px;
         cursor: pointer;
-        -webkit-transition: color 0.5s ease;
-        transition: color 0.5s ease;
-        letter-spacing: 2px;
+        opacity: 1;
+
+        &.empty {
+            opacity: 0.2;
+
+            span {
+                color: $color__white;
+            }
+        }
     }
 }
 .Presentation_person{
@@ -94,6 +120,8 @@
     &.greeted__guests{
         background-color: transparent;
         .firstName{
+            position: absolute;
+            z-index: 2;
             transition: all 2s ease-in-out;
             //text-transform: uppercase;
             color: white;
@@ -125,6 +153,21 @@
     }
     &.clickable{
         z-index: 2;
+        &:after {
+            content: "";
+            width: 34px;
+            height: 34px;
+            border-radius: 50%;
+            background-color: transparent;
+            border: 2px solid $color__white;
+            opacity: 0.3;
+            position: absolute;
+            top: -9px;
+            left: -9px;
+            transform-origin: center;
+            transform: translate(-50%, -50%);
+            animation: scaleRound 2s linear infinite;
+        }
     }
     &.clickable:not(.hote):hover{
         cursor: pointer;

@@ -4,7 +4,11 @@ import { getEpisode } from '../graphql/queries'
 import { UserContext } from "../store/UserProvider";
 import Presentation from "./interactions/Presentation/Presentation";
 import Doorbell from './interactions/Doorbell/Doorbell'
+import Loader from './elements/Loader/Loader'
+import ErrorScreen from './elements/ErrorScreen/ErrorScreen'
 import './personalization.scss';
+
+
 
 // 1) Fetch personalizations questions from data base : can use <Query> or <ApolloConsumer>
 // 2) Display the questions
@@ -20,37 +24,20 @@ class Personalization extends Component {
             render:'',
             episode:'cjqwfe1kj1j2x0122tixfvb5i',
             values:[],
-            // personalizations:[],
+            personalizations:[],
             value: '',
             register:false,
             componentIndex:1
 
         };
     }
-    handleChange = (i, params, event) => {
-        let pers = [];
+    handleChange = (i, params, value) => {
         this.setState({
-            values: { ...this.state.values, [i]: event.target.value}
+            values: [ ...this.state.values, {role:params[i].name, name:value, glass:0}]
         },()=>{
-            // pers.push(this.state.personalizations);
-            pers[params[i].name] = this.state.values[i];
-            this.context.setPersonalization(pers);
+             this.context.setPersonalization(this.state.values);
         });
     };
-    personalizationQuestion = (data) => {
-        //reveice data, show first question, register anwser, show next question
-        let questions=[];
-        let paramsP=null;
-        if(data.Episode && data.Episode.personalizations){
-            // console.log(data.Episode.personalizations)
-            paramsP = data.Episode.personalizations;
-        }
-        // return questions
-    };
-    validateAnswer = (i, params, answer, event) => {
-        // ----------- TODO go next question animation
-    };
-
     presentationQuestions = (data) => {
         let questions = [];
         if(data){
@@ -66,35 +53,37 @@ class Personalization extends Component {
         this.setState({
             componentIndex:2
         })
-    }
+    };
     render () {
         return(
             <div className='Personalization'>
                 {
                     this.state.episode?
                         (<Query query={getEpisode} variables={{ id : this.state.episode }}>
-                        {({ loading, error, data }) => {
-                            if (loading) return (<div>loader</div>);
-                            if (error) return `Error!: ${error}`;
-                            return (
-                                <div className="Personalization__container">
-                                    <div className={this.state.componentIndex === 1?'Personalization__doorbell':'Personalization__doorbell hide'}>
-                                        <Doorbell onDoorbellPressed={this.goToPresentation}/>
+                            {({ loading, error, data }) => {
+                                if (loading) return (<Loader/>);
+                                if (error) return (<ErrorScreen/>);
+                                return (
+                                    <div className="Personalization__container">
+                                        <div className={this.state.componentIndex === 1?'Personalization__doorbell':'Personalization__doorbell hide'}>
+                                            <Doorbell onDoorbellPressed={this.goToPresentation} onHostRegister={this.handleChange}/>
+                                        </div>
+                                        {this.state.componentIndex === 2 ?
+                                            <div className={this.state.componentIndex === 2?'questionP presentation__container':'questionP presentation__container hide'}>
+                                                <Presentation
+                                                    questions={this.presentationQuestions(data)}
+                                                    onPresentationEnd={this.props.nextComponent}
+                                                    onNameFilled={this.handleChange}
+                                                    host={this.context.personalizations.find(setting=>setting.role === 'hote').name}
+                                                />
+                                            </div>
+                                            : null}
                                     </div>
-
-                                    {this.state.componentIndex === 2 ? <div className={this.state.componentIndex === 2?'questionP presentation__container':'questionP presentation__container hide'}>
-                                        <Presentation questions={this.presentationQuestions(data)} onPresentationEnd={this.props.nextComponent}/>
-                                    </div> : null}
-
-                                    {/*<div className="questionP">{this.personalizationQuestion(data)}*/}
-                                        {/*<Presentation questions={this.presentationQuestions(data)} />*/}
-                                    {/*</div>*/}
-                                </div>
-                            );
-                        }}
-                        </Query>):null
+                                );
+                            }}
+                        </Query>
+                    ):null
                 }
-
             </div>
         )
     }

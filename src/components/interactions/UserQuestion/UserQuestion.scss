@@ -1,0 +1,107 @@
+@import '../../../assets/styles/variables/index.scss';
+@import '../../../assets/styles/mixins/index.scss';
+
+.userQuestion{
+  color: $color__white;
+  display: flex;
+  flex-direction: row;
+  height: 100%;
+  align-items: center;
+  font-family: $font__happy-times;
+
+  &__wrapper{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+  }
+
+  &__input_wrapper{
+    border: solid 1px $color__white;
+    width: 650px;
+    height: 50px;
+    display: flex;
+    align-self: center;
+    justify-content: space-between;
+    margin: 20px;
+
+    .userQuestion__label{
+      color: $color__xp--light;
+      font-size: 20px;
+      padding: 13px 16px;
+      width: 266px;
+      font-family: $font__happy-times;
+    }
+
+    .userQuestion__input{
+      color: white;
+      width: 100%;
+      background: transparent;
+      border: none;
+      font-size: 15px;
+      font-family: $font__archivo;
+      font-weight: normal;
+      letter-spacing: 1px;
+
+      &::placeholder{
+        font-size: 15px;
+        font-family: $font__archivo;
+        font-weight: normal;
+        color: $color__white;
+        opacity: 0.5;
+      }
+
+    }
+
+    .userQuestion__valid{
+      @include border-button($color__xp--dark, $color__white, $font__archivo--black, 25px);
+      opacity: 1;
+      margin-right: 10px;
+
+      &.empty {
+        opacity: 0.2;
+      }
+
+      &:hover, &:focus, &:active {
+        color: $color__white;
+      }
+
+    }
+
+  }
+  .wrapper-proposition {
+    display: flex;
+    align-self: center;
+    width: 650px;
+    align-items: center;
+
+    .propositions {
+      width: 100%;
+
+      .proposition {
+        position: relative;
+        @include underlineLabel($color__white, $font__happy-times);
+        text-align: left;
+        font-size: 15px;
+        padding: 25px 0 0 32px;
+        line-height: 26px;
+        cursor: pointer;
+        opacity: 0.4;
+        transition: padding-left 0.3s ease-in-out, opacity 0.3s ease-in-out;
+
+        &:after{
+          width: 90%;
+        }
+
+        &:hover, &.clicked {
+          opacity: 1;
+          padding-left: 45px;
+        }
+
+      }
+
+    }
+
+  }
+
+}

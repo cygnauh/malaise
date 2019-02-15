@@ -1,20 +1,39 @@
-@import '../../../assets/styles/index.scss';
+@import '../../../assets/styles/variables/index.scss';
 
 .Notice {
-  position: absolute;
-  bottom: 0;
-  right: 0;
-  width: calc(100% - 48px);
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  display: flex;
+  align-items: center;
 
-  &.interface {
+  .Notice__text{
+    margin: 0 auto;
+  }
+
+}
+
+.interface {
+  .Notice {
     border-top: 1px solid $color__white;
     color: $color__white;
+    background-color: $color__bg;
   }
+}
 
-  &.interface-reverse {
-    border-top: 1px solid $color__black;
-    color: $color__black;
+.interface-reverse {
+  .Notice {
+    border-top: 1px solid $color__xp--dark;
+    color: $color__xp--dark;
+    background-color: $color__white;
   }
+}
 
+.episode {
+  .Notice {
+    border-top: 1px solid $color__white;
+    color: $color__white;
+    background-color: $color__xp--dark;
+  }
 }
 

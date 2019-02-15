@@ -1,0 +1,135 @@
+@import '../../../assets/styles/variables/index';
+@import '../../../assets/styles/mixins/buttons';
+
+.EpisodeSelection {
+  width: 100%;
+  height: 100%;
+
+  &__container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &__background {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+
+    & > div {
+      width: 120%!important;
+      height: 120%!important;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%,-50%);
+    }
+
+  }
+
+  &__content {
+    text-align: center;
+    width: 350px;
+  }
+
+  .episode {
+    width: 350px;
+    min-height: 550px;
+    background: none;
+    border: 1px solid $color__white;
+    padding: 50px;
+    overflow: hidden;
+    position: relative;
+    cursor: pointer;
+    margin-bottom: 30px;
+    text-align: left;
+    background: $color__bg;
+
+    &__top {
+      display: flex;
+      justify-content: center;
+      align-items: flex-end;
+      margin-bottom: 50px;
+    }
+
+    &__number {
+      margin-right: auto;
+      font-size: 50px;
+      line-height: 40px;
+      font-family: $font__archivo--black;
+      color: $color__bg;
+      text-shadow: -1px 0 $color__white, 0 1px $color__white, 1px 0 $color__white, 0 -1px $color__white;
+    }
+
+    &__line {
+      width: 50px;
+      height: 1px;
+      background: $color__white;
+      margin-bottom: 4px;
+    }
+
+    &__date {
+      font-family: $font__archivo;
+      font-size: 18px;
+      line-height: 20px;
+      margin-left: auto;
+    }
+
+    &__title {
+      font-family: $font__archivo--black;
+      font-weight: normal;
+      color: $color__xp--light;
+      font-size: 30px;
+      line-height: 40px;
+      margin-bottom: 30px;
+    }
+
+    &__description {
+      font-size: 18px;
+      line-height: 20px;
+      font-family: $font__happy-times;
+    }
+
+    &__actions {
+      width: calc(100% - 100px);
+      position: absolute;
+      bottom: 50px;
+    }
+
+    &__cta {
+      @include default-button($color__white);
+      font-size: 10px;
+      width: 100%;
+
+      &:hover, &:active, &:focus {
+        background-color: $color__white;
+        color: $color__bg;
+      }
+
+    }
+  }
+
+  &__result {
+    width: 500px;
+    text-align: center;
+  }
+
+  &__intro {
+    font-family: $font__archivo;
+    font-size: 15px;
+    margin-bottom: 50px;
+  }
+
+  &__choice {
+    font-family: $font__happy-times;
+    font-size: 15px;
+    line-height: 15px;
+    letter-spacing: 1px;
+    text-decoration: underline;
+    text-align: center;
+  }
+
+}

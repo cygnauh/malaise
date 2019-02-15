@@ -1,0 +1,15 @@
+.Jingle {
+  position: relative;
+  width: 100%;
+  height: 100%;
+
+  & > div {
+    width: 120%!important;
+    height: 120%!important;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+  }
+
+}

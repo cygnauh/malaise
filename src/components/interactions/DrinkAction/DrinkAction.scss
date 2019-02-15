@@ -1,0 +1,61 @@
+@import '../../../assets/styles/variables/index.scss';
+
+.DrinkAction{
+  display: flex;
+  justify-content: space-around;
+  height: 100%;
+  align-items: center;
+  transition: opacity 0.1s ease-in-out;
+  &.hide{
+    opacity: 0;
+    transition: opacity 0.1s ease-in-out;
+  }
+  .DrinkAction__timer{
+    width: 70px;
+    height: 70px;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    z-index: 20;
+  }
+  .wrapper{
+    display: flex;
+    flex-direction: column;
+    width: 65%;
+    .Person_list{
+      margin-bottom: 19px;
+      display: flex;
+      justify-content: space-between;
+    }
+    .Drink_Games_content{
+      color: $color__white;
+      font-size: 14px;
+      border: solid 1px $color__white;
+      background: $color__episode_01;
+      padding: 20px 30px;
+      height: 60px;
+      position: relative;
+
+      &:before {
+        content: '';
+        position: absolute;
+        top: 20px;
+        left:-9px;
+        display: block;
+        width: 15px;
+        height: 15px;
+        background: $color__episode_01; // bg color
+        border-right:1px solid $color__white;
+        border-bottom:1px solid $color__white;
+        -moz-transform:rotate(135deg);
+        -webkit-transform:rotate(135deg);
+        //border-left-width: 10px;
+        //border-top-width: 10px;
+      }
+    }
+  }
+  .Drink{
+      margin-top: 200px;
+  }
+}
+

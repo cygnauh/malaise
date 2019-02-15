@@ -1,0 +1,41 @@
+@import '../../../assets/styles/variables/index.scss';
+
+.glass {
+
+  .glass_name {
+    text-transform: capitalize;
+    font-family: $font__archivo--black;
+    font-size:  5em;
+    -webkit-text-stroke: 1px white;
+    background: url(../../../assets/img/drink_medium4.svg) repeat-y;
+    background-position-x: -45px;
+    -webkit-background-clip: text;
+    background-clip: text;
+    background-repeat-y:no-repeat;
+    /* Animate Background Image */
+    -webkit-text-fill-color: transparent;
+    /* Activate hardware acceleration for smoother animations */
+    transform: translate3d(0,0,0);
+    backface-visibility: hidden;
+    animation-duration: 180s;
+    animation: aitf 180s linear infinite;
+    //animation-duration: 180s;
+    background-position-y: 37px; // TODO Update according to the volume
+    opacity: 0.3;
+    &.drinking{
+      opacity: 1;
+      background-position-y: 37px; // TODO Update according to the volume
+      animation: aitf 5s linear infinite;
+      animation-duration: 50s;
+    }
+  }
+}
+
+
+
+/* Animate Background Image */
+
+@-webkit-keyframes aitf {
+  0% { background-position-x: 0%; }
+  100% { background-position-x: 100%; }
+}

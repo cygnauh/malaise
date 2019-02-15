@@ -1,0 +1,50 @@
+@import '../../../assets/styles/variables/index.scss';
+@import '../../../assets/styles/mixins/buttons';
+
+.Error404 {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &__container {
+    text-align: center;
+
+  }
+
+  &__title {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 100px;
+    font-family: $font__archivo--black;
+    margin-bottom: 50px;
+
+    span {
+      width: 80px;
+      height: 80px;
+      margin: 0 15px 20px 15px;
+    }
+
+  }
+
+  &__description {
+    max-width: 200px;
+    font-family: $font__happy-times;
+    font-size: 18px;
+    line-height: 25px;
+    margin: 0 auto 80px auto;
+  }
+
+  &__action {
+    @include default-button($color__white);
+
+    &:hover, &:focus, &:active {
+      background-color: $color__white;
+      color: $color__bg;
+    }
+
+  }
+
+}

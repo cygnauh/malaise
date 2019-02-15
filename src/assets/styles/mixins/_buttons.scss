@@ -1,0 +1,52 @@
+@mixin default-button($color) {
+  font-size: 10px;
+  color: $color;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  background: none;
+  padding: 15px 30px;
+  letter-spacing: 2px;
+  line-height: 14px;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: color 0.5s ease-in, background-color 0.5s ease-in;
+}
+
+@mixin border-button($color, $borderColor, $font, $size) {
+  text-transform: lowercase;
+  font-family: $font;
+  font-weight: normal;
+  font-size: $size;
+  background: none;
+  border: none;
+  color: $borderColor;
+  opacity: 0.2;
+  cursor: pointer;
+  transition: opacity 0.5s ease-in;
+}
+
+@mixin more-button($color, $font) {
+  text-transform: uppercase;
+  border: 1px solid $color;
+  letter-spacing: 1px;
+  background: none;
+  color: $color;
+  font-size: 10px;
+  font-family: $font;
+  border-radius: 35px;
+  padding: 15px 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: all 0.5s ease-in;
+
+  svg {
+    width: 15px;
+    height: 15px;
+    margin-right: 20px;
+    g {
+      fill: $color__xp--light;
+    }
+  }
+
+}

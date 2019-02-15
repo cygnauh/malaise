@@ -1,0 +1,21 @@
+@import '../../../assets/styles/variables/index.scss';
+@import '../../../assets/styles/mixins/timer';
+
+.Timer {
+
+  width: 100%;
+  height: 100%;
+
+  &__active {
+    @include timer('.Timer__container', $color__xp--light, $color__xp--dark, 50, 6.6, 15); // TODO replace in another
+  }
+
+  &__container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+  }
+
+}
+
+

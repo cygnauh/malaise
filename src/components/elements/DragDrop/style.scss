@@ -1,0 +1,131 @@
+@import '../../../assets/styles/variables/index.scss';
+
+@keyframes dragToTop {
+  0% {
+    bottom: -50px;
+  }
+  85% {
+    opacity: 0.2;
+    width: 45px;
+    height: 45px;
+  }
+  100% {
+    bottom: 100px;
+    height: 80px;
+    width: 80px;
+    opacity: 0;
+  }
+}
+
+@keyframes drift {
+  from { transform: rotate(0deg); }
+  from { transform: rotate(360deg); }
+}
+
+.Drag-drop {
+
+  &__dragBottom {
+    margin-top: 100px;
+    width: 50px;
+    position: relative;
+  }
+
+  &__exampleAnimation {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    border: 1px solid $color__white;
+    position: absolute;
+    bottom: -50px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 3;
+    animation: dragToTop 1.2s linear infinite 1s;
+    opacity: 0.2;
+  }
+
+  &__dragStart {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: 1px solid $color__white;
+    cursor: pointer;
+    position: absolute;
+    opacity: 0.2;
+    &:before {
+      content: '';
+      position: absolute;
+      top: -100px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 1px;
+      height: 100px;
+      border-left: 3px dotted $color__white;
+      transition: opacity 0.5s ease;
+    }
+    &--dragged {
+      &:before {
+        opacity: 0;
+      }
+    }
+  }
+
+  &__draggable {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    position: absolute;
+    transition: transform 0.3s ease, opacity 0.5s ease;
+    overflow: hidden;
+    transform: translate3d(0, 0, 0);
+    border: 1px solid white;
+    cursor: pointer;
+
+    &--dragged {
+      transform: scale(1);
+      opacity: 0;
+    }
+
+    &--onDrag {
+      transform: scale(1.2);
+    }
+
+    &:after {
+      content: '';
+      display: block;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 11;
+      transform: translate3d(0, 0, 0);
+    }
+
+  }
+
+  &__wave {
+    position: absolute;
+    top: 30px;
+    left: -30px;
+    background: white;
+    width: 100px;
+    height: 100px;
+    border-radius: 40%;
+    animation: drift 6000ms infinite linear;
+  }
+
+  &__dragEnd {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: none;
+    border: 1px solid $color__white;
+    cursor: pointer;
+    transition: transform 0.3s ease, opacity 0.5s ease;
+    &--full {
+      transform: scale(1.4);
+      opacity: 0;
+    }
+  }
+
+}
