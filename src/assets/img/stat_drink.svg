@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="250px" height="114px" viewBox="0 0 250 114" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 51.3 (57544) - http://www.bohemiancoding.com/sketch -->
+    <title>4_stat1</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="UI" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="4A.infos" transform="translate(-300.000000, -1687.000000)">
+            <g id="4_stat1" transform="translate(300.000000, 1685.000000)">
+                <text id="72%" font-family="Archivo-Regular, Archivo" font-size="15" font-weight="normal" fill="#FFFFFF">
+                    <tspan x="0" y="115">72%</tspan>
+                </text>
+                <text id="28%" font-family="Archivo-Regular, Archivo" font-size="15" font-weight="normal" fill="#FFFFFF">
+                    <tspan x="219.985" y="115">28%</tspan>
+                </text>
+                <text id="Qui-boit-quoi-?" font-family="Archivo-Bold, Archivo" font-size="15" font-weight="bold" fill="#FFFFFF">
+                    <tspan x="0" y="13">Qui boit quoi ?</tspan>
+                </text>
+                <polygon id="Rectangle" fill="#FFFFFF" fill-rule="nonzero" points="166 34 249.560029 34 249.560029 84 166 84"></polygon>
+                <text id="jus" font-family="Archivo-Bold, Archivo" font-size="15" font-weight="bold" fill="#002C36">
+                    <tspan x="197.1625" y="64">jus</tspan>
+                </text>
+                <path d="M0.5,34.5335071 L0.5,83.5335071 L249.172986,83.5335071 L249.172986,34.5335071 L0.5,34.5335071 Z" id="Rectangle" stroke="#FFFFFF" fill-rule="nonzero"></path>
+                <text id="alcool" font-family="Archivo-Bold, Archivo" font-size="15" font-weight="bold" fill="#FFFFFF">
+                    <tspan x="61.325" y="64">alcool</tspan>
+                </text>
+            </g>
+        </g>
+    </g>
+</svg>

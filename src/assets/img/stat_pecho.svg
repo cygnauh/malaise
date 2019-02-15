@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="250px" height="114px" viewBox="0 0 250 114" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 51.3 (57544) - http://www.bohemiancoding.com/sketch -->
+    <title>4_stat2</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="UI" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="4A.infos" transform="translate(-625.000000, -1687.000000)">
+            <g id="4_stat2" transform="translate(625.000000, 1685.000000)">
+                <text id="19%" font-family="Archivo-Regular, Archivo" font-size="15" font-weight="normal" fill="#FFFFFF">
+                    <tspan x="0" y="115">19%</tspan>
+                </text>
+                <text id="81%" font-family="Archivo-Regular, Archivo" font-size="15" font-weight="normal" fill="#FFFFFF">
+                    <tspan x="219.985" y="115">81%</tspan>
+                </text>
+                <g id="Group-8" transform="translate(0.000000, 34.000000)">
+                    <polygon id="Rectangle" fill="#FFFFFF" fill-rule="nonzero" points="71 0 249.094598 0 249.094598 50 71 50"></polygon>
+                    <text id="non" font-family="Archivo-Bold, Archivo" font-size="15" font-weight="bold" fill="#002C36">
+                        <tspan x="146.2525" y="30">non</tspan>
+                    </text>
+                    <path d="M0.5,0.5 L0.5,49.5 L248.346254,49.5 L248.346254,0.5 L0.5,0.5 Z" id="Rectangle" stroke="#FFFFFF" fill-rule="nonzero"></path>
+                    <text id="oui" font-family="Archivo-Bold, Archivo" font-size="15" font-weight="bold" fill="#FFFFFF">
+                        <tspan x="25.25" y="30">oui</tspan>
+                    </text>
+                </g>
+                <text id="«-Pecho-»-c’est-couc" font-family="Archivo-Bold, Archivo" font-size="15" font-weight="bold" fill="#FFFFFF">
+                    <tspan x="0" y="13">« Pecho » c’est coucher</tspan>
+                </text>
+            </g>
+        </g>
+    </g>
+</svg>
