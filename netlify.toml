@@ -1,4 +1,0 @@
-[build]
-base = "malaise/"
-publish = "malaise/public/"
-command = "npm run build"
